@@ -11,7 +11,7 @@ module.exports = {
         //Author perms check
         if (!message.member.permissions.has("MANAGE_ROLES")) {
             const permerror = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("RED")
                 .setTitle(`Error executing that command.`)
                 .setDescription(`You do not have the necessary permissions to execute this command.`)
                 .setTimestamp();
@@ -41,7 +41,7 @@ module.exports = {
 
             if (!memberMute.roles.cache.some(role => role.name === 'Muted')) {
                 const alrUnmuted = new MessageEmbed()
-                    .setColor("RANDOM")
+                    .setColor("RED")
                     .setTitle("Unable to unmute this user.")
                     .setDescription("This user is already unmuted.");
 
@@ -53,7 +53,7 @@ module.exports = {
         try {
             memberMute.roles.remove(muteRole.id);
             const unmuteEmbed = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("GREEN")
                 .setTitle(`${memberMute.user.tag} has been unmuted.`)
                 .setDescription(`Reason: ${reason}`)
                 .setTimestamp();

@@ -12,7 +12,7 @@ module.exports = {
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_ROLES")) {
             const permerror = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("RED")
                 .setTitle(`Error executing that command.`)
                 .setDescription(`You do not have the necessary permissions to execute this command.`)
                 .setTimestamp();
@@ -55,7 +55,7 @@ module.exports = {
         //If user being muted has mute permissions himself
         if (memberMute.permissions.has("MANAGE_ROLES")) {
             const modMute = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("RED")
                 .setTitle(`Error executing command.`)
                 .setDescription(`You cannot mute this member.`)
                 .setTimestamp();
@@ -67,7 +67,7 @@ module.exports = {
 
         if (memberMute.roles.cache.some(role => role.name === 'Muted')) {
             const alrMuted = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("RED")
                 .setTitle(`Error executing command.`)
                 .setDescription(`This member is already muted.`)
                 .setTimestamp();
@@ -107,7 +107,7 @@ module.exports = {
             if (!time) {
                 memberMute.roles.add(muteRole.id);
                 const muteEmbed = new MessageEmbed()
-                    .setColor("RANDOM")
+                    .setColor("GREEN")
                     .setTitle(`${memberMute.user.tag} has been muted indefinitely.`)
                     .setDescription(`Reason: ${reason}`)
                     .setTimestamp();
@@ -117,7 +117,7 @@ module.exports = {
             }
             memberMute.roles.add(muteRole.id);
             const muteEmbedTwo = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("GREEN")
                 .setTitle(`${memberMute.user.tag} has been muted for ${ms(ms(time))}.`)
                 .setDescription(`Reason: ${reason}`)
                 .setTimestamp();
@@ -127,7 +127,7 @@ module.exports = {
 
             setTimeout(function () {
                 memberMute.roles.remove(muteRole.id);
-                console.log("Unmut");
+                console.log("Unmute");
             }, ms(time));
         } catch (err) {
             message.channel.send("Error")

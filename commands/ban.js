@@ -9,7 +9,7 @@ module.exports = {
         //Author permission check
         if (!message.member.permissions.has("BAN_MEMBERS")) {
             const permerror = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("RED")
                 .setTitle(`Error executing that command`)
                 .setDescription(`You do not have the necessary permissions to execute this command`)
                 .setTimestamp();
@@ -25,7 +25,7 @@ module.exports = {
 
         //Ban embed being sent to the user
         const banEmbed = new MessageEmbed()
-            .setColor("RANDOM")
+            .setColor("RED")
             .setTitle(`You were banned from the server`)
             .setDescription(`Reason: ${reason}`)
             .setTimestamp();

@@ -20,7 +20,7 @@ module.exports = {
                 }, ms('1m'));
             } catch (err) {}
             const permerror = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("DARK_VIVID_PINK")
                 .setTitle(`You got spanked instead.`)
                 .setTimestamp();
             return message.reply({
@@ -38,7 +38,7 @@ module.exports = {
 
         if (memberSpank.roles.cache.some(role => role.name === 'Spanked')) {
             const alrSpanked = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("DARK_VIVID_PINK")
                 .setTitle(`Error executing command.`)
                 .setDescription(`This member has already been spanked.`)
                 .setTimestamp();
@@ -51,7 +51,7 @@ module.exports = {
         try {
             memberSpank.roles.add(spankRole.id);
             const spankEmbed = new MessageEmbed()
-                .setColor("RANDOM")
+                .setColor("DARK_VIVID_PINK")
                 .setTitle(`${memberSpank.user.tag} has been spanked.`)
                 .setTimestamp();
             message.channel.send({
