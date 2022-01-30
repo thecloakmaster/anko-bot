@@ -28,7 +28,7 @@ module.exports = {
         } else if (message.guild.members.cache.get(memberMention.id)) {
             try {
                 const embed = new MessageEmbed()
-                    .setTitle(`Here's the server specific avatar for ${memberMention.tag}`)
+                    .setTitle(`Here's the server specific avatar for ${memberMention.user.tag}`)
                     .setDescription(`Download | [png](${memberMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${memberMention.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${memberMention.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${memberMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
                     .setColor("RANDOM")
                     .setImage(`${memberMention.displayAvatarURL({dynamic:true, size:2048})}`);
