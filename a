@@ -1,0 +1,30 @@
+if (!userBan){
+                
+                if (userID.hasPermission("BAN_MEMBERS") ) {
+
+                    message.reply({embed: [modban]});
+            
+                }else{
+                
+                    try {
+                        Guild.members.ban(userID);
+                        userBan.send(banEmbed);
+                    } catch (err){
+                        const executionError = new MessageEmbed()
+                        .setTitle(`Error executing command`)
+                        .setDescription(`The command was not able to be executed`)
+                        .setTimestamp();
+
+                        message.reply({embed: [executionError]});
+                    };
+                }
+            };
+
+
+
+
+
+
+
+
+message.guild.members.cache.get(userMention.id)
