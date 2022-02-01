@@ -14,7 +14,9 @@ module.exports = {
 
         const messageID = args.slice(1).join(" ");
 
-        const messageW = await channelID.messages.fetch(`${messageID}`);
+        let messageW = null
+
+        try {messageW = await channelID.messages.fetch(`${messageID}`);} catch(err) {return message.channel.send("Please enter a valid message ID")}
 
         if (!messageW) return message.channel.send("Please specify a valid message ID");
 
