@@ -27,10 +27,10 @@ module.exports = {
         try {
             for (var i = 0; i < pinnedMessages.length; i++) {
                 let pin = pinnedMessages[i];
-                var color = "#FFFFFF"
+                var color = "#4752c4"
                 const inServer = await message.guild.members.fetch(pin.author.id).catch(() => {});
                 if (!inServer) {
-                    var color = "#FFFFFF"
+                    var color = "#4752c4"
                 } else {
                     var color = pin.member.displayHexColor;
                 };
