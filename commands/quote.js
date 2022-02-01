@@ -9,14 +9,18 @@ module.exports = {
     async execute(message, args) {
 
         const channelID = message.mentions.channels.first();
-        
+
         if (!channelID) return message.channel.send("Please specify a valid channel.");
 
         const messageID = args.slice(1).join(" ");
 
         let messageW = null
 
-        try {messageW = await channelID.messages.fetch(`${messageID}`);} catch(err) {return message.channel.send("Please enter a valid message ID")}
+        try {
+            messageW = await channelID.messages.fetch(`${messageID}`);
+        } catch (err) {
+            return message.channel.send("Please enter a valid message ID")
+        }
 
         if (!messageW) return message.channel.send("Please specify a valid message ID");
 
@@ -26,10 +30,9 @@ module.exports = {
                 var color = "#4752c4"
             } else {
                 var color = messageW.member.displayHexColor;
-                console.log(color)
             };
-            
-            if(messageW.attachments.size > 0) {
+
+            if (messageW.attachments.size > 0) {
                 const embed = new MessageEmbed()
                     .setColor(color)
                     .setDescription(`${messageW.content} \n\n[Jump to message](${messageW.url})`)
