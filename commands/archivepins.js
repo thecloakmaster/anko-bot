@@ -5,7 +5,7 @@ const {
 } = require('discord.js');
 module.exports = {
     name: 'archivepins',
-    description: "Takes pins from a channel and archives them to elsewhere",
+    description: "Takes pins from a channel and archives them.",
     async execute(message) {
 
         if (!message.member.permissions.has("MANAGE_MESSAGES")) {
@@ -28,7 +28,8 @@ module.exports = {
             for (var i = 0; i < pinnedMessages.length; i++) {
                 let pin = pinnedMessages[i];
                 var color = "#FFFFFF"
-                if (!message.guild.members.fetch(pin.author.id)) {
+                const inServer = await message.guild.members.fetch(pin.author.id).catch(() => {});
+                if (!inServer) {
                     var color = "#FFFFFF"
                 } else {
                     var color = pin.member.displayHexColor;
