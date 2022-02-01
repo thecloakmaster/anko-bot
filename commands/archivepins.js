@@ -28,7 +28,7 @@ module.exports = {
             for (var i = 0; i < pinnedMessages.length; i++) {
                 let pin = pinnedMessages[i];
                 var color = "#FFFFFF"
-                if (!message.guild.members.cache.get(pin.author.id)) {
+                if (!message.guild.members.fetch(pin.author.id)) {
                     var color = "#FFFFFF"
                 } else {
                     var color = pin.member.displayHexColor;
