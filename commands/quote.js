@@ -39,6 +39,7 @@ module.exports = {
                             embeds: [embed]
                         })
                     })
+                    return;
                 } else {
                     const embed = new MessageEmbed()
                         .setColor(color)
