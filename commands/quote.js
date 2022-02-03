@@ -24,17 +24,20 @@ module.exports = {
                 };
 
                 if (messageW.attachments.size > 0) {
-                    const embed = new MessageEmbed()
-                        .setColor(color)
-                        .setDescription(`${messageW.content} \n\n[Jump to message](${messageW.url})`)
-                        .setImage(imageURL)
-                        .setTimestamp(messageW.createdTimestamp)
-                        .setAuthor({
-                            name: messageW.author.username,
-                            iconURL: messageW.author.displayAvatarURL()
-                        });
-                    return message.channel.send({
-                        embeds: [embed]
+                    messageW.attachments.forEach(attachment => {
+                        let imageURL = attachment.proxyURL;
+                        const embed = new MessageEmbed()
+                            .setColor(color)
+                            .setDescription(`${messageW.content} \n\n[Jump to message](${messageW.url})`)
+                            .setImage(imageURL)
+                            .setTimestamp(messageW.createdTimestamp)
+                            .setAuthor({
+                                name: messageW.author.username,
+                                iconURL: messageW.author.displayAvatarURL()
+                            });
+                        return message.channel.send({
+                            embeds: [embed]
+                        })
                     })
                 } else {
                     const embed = new MessageEmbed()
@@ -75,17 +78,20 @@ module.exports = {
             };
             
             if(messageW.attachments.size > 0) {
-                const embed = new MessageEmbed()
-                    .setColor(color)
-                    .setDescription(`${messageW.content} \n\n[Jump to message](${messageW.url})`)
-                    .setImage(imageURL)
-                    .setTimestamp(messageW.createdTimestamp)
-                    .setAuthor({
-                        name: messageW.author.username,
-                        iconURL: messageW.author.displayAvatarURL()
-                    });
-                message.channel.send({
-                    embeds: [embed]
+                messageW.attachments.forEach(attachment => {
+                    let imageURL = attachment.proxyURL;
+                    const embed = new MessageEmbed()
+                        .setColor(color)
+                        .setDescription(`${messageW.content} \n\n[Jump to message](${messageW.url})`)
+                        .setImage(imageURL)
+                        .setTimestamp(messageW.createdTimestamp)
+                        .setAuthor({
+                            name: messageW.author.username,
+                            iconURL: messageW.author.displayAvatarURL()
+                        });
+                    message.channel.send({
+                        embeds: [embed]
+                    })
                 })
             } else {
                 const embed = new MessageEmbed()
