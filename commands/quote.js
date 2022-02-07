@@ -5,6 +5,7 @@ const {
 } = require("discord.js");
 module.exports = {
     name: 'quote',
+    aliases: ["q"],
     description: 'Embeds the mentioned message.',
     async execute(message, args) {
 
