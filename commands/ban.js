@@ -4,7 +4,8 @@ const {
 } = require("discord.js");
 module.exports = {
     name: 'ban',
-    description: 'Bans a user',
+    description: 'Bans the specified user.',
+    usage: ";ban @mention or ;ban <user ID>",
     async execute(message, args) {
         //Author permission check
         if (!message.member.permissions.has("BAN_MEMBERS")) {

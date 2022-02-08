@@ -6,7 +6,8 @@ const {
 
 module.exports = {
     name:'kick',
-    description: 'Kicks a member',
+    description: 'Kicks the specified member',
+    usage: ";kick @mention or ;kick <message ID>",
     async execute(message, args) {
         if (!message.member.permissions.has("KICK_MEMBERS")) {
             const permerror = new MessageEmbed()

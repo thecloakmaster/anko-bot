@@ -6,7 +6,8 @@ const client_neko = require('nekos.life');
 const neko = new client_neko();
 module.exports = {
     name: 'hug',
-    description: 'Sends a hug gif',
+    description: 'Hugs the specified user and makes them feel a little better.',
+    usage: ";hug @mention",
     async execute(message) {
         if (message.mentions.members.size === 0) {
             return message.channel.send("You cannot hug random or empty text.")

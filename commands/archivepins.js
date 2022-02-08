@@ -5,7 +5,8 @@ const {
 } = require('discord.js');
 module.exports = {
     name: 'archivepins',
-    description: "Takes pins from a channel and archives them.",
+    description: "Takes pins from a channel and archives them into embeds.",
+    usage: ";archivepins",
     async execute(message) {
 
         if (!message.member.permissions.has("MANAGE_MESSAGES")) {

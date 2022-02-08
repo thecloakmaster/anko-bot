@@ -5,8 +5,9 @@ const {
 } = require('discord.js');
 module.exports = {
     name: 'avatar',
-    aliases: ["pfp", "icon", "av"],
-    description: 'Get the avatar URL of the tagged user(s), or your own avatar.',
+    aliases: ["pfp", "icon", "av", "ava"],
+    description: 'Get the avatar URL of the tagged user, or your own avatar.',
+    usage: ";avatar @mention or ;avatar <user ID> or ;avatar for your own avatar",
     async execute(message, args) {
 
         let userMention = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});

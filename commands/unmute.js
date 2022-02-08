@@ -6,7 +6,8 @@ const {
 
 module.exports = {
     name: 'unmute',
-    description: 'unmutes the member',
+    description: 'Unmutes the specified member.',
+    usage: ";unmute @mention or ;unmute <member ID>",
     async execute(message, args) {
         //Author perms check
         if (!message.member.permissions.has("MANAGE_ROLES")) {

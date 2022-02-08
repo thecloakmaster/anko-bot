@@ -6,7 +6,8 @@ const {
 
 module.exports = {
     name: 'customserverpfp',
-    description: 'Gets the custom server avatar of the user.',
+    description: 'Sends the server specific profile picture of the member.',
+    usage: ";customserverpfp",
     async execute(message, args) {
         let memberMention = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
         if (args[0] == undefined) {

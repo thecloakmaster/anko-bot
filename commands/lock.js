@@ -7,6 +7,7 @@ const {
 module.exports = {
         name: 'lock',
         description: 'Locks the channel.',
+        usage: ";lock",
         async execute(message, args) {
             if (!message.member.permissions.has('MANAGE_ROLES')) {
                 const permerror = new MessageEmbed()

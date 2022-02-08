@@ -8,7 +8,8 @@ const ms = require("ms");
 
 module.exports = {
     name: 'spank',
-    description: 'Mutes users for one minute',
+    description: 'Spanks the specified member and mutes them for 1 minute.',
+    usage: ";spank @mention",
     aliases: ["shut"],
     async execute(message, args) {
         let spankRole = message.guild.roles.cache.find(role => role.name === 'Spanked');

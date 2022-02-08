@@ -8,7 +8,8 @@ const ms = require("ms");
 
 module.exports = {
     name: 'mute',
-    description: 'mutes a member',
+    description: 'Mutes the specified member.',
+    usage: ";mute @mention or ;mute <message ID>",
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_ROLES")) {
             const permerror = new MessageEmbed()

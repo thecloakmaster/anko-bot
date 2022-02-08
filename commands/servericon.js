@@ -4,9 +4,9 @@ const {
     Message
 } = require('discord.js');
 module.exports = {
-    name: 'serverpfp',
-    aliases: ["serveravatar", "serveravi", "serverav", "servericon"],
-    description: 'Gets the server avatar',
+    name: 'servericon',
+    aliases: ["serveravatar", "serveravi", "serverav", "serverpfp"],
+    description: 'Sends the server icon.',
     async execute(message) {
         const embedAvatar = new MessageEmbed()
             .setColor("#4752c4")

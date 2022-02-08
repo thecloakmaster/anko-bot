@@ -6,7 +6,8 @@ const {
 module.exports = {
     name: 'quote',
     aliases: ["q"],
-    description: 'Embeds the mentioned message.',
+    description: 'Fetches previously sent message and sends it in an embed.',
+    usage: ";quote #channel <message ID> or ;quote <message ID> if message exists in the same channel",
     async execute(message, args) {
 
         let potentialID = args[0]
