@@ -30,7 +30,7 @@ module.exports = {
         const owner = await message.client.users.fetch("423792631458562058").catch(() => {});
 
         if (!args[0]){
-            const page1 = new MessageEmbed()
+            const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#ff9c56")
             .setDescription(`**Bot Manual - Page 1 of 2**`)
@@ -46,7 +46,7 @@ module.exports = {
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
-            const page2 = new MessageEmbed()
+            const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#ff9c56")
             .setDescription(`**Bot Manual - Page 2 of 2**`)
