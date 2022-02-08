@@ -44,7 +44,7 @@ module.exports = {
             \`;unmute\`: Unmutes the specified user.
             `)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`})
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
@@ -61,7 +61,7 @@ module.exports = {
             \`;slap\`: Slaps the specified user for whatever the reason may be.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`})
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const button1 = new MessageButton()
                 .setCustomId('previousbtn')
