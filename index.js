@@ -47,7 +47,7 @@ client.on('messageCreate', message => {
 	if (!command) return;
 
 	try {
-		command.execute(message, args);
+		command.execute(message, args, client, Discord);
 	} catch (error) {
 		console.error(error);
 		message.reply('There was an error trying to execute that command!');
