@@ -24,7 +24,7 @@ module.exports = {
         //Variable definition for the mentioned user or ID
         let memberMentioned = await message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
 
-        reason = args.slice(2).join(" ");
+        reason = args.slice(1).join(" ");
         if (!reason) {
             reason = 'No reason given.';
         }
@@ -63,7 +63,8 @@ module.exports = {
             })
 
         } catch (err) {
-            message.channel.send("Error")
+            console.log(err)
+            message.channel.send("...")
 
         }
     }

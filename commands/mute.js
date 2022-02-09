@@ -79,10 +79,10 @@ module.exports = {
         }
 
         try {
-            if (!time) {
+            if (!time || !ms(time)) {
                 const muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} indefinitely.`)
-                    .setDescription(`Reason: ${reason}`)
+                    .setDescription(`Reason: ${time} ${reason}`)
                     .setColor("AQUA")
                     .setTimestamp();
 
@@ -105,12 +105,12 @@ module.exports = {
         }
 
         try {
-            if (!time) {
+            if (!time || !ms(time)) {
                 memberMute.roles.add(muteRole.id);
                 const muteEmbed = new MessageEmbed()
                     .setColor("GREEN")
                     .setTitle(`${memberMute.user.tag} has been muted indefinitely.`)
-                    .setDescription(`Reason: ${reason}`)
+                    .setDescription(`Reason: ${time} ${reason}`)
                     .setTimestamp();
                 return message.channel.send({
                     embeds: [muteEmbed]
@@ -131,8 +131,7 @@ module.exports = {
                 console.log("Unmute");
             }, ms(time));
         } catch (err) {
-            message.channel.send("Error")
-            console.log(memberMute)
+            console.log(err)
         };
     }
 }
