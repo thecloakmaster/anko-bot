@@ -17,7 +17,7 @@ module.exports = {
                 
                 let GIF = await neko.sfw.pat();
                 const hug = new MessageEmbed()
-                    .setColor("#c4b29c")
+                    .setColor("#e4a353")
                     .setTitle(`( ノ ^o^)ノ`)
                     .setDescription(`<@${message.author.id}> patted <@${member.user.id}> on the head`)
                     .setImage(`${GIF.url}`);

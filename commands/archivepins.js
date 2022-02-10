@@ -28,10 +28,10 @@ module.exports = {
         try {
             for (var i = 0; i < pinnedMessages.length; i++) {
                 let pin = pinnedMessages[i];
-                var color = "#4752c4"
+                var color = "#e4a353"
                 const inServer = await message.guild.members.fetch(pin.author.id).catch(() => {});
                 if (!inServer) {
-                    var color = "#4752c4"
+                    var color = "#e4a353"
                 } else {
                     var color = pin.member.displayHexColor;
                 };
@@ -63,7 +63,7 @@ module.exports = {
                 }
             }
             const afterArchive = new MessageEmbed()
-            .setColor("#c4b29c")
+            .setColor("#e4a353")
             .setDescription(`**The pin archiving has been completed successfully.** \n\n [Go to the first archived message.](${message.url})`)
             .setTimestamp();
             message.channel.send({embeds: [afterArchive]}).then((message) => message.pin());

@@ -32,7 +32,7 @@ module.exports = {
         if (!args[0]){
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("#c4b29c")
+            .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 1 of 2**`)
             .addField(`Moderation`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds. 
             \`;ban\`: Bans the specified user.
@@ -48,7 +48,7 @@ module.exports = {
             
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("#c4b29c")
+            .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 2 of 2**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
@@ -91,7 +91,7 @@ module.exports = {
             try{
                 const helpSpecific = new MessageEmbed()
                     .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-                    .setColor("#c4b29c")
+                    .setColor("#e4a353")
                     .setTitle(`Command: \`;${command.name}\``)
                     .addField(`Description:`, `${command.description}`)
                     .addField(`Aliases`, `\`${command.aliases || "No other aliases"}\``)

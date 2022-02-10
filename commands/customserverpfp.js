@@ -15,7 +15,7 @@ module.exports = {
                 const embed = new MessageEmbed()
                     .setTitle(`Here's your server avatar.`)
                     .setDescription(`Download | [png](${message.member.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.member.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.member.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.member.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                    .setColor("#c4b29c")
+                    .setColor("#e4a353")
                     .setImage(`${message.member.displayAvatarURL({dynamic:true, size:2048})}`);
                 return message.channel.send({
                     embeds: [embed]

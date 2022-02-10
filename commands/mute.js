@@ -13,7 +13,7 @@ module.exports = {
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_ROLES")) {
             const permerror = new MessageEmbed()
-                .setColor("#c4b29c")
+                .setColor("#e4a353")
                 .setTitle(`Error executing that command.`)
                 .setDescription(`You do not have the necessary permissions to execute this command.`)
                 .setTimestamp();
@@ -56,7 +56,7 @@ module.exports = {
         //If user being muted has mute permissions himself
         if (memberMute.permissions.has("MANAGE_ROLES")) {
             const modMute = new MessageEmbed()
-                .setColor("#c4b29c")
+                .setColor("#e4a353")
                 .setTitle(`Error executing command.`)
                 .setDescription(`You cannot mute this member.`)
                 .setTimestamp();
@@ -68,7 +68,7 @@ module.exports = {
 
         if (memberMute.roles.cache.some(role => role.name === 'Muted')) {
             const alrMuted = new MessageEmbed()
-                .setColor("#c4b29c")
+                .setColor("#e4a353")
                 .setTitle(`Error executing command.`)
                 .setDescription(`This member is already muted.`)
                 .setTimestamp();
@@ -83,7 +83,7 @@ module.exports = {
                 const muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} indefinitely.`)
                     .setDescription(`Reason: ${time} ${reason}`)
-                    .setColor("#c4b29c")
+                    .setColor("#e4a353")
                     .setTimestamp();
 
                 await memberMute.send({
@@ -93,7 +93,7 @@ module.exports = {
                 const muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} for ${time}`)
                     .setDescription(`Reason: ${reason}`)
-                    .setColor("#c4b29c")
+                    .setColor("#e4a353")
                     .setTimestamp();
 
                 await memberMute.send({
@@ -108,7 +108,7 @@ module.exports = {
             if (!time || !ms(time)) {
                 memberMute.roles.add(muteRole.id);
                 const muteEmbed = new MessageEmbed()
-                    .setColor("#c4b29c")
+                    .setColor("#e4a353")
                     .setTitle(`${memberMute.user.tag} has been muted indefinitely.`)
                     .setDescription(`Reason: ${time} ${reason}`)
                     .setTimestamp();
@@ -118,7 +118,7 @@ module.exports = {
             }
             memberMute.roles.add(muteRole.id);
             const muteEmbedTwo = new MessageEmbed()
-                .setColor("#c4b29c")
+                .setColor("#e4a353")
                 .setTitle(`${memberMute.user.tag} has been muted for ${ms(ms(time))}.`)
                 .setDescription(`Reason: ${reason}`)
                 .setTimestamp();

@@ -19,7 +19,7 @@ module.exports = {
             try {
                 const inServer = await message.guild.members.fetch(messageW.author.id).catch(() => {});
                 if (!inServer) {
-                    var color = "#c4b29c"
+                    var color = "#e4a353"
                 } else {
                     var color = messageW.member.displayHexColor;
                     console.log(color)

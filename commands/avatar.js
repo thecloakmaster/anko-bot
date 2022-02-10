@@ -16,7 +16,7 @@ module.exports = {
             const nomentionEmbed = new MessageEmbed()
                 .setTitle(`Here's your avatar ${message.author.username}`)
                 .setDescription(`Download | [png](${message.author.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.author.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.author.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.author.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                .setColor('#c4b29c')
+                .setColor('#e4a353')
                 .setImage(`${message.author.displayAvatarURL({dynamic:true, size:2048})}`)
                 .setFooter({
                     text: `${message.author.tag}`
@@ -31,7 +31,7 @@ module.exports = {
             const mentionedEmbed = new MessageEmbed()
                 .setTitle(`Here's the avatar for ${userMention.tag}`)
                 .setDescription(`Download | [png](${userMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.displayAvatarURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.displayAvatarURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                .setColor('#c4b29c')
+                .setColor('#e4a353')
                 .setImage(`${userMention.displayAvatarURL({dynamic:true, size:2048})}`)
                 .setFooter({text: `${message.author.tag}`})
                 .setTimestamp();
