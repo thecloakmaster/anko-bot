@@ -43,7 +43,7 @@ module.exports = {
             const kickDM = new MessageEmbed()
                 .setTitle(`You have been kicked from ${message.guild.name}.`)
                 .setDescription(`Reason: ${reason}`)
-                .setColor("AQUA")
+                .setColor("#c4b29c")
                 .setTimestamp();
 
             await memberKick.send({

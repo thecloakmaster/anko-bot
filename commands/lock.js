@@ -11,7 +11,7 @@ module.exports = {
         async execute(message, args) {
             if (!message.member.permissions.has('MANAGE_ROLES')) {
                 const permerror = new MessageEmbed()
-                    .setColor("RED")
+                    .setColor("#c4b29c#c4b29c")
                     .setTitle(`Error executing that command`)
                     .setDescription(`You do not have the necessary permissions to execute this command`)
                     .setTimestamp();
@@ -22,7 +22,7 @@ module.exports = {
 
             if(message.channel.permissionsFor(message.guild.id).has('SEND_MESSAGES') === false) {
                 const lockError = new MessageEmbed()
-                    .setColor("RED")
+                    .setColor("#c4b29c")
                     .setTitle(`Error executing that command`)
                     .setDescription(`This channel is already locked`)
                     .setTimestamp();
@@ -36,7 +36,7 @@ module.exports = {
                     SEND_MESSAGES: false
                 });
                 const lockEmbed = new MessageEmbed()
-                .setColor("GREEN")
+                .setColor("#c4b29c")
                 .setDescription(`<#${message.channel.id}> has been locked`);
                 return message.channel.send({embeds: [lockEmbed]})
             } catch (e) {

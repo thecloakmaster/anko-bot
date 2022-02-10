@@ -63,7 +63,7 @@ module.exports = {
                 }
             }
             const afterArchive = new MessageEmbed()
-            .setColor("#97e0ff")
+            .setColor("#c4b29c")
             .setDescription(`**The pin archiving has been completed successfully.** \n\n [Go to the first archived message.](${message.url})`)
             .setTimestamp();
             message.channel.send({embeds: [afterArchive]}).then((message) => message.pin());

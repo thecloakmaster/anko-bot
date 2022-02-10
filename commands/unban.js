@@ -10,7 +10,7 @@ module.exports = {
         //Author permission check
         if (!message.member.permissions.has("BAN_MEMBERS")) {
             const permerror = new MessageEmbed()
-                .setColor("RED")
+                .setColor("#c4b29c")
                 .setTitle(`Error executing that command`)
                 .setDescription(`You do not have the necessary permissions to execute this command`)
                 .setTimestamp();
@@ -31,7 +31,7 @@ module.exports = {
             //const bannedUser = banList.find(user => user.id === `${userBan.id}`)
             if (!banList) {
                 const alrBanned = new MessageEmbed()
-                    .setColor("RED")
+                    .setColor("#c4b29c")
                     .setTitle(`Error executing command.`)
                     .setDescription(`This user is not banned.`)
                     .setTimestamp();
@@ -46,14 +46,14 @@ module.exports = {
         try {
             await message.guild.members.unban(userBan);
             const serverBanEmbed = new MessageEmbed()
-                .setColor("GREEN")
+                .setColor("#c4b29c")
                 .setTitle(`${userBan.tag} has been unbanned.`)
             message.reply({
                 embeds: [serverBanEmbed]
             });
         } catch (err) {
             const alrBanned = new MessageEmbed()
-                .setColor("RED")
+                .setColor("#c4b29c")
                 .setTitle(`Error executing command.`)
                 .setDescription(`This user is not banned.`)
                 .setTimestamp();

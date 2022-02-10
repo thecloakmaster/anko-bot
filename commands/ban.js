@@ -10,7 +10,7 @@ module.exports = {
         //Author permission check
         if (!message.member.permissions.has("BAN_MEMBERS")) {
             const permerror = new MessageEmbed()
-                .setColor("RED")
+                .setColor("#c4b29c")
                 .setTitle(`Error executing that command`)
                 .setDescription(`You do not have the necessary permissions to execute this command`)
                 .setTimestamp();
@@ -26,7 +26,7 @@ module.exports = {
 
         //Ban embed being sent to the user
         const banEmbed = new MessageEmbed()
-            .setColor("RED")
+            .setColor("#c4b29c")
             .setTitle(`You were banned from the server`)
             .setDescription(`Reason: ${reason}`)
             .setTimestamp();
@@ -40,7 +40,7 @@ module.exports = {
             //If user being banned has ban permissions himself
             if (userBanTwo.permissions.has("BAN_MEMBERS")) {
                 const modban = new MessageEmbed()
-                    .setColor("RED")
+                    .setColor("#c4b29c")
                     .setTitle(`Error executing command`)
                     .setDescription(`You cannot ban this member`)
                     .setTimestamp();
@@ -52,7 +52,7 @@ module.exports = {
             //If user is not bannable
             if (!userBanTwo.bannable) {
                 const bannableNot = new MessageEmbed()
-                    .setColor("RED")
+                    .setColor("#c4b29c")
                     .setTitle(`Error executing command`)
                     .setDescription(`I was unable to ban this user`)
                     .setTimestamp();
@@ -68,7 +68,7 @@ module.exports = {
             const banList = await message.guild.bans.fetch(userBan);
             if (banList) {
                 const alrBanned = new MessageEmbed()
-                    .setColor("RED")
+                    .setColor("#c4b29c")
                     .setTitle(`Error executing command.`)
                     .setDescription(`This user is already banned.`)
                     .setTimestamp();
@@ -95,7 +95,7 @@ module.exports = {
                 reason: reason
             });
             const serverBanEmbed = new MessageEmbed()
-                .setColor("GREEN")
+                .setColor("#c4b29c")
                 .setTitle(`${userBan.tag} has been banned.`)
                 .setDescription(`Reason: ${reason}`);
             message.reply({

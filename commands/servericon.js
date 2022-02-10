@@ -9,7 +9,7 @@ module.exports = {
     description: 'Sends the server icon.',
     async execute(message) {
         const embedAvatar = new MessageEmbed()
-            .setColor("#4752c4")
+            .setColor("#c4b29c")
             .setTitle(`Here's the server's profile picture.`)
             .setDescription(`Download | [png](${message.guild.iconURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.guild.iconURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.guild.iconURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.guild.iconURL({dynamic:false, format:'jpeg', size: 2048})})`)
             .setFooter({

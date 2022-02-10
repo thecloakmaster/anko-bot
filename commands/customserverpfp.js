@@ -15,7 +15,7 @@ module.exports = {
                 const embed = new MessageEmbed()
                     .setTitle(`Here's your server avatar.`)
                     .setDescription(`Download | [png](${message.member.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.member.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.member.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.member.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                    .setColor("#FFC0CB")
+                    .setColor("#c4b29c")
                     .setImage(`${message.member.displayAvatarURL({dynamic:true, size:2048})}`);
                 return message.channel.send({
                     embeds: [embed]
@@ -31,7 +31,7 @@ module.exports = {
                 const embed = new MessageEmbed()
                     .setTitle(`Here's the server specific avatar for ${memberMention.user.tag}`)
                     .setDescription(`Download | [png](${memberMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${memberMention.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${memberMention.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${memberMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                    .setColor("#FFC0CB")
+                    .setColor("#c4b29c")
                     .setImage(`${memberMention.displayAvatarURL({dynamic:true, size:2048})}`);
                 return message.channel.send({
                     embeds: [embed]
