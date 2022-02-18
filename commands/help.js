@@ -86,8 +86,12 @@ module.exports = {
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 
-
-	        if (!command || commandName === 'talk') return message.reply("This command does not exist.");
+            hiddenCommands = ['talk', 'newchp']
+            for (let i = 0; i < hiddenCommands.length; i++) {
+                let comm = hiddenCommands[i]
+                if (!command || commandName === comm) return message.reply("This command does not exist.");
+            }
+	        
 
             try{
                 const helpSpecific = new MessageEmbed()
