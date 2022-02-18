@@ -39,6 +39,7 @@ module.exports = {
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
             \`;mute\`: Mutes the specified member.
+            \`;purge\`: Deletes the amount of messages specified.
             \`;unban\`: Unbans the specified user.
             \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified user.
