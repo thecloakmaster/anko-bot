@@ -24,7 +24,7 @@ module.exports = {
         \n*Make sure to use spoilers to talk about the latest chapter to not spoil it for someone else. Enjoy the chapter!*`)
                 .addField('Reddit Link', `[Click here!](${redURL})`)
                 .setColor("#e4a353")
-
+            channelID.setName(`ch-${chpNumber}-info`)
             return channelID.send({
                 content: `<@&${pingRole.id}>`,
                 embeds: [chpEmbed],
