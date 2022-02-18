@@ -20,7 +20,7 @@ module.exports = {
                     name: `Yofukashi no Uta - Chapter ${chpNumber}`,
                     iconURL: client.user.displayAvatarURL()
                 })
-                .setDescription(`A new manga chapter has just been released. The chapter is available on MangaDex and the link can be found on the reddit post. Use <#${mangaID.id}> to discuss the chapter. 
+                .setDescription(`A new manga chapter has just been released. The chapter is available on MangaDex and the link can be found on the Reddit post. Use <#${mangaID.id}> to discuss the chapter. 
         \n*Make sure to use spoilers to talk about the latest chapter to not spoil it for someone else. Enjoy the chapter!*`)
                 .addField('Reddit Link', `[Click here!](${redURL})`)
                 .setColor("#e4a353")
