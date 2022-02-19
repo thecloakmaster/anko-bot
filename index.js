@@ -36,6 +36,38 @@ client.on('guildMemberAdd', member => {
 	})
 })
 
+const Twit = require('twit')
+
+var T = new Twit({
+	consumer_key: process.env.consumer_key,
+	consumer_secret: process.env.consumer_secret,
+	access_token: process.env.access_token,
+	access_token_secret: process.env.access_token_secret,
+	timeout_ms: 60 * 1000,
+	strictSSL: true,
+})
+
+var stream = T.stream('statuses/filter', {
+	follow: ['449609521', '1453395613282811911']
+})
+
+const feedHook = new Discord.WebhookClient({
+	id: `909898898439565434`,
+	token: `nSZjjY-7Gu37DSgRMZGSTHm6UnKSuSZ9W30fL85FZ31VpHmUi43NKrlDeHo5rXP-nius`
+})
+
+stream.on('tweet', function (tweet) {
+	var url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
+	try {
+		feedHook.send(`@${tweet.user.screen_name} tweeted this ${url}`).catch(err => {
+			console.log(err)
+		})
+	} catch (error) {
+		console.error(error);
+	}
+
+})
+
 client.on('messageCreate', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
