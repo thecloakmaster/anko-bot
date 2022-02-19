@@ -22,6 +22,7 @@ for (const file of commandFiles) {
 }
 
 client.on('guildMemberAdd', member => {
+	if (member.user.bot === true) return;
 	const welcomeEmbed = new Discord.MessageEmbed()
 		.setColor("#00ffff")
 		.setTitle(`Welcome to Yofukashi no Uta!`)
