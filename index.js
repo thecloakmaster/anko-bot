@@ -60,13 +60,24 @@ const feedHook = new Discord.WebhookClient({
 
 stream.on('tweet', function (tweet) {
 	if (tweet.user.id === 449609521 || tweet.user.id === 1453395613282811911) {
-		var url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-		try {
-			feedHook.send(`@${tweet.user.screen_name} tweeted this ${url}`).catch(err => {
-				console.log(err)
-			})
-		} catch (error) {
-			console.error(error);
+		if (!tweet.retweeted_status) {
+			let url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
+			try {
+				feedHook.send(`${tweet.user.screen_name} tweeted this ${url}`).catch(err => {
+					console.log(err)
+				})
+			} catch (error) {
+				console.error(error);
+			}
+		} else {
+			let url = "https://twitter.com/" + tweet.retweeted_status.user.screen_name + "/status/" + tweet.retweeted_status.id_str;
+			try {
+				feedHook.send(`${tweet.user.screen_name} retweeted this ${url}`).catch(err => {
+					console.log(err)
+				})
+			} catch (error) {
+				console.error(error);
+			}
 		}
 	}
 
