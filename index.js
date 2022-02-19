@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
 
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES" ] });
+const client = new Discord.Client({
+	intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES"]
+});
 
-const fs = require ('fs');
+const fs = require('fs');
 const prefix = ';'
 
 client.once('ready', () => {
@@ -57,13 +59,15 @@ const feedHook = new Discord.WebhookClient({
 })
 
 stream.on('tweet', function (tweet) {
-	var url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
-	try {
-		feedHook.send(`@${tweet.user.screen_name} tweeted this ${url}`).catch(err => {
-			console.log(err)
-		})
-	} catch (error) {
-		console.error(error);
+	if (tweet.user.id === '449609521' || tweet.user.id === '1453395613282811911') {
+		var url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
+		try {
+			feedHook.send(`@${tweet.user.screen_name} tweeted this ${url}`).catch(err => {
+				console.log(err)
+			})
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 })
