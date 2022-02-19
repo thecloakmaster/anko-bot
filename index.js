@@ -40,7 +40,7 @@ client.on('guildMemberAdd', member => {
 
 const Twit = require('twit')
 
-var T = new Twit({
+const T = new Twit({
 	consumer_key: process.env.consumer_key,
 	consumer_secret: process.env.consumer_secret,
 	access_token: process.env.access_token,
@@ -49,7 +49,7 @@ var T = new Twit({
 	strictSSL: true,
 })
 
-var stream = T.stream('statuses/filter', {
+const stream = T.stream('statuses/filter', {
 	follow: ['449609521', '1453395613282811911']
 })
 
