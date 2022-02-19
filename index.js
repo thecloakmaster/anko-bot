@@ -59,7 +59,7 @@ const feedHook = new Discord.WebhookClient({
 })
 
 stream.on('tweet', function (tweet) {
-	if (tweet.user.id === '449609521' || tweet.user.id === '1453395613282811911') {
+	if (tweet.user.id === 449609521 || tweet.user.id === 1453395613282811911) {
 		var url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
 		try {
 			feedHook.send(`@${tweet.user.screen_name} tweeted this ${url}`).catch(err => {
