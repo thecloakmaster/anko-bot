@@ -32,7 +32,7 @@ module.exports = {
             };
         }
 
-        let status = memberImp.premiumSinceTimestamp/1000;
+        let status = Math.round(memberImp.premiumSinceTimestamp/1000);
 
         if (status === 0) {
             status = "Not currently boosting the server"
