@@ -28,6 +28,11 @@ module.exports = {
 
             if (delAmount < 0 || !Number.isInteger(delAmount)) return message.reply("Please enter a positive integer.")
 
+            if (delAmount > 100) {
+                delAmount = 99
+                return message.channel.send(`Cannot purge more than 100 messages at once`)
+            }
+            
             try {
                 await message.channel.messages.fetch({
                     limit: delAmount
@@ -43,7 +48,7 @@ module.exports = {
 
 
         } catch (err) {
-            return message.reply("Please enter a positive integer.");
+            return message.channel.send("Please enter a valid amount.");
         }
 
 
