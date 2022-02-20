@@ -38,8 +38,8 @@ module.exports = {
             status = "Not currently boosting the server"
         }
 
-        let booStatus = `<t:${status}:F>
-        <t:${status}:r>` 
+        let booStatus = `<t:${status}>
+        <t:${status}:R>` 
 
         if (status === "Not currently boosting the server") {
             booStatus = status
