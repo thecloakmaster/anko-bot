@@ -33,7 +33,9 @@ module.exports = {
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 1 of 2**`)
+            .setDescription(`**Bot Manual - Page 2 of 2**`)
+            .addField(`Fun`, `\`;slap\`: Slaps the specified user for whatever the reason may be.
+            \`;spank\`: Spanks the specified member and mutes them for 1 minute.`)
             .addField(`Moderation`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds. 
             \`;ban\`: Bans the specified user.
             \`;kick\`: Kicks the specified member.
@@ -50,7 +52,7 @@ module.exports = {
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 2 of 2**`)
+            .setDescription(`**Bot Manual - Page 1 of 2**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
             \`;help\`: Sends commands' list and their info.
@@ -60,9 +62,7 @@ module.exports = {
             \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.
             \`;whois\`: Gives information about the member specified or yourself.`)
             .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little better.
-            \`;pat\`: Pats the specified user and makes them feel a little better.
-            \`;slap\`: Slaps the specified user for whatever the reason may be.
-            \`;spank\`: Spanks the specified member and mutes them for 1 minute.`)
+            \`;pat\`: Pats the specified user and makes them feel a little better.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
