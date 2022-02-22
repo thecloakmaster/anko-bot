@@ -49,11 +49,7 @@ module.exports = {
                     })
                     
                 });
-                setTimeout(function () {
-                    return message.channel.send(`Deleted ${delAmount} messages`).then(msg => {
-                        setTimeout(() => msg.delete(), 2000)
-                    })
-                }, 2000)
+                
             } catch (err) {
                 console.log(err);
             }
