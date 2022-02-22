@@ -40,6 +40,7 @@ module.exports = {
                     limit: delAmount
                 }).then(messages => {
                     message.channel.bulkDelete(messages).catch((err) => {
+                        console.log(err)
                         if (err.code === 50034) {
                             return message.channel.send("Cannot purge message older than 14 days.").then(msg => {
                                 setTimeout(() => msg.delete(), 2000)
