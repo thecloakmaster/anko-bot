@@ -39,7 +39,7 @@ module.exports = {
                 await message.channel.messages.fetch({
                     limit: delAmount
                 }).then(messages => {
-                    message.channel.bulkDelete(messages).catch((err) => {
+                    message.channel.bulkDelete(messages, true).catch((err) => {
                         console.log(err)
                         if (err.code === 50034) {
                             return message.channel.send("Cannot purge message older than 14 days.").then(msg => {
