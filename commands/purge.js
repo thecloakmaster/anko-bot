@@ -13,6 +13,8 @@ module.exports = {
 
         const delInput = args[0];
 
+        message.delete();
+
         try {
             let delAmount = parseInt(delInput)
             if (!message.member.permissions.has("MANAGE_MESSAGES")) {
@@ -32,16 +34,24 @@ module.exports = {
                 delAmount = 99
                 return message.channel.send(`Cannot purge more than 100 messages at once`)
             }
-            
+
             try {
                 await message.channel.messages.fetch({
                     limit: delAmount
                 }).then(messages => {
-                    message.channel.bulkDelete(messages)
+                    message.channel.bulkDelete(messages).catch((err) => {
+                        if (err.code === 50034) {
+                            return message.channel.send("Cannot purge message older than 14 days.").then(msg => {
+                                setTimeout(() => msg.delete(), 2000)
+                            })
+                        }
+                    })
+                    setTimeout(function() {
+                        return message.channel.send(`Deleted ${delAmount} messages`).then(msg => {
+                            setTimeout(() => msg.delete(), 2000)
+                        })
+                    }, 2000)
                 });
-                return message.channel.send(`Deleted ${delAmount} messages`).then(msg => {
-                    setTimeout(() => msg.delete(), 2000)
-                })
             } catch (err) {
                 console.log(err);
             }
