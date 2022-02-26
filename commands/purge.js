@@ -47,7 +47,9 @@ module.exports = {
                         if (messages.size === 0) {
                             return
                         } else if  (messages.size>1) {
-                            return message.channel.send(`${messages.size} messages were deleted.`)
+                            return message.channel.send(`${messages.size} messages were deleted.`).then(msg => {
+                                setTimeout(() => msg.delete(), 2000)
+                            })
                         }
                     })
                     
