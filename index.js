@@ -9,6 +9,9 @@ const prefix = ';'
 
 client.once('ready', () => {
 	console.log('Ready!');
+	client.user.setActivity("TO DMS FOR MODMAIL", {
+		type: `LISTENING`
+	})
 });
 
 client.commands = new Discord.Collection();
