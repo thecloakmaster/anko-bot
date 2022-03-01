@@ -1,7 +1,7 @@
 const {
     MessageEmbed,
     Guild,
-    Message,
+    MessageActionRow,
     MessageButton
 } = require('discord.js');
 
