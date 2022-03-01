@@ -9,7 +9,7 @@ const prefix = ';'
 
 client.once('ready', () => {
 	console.log('Ready!');
-	client.user.setActivity("TO DMS FOR MODMAIL", {
+	client.user.setActivity("DMs for modmail.", {
 		type: `LISTENING`
 	})
 });
