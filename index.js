@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client({
-	intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES"]
+	intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES", "DIRECT_MESSAGES"], partials: ["CHANNEL"]
 });
 
 const fs = require('fs');
@@ -59,6 +59,11 @@ const feedHook = new Discord.WebhookClient({
 	token: `nSZjjY-7Gu37DSgRMZGSTHm6UnKSuSZ9W30fL85FZ31VpHmUi43NKrlDeHo5rXP-nius`
 })
 
+const modHook = new Discord.WebhookClient({
+	id: `948301349802627122`,
+	token: `bjYNMGYiTu1qSg--vzaw-NL9j32SUoKjFNFouL3QtC6nbjLLagU2k61cryFvyw2335Bt`
+})
+
 stream.on('tweet', function (tweet) {
 	if (tweet.user.id === 449609521 || tweet.user.id === 1453395613282811911) {
 		if (!tweet.retweeted_status) {
@@ -85,6 +90,16 @@ stream.on('tweet', function (tweet) {
 })
 
 client.on('messageCreate', message => {
+	if (message.channel.type === 'DM') {
+		const embed = new Discord.MessageEmbed()
+			.setColor("#e4a353")
+			.setTitle(`Anko Modmail`)
+			.setDescription(message.content)
+			.setTimestamp();
+		return modHook.send({
+			embeds: [embed]
+		});
+	}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
