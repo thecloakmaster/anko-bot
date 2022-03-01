@@ -5,8 +5,6 @@ const {
     MessageButton
 } = require('discord.js');
 
-const paginationEmbed = require('discordjs-button-pagination')
-
 const {
     readdirSync
 } = require("fs");
@@ -76,11 +74,67 @@ module.exports = {
                 .setLabel('Next')
                 .setStyle('SUCCESS');
 
-            const buttons = [button1, button2]
+            const buttonList = [button1, button2]
 
-            timeout = 300000;
-            const pages = [page1, page2]
-            paginationEmbed(message, pages, buttons, timeout)
+            const embeds = [page1, page2]
+            let embed = 0
+            const row = new MessageActionRow().addComponents(buttonList);
+            const curPage = await message.channel.send({
+                embeds: [embeds[embed]],
+                components: [row],
+            });
+
+            const filter = (i) =>
+                i.customId === buttonList[0].customId ||
+                i.customId === buttonList[1].customId;
+
+            timeout = 120000
+            const collector = await curPage.createMessageComponentCollector({
+                filter,
+                time: timeout,
+            });
+            collector.on("collect", async (i) => {
+                switch (i.customId) {
+                    case buttonList[0].customId:
+                        embed = embed - 1;
+                        if (embed < 0) {
+                            embed = 0
+                            break
+                        }
+                        break;
+                    case buttonList[1].customId:
+                        embed = embed + 1;
+                        if (embed >= embeds.length) {
+                            embed = embed - 1
+                            break
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                await i.deferUpdate();
+                await i.editReply({
+                    embeds: [embeds[embed]],
+                    components: [row],
+                });
+                collector.resetTimer();
+            });
+            collector.on("end", () => {
+                try {
+                    const disabledRow = new MessageActionRow().addComponents(
+                        buttonList[0].setDisabled(true),
+                        buttonList[1].setDisabled(true)
+                    );
+                    curPage.edit({
+                        embeds: [embeds[embed]],
+                        components: [disabledRow],
+                    }).catch((err) => {
+                        return
+                    });
+                } catch (err) {
+                    console.log(err.code)
+                }
+            });
             
         } else {
             const commHelp = message.content.slice(5).trim().split(/ +/);
