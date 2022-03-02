@@ -11,7 +11,7 @@ const {
 
 module.exports = {
     name:'help',
-    description: 'Lists all the commands.',
+    description: 'Lists all the commands and provides information if the command is specified.',
     usage: ";help <command name> or ;help",
     async execute (message, args, client, Discord, bot) {
 
@@ -53,7 +53,7 @@ module.exports = {
             .setDescription(`**Bot Manual - Page 1 of 2**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
-            \`;help\`: Sends commands' list and their info.
+            \`;help\`: Lists all the commands and provides information if the command is specified.
             \`;quote\`: Fetches previously sent message and sends it in an embed.
             \`;serverbanner\`: Sends the server banner.
             \`;servericon\`: Sends the server icon.
@@ -142,7 +142,7 @@ module.exports = {
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 
-            hiddenCommands = ['talk', 'newchp']
+            hiddenCommands = ['talk', 'newchp', 'modreply', 'modmail', 'replymodmail', 'replymod', 'reply', `adminhelp`]
             for (let i = 0; i < hiddenCommands.length; i++) {
                 let comm = hiddenCommands[i]
                 if (!command || commandName === comm) return message.reply("This command does not exist.");

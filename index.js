@@ -96,7 +96,7 @@ client.on('messageCreate', message => {
 	if (message.channel.type === 'DM') {
 		const embed = new Discord.MessageEmbed()
 			.setColor("#e4a353")
-			.setTitle(`Anko Modmail`)
+			.setTitle(`ID: [${message.author.user.id}]`)
 			.setDescription(message.content)
 			.setTimestamp();
 		return modHook.send({

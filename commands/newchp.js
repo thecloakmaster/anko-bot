@@ -4,7 +4,8 @@ const {
 } = require("discord.js");
 module.exports = {
     name: 'newchp',
-    description: 'New chapter embed in specified channel',
+    description: 'Sends an embed to the new chapter channel.',
+    usage: ';newchp <chapter number> <Reddit URL for the new chapter>',
     async execute(message, args, client) {
         if (!message.member.permissions.has("ADMINISTRATOR")) return;
         try {

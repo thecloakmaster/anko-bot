@@ -6,7 +6,8 @@ const {
 
 module.exports = {
     name: 'talk',
-    description: ':)',
+    description: 'Sends a message to a channel via the bot. Not to be overused as it might be against Discord TOS.',
+    usage:`;talk <#channel mention> <message>`,
     async execute(message, args) {
         if (!message.member.permissions.has("ADMINISTRATOR")) return;
 
