@@ -94,6 +94,7 @@ stream.on('tweet', function (tweet) {
 
 client.on('messageCreate', message => {
 	if (message.channel.type === 'DM') {
+		if (message.author === client)
 		const embed = new Discord.MessageEmbed()
 			.setColor("#e4a353")
 			.setTitle(`ID: [${message.author.id}]`)
