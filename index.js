@@ -96,7 +96,7 @@ client.on('messageCreate', message => {
 	if (message.channel.type === 'DM') {
 		const embed = new Discord.MessageEmbed()
 			.setColor("#e4a353")
-			.setTitle(`ID: [${message.author.user.id}]`)
+			.setTitle(`ID: [${message.author.id}]`)
 			.setDescription(message.content)
 			.setTimestamp();
 		return modHook.send({
