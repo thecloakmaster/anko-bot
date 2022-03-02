@@ -31,6 +31,7 @@ module.exports = {
             \`;modreply\`: Replies to a user who sent the modmail.
             \`;newchp\`: Sends an embed to the new chapter channel.
             \`;talk\`: Sends a message to a channel via the bot. Not to be overused as it might be against Discord TOS.`)
+            return message.channel.send({embeds: [page1]})
         } else {
             const commHelp = message.content.slice(10).trim().split(/ +/);
             const commandName = commHelp.shift().toLowerCase();
