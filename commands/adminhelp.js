@@ -42,7 +42,7 @@ module.exports = {
             for (let i = 0; i < hiddenCommands.length; i++) {
                 let comm = hiddenCommands[i]
                 if (!command) return message.channel.send(`This command does not exist.`)
-                if (command === comm) {
+                if (commandName === comm) {
                     try {
                         const helpSpecific = new MessageEmbed()
                             .setAuthor({
