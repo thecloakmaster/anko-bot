@@ -10,7 +10,7 @@ module.exports = {
     usage: ";pat @mention",
     async execute(message) {
         if (message.mentions.members.size === 0) {
-            return message.channel.send("You cannot hug random or empty text.")
+            return message.channel.send("You cannot pat random or empty text.")
         } else if (message.mentions.members.size !== 0) {
             const member = message.mentions.members.first();
             try {
