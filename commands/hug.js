@@ -6,7 +6,7 @@ const client_neko = require('nekos.life');
 const neko = new client_neko();
 module.exports = {
     name: 'hug',
-    description: 'Hugs the specified user and makes them feel a little better.',
+    description: 'Hugs the specified user and makes them feel a little bit better.',
     usage: ";hug @mention",
     async execute(message) {
         if (message.mentions.members.size === 0) {

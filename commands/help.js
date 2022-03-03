@@ -32,7 +32,8 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 2 of 2**`)
-            .addField(`Fun`, `\`;slap\`: Slaps the specified user for whatever the reason may be.
+            .addField(`Fun`, `\`;pat\`: Pats the specified user and makes them feel a little bit better.
+            \`;slap\`: Slaps the specified user for whatever the reason may be.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.`)
             .addField(`Moderation`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds. 
             \`;ban\`: Bans the specified user.
@@ -59,8 +60,8 @@ module.exports = {
             \`;servericon\`: Sends the server icon.
             \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.
             \`;whois\`: Gives information about the member specified or yourself.`)
-            .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little better.
-            \`;pat\`: Pats the specified user and makes them feel a little better.`)
+            .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little bit better.
+            \`;kiss\`: Kisses the specified user and makes them feel a little bit better.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
