@@ -19,7 +19,7 @@ module.exports = {
                 const kiss = new MessageEmbed()
                     .setColor("#e4a353")
                     .setTitle(`-_-`)
-                    .setDescription(`<@${message.author.id}> slapped <@${member.user.id}>`)
+                    .setDescription(`<@${message.author.id}> kissed <@${member.user.id}>`)
                     .setImage(`${GIF.url}`);
                 return message.channel.send({
                     embeds: [kiss]
