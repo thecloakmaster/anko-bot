@@ -82,7 +82,7 @@ module.exports = {
             if (!time || !ms(time)) {
                 const muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} indefinitely.`)
-                    .setDescription(`Reason: ${time} ${reason}`)
+                    .setDescription(`Reason: ${reason}`)
                     .setColor("#e4a353")
                     .setTimestamp();
 
