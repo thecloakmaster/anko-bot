@@ -18,7 +18,6 @@ module.exports = {
         if (!textMessage) return message.channel.send("Please specify the text to be sent");
         try {
             return userID.send(textMessage).catch((err) => {
-                console.log(err)
                 return message.channel.send(`Error replying to the user specified. This user probably has DMs disabled.`)
             })
         } catch (err) {
