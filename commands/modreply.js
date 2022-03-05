@@ -8,7 +8,7 @@ module.exports = {
     name: `modreply`,
     aliases: [`modmail`, `replymodmail`, 'replymod', 'reply'],
     description: `Replies to the users who have DM'd the bot for modmail.`,
-    usage: `;modreply <Mention the user or enter their user ID>`,
+    usage: `;modreply <Mention the user or enter their user ID> <Message content>`,
     async execute(message, args) {
         if (!message.member.permissions.has("ADMINISTRATOR")) return;
         const userID = await message.guild.members.fetch(args[0]).catch(() => {});
