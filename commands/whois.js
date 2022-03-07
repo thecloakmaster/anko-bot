@@ -15,7 +15,7 @@ module.exports = {
             memberImp = await message.guild.members.fetch(message.author.id)
         }
         if (!memberImp) {
-            return message.channel.send(`Please enter a valid user or user ID. \nUse \`;help\` for more information and usage.`)
+            return message.channel.send(`Please enter a valid member or member ID. \nUse \`;help\` for more information and usage.`)
         };
         
         let memberRoles = memberImp.roles.cache
