@@ -12,6 +12,9 @@ module.exports = {
             const redURL = args[1];
             const chpNumber = args[0];
             const num = parseInt(chpNumber);
+            if (!redURL || !chpNumber) {
+                return message.channel.send(`Please enter a valid number for the chapter number and a valid Reddit URL.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
+            }
             try {
                 let urlcheck = new URL(redURL)
                 num1 = args[0].indexOf(`https://www.reddit.com/r/`)
