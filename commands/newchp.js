@@ -17,8 +17,8 @@ module.exports = {
             }
             try {
                 let urlcheck = new URL(redURL)
-                num1 = args[0].indexOf(`https://www.reddit.com/r/`)
-                num2 = args[0].indexOf(`https://old.reddit.com/r/`)
+                num1 = redURL.indexOf(`https://www.reddit.com/r/`)
+                num2 = redURL.indexOf(`https://old.reddit.com/r/`)
 
                 if (num1 === -1 && num2 === -1) {
                     return message.channel.send(`1Please enter a valid Reddit URL after the chapter number. \nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
