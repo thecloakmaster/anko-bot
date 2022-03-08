@@ -26,7 +26,6 @@ module.exports = {
                     var color = "#e4a353"
                 } else {
                     var color = messageW.member.displayHexColor;
-                    console.log(color)
                 };
 
                 if (messageW.attachments.size > 0) {
@@ -81,7 +80,6 @@ module.exports = {
                 var color = "#4752c4"
             } else {
                 var color = messageW.member.displayHexColor;
-                console.log(color)
             };
             
             if(messageW.attachments.size > 0) {
