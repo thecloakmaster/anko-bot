@@ -21,14 +21,14 @@ module.exports = {
                 num2 = args[0].indexOf(`https://old.reddit.com/r/`)
 
                 if (num1 === -1 && num2 === -1) {
-                    return message.channel.send(`Please enter a valid Reddit URL after the chapter number. \nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
+                    return message.channel.send(`1Please enter a valid Reddit URL after the chapter number. \nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
                 }
             } catch (err) {
                 console.log(err)
-                return message.channel.send(`Please enter a valid Reddit URL after the chapter number.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
+                return message.channel.send(`2Please enter a valid Reddit URL after the chapter number.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
             }
             if (isNaN(num)) {
-                return message.channel.send(`Please enter a valid number after the command.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
+                return message.channel.send(`3Please enter a valid number after the command.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
 
             } else if (!isNaN(num)) {
                 const channelID = message.guild.channels.cache.find(chn => chn.id === '937271626838450218');
