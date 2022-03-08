@@ -22,7 +22,7 @@ module.exports = {
             });
         };
 
-        let memberMute = await message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
+        let memberMute = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
 
         timeList = ["seconds", "sec", "s", "m", "min", "minutes", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
 

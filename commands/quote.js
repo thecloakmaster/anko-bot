@@ -14,6 +14,10 @@ module.exports = {
 
         let messageW = null
 
+        if (!args) {
+            return message.channel.send(`Please enter a valid message ID and mention a channel if the message is not in the same channel.\nSyntax: \`;quote #channel <message ID>\` or \`;quote <message ID>\` if the message is in the same channel.`)
+        }
+
         try {
             messageW = await message.channel.messages.fetch(`${potentialID}`)
             try {
@@ -63,13 +67,13 @@ module.exports = {
 
         const channelID = message.mentions.channels.first();
         
-        if (!channelID) return message.channel.send("Please specify a valid channel or ID.");
+        if (!channelID) return message.channel.send("Please specify a valid channel or ID.\nSyntax: \`;quote #channel <message ID>\` or \`;quote <message ID>\` if the message is in the same channel.");
 
         const messageID = args.slice(1).join(" ");
 
-        try {messageW = await channelID.messages.fetch(`${messageID}`);} catch(err) {return message.channel.send("Please enter a valid message ID")}
+        try {messageW = await channelID.messages.fetch(`${messageID}`);} catch(err) {return message.channel.send("Please enter a valid message ID. \nSyntax: \`;quote #channel <message ID>\` or \`;quote <message ID>\` if the message is in the same channel.")}
 
-        if (!messageW) return message.channel.send("Please specify a valid message ID");
+        if (!messageW) return message.channel.send("Please specify a valid message ID. \nSyntax: \`;quote #channel <message ID>\` or \`;quote <message ID>\` if the message is in the same channel.");
 
         try {
             const inServer = await message.guild.members.fetch(messageW.author.id).catch(() => {});

@@ -22,7 +22,7 @@ module.exports = {
         }
         console.log('pla')
         //Variable definition for the mentioned user or ID
-        let memberMentioned = await message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
+        let memberMentioned = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
 
         reason = args.slice(1).join(" ");
         if (!reason) {
