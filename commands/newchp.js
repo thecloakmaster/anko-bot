@@ -31,7 +31,7 @@ module.exports = {
                 return message.channel.send(`Please enter a valid number after the command.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
 
             } else if (!isNaN(num)) {
-                const channelID = message.guild.channels.cache.find(chn => chn.id === '937271626838450218');
+                const channelID = message.guild.channels.cache.find(chn => chn.id === '908021114138132510');
                 let pingRole = message.guild.roles.cache.find(role => role.name === 'Manga Release');
                 const file = new MessageAttachment('./assets/vol.jpg');
                 let mangaID = message.guild.channels.cache.find(chn => chn.name === 'ynu-manga')
