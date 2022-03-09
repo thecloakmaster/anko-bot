@@ -38,7 +38,7 @@ module.exports = {
             return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
         }
         try {
-            await message.guild.stickers.create(`${url}`, `${stickerName}`).then((sticker) => {
+            await message.guild.stickers.create(`${url}`, `${stickerName}`,'').then((sticker) => {
                 if (!sticker) {
                     return message.channel.send(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
                 } else {
