@@ -8,7 +8,7 @@ module.exports = {
     name: 'addsticker',
     aliases: ['addst', 'stickeradd', 'addsticker'],
     async execute(message, args) {
-        if (!message.member.permissions.has("MANAGE_stickerS_AND_STICKERS")) {
+        if (!message.member.permissions.has("MANAGE_EMOTES_AND_STICKERS")) {
             const permerror = new MessageEmbed()
                 .setColor("RANDOM")
                 .setTitle(`Error executing that command.`)
@@ -18,11 +18,10 @@ module.exports = {
                 embeds: [permerror]
             });
         }
-
-        if (args[0].length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
-
-        let url = args[1]
-        const stickerName = args[0]
+        if (message.guild.premiumTier === 0) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
+        let url = args[0]
+        const stickerName = args.slice(1).join(" ")
+        if (stickerName.length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
         if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <stickername> <image URL>\``)
         try {
             if (message.attachments.size > 1) {
@@ -38,7 +37,7 @@ module.exports = {
             return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
         }
         try {
-            await message.guild.stickers.create(`${url}`, `${stickerName}`,'').then((sticker) => {
+            await message.guild.stickers.create(`${url}`, `${stickerName}`,`smile`).then((sticker) => {
                 if (!sticker) {
                     return message.channel.send(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
                 } else {
