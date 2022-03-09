@@ -21,7 +21,6 @@ module.exports = {
         if (message.guild.premiumTier === 0) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
         let url = args[0]
         let stickerName = args.slice(1).join(" ")
-        if (stickerName.length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
         if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <stickername> <image URL>\``)
         try {
             if (message.attachments.size > 1) {
@@ -37,6 +36,7 @@ module.exports = {
             console.log(err)
             return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
         }
+        if (stickerName.length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
         try {
             await message.guild.stickers.create(`${url}`, `${stickerName}`,`smile`).then((sticker) => {
                 if (!sticker) {
