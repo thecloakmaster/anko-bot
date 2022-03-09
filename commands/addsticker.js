@@ -18,7 +18,7 @@ module.exports = {
                 embeds: [permerror]
             });
         }
-        if (message.guild.premiumTier === 0) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
+        if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
         let url = args[0]
         let stickerName = args.slice(1).join(" ")
         if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <stickername> <image URL>\``)
