@@ -20,7 +20,7 @@ module.exports = {
         }
         if (message.guild.premiumTier === 0) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
         let url = args[0]
-        const stickerName = args.slice(1).join(" ")
+        let stickerName = args.slice(1).join(" ")
         if (stickerName.length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
         if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <stickername> <image URL>\``)
         try {
@@ -31,6 +31,7 @@ module.exports = {
                 message.attachments.forEach(sticker => {
                     url = sticker.proxyURL;
                 });
+                stickerName = args.slice(0).join(" ")
             }
         } catch (err) {
             console.log(err)
