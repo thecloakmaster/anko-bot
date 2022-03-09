@@ -92,6 +92,10 @@ stream.on('tweet', function (tweet) {
 
 })
 
+stream.on('error', (e) => {
+	console.log(e);
+})
+
 client.on('messageCreate', message => {
 	if (message.channel.type === 'DM') {
 		if (message.author.id === client.user.id) return;
