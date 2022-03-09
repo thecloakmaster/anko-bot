@@ -51,6 +51,7 @@ module.exports = {
                 }
             }).catch(err => {
                 console.log(err.code)
+                console.log(err)
                 if (err.code === 30008) {
                     return message.channel.send('An error occurred while adding the sticker. \nThe server has capped out on its sticker limit.')
                 } else if (err.code === 50035) {
