@@ -54,10 +54,10 @@ module.exports = {
                 console.log(err)
                 if (err.code === 30008) {
                     return message.channel.send('An error occurred while adding the sticker. \nThe server has capped out on its sticker limit.')
-                } else if (err.code === 50035) {
-                    return message.channel.send(`An error occurred while adding the sticker. \nMake sure the file is under 512 KB and the sticker name isn't very long.`)
+                } else if (err.code === 50045) {
+                    return message.channel.send(`An error occurred while adding the sticker. \nMake sure the file is under 512 KB and the sticker name is under 30 characters.`)
                 } else {
-                    return message.channel.send(`An error occurred while adding the sticker. Make sure the file is a PNG, is under 512 KB and the sticker name isn't very long. \nSyntax: \`;addsticker <stickername> <image URL>\``)
+                    return message.channel.send(`An error occurred while adding the sticker. Make sure the file is a PNG, is under 512 KB and the sticker name is under 30 characters.\nAnd also check if the server sticker cap has been reached. \nSyntax: \`;addsticker <stickername> <image URL>\``)
                 }
             })
 
