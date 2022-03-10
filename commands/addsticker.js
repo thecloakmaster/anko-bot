@@ -6,6 +6,8 @@ const {
 
 module.exports = {
     name: 'addsticker',
+    description:`Adds a sticker in the guild with the image and name provided.`,
+    usage: `;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message`,
     aliases: ['addst', 'stickeradd', 'addsticker'],
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_EMOTES_AND_STICKERS")) {
@@ -21,7 +23,7 @@ module.exports = {
         if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
         let url = args[0]
         let stickerName = args.slice(1).join(" ")
-        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <stickername> <image URL>\``)
+        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         try {
             if (message.attachments.size > 1) {
                 return message.reply(`Please enter only one image at a time.`)
@@ -34,13 +36,13 @@ module.exports = {
             }
         } catch (err) {
             console.log(err)
-            return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
+            return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         }
         if (stickerName.length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
         try {
             await message.guild.stickers.create(`${url}`, `${stickerName}`,`smile`).then((sticker) => {
                 if (!sticker) {
-                    return message.channel.send(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
+                    return message.channel.send(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
                 } else {
                     const embed = new MessageEmbed()
                         .setColor(`AQUA`)
@@ -57,13 +59,13 @@ module.exports = {
                 } else if (err.code === 50045) {
                     return message.channel.send(`An error occurred while adding the sticker. \nMake sure the file is under 512 KB and the sticker name is under 30 characters.`)
                 } else {
-                    return message.channel.send(`An error occurred while adding the sticker. Make sure the file is a PNG, is under 512 KB and the sticker name is under 30 characters.\nAnd also check if the server sticker cap has been reached. \nSyntax: \`;addsticker <stickername> <image URL>\``)
+                    return message.channel.send(`An error occurred while adding the sticker. Make sure the file is a PNG, is under 512 KB and the sticker name is under 30 characters.\nAnd also check if the server sticker cap has been reached. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
                 }
             })
 
         } catch (err) {
             console.log(err)
-            return message.reply(`There was an error trying to add that sticker. \nMake sure the image is a PNG file and is under 512 KB. \nSyntax: \`;addsticker <stickername> <image URL>\``)
+            return message.reply(`There was an error trying to add that sticker. \nMake sure the image is a PNG file and is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         }
 
 

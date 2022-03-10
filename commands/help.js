@@ -31,19 +31,17 @@ module.exports = {
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 2 of 2**`)
+            .setDescription(`**Bot Manual - Page 2 of 3**`)
             .addField(`Fun`, `\`;pat\`: Pats the specified user and makes them feel a little bit better.
             \`;slap\`: Slaps the specified user for whatever the reason may be.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.`)
-            .addField(`Moderation`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds. 
-            \`;ban\`: Bans the specified user.
+            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
             \`;mute\`: Mutes the specified member.
             \`;purge\`: Deletes the amount of messages specified.
             \`;unban\`: Unbans the specified user.
             \`;unlock\`: Unlocks the channel.
-            \`;unmute\`: Unmutes the specified user.
             `)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
@@ -51,7 +49,7 @@ module.exports = {
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 1 of 2**`)
+            .setDescription(`**Bot Manual - Page 1 of 3**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
             \`;help\`: Lists all the commands and provides information if the command is specified.
@@ -62,6 +60,18 @@ module.exports = {
             \`;whois\`: Gives information about the member specified or yourself.`)
             .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified user and makes them feel a little bit better.`)
+            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+
+            const page3 = new MessageEmbed()
+            .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
+            .setColor("#e4a353")
+            .setDescription(`**Bot Manual - Page 3 of 3**`)
+            .addField(`Moderation`, `\`;unmute\`: Unmutes the specified user.`)
+            .addField(`Mod Utilities`, `\`;addemote\`: Adds emote to the server with the name and image provided.
+            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
+            \`;archivepins\`: Takes pins from a channel and archives them into embeds.
+            \`;removeemote\`: Removes the emote from the server with the name or emotes provided.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
@@ -77,7 +87,7 @@ module.exports = {
 
             const buttonList = [button1, button2]
 
-            const embeds = [page1, page2]
+            const embeds = [page1, page2, page3]
             let embed = 0
             const row = new MessageActionRow().addComponents(buttonList);
             const curPage = await message.channel.send({
