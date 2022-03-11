@@ -21,13 +21,18 @@ module.exports = {
                 embeds: [permerror]
             });
         };
-
         let memberMute = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
 
         timeList = ["seconds", "sec", "s", "m", "min", "minutes", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
 
         reason = "No reason given.";
         let time = '';
+
+        if (!args) {
+            return message.channel.send(`Please specify a valid member to be muted.\nSyntax: \`;mute @mention <Time>\``)
+        } else if (!args[1]) {
+            let time = null
+        }
 
         //Reason
         if (timeList.indexOf(args[2]) >= 0) {
@@ -37,6 +42,11 @@ module.exports = {
             if (!reason) {
                 reason = 'No reason given.';
             }
+        }else if (!time) {
+            reason = args.slice(1).join(" ")
+            if (!reason) {
+                reason = 'No reason given.';
+            };
         } else if (isNaN(args[1].charAt(0))) {
             reason = args.slice(1).join(" ")
             if (!reason) {
