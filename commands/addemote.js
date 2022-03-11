@@ -8,7 +8,7 @@ module.exports = {
     name: 'addemote',
     description: `Adds emote to the server with the name and image provided.`,
     aliases: ['addem', 'emoteadd'],
-    usage: `;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image`,
+    usage: `;addemote <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image`,
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
             const permerror = new MessageEmbed()
@@ -20,12 +20,14 @@ module.exports = {
                 embeds: [permerror]
             });
         }
-
-        if (args[0].length < 2) return message.channel.send(`The emote name must be at least 2 characters long.`)
+        if (!args[0]) {
+            return message.reply(`Please enter a valid input. \nSyntax: \`;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image\``)
+        } else if (args[0].length < 2) {
+            return message.channel.send(`The emote name must be at least 2 characters long.`)
+        }
         
         let url = args[1]
         const emoteName = args[0]
-        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image\``)
         try {
             if (message.attachments.size > 1) {
                 return message.reply(`Please enter only one image at a time.`)
