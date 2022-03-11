@@ -8,7 +8,7 @@ module.exports = {
     name: 'addemote',
     description: `Adds emote to the server with the name and image provided.`,
     aliases: ['addem', 'emoteadd'],
-    usage: `;addemote <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image`,
+    usage: `;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image`,
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
             const permerror = new MessageEmbed()
@@ -21,7 +21,7 @@ module.exports = {
             });
         }
         if (!args[0]) {
-            return message.reply(`Please enter a valid input. \nSyntax: \`;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image\``)
+            return message.reply(`Please enter a valid input. \nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
         } else if (args[0].length < 2) {
             return message.channel.send(`The emote name must be at least 2 characters long.`)
         }
@@ -39,17 +39,17 @@ module.exports = {
             }
         } catch (err) {
             console.log(err)
-            return message.reply(`There was an error trying to add that emote.\nSyntax: \`;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image\``)
+            return message.reply(`There was an error trying to add that emote.\nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
         }
         try {
             let urlcheck = new URL(url)
         } catch (err) {
-            return message.channel.send(`Please enter a valid URL for the image.\nSyntax: \`;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image\``)
+            return message.channel.send(`Please enter a valid URL for the image.\nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
         }
         try {
             await message.guild.emojis.create(`${url}`, `${emoteName}`).then((emoji) => {
                 if (!emoji) {
-                    return message.channel.send(`There was an error trying to add that emote. \nMake sure the image is under 256 KB. \nSyntax: \`;addemoji <Emote name> <image URL>\` or \`;addemoji <Emote name> and attach an image\``)
+                    return message.channel.send(`There was an error trying to add that emote. \nMake sure the image is under 256 KB. \nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
                 } else {
                     const embed = new MessageEmbed()
                         .setColor(`AQUA`)
@@ -65,12 +65,12 @@ module.exports = {
                 } else if (err.code === 50035) {
                     return message.channel.send(`An error occurred while adding the emote. \nMake sure the file is under 256 KB and the emote name isn't very long.`)
                 } else {
-                    return message.channel.send(`An error occurred while adding the emote. Make sure the file is under 256 KB and the emote name isn't very long. \nSyntax: \`;addemoji <emotename> <image URL>\``)
+                    return message.channel.send(`An error occurred while adding the emote. Make sure the file is under 256 KB and the emote name isn't very long. \nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
                 }
             })   
         } catch (err) {
             console.log(err)
-            return message.reply(`There was an error trying to add that emote. \nMake sure the image is under 256 KB. \nSyntax: \`;addemoji <emotename> <image URL>\``)
+            return message.reply(`There was an error trying to add that emote. \nMake sure the image is under 256 KB. \nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
         }
     }
 }
