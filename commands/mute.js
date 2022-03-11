@@ -37,6 +37,12 @@ module.exports = {
             if (!reason) {
                 reason = 'No reason given.';
             }
+        } else if (isNaN(args[1].charAt(0))) {
+            reason = args.slice(1).join(" ")
+            if (!reason) {
+                reason = 'No reason given.';
+            };
+            time = null
         } else {
             time = args[1];
             reason = args.slice(2).join(" ");
@@ -48,23 +54,21 @@ module.exports = {
 
         let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
-
         if (!memberMute) {
             return message.channel.send("Specify a valid user to be muted.");
         }
 
         //If user being muted has mute permissions himself
-        if (memberMute.permissions.has("MANAGE_ROLES")) {
-            const modMute = new MessageEmbed()
-                .setColor("#e4a353")
-                .setTitle(`Error executing command.`)
-                .setDescription(`You cannot mute this member.`)
-                .setTimestamp();
-
-            return message.reply({
-                embeds: [modMute]
-            });
-        }
+        //if (memberMute.permissions.has("MANAGE_ROLES")) {
+        //    const modMute = new MessageEmbed()
+        //        .setColor("#e4a353")
+        //        .setTitle(`Error executing command.`)
+        //        .setDescription(`You cannot mute this member.`)
+        //        .setTimestamp();
+        //    return message.reply({
+        //        embeds: [modMute]
+        //    });
+        //}
 
         if (memberMute.roles.cache.some(role => role.name === 'Muted')) {
             const alrMuted = new MessageEmbed()
@@ -79,7 +83,7 @@ module.exports = {
         }
 
         try {
-            if (!time || !ms(time)) {
+            if (!time) {
                 const muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} indefinitely.`)
                     .setDescription(`Reason: ${reason}`)
@@ -105,12 +109,12 @@ module.exports = {
         }
 
         try {
-            if (!time || !ms(time)) {
+            if (!time) {
                 memberMute.roles.add(muteRole.id);
                 const muteEmbed = new MessageEmbed()
                     .setColor("#e4a353")
                     .setTitle(`${memberMute.user.tag} has been muted indefinitely.`)
-                    .setDescription(`Reason: ${time} ${reason}`)
+                    .setDescription(`Reason: ${reason}`)
                     .setTimestamp();
                 return message.channel.send({
                     embeds: [muteEmbed]
@@ -125,16 +129,20 @@ module.exports = {
             message.channel.send({
                 embeds: [muteEmbedTwo]
             })
-            timeMS = ms(time)
-            let maxDelay = Math.pow(2, 31) - 1;
-            if (timeMS > maxDelay) {
-                return;
-            }
 
-            setTimeout(function () {
-                memberMute.roles.remove(muteRole.id);
-                console.log("Unmute");
-            }, timeMS);
+            if (!time) {
+                return
+            } else {
+                timeMS = ms(time)
+                let maxDelay = Math.pow(2, 31) - 1;
+                if (timeMS > maxDelay) {
+                    return;
+                }
+                setTimeout(function () {
+                    memberMute.roles.remove(muteRole.id);
+                    console.log("Unmuted");
+                }, timeMS)
+            }
         } catch (err) {
             console.log(err)
         };

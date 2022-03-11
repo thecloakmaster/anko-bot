@@ -127,8 +127,3 @@ client.on('messageCreate', message => {
 });
 
 client.login(process.env.token);
-
-process.on('unhandledRejection', err => {
-	console.log('Unknown error occured:\n')
-	console.log(err)
-})
