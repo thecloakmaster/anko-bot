@@ -33,7 +33,12 @@ module.exports = {
         let reason = "No reason given.";
         let time = '';
 
-        if (!isNaN(args[1].charAt(0))) {
+        if (!time) {
+            reason = args.slice(1).join(" ")
+            if (!reason) {
+                reason = 'No reason given.';
+            };
+        } else if (!isNaN(args[1].charAt(0))) {
             if (timeList.indexOf(args[2]) >= 0) {
                 time = args[1] + args[2];
                 console.log(time);
@@ -41,11 +46,6 @@ module.exports = {
                 if (!reason) {
                     reason = 'No reason given.';
                 }
-            } else if (!time) {
-                reason = args.slice(1).join(" ")
-                if (!reason) {
-                    reason = 'No reason given.';
-                };
             } else {
                 time = args[1];
                 reason = args.slice(2).join(" ");
