@@ -27,7 +27,7 @@ module.exports = {
         timeList = ["seconds", "sec", "s", "m", "min", "minutes", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
 
         reason = "No reason given.";
-        time = '';
+        let time = '';
 
         //Reason
         if (timeList.indexOf(args[2]) >= 0) {
@@ -119,17 +119,22 @@ module.exports = {
             memberMute.roles.add(muteRole.id);
             const muteEmbedTwo = new MessageEmbed()
                 .setColor("#e4a353")
-                .setTitle(`${memberMute.user.tag} has been muted for ${ms(ms(time))}.`)
+                .setTitle(`${memberMute.user.tag} has been muted for ${time}.`)
                 .setDescription(`Reason: ${reason}`)
                 .setTimestamp();
             message.channel.send({
                 embeds: [muteEmbedTwo]
             })
+            timeMS = ms(time)
+            let maxDelay = Math.pow(2, 31) - 1;
+            if (timeMS > maxDelay) {
+                return;
+            }
 
             setTimeout(function () {
                 memberMute.roles.remove(muteRole.id);
                 console.log("Unmute");
-            }, ms(time));
+            }, timeMS);
         } catch (err) {
             console.log(err)
         };
