@@ -21,9 +21,9 @@ module.exports = {
             });
         }
         if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
+        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         let url = args[0]
         let stickerName = args.slice(1).join(" ")
-        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         try {
             if (message.attachments.size > 1) {
                 return message.reply(`Please enter only one image at a time.`)
@@ -38,7 +38,16 @@ module.exports = {
             console.log(err)
             return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         }
-        if (stickerName.length < 2) return message.channel.send(`The sticker name must be at least 2 characters long.`)
+        if (stickerName.length > 20) {
+            return message.channel.send(`The sticker name is longer than 20 characters. Please try to shorten the sticker name to less than 20 characters`)
+        } else if (stickerName.length < 2) {
+            return message.channel.send(`The sticker name must be at least 2 characters long.`)
+        }
+        try {
+            let urlcheck = new URL(url)
+        } catch (err) {
+            return message.channel.send(`Please enter a valid URL.\nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
+        }
         try {
             await message.guild.stickers.create(`${url}`, `${stickerName}`,`smile`).then((sticker) => {
                 if (!sticker) {
