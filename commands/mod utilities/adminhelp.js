@@ -3,9 +3,7 @@ const {
     Guild,
     Message
 } = require('discord.js');
-const {
-    readdirSync
-} = require("fs");
+const fs = require("fs");
 module.exports = {
     name: `adminhelp`, 
     description: `Lists admin related commands and provides information if command is specified.`, 

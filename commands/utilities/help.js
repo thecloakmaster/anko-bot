@@ -5,9 +5,7 @@ const {
     MessageButton
 } = require('discord.js');
 
-const {
-    readdirSync
-} = require("fs");
+const fs = require("fs");
 
 module.exports = {
     name:'help',
