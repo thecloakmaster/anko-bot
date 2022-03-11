@@ -21,31 +21,37 @@ module.exports = {
                 embeds: [permerror]
             });
         };
-        let memberMute = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
-
-        timeList = ["seconds", "sec", "s", "m", "min", "minutes", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
-
-        reason = "No reason given.";
-        let time = '';
-
         if (!args) {
             return message.channel.send(`Please specify a valid member to be muted.\nSyntax: \`;mute @mention <Time>\``)
-        } else if (!args[1]) {
-            let time = null
         }
+        let memberMute = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
+        if (!memberMute) {
+            return message.channel.send(`Please specify a valid member to be muted.\nSyntax: \`;mute @mention <Time>\``)
+        }
+        let timeList = ["seconds", "sec", "s", "m", "min", "minutes", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
 
-        //Reason
-        if (timeList.indexOf(args[2]) >= 0) {
-            time = args[1] + args[2];
-            console.log(time);
-            reason = args.slice(3).join(" ");
-            if (!reason) {
-                reason = 'No reason given.';
-            }
-        }else if (!time) {
-            reason = args.slice(1).join(" ")
-            if (!reason) {
-                reason = 'No reason given.';
+        let reason = "No reason given.";
+        let time = '';
+
+        if (!isNaN(args[1].charAt(0))) {
+            if (timeList.indexOf(args[2]) >= 0) {
+                time = args[1] + args[2];
+                console.log(time);
+                reason = args.slice(3).join(" ");
+                if (!reason) {
+                    reason = 'No reason given.';
+                }
+            } else if (!time) {
+                reason = args.slice(1).join(" ")
+                if (!reason) {
+                    reason = 'No reason given.';
+                };
+            } else {
+                time = args[1];
+                reason = args.slice(2).join(" ");
+                if (!reason) {
+                    reason = 'No reason given.';
+                };
             };
         } else if (isNaN(args[1].charAt(0))) {
             reason = args.slice(1).join(" ")
@@ -53,12 +59,9 @@ module.exports = {
                 reason = 'No reason given.';
             };
             time = null
-        } else {
-            time = args[1];
-            reason = args.slice(2).join(" ");
-            if (!reason) {
-                reason = 'No reason given.';
-            };
+        }
+        if (!args[1]) {
+            time = null
         }
         console.log(reason, time);
 
@@ -143,7 +146,7 @@ module.exports = {
             if (!time) {
                 return
             } else {
-                timeMS = ms(time)
+                let timeMS = ms(time)
                 let maxDelay = Math.pow(2, 31) - 1;
                 if (timeMS > maxDelay) {
                     return;

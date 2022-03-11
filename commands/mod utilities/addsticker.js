@@ -38,7 +38,7 @@ module.exports = {
             console.log(err)
             return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         }
-        if (stickerName.length > 20) {
+        if (stickerName.length > 30) {
             return message.channel.send(`The sticker name is longer than 20 characters. Please try to shorten the sticker name to less than 20 characters`)
         } else if (stickerName.length < 2) {
             return message.channel.send(`The sticker name must be at least 2 characters long.`)
