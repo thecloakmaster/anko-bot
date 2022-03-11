@@ -17,12 +17,14 @@ module.exports = {
 
         client.commands = new Discord.Collection();
         
-        const commandFiles = readdirSync('./commands').filter(file => file.endsWith('.js'));
-
-        for (const file of commandFiles) {
-            const command = require(`../commands/${file}`);
-
-            client.commands.set(command.name, command);
+        const commandFolders = fs.readdirSync(`./commands`);
+        
+        for (const folder of commandFolders) {
+            const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
+            for (const file of commandFiles) {
+                const command = require(`../../commands/${folder}/${file}`);
+                client.commands.set(command.name, command);
+            }
         }
         
         const owner = await message.client.users.fetch("423792631458562058").catch(() => {});
