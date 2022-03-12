@@ -17,11 +17,11 @@ module.exports = {
             return message.channel.send(`Please specify a valid member to be banned.\nSyntax: \`;ban @Mention <Reason>\` or \`;ban <User-ID> <Reason>\`.`)
         }
         let userBan = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
-        let reason = args.slice(1).join(" ") || "No reason given";
-        let memberBan = await message.guild.members.fetch(`${userBan.id}`).catch(() => {})
         if (!userBan) {
             return message.channel.send("Please specify a valid user or user-ID. to be banned.\nSyntax: \`;ban @Mention <Reason>\` or \`;ban <User-ID> <Reason>\`.")
-        } 
+        }
+        let reason = args.slice(1).join(" ") || "No reason given";
+        let memberBan = await message.guild.members.fetch(`${userBan.id}`).catch(() => {})
         if (memberBan) {
             if (memberBan.roles.highest.position > bot.roles.highest.position) {
                 return message.channel.send(`I cannot mute someone higher than me in the role hierarchy.`)
