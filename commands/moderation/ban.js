@@ -18,7 +18,7 @@ module.exports = {
         }
         let userBan = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
         let reason = args.slice(1).join(" ") || "No reason given";
-        let memberBan = await message.guild.members.fetch(`${userBan.id}`)
+        let memberBan = await message.guild.members.fetch(`${userBan.id}`).catch(() => {})
         if (!userBan) {
             return message.channel.send("Please specify a valid user or user-ID. to be banned.\nSyntax: \`;ban @Mention <Reason>\` or \`;ban <User-ID> <Reason>\`.")
         } 
@@ -35,13 +35,13 @@ module.exports = {
             };
         };
         try {
-            const banList = await message.guild.bans.fetch(`${userBan.id}`);
+            const banList = await message.guild.bans.fetch(`${userBan.id}`).catch(() => {});
             if (banList) {
                 return message.channel.send(`This user is already banned in this server.`)
             }
         } catch(err) {}
 
-        if (await message.guild.members.fetch(`${userBan.id}`) && await message.guild.members.fetch(`${userBan.id}`).bannable) {
+        if (await message.guild.members.fetch(`${userBan.id}`).catch(() => {}) && await message.guild.members.fetch(`${userBan.id}`).bannable.catch(() => {})) {
             try {
                 const banEmbed = new MessageEmbed()
                     .setColor("#e4a353")
