@@ -15,7 +15,7 @@ client.handlers = new Discord.Collection();
 
 client.login(process.env.token);
 
-process,on(`unhandledRejection`, err => {
+process.on(`unhandledRejection`, err => {
 	console.log('Unknown error occured:\n')
 	console.log(err)
 	process.exit()
