@@ -5,83 +5,50 @@ const {
 module.exports = {
     name: 'ban',
     description: 'Bans the specified user.',
-    usage: ";ban @mention or ;ban <user ID>",
-    async execute(message, args) {
-        //Author permission check
+    usage: ";ban @mention <Reason>\` or \`;ban <user ID> <Reason> (the reason can be blank).",
+    async execute(message, args, client) {
+        const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("BAN_MEMBERS")) {
-            const permerror = new MessageEmbed()
-                .setColor("#e4a353")
-                .setTitle(`Error executing that command`)
-                .setDescription(`You do not have the necessary permissions to execute this command`)
-                .setTimestamp();
-            return message.reply({
-                embeds: [permerror]
-            });
-        };
-
-        let userBan = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
-
-        //Reason
-        let reason = args.slice(1).join(" ") || "No reason given";
-
-        //Ban embed being sent to the user
-        const banEmbed = new MessageEmbed()
-            .setColor("#e4a353")
-            .setTitle(`You were banned from the server`)
-            .setDescription(`Reason: ${reason}`)
-            .setTimestamp();
-
-        if (!userBan) {
-            return message.reply("Send a valid user or user-ID.")
-        } else if (message.guild.members.cache.get(userBan.id)) {
-
-            userBanTwo = message.guild.members.cache.get(userBan.id)
-
-            //If user being banned has ban permissions himself
-            if (userBanTwo.permissions.has("BAN_MEMBERS")) {
-                const modban = new MessageEmbed()
-                    .setColor("#e4a353")
-                    .setTitle(`Error executing command`)
-                    .setDescription(`You cannot ban this member`)
-                    .setTimestamp();
-
-                return message.reply({
-                    embeds: [modban]
-                });
-            };
-            //If user is not bannable
-            if (!userBanTwo.bannable) {
-                const bannableNot = new MessageEmbed()
-                    .setColor("#e4a353")
-                    .setTitle(`Error executing command`)
-                    .setDescription(`I was unable to ban this user`)
-                    .setTimestamp();
-
-                return message.reply({
-                    embeds: [bannableNot]
-                });
-            };
-        };
-
-        try {
-            //If user is already banned
-            const banList = await message.guild.bans.fetch(userBan);
-            if (banList) {
-                const alrBanned = new MessageEmbed()
-                    .setColor("#e4a353")
-                    .setTitle(`Error executing command.`)
-                    .setDescription(`This user is already banned.`)
-                    .setTimestamp();
-                return message.reply({
-                    embeds: [alrBanned]
-                })
-            }
-        } catch(err) {
-
+            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`BAN_MEMBERS\`.`)
+        } else if (!bot.permissions.has("BAN_MEMBERS")) {
+            return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`BAN_MEMBERS\`.`)
         }
+        if (!args) {
+            return message.channel.send(`Please specify a valid member to be banned.\nSyntax: \`;ban @Mention <Reason>\` or \`;ban <User-ID> <Reason>\`.`)
+        }
+        let userBan = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
+        let reason = args.slice(1).join(" ") || "No reason given";
+        let memberBan = await message.guild.members.fetch(`${userBan.id}`)
+        if (!userBan) {
+            return message.channel.send("Please specify a valid user or user-ID. to be banned.\nSyntax: \`;ban @Mention <Reason>\` or \`;ban <User-ID> <Reason>\`.")
+        } 
+        if (memberBan) {
+            if (memberBan.roles.highest.position > bot.roles.highest.position) {
+                return message.channel.send(`I cannot mute someone higher than me in the role hierarchy.`)
+            } else if (memberBan.roles.highest.position > message.member.roles.highest.position) {
+                return message.channel.send(`You cannot mute someone higher than you in the role hierarchy.`)
+            }
+            if (memberBan.permissions.has("BAN_MEMBERS")) {
+                return message.channel.send(`You cannot ban this member`)
+            } else if (!memberBan.bannable) {
+                return message.channel.send(`I cannot ban this member.`)
+            };
+        };
+        try {
+            const banList = await message.guild.bans.fetch(`${userBan.id}`);
+            if (banList) {
+                return message.channel.send(`This user is already banned in this server.`)
+            }
+        } catch(err) {}
 
-        if (message.guild.members.cache.get(userBan) && message.guild.members.cache.get(userBan).bannable) {
+        if (await message.guild.members.fetch(`${userBan.id}`) && await message.guild.members.fetch(`${userBan.id}`).bannable) {
             try {
+                const banEmbed = new MessageEmbed()
+                    .setColor("#e4a353")
+                    .setTitle(`You were banned from the server`)
+                    .setDescription(`Reason: ${reason}`)
+                    .setTimestamp();
+
                 await userBan.send({
                     embeds: [banEmbed]
                 });
@@ -92,18 +59,19 @@ module.exports = {
 
         try {
             await message.guild.members.ban(userBan, {
+                days: 2,
                 reason: reason
             });
             const serverBanEmbed = new MessageEmbed()
                 .setColor("#e4a353")
                 .setTitle(`${userBan.tag} has been banned.`)
                 .setDescription(`Reason: ${reason}`);
-            message.reply({
+            message.channel.send({
                 embeds: [serverBanEmbed]
             });
         } catch (err) {
             console.log(err)
-            message.reply("Couldn't ban this member");
+            message.channel.send("I couldn't ban this member");
         }
     }
 }
