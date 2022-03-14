@@ -7,16 +7,12 @@ module.exports = {
     usage: ";unban <user ID>",
     async execute(message, args) {
         //Author permission check
+        const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("BAN_MEMBERS")) {
-            const permerror = new MessageEmbed()
-                .setColor("#e4a353")
-                .setTitle(`Error executing that command`)
-                .setDescription(`You do not have the necessary permissions to execute this command`)
-                .setTimestamp();
-            return message.reply({
-                embeds: [permerror]
-            });
-        };
+            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`BAN_MEMBERS\`.`)
+        } else if (!bot.permissions.has("BAN_MEMBERS")) {
+            return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`BAN_MEMBERS\`.`)
+        }
 
         let userBan = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
 

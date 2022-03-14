@@ -33,7 +33,7 @@ module.exports = {
             if (!member){
                 col = "#000000"
             } else if (member) {
-                col = message.member.displayHexColor || "#000000"
+                col = member.displayHexColor || "#000000"
             }
             const mentionedEmbed = new MessageEmbed()
                 .setTitle(`Here's the avatar for ${userMention.tag}`)

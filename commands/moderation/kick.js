@@ -7,15 +7,11 @@ module.exports = {
     description: 'Kicks the specified member',
     usage: ";kick @mention or ;kick <message ID>",
     async execute(message, args) {
+        const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("KICK_MEMBERS")) {
-            const permerror = new MessageEmbed()
-                .setColor("RED")
-                .setTitle(`Error executing that command.`)
-                .setDescription(`You do not have the necessary permissions to execute this command.`)
-                .setTimestamp();
-            return message.reply({
-                embeds: [permerror]
-            });
+            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`KICK_MEMBERS\`.`)
+        } else if (!bot.permissions.has("KICK_MEMBERS")) {
+            return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`KICK_MEMBERS\`.`)
         }
         let memberKick = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
 

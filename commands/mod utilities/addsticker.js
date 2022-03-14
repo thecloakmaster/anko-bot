@@ -6,15 +6,8 @@ module.exports = {
     usage: `;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message`,
     aliases: ['addst', 'stickeradd', 'addsticker'],
     async execute(message, args) {
-        if (!message.member.permissions.has("MANAGE_EMOTES_AND_STICKERS")) {
-            const permerror = new MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle(`Error executing that command.`)
-                .setDescription(`You do not have the necessary permissions to execute this command.`)
-                .setTimestamp();
-            return message.reply({
-                embeds: [permerror]
-            });
+        if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
+            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOJIS_AND_STICKERS\`.`)
         }
         if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
         if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
@@ -50,7 +43,7 @@ module.exports = {
                     return message.channel.send(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
                 } else {
                     const embed = new MessageEmbed()
-                        .setColor(`AQUA`)
+                        .setColor(`#e4a353`)
                         .setDescription(`An sticker with the name \`${stickerName}\` has been added to the server.`)
                     return message.channel.send({
                         embeds: [embed]

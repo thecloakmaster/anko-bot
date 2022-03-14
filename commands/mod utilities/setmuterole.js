@@ -5,7 +5,7 @@ module.exports = {
     usage: `;setmuterole <Ping the mute role>`,
     async execute (message, args, client) {
         if (!message.member.permissions.has("ADMINISTRATOR")) {
-            return message.channel.send(`You do not have the necessary permissions to execute this command.`)
+            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`ADMINISTRATOR\`.`)
         }
         const Role = message.mentions.roles.first()
         if(!Role) {

@@ -15,15 +15,11 @@ module.exports = {
 
         try {
             let delAmount = parseInt(delInput)
-            if (!message.member.permissions.has("MANAGE_MESSAGES")) {
-                const permerror = new MessageEmbed()
-                    .setColor("RED")
-                    .setTitle(`Error executing that command`)
-                    .setDescription(`You do not have the necessary permissions to execute this command`)
-                    .setTimestamp();
-                return message.reply({
-                    embeds: [permerror]
-                });
+            const bot = await message.guild.members.fetch(`${client.user.id}`)
+            if (!message.member.permissions.has(`MANAGE_MESSAGES`)) {
+                return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_MESSAGES\`.`)
+            } else if (!bot.permissions.has(`MANAGE_MESSAGES`)) {
+                return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_MESSAGES\`.`)
             }
 
             if (delAmount < 0 || !Number.isInteger(delAmount)) return message.reply("Please enter a positive integer.")

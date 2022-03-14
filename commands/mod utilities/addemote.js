@@ -7,14 +7,7 @@ module.exports = {
     usage: `;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image`,
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
-            const permerror = new MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle(`Error executing that command.`)
-                .setDescription(`You do not have the necessary permissions to execute this command.`)
-                .setTimestamp();
-            return message.reply({
-                embeds: [permerror]
-            });
+            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOJIS_AND_STICKERS\`.`)
         }
         if (!args[0]) {
             return message.reply(`Please enter a valid input. \nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
@@ -48,7 +41,7 @@ module.exports = {
                     return message.channel.send(`There was an error trying to add that emote. \nMake sure the image is under 256 KB. \nSyntax: \`;addemote <Emote name> <image URL>\` or \`;addemote <Emote name> and attach an image\``)
                 } else {
                     const embed = new MessageEmbed()
-                        .setColor(`AQUA`)
+                        .setColor(`#e4a353`)
                         .setDescription(`An emote with the name \`${emoteName}\` has been added to the server.`)
                     return message.channel.send({
                         embeds: [embed]
