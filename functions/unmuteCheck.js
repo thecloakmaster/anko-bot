@@ -67,6 +67,6 @@ module.exports = {
             } catch (err) {
                 console.log(err)
             }
-        }, 10*1000)
+        }, 30*60*1000)
     }
 }
