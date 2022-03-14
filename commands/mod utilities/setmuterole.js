@@ -3,7 +3,7 @@ module.exports = {
     name: `setmuterole`,
     description: `Sets the server's mute role.`,
     usage: `;setmuterole <Ping the mute role>`,
-    async execute (message, client) {
+    async execute (message, args, client) {
         if (!message.member.permissions.has("ADMINISTRATOR")) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.`)
         }
