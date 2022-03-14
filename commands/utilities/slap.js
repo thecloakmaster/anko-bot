@@ -1,6 +1,5 @@
 const {
-    MessageEmbed,
-    Message
+    MessageEmbed
 } = require("discord.js");
 const client_neko = require('nekos.life');
 const neko = new client_neko();

@@ -1,7 +1,5 @@
 const {
-    MessageEmbed,
-    Guild,
-    Message
+    MessageEmbed
 } = require('discord.js');
 module.exports = {
     name: 'serverbanner',

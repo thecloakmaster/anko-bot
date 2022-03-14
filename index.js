@@ -1,11 +1,14 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client({
-	intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES", "DIRECT_MESSAGES"], partials: ["CHANNEL"]
+	intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES", "DIRECT_MESSAGES"], partials: ["CHANNEL", "GUILD_MEMBER"]
 });
 
 const twitFunction = require(`./functions/twit.js`)
 twitFunction.execute();
+
+const unmuteCheck = require(`./functions/unmuteCheck.js`)
+setInterval(unmuteCheck.execute(client), 30*60*1000)
 
 client.commands = new Discord.Collection();
 client.handlers = new Discord.Collection();

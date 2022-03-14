@@ -1,15 +1,13 @@
 const {
-    MessageEmbed,
-    Guild,
-    Message
+    MessageEmbed
 } = require("discord.js");
 
 const ms = require("ms");
 
 module.exports = {
-    name: 'mute',
+    name: 'mute2',
     description: 'Mutes the specified member.',
-    usage: ";mute @mention or ;mute <message ID>",
+    usage: ";mute @mention or ;mute <member ID>",
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_ROLES")) {
             const permerror = new MessageEmbed()

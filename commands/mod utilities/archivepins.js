@@ -1,8 +1,4 @@
-const {
-    MessageEmbed,
-    Guild,
-    Message
-} = require('discord.js');
+const {MessageEmbed} = require('discord.js');
 module.exports = {
     name: 'archivepins',
     description: "Takes pins from a channel and archives them into embeds.",

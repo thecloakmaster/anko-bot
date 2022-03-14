@@ -1,9 +1,3 @@
-const {
-    MessageEmbed,
-    Guild,
-    Message
-} = require('discord.js');
-
 module.exports = {
     name: `modreply`,
     aliases: [`modmail`, `replymodmail`, 'replymod', 'reply'],

@@ -1,6 +1,5 @@
 const {
     MessageEmbed,
-    Guild,
     MessageActionRow,
     MessageButton
 } = require('discord.js');
@@ -71,7 +70,8 @@ module.exports = {
             .addField(`Mod Utilities`, `\`;addemote\`: Adds emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
-            \`;removeemote\`: Removes the emote from the server with the name or emotes provided.`)
+            \`;removeemote\`: Removes the emote from the server with the name or emotes provided.
+            \`;setmuterole\`: Sets the server's mute role.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 

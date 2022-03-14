@@ -1,9 +1,3 @@
-const {
-    MessageEmbed,
-    Guild,
-    Message
-} = require('discord.js');
-
 module.exports = {
     name: 'steal',
     description: 'Steals all the emotes from a single message and sends them to you via DMs. The command is to be executed in the exact same channel from which you want to steal messages.',

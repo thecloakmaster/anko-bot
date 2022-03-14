@@ -1,6 +1,5 @@
 const {
-    MessageEmbed,
-    Guild
+    MessageEmbed
 } = require("discord.js");
 module.exports = {
     name: 'ban',

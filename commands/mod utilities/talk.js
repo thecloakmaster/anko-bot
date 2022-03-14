@@ -1,9 +1,3 @@
-const {
-    MessageEmbed,
-    Guild,
-    Message
-} = require('discord.js');
-
 module.exports = {
     name: 'talk',
     description: 'Sends a message to a channel via the bot. Not to be overused as it might be against Discord TOS.',

@@ -1,11 +1,9 @@
 const {
-    MessageEmbed,
-    Guild,
-    Message
+    MessageEmbed
 } = require("discord.js");
 
 module.exports = {
-    name: 'unmute',
+    name: 'unmute2',
     description: 'Unmutes the specified member.',
     usage: ";unmute @mention or ;unmute <member ID>",
     async execute(message, args) {

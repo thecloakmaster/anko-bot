@@ -1,8 +1,4 @@
-const {
-    MessageEmbed,
-    Guild,
-    Message
-} = require('discord.js');
+const {MessageEmbed} = require('discord.js');
 
 module.exports = {
     name: 'addsticker',

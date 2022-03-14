@@ -4,8 +4,8 @@ module.exports = {
     async execute(message, client) {
         const prefix = ';'
         const modHook = new Discord.WebhookClient({
-            id: `948301349802627122`,
-            token: `bjYNMGYiTu1qSg--vzaw-NL9j32SUoKjFNFouL3QtC6nbjLLagU2k61cryFvyw2335Bt`
+            id: `${process.env.Modmail_Webhook_ID}`,
+            token: `${process.env.Modmail_Webhook_Token}`
         })
         if (message.channel.type === 'DM') {
             if (message.author.id === client.user.id) return;
