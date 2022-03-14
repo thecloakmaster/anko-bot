@@ -10,31 +10,40 @@ module.exports = {
 
         let userMention = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
         
-        if (!userMention || args[0] === undefined) {
+        if (!args[0]) {
+            const col = message.member.displayHexColor || "#000000"
             const nomentionEmbed = new MessageEmbed()
                 .setTitle(`Here's your avatar ${message.author.username}`)
                 .setDescription(`Download | [png](${message.author.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.author.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.author.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.author.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                .setColor('#e4a353')
+                .setColor(`${col}`)
                 .setImage(`${message.author.displayAvatarURL({dynamic:true, size:2048})}`)
                 .setFooter({
                     text: `${message.author.tag}`
                 })
                 .setTimestamp();
 
-            return message.reply({
+            return message.channel.send({
                 embeds: [nomentionEmbed]
             });
-        } else {
-
+        } else if (!userMention)  {
+            return message.channel.send("Please send a valid user-ID or user")
+        }else {
+            const member = message.guild.members.fetch(`${userMention.id}`).catch(() => {})
+            let col = null
+            if (!member){
+                col = "#000000"
+            } else if (member) {
+                col = message.member.displayHexColor || "#000000"
+            }
             const mentionedEmbed = new MessageEmbed()
                 .setTitle(`Here's the avatar for ${userMention.tag}`)
                 .setDescription(`Download | [png](${userMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.displayAvatarURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.displayAvatarURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
-                .setColor('#e4a353')
+                .setColor(`${col}`)
                 .setImage(`${userMention.displayAvatarURL({dynamic:true, size:2048})}`)
                 .setFooter({text: `${message.author.tag}`})
                 .setTimestamp();
 
-            return message.reply({
+            return message.channel.send({
                 embeds: [mentionedEmbed]
             });
         }

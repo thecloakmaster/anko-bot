@@ -48,7 +48,8 @@ module.exports = {
             await memberMute.roles.remove(guildMuteRole.id)
             await MutedMember.findOneAndRemove({
                 UserID: `${memberMute.user.id}`,
-                GuildID: `${message.guild.id}`
+                GuildID: `${message.guild.id}`,
+                ClientID: `${client.user.id}`
             })
             const unMute = new MessageEmbed()
             .setColor("#e4a353")

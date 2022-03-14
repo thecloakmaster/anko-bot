@@ -164,7 +164,8 @@ module.exports = {
                     UserID: `${memberMute.user.id}`,
                     GuildID: `${message.guild.id}`,
                     GivenAt: Date.now(),
-                    LastsTill: Date.now() + msTime
+                    LastsTill: Date.now() + msTime,
+                    ClientID: client.user.id
                 })
                 newData.save();
 

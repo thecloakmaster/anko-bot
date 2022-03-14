@@ -13,5 +13,8 @@ module.exports = mongoose.model("MutedMember", new mongoose.Schema({
     LastsTill: {
         type: Number,
         default: null
+    },
+    ClientID: {
+        type: String
     }
 }))

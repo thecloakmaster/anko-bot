@@ -8,7 +8,7 @@ module.exports = {
     usage: ";customserverpfp",
     async execute(message, args) {
         let memberMention = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
-        if (!args) {
+        if (!args[0]) {
             try {
                 const col = message.member.displayHexColor || "#000000"
                 const embed = new MessageEmbed()
@@ -24,7 +24,7 @@ module.exports = {
             }
         }
         if (!memberMention) {
-            return message.reply("Please send a valid user-ID or user")
+            return message.channel.send("Please send a valid user-ID or user")
         } else if (message.guild.members.cache.get(memberMention.id)) {
             try {
                 const col = memberMention.displayHexColor || "#000000"

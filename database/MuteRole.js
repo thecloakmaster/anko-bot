@@ -10,5 +10,8 @@ module.exports = mongoose.model("MuteRole", new mongoose.Schema({
     registeredAt: {
         type: Number,
         default: Date.now()
+    },
+    ClientID: {
+        type: String
     }
 }))

@@ -5,7 +5,9 @@ module.exports = {
         setInterval(async function () {
             try {
                 console.log(`Starting unmute checking...`)
-                let muteRole = await MuteRole.find()
+                let muteRole = await MuteRole.find({
+                    ClientID: `${client.user.id}`
+                })
                 for (const muteRoleLoop of muteRole) {
                     let guildID = muteRoleLoop.GuildID;
                     let guild = await client.guilds.fetch(`${guildID}`).catch(() => {});
