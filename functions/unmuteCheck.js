@@ -1,5 +1,5 @@
-const MuteRole = require(`./database/MuteRole.js`)
-const MutedMember = require('./database/MutedMember.js');
+const MuteRole = require(`../database/MuteRole.js`)
+const MutedMember = require('../database/MutedMember.js');
 module.exports = {
     async execute(client) {
         try {
