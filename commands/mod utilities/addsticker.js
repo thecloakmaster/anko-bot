@@ -6,8 +6,8 @@ module.exports = {
     usage: `;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message`,
     aliases: ['addst', 'stickeradd', 'addsticker'],
     async execute(message, args) {
-        if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
-            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOJIS_AND_STICKERS\`.`)
+        if (!message.member.permissions.has("MANAGE_EMOTES_AND_STICKERS")) {
+            return message.channel.send(`You do not have the necessary permissions to execute this command.`)
         }
         if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
         if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)

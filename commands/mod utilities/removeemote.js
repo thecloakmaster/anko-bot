@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['delemote', 'deleteemote', 'rememote'],
     async execute(message, args) {
         if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
-            return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOJIS_AND_STICKERS\`.`)
+            return message.channel.send(`You do not have the necessary permissions to execute this command.`)
         }
         const hasEmoteRegex = /<a:.+?:\d+>|<:.+?:\d+>/g
         const emoteRegex = /<:.+?:(\d+)>/
@@ -23,7 +23,7 @@ module.exports = {
                 }
                 emoji.delete().then((em) => {
                     const embed = new MessageEmbed()
-                        .setColor(`#e4a353`)
+                        .setColor(`AQUA`)
                         .setDescription(`An emote with the name \`${emoteName}\` has been deleted from the server.`)
                     return message.channel.send({
                         embeds: [embed]
@@ -49,7 +49,7 @@ module.exports = {
                     }
                     emoji.delete().then((em) => {
                         const embed = new MessageEmbed()
-                            .setColor(`#e4a353`)
+                            .setColor(`AQUA`)
                             .setDescription(`An emote with the name \`${emoji.name}\` has been deleted from the server.`)
                         return message.channel.send({
                             embeds: [embed]

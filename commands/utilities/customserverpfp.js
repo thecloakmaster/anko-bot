@@ -24,7 +24,7 @@ module.exports = {
             }
         }
         if (!memberMention) {
-            return message.channel.send("Please send a valid user-ID or user")
+            return message.channel.send("Please send a valid member's user-ID or member.")
         } else if (message.guild.members.cache.get(memberMention.id)) {
             try {
                 const col = memberMention.displayHexColor || "#000000"
