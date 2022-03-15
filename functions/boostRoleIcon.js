@@ -50,7 +50,7 @@ module.exports = {
                 })
                 return console.log(err)
             });
-            message.member.roles.add(roleID).catch((err) => console.log(err));
+            await message.member.roles.add(roleID).catch(() => {});
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`${roleColour}`)
                 .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
