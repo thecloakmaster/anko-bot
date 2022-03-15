@@ -4,8 +4,11 @@ module.exports = {
     description: `Sets the server's mute role.`,
     usage: `;setmuterole <Ping the mute role>`,
     async execute (message, args, client) {
+        const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("ADMINISTRATOR")) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`ADMINISTRATOR\`.`)
+        } else if (!bot.permissions.has("MANAGE_ROLES")) {
+            return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_ROLES\`.`)
         }
         const Role = message.mentions.roles.first()
         if(!Role) {

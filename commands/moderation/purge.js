@@ -1,6 +1,4 @@
-const {
-    MessageEmbed
-} = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 
 module.exports = {
     name: 'purge',
@@ -8,11 +6,8 @@ module.exports = {
     description: "Deletes the amount of messages specified.",
     usage: ";purge <amount of messages>",
     async execute(message, args) {
-
         const delInput = args[0];
-
         message.delete();
-
         try {
             let delAmount = parseInt(delInput)
             const bot = await message.guild.members.fetch(`${client.user.id}`)
