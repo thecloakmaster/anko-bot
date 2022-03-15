@@ -68,10 +68,11 @@ module.exports = {
             .addField(`Moderation`, `\`;unban\`: Unbans the specified user.
             \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified user.`)
-            .addField(`Mod Utilities`, `\`;addemote\`: Adds emote to the server with the name and image provided.
+            .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
-            \`;removeemote\`: Removes the emote from the server with the name or emotes provided.
+            \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
+            \`;removest\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});

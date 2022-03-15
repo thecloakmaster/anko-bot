@@ -2,7 +2,7 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = {
     name: `removesticker`,
-    description: `Removes a sticker from the guild with the sticker provided.`,
+    description: `Removes a sticker from the server with the sticker provided.`,
     usage: `;removesticker <Sticker>`,
     aliases: [`deletesticker`, `delst`, `removest`],
     async execute(message, args, client) {
