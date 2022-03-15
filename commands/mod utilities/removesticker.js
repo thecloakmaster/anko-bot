@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     name: `removesticker`,
     description: `Removes a sticker from the guild with the sticker provided.`,
-    usage: `'removesticker <Sticker>`,
+    usage: `;removesticker <Sticker>`,
     aliases: [`deletesticker`, `delst`, `removest`],
     async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
@@ -15,6 +15,29 @@ module.exports = {
         if (message.guild.premiumTier === `NONE`) {
             return message.channel.send(`This server has no boosts and hence no stickers can be added or removed.`)
         }
-        console.log(message)
+        if (message.stickers.size <= 0) {
+            return message.channel.send(`Please send the sticker to be deleted along with the command`)
+        } else if (message.stickers.size > 0) {
+            let i = 0
+            let stickers = await message.stickers.forEach(sticker => {
+                try {
+                    let stickerResolvable = await message.guild.stickers.fetch(`${sticker.id}`)
+                    stickerResolvable.delete().then(() => {
+                        i += 1
+                        const embed = new MessageEmbed()
+                            .setColor(`#e4a353`)
+                            .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
+                        return message.channel.send({
+                            embeds: [embed]
+                        })
+                    }).catch(() => {})
+                }catch (err) {
+                    return message.channel.send(`Error deleting this sticker. Syntax: \`;removesticker <Sticker>\``)
+                }
+            })
+            return message.channel.send(`${i} sticker(s) were deleted.`)
+        }
+        
+
     }
 }
