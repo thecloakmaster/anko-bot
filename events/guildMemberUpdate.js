@@ -14,23 +14,29 @@ module.exports = {
             if (!data) {
                 return;
             } else if (data) {
-                let role = await newMember.guild.fetch(`${data.RoleID}`).catch(() => {})
+                let role = await newMember.guild.roles.fetch(`${data.RoleID}`).catch(() => {})
                 if (!role) {
                     try {
-                        await BoosterMember.findOneandRemove({
-                            MemberID: memberID,
-                            GuildID: guildID
-                        }).catch((err) => {console.log(err)})
+                        await BoosterMember.findOneAndRemove({
+                            MemberID: `${memberID}`,
+                            GuildID: `${guildID}`,
+                            ClientID: `${client.user.id}`
+                        }).then(() => console.log(`Successfully deleted the role in MongoDB`)).catch((err) => {
+                            console.log(err)
+                        })
                     } catch (err) {} 
                 } else if (role) {
                     try {
                         await role.delete().then(() => {
                             newMember.user.send(`Thank you for supporting the Yofukashi no Uta server. Your custom role has been deleted if you had any. You can reclaim it back if you boost the server again.`)
                         }).catch((err) => console.log(err))
-                        await BoosterMember.findOneandRemove({
-                                    MemberID: memberID,
-                                    GuildID: guildID
-                        }).then(() => console.log(`Successfully deleted the role in MongoDB`)).catch((err) => {console.log(err)})
+                        await BoosterMember.findOneAndRemove({
+                            MemberID: `${memberID}`,
+                            GuildID: `${guildID}`,
+                            ClientID: `${client.user.id}`
+                        }).then(() => console.log(`Successfully deleted the role in MongoDB`)).catch((err) => {
+                            console.log(err)
+                        })
                     } catch (err) {}
                 }
             }
