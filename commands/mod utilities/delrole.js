@@ -21,12 +21,12 @@ module.exports = {
             let embed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`Deleted the role with ID ${roleID} and name ${roleName}.`)
-            await messageW.edit({embeds: [embed2]})
+            return messageW.edit({embeds: [embed2]})
         }).catch(() => {
             let embed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`Error encountered while deleting this role.`)
-            await messageW.edit({
+            return messageW.edit({
                 embeds: [embed2]
             })
         })
