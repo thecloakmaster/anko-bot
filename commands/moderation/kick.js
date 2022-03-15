@@ -26,23 +26,9 @@ module.exports = {
                 return message.channel.send(`You cannot kick someone higher than you in the role hierarchy.`)
             }
             if (memberKick.permissions.has("KICK_MEMBERS")) {
-                return message.channel.send(`You cannot ban this member`)
+                return message.channel.send(`You cannot kick this member`)
             }
         };
-        try {
-            const kickEmbed = new MessageEmbed()
-                .setColor("#e4a353")
-                .setTitle(`You were kicked from the ${message.guild.name}.`)
-                .setDescription(`Reason: ${reason}`)
-                .setTimestamp();
-
-            await userBan.send({
-                embeds: [kickEmbed]
-            });
-        } catch (err) {
-            console.log(err);
-        }
-
         try {
             await message.guild.members.kick(memberKick, {reason: reason});
             const serverKickEmbed = new MessageEmbed()
@@ -57,17 +43,17 @@ module.exports = {
             return message.channel.send("I couldn't kick this member");
         }
         try {
-            const kickDM = new MessageEmbed()
-                .setTitle(`You have been kicked from ${message.guild.name}.`)
-                .setDescription(`Reason: ${reason}`)
+            const kickEmbed = new MessageEmbed()
                 .setColor("#e4a353")
+                .setTitle(`You were kicked from the ${message.guild.name}.`)
+                .setDescription(`Reason: ${reason}`)
                 .setTimestamp();
 
             await memberKick.send({
-                embeds: [kickDM]
+                embeds: [kickEmbed]
             });
         } catch (err) {
-            console.log(err)
+            return console.log(err);
         }
     }   
 }
