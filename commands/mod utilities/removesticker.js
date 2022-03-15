@@ -15,7 +15,6 @@ module.exports = {
         if (message.guild.premiumTier === `NONE`) {
             return message.channel.send(`This server has no boosts and hence no stickers can be added or removed.`)
         }
-        let sticker = await message.mentions.stickers.first()
-        console.log(sticker)
+        console.log(message)
     }
 }
