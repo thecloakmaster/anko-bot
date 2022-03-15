@@ -1,7 +1,7 @@
 const {MessageEmbed} = require("discord.js");
 module.exports = {
     name: `delrole`,
-    description: `Deletes a role`,
+    description: `Deletes the specified role from the server.`,
     usage: `;delrole @Role`,
     async execute(message, args) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
