@@ -131,7 +131,7 @@ module.exports = {
                     let roleEmbed = new MessageEmbed()
                         .setColor(`#e4a353`)
                         .setDescription(`Creating a role...`)
-                    let roleEmbedMessage = message.channel.send({
+                    let roleEmbedMessage = await message.channel.send({
                         embeds: [roleEmbed]
                     })
                     await message.guild.roles.create({
