@@ -23,14 +23,14 @@ module.exports = {
                     let roleEmbed2 = new MessageEmbed()
                         .setColor(`#e4a353`)
                         .setDescription(`An error occured while creating this role. Please provide a valid image. (The image should be a .png or a .jpg file and should be smaller than 256 KB.)`)
-                    roleEmbedMessage.edit({
+                    return roleEmbedMessage.edit({
                         embeds: [roleEmbed2]
                     })
                 }
                 let roleEmbed2 = new MessageEmbed()
                     .setColor(`#e4a353`)
-                    .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                roleEmbedMessage.edit({
+                    .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+                return roleEmbedMessage.edit({
                     embeds: [roleEmbed2]
                 })
             })
@@ -41,14 +41,13 @@ module.exports = {
                 ClientID: `${client.user.id}`
             })
             newData.save().catch((err) => {
-                console.log(err.code)
+                console.log(err)
                 let roleEmbed2 = new MessageEmbed()
                     .setColor(`#e4a353`)
-                    .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                roleEmbedMessage.edit({
+                    .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+                return roleEmbedMessage.edit({
                     embeds: [roleEmbed2]
                 })
-                return console.log(err)
             });
             await message.member.roles.add(roleID).then(() => {
                 let roleEmbed2 = new MessageEmbed()

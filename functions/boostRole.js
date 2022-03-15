@@ -14,14 +14,13 @@ module.exports = {
         }).then((role) => {
             roleID = role.id
         }).catch((err) => {
-            console.log(err.code)
+            console.log(err)
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
-                .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-            roleEmbedMessage.edit({
+                .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+            return roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
-            return console.log(err)
         })
         let newData = new BoosterMember({
             MemberID: `${message.author.id}`,
@@ -30,20 +29,28 @@ module.exports = {
             ClientID: `${client.user.id}`
         })
         newData.save().catch((err) => {
+            console.log(err)
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
-                .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-            roleEmbedMessage.edit({
+                .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+            return roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
-            return console.log(err)
         });
-        message.member.roles.add(roleID).catch((err) => console.log(err));
-        let roleEmbed2 = new MessageEmbed()
-            .setColor(`${roleColour}`)
-            .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-        return roleEmbedMessage.edit({
-            embeds: [roleEmbed2]
-        })
+        await message.member.roles.add(roleID).then(() => {
+            let roleEmbed2 = new MessageEmbed()
+                .setColor(`${roleColour}`)
+                .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
+            return roleEmbedMessage.edit({
+                embeds: [roleEmbed2]
+            })
+        }).catch(() => {
+            let roleEmbed2 = new MessageEmbed()
+                .setColor(`#e4a353`)
+                .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+            return roleEmbedMessage.edit({
+                embeds: [roleEmbed2]
+            })
+        });
     }
 }

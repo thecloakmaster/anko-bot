@@ -20,7 +20,7 @@ module.exports = {
             let imgReg = /\.(jpeg|jpg|png)$/
             let colRegMatch = roleColour.match(hexReg)
             if (!colRegMatch) {
-                return message.channel.send(`Please enter a valid hex colour code.\nYou can pick a hex colour using this site: https://htmlcolorcodes.com.\nSyntax: \`;giverole \`__\`<Hex colour>\`__\`<Role name> <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a valid hex colour code.\nYou can pick a hex colour using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;giverole \`__\`<Hex colour>\`__\`<Role name> <Icon URL for the role (not necessary)>\``)
             }
             roleColour = colRegMatch[0]
             let roleName = args.slice(1, args.length - 1).join(" ")
