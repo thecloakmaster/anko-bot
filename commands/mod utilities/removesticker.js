@@ -30,12 +30,11 @@ module.exports = {
                         return message.channel.send({
                             embeds: [embed]
                         })
-                    }).catch(() => {})
+                    }).catch(() => {message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)})
                 }catch (err) {
-                    return message.channel.send(`Error deleting this sticker. Syntax: \`;removesticker <Sticker>\``)
+                    return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                 }
             })
-            return message.channel.send(`${i} sticker(s) were deleted.`)
         }
         
 
