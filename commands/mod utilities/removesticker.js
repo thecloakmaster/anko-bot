@@ -17,7 +17,7 @@ module.exports = {
         }
         if (message.stickers.size <= 0) {
             return message.channel.send(`Please send the sticker to be deleted along with the command`)
-        } else if (message.stickers.size > 0) {
+        } else if (message.stickers.size >= 1) {
             await message.stickers.forEach(sticker => async function () {
                 try {
                     if (sticker.guildId === message.guild.id) {
