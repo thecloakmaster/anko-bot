@@ -18,19 +18,22 @@ module.exports = {
         if (message.stickers.size <= 0) {
             return message.channel.send(`Please send the sticker to be deleted along with the command`)
         } else if (message.stickers.size > 0) {
-            let i = 0
             await message.stickers.forEach(sticker => async function () {
                 try {
-                    let stickerResolvable = await message.guild.stickers.fetch(`${sticker.id}`)
-                    stickerResolvable.delete().then(() => {
-                        i += 1
-                        const embed = new MessageEmbed()
-                            .setColor(`#e4a353`)
-                            .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
-                        return message.channel.send({
-                            embeds: [embed]
+                    if (sticker.guildId === message.guild.id) {
+                        sticker.delete().then(() => {
+                            const embed = new MessageEmbed()
+                                .setColor(`#e4a353`)
+                                .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
+                            return message.channel.send({
+                                embeds: [embed]
+                            })
+                        }).catch(() => {
+                            return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                         })
-                    }).catch(() => {message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)})
+                    }else {
+                        return message.channel.send(`The sticker with the name ${sticker.name} does not belong to this guild and hence cannot be deleted.`)
+                    }
                 }catch (err) {
                     return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                 }
