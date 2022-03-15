@@ -16,17 +16,17 @@ module.exports = {
         let embed = new MessageEmbed()
         .setColor(`#e4a353`)
         .setDescription(`Deleting the role...`)
-        let message = await message.channel.send({embeds: [embed]})
+        let messageW = await message.channel.send({embeds: [embed]})
         role.delete().then(() => {
             let embed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`Deleted the role with ID ${roleID} and name ${roleName}.`)
-            await message.edit({embeds: [embed2]})
+            await messageW.edit({embeds: [embed2]})
         }).catch(() => {
             let embed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`Error encountered while deleting this role.`)
-            await message.edit({
+            await messageW.edit({
                 embeds: [embed2]
             })
         })
