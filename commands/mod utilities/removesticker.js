@@ -15,7 +15,6 @@ module.exports = {
         if (message.guild.premiumTier === `NONE`) {
             return message.channel.send(`This server has no boosts and hence no stickers can be added or removed.`)
         }
-        console.log(message.stickers.size)
         if (message.stickers.size <= 0) {
             return message.channel.send(`Please send the sticker to be deleted along with the command`)
         } else if (message.stickers.size >= 1) {
