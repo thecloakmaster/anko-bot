@@ -4,7 +4,7 @@ module.exports = {
     name:'kick',
     description: 'Kicks the specified member',
     usage: ";kick @mention <Reason>\` or \`;kick <user ID> <Reason> (the reason can be blank).",
-    async execute(message, args) {
+    async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("KICK_MEMBERS")) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`KICK_MEMBERS\`.`)

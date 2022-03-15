@@ -6,7 +6,7 @@ module.exports = {
     name: 'unlock',
     description: 'Unlocks the channel.',
     usage: ";unlock",
-    async execute(message, args) {
+    async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has('MANAGE_ROLES')) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_ROLES\`.`)

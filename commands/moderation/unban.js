@@ -3,7 +3,7 @@ module.exports = {
     name: "unban",
     description: "Unbans the specified user.",
     usage: ";unban <user ID>",
-    async execute(message, args) {
+    async execute(message, args, client) {
         //Author permission check
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("BAN_MEMBERS")) {

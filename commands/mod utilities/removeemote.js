@@ -5,7 +5,8 @@ module.exports = {
     description: `Removes the emote from the server with the name or emotes provided.`,
     usage:`;removeemote <Emote name>\` or \`;removeemote <Emotes provided>`,
     aliases: ['delemote', 'deleteemote', 'rememote'],
-    async execute(message, args) {
+    async execute(message, args, client) {
+        const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.`)
         } else if (!bot.permissions.has("MANAGE_EMOTES_AND_STICKERS")) {

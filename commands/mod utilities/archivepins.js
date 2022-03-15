@@ -3,8 +3,7 @@ module.exports = {
     name: 'archivepins',
     description: "Takes pins from a channel and archives them into embeds.",
     usage: ";archivepins",
-    async execute(message) {
-
+    async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has(`MANAGE_MESSAGES`)) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_MESSAGES\`.`)

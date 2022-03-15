@@ -5,7 +5,7 @@ module.exports = {
     aliases: ['thanos'],
     description: "Deletes the amount of messages specified.",
     usage: ";purge <amount of messages>",
-    async execute(message, args) {
+    async execute(message, args, client) {
         const delInput = args[0];
         message.delete();
         try {
