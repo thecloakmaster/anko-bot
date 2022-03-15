@@ -36,6 +36,7 @@ module.exports = {
                 if (!imgRegMatch) {
                     return message.channel.send(`Please enter a valid image URL to a .jpg or a .png file.`)
                 }
+                roleIconURL = roleIconURL.replace(/\s/g, '')
             } catch (err) {
                 //return message.channel.send(`Please enter a valid URL.\nSyntax: \`;giverole <Hex colour> <Role name> \`__\`<Icon URL for the role (not necessary)>\`__`)
                 roleName = args.slice(1).join(" ")
