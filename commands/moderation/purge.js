@@ -10,6 +10,7 @@ module.exports = {
         message.delete();
         try {
             let delAmount = parseInt(delInput)
+            delAmount = delAmount + 1
             const bot = await message.guild.members.fetch(`${client.user.id}`)
             if (!message.member.permissions.has(`MANAGE_MESSAGES`)) {
                 return message.channel.send(`You do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_MESSAGES\`.`)
