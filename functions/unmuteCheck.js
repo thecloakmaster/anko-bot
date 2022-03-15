@@ -23,6 +23,7 @@ module.exports = {
                                 GuildID: guildID
                             })
                         }
+                        console.log(`Deleted mutes for a non-existent guild.`)
                     }
                     let mutedRole = muteRoleLoop.MuteRoleID;
                     let guildMuteRole = await guild.roles.fetch(`${mutedRole}`).catch(() => {});
@@ -37,6 +38,7 @@ module.exports = {
                                 GuildID: guildID
                             })
                         }
+                        console.log(`Deleted mutes of a non-existent role.`)
                     }
                     let mutedMember = await MutedMember.find({
                         GuildID: guildID
@@ -51,6 +53,7 @@ module.exports = {
                                     LastsTill: mutedMemberLoop.LastsTill
                                 })
                             }
+                            console.log(`Removed a mute in the DB.`)
                             continue;
                         } else if (member) {
                             if (Date.now() >= mutedMemberLoop.LastsTill) {
@@ -61,8 +64,10 @@ module.exports = {
                                 })
                             }
                             await member.roles.remove(mutedRole).catch((err) => console.log(err))
+                            console.log(`Removed a mute in the DB for ${member.user.id}.`)
                         }
                     }
+                    console.log(`Finished checking for unmutes.`)
                 }
             } catch (err) {
                 console.log(err)
