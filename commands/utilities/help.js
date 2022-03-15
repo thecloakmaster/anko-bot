@@ -34,13 +34,13 @@ module.exports = {
             .addField(`Fun`, `\`;kiss\`: Kisses the specified user and makes them feel a little bit better.
             \`;pat\`: Pats the specified user and makes them feel a little bit better.
             \`;slap\`: Slaps the specified user for whatever the reason may be.
-            \`;spank\`: Spanks the specified member and mutes them for 1 minute.`)
+            \`;spank\`: Spanks the specified member and mutes them for 1 minute.
+            \`;uwuify\`: Makes your message more UwU.`)
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
             \`;mute\`: Mutes the specified member.
-            \`;purge\`: Deletes the amount of messages specified.
-            \`;unban\`: Unbans the specified user.`)
+            \`;purge\`: Deletes the amount of messages specified.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
@@ -65,11 +65,13 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 3 of 3**`)
-            .addField(`Moderation`, `\`;unlock\`: Unlocks the channel.
+            .addField(`Moderation`, `\`;unban\`: Unbans the specified user.
+            \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified user.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
+            \`;delrole\`: Deletes the specified role from the server.
             \`;removeemote\`: Removes the emote from the server with the name or emotes provided.
             \`;setmuterole\`: Sets the server's mute role.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
