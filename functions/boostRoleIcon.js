@@ -50,7 +50,14 @@ module.exports = {
                 })
                 return console.log(err)
             });
-            await message.member.roles.add(roleID).catch(() => {});
+            await message.member.roles.add(roleID).catch(() => {
+                let roleEmbed2 = new MessageEmbed()
+                    .setColor(`#e4a353`)
+                    .setDescription(`An error occured while creating this role. Please provide a valid image. (The image should be a .png or a .jpg file and should be smaller than 256 KB.)`)
+                return roleEmbedMessage.edit({
+                    embeds: [roleEmbed2]
+                })
+            });
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`${roleColour}`)
                 .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
