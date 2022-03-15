@@ -15,12 +15,19 @@ module.exports = {
         if (message.guild.premiumTier === `NONE`) {
             return message.channel.send(`This server has no boosts and hence no stickers can be added or removed.`)
         }
+        console.log(message.stickers.size)
         if (message.stickers.size <= 0) {
             return message.channel.send(`Please send the sticker to be deleted along with the command`)
         } else if (message.stickers.size >= 1) {
-            await message.stickers.forEach(sticker => async function () {
-                try {
-                    if (sticker.guildId === message.guild.id) {
+            let stickers = Array.from(await message.stickers.values());
+            for (let i = 0; i < stickers.length; i++) {
+                let sticker = stickers[i]
+                let stickerID = sticker.id
+                sticker = await message.guild.stickers.fetch(`${stickerID}`)
+                if (!sticker) {
+                    return message.channel.send(`The sticker with the name ${sticker.name} does not belong to this guild and hence cannot be deleted.`)
+                } else if (sticker) {
+                    try {
                         sticker.delete().then(() => {
                             const embed = new MessageEmbed()
                                 .setColor(`#e4a353`)
@@ -28,18 +35,16 @@ module.exports = {
                             return message.channel.send({
                                 embeds: [embed]
                             })
-                        }).catch(() => {
+                        }).catch((err) => {
+                            console.log(err)
                             return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                         })
-                    }else {
-                        return message.channel.send(`The sticker with the name ${sticker.name} does not belong to this guild and hence cannot be deleted.`)
+                    } catch (err) {
+                        console.log(err)
+                        return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                     }
-                }catch (err) {
-                    return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                 }
-            })
+            }
         }
-        
-
     }
 }
