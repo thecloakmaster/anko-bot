@@ -18,7 +18,6 @@ module.exports = {
             }).then((role) => {
                 roleID = role.id
             }).catch((err) => {
-                console.log(err)
                 if (err.code === 50035) {
                     let roleEmbed2 = new MessageEmbed()
                         .setColor(`#e4a353`)
