@@ -4,7 +4,7 @@ const {
 module.exports = {
     name: 'servericon',
     aliases: ["serveravatar", "serveravi", "serverav", "serverpfp"],
-    description: 'Sends the server icon.',
+    description: `Sends the server's icon.`,
     async execute(message) {
         const embedAvatar = new MessageEmbed()
             .setColor("#e4a353")

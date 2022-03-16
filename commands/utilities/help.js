@@ -31,7 +31,8 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 2 of 3**`)
-            .addField(`Fun`, `\`;kiss\`: Kisses the specified user and makes them feel a little bit better.
+            .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little bit better.
+            \`;kiss\`: Kisses the specified user and makes them feel a little bit better.
             \`;pat\`: Pats the specified user and makes them feel a little bit better.
             \`;slap\`: Slaps the specified user for whatever the reason may be.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
@@ -39,8 +40,7 @@ module.exports = {
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
-            \`;mute\`: Mutes the specified member.
-            \`;purge\`: Deletes the amount of messages specified.`)
+            \`;mute\`: Mutes the specified member.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
@@ -53,11 +53,11 @@ module.exports = {
             \`;giverole\`: Gives a custom role to the boosters of their choice.
             \`;help\`: Lists all the commands and provides information if the command is specified.
             \`;quote\`: Fetches previously sent message and sends it in an embed.
-            \`;serverbanner\`: Sends the server banner.
-            \`;servericon\`: Sends the server icon.
+            \`;serverbanner\`: Sends the server's banner.
+            \`;servericon\`: Sends the server's icon.
+            \`serversplash\`: Sends the server's splash background image.
             \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.
             \`;whois\`: Gives information about the member specified or yourself.`)
-            .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little bit better.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
@@ -65,14 +65,15 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 3 of 3**`)
-            .addField(`Moderation`, `\`;unban\`: Unbans the specified user.
+            .addField(`Moderation`, `\`;purge\`: Deletes the amount of messages specified.
+            \`;unban\`: Unbans the specified user.
             \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified user.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
-            \`;removest\`: Removes a sticker from the server with the sticker provided.
+            \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});

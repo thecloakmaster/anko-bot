@@ -4,7 +4,7 @@ const {
 module.exports = {
     name: 'serverbanner',
     aliases: ["serverb"],
-    description: 'Sends the server banner.',
+    description: `Sends the server's banner image.`,
     usage: ";serverbanner",
     async execute(message) {
         if (message.guild.bannerURL() === null) return message.reply("This server does not have a banner.");
