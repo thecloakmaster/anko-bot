@@ -14,7 +14,7 @@ module.exports = {
             .setFooter({
                 text: `${message.author.tag}`
             })
-            .setImage(`${message.guild.splashURL({size:4096})}`);
+            .setImage(`${message.guild.splashURL({size:2048})}`);
         return message.channel.send({
             embeds: [embedAvatar]
         });
