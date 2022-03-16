@@ -40,7 +40,7 @@ module.exports = {
             }
         } catch(err) {}
 
-        if (await message.guild.members.fetch(`${userBan.id}`) && await message.guild.members.fetch(`${userBan.id}`).bannable) {
+        if (await message.guild.members.fetch(`${userBan.id}`).catch(() => {}) && await message.guild.members.fetch(`${userBan.id}`).bannable) {
             try {
                 const banEmbed = new MessageEmbed()
                     .setColor("#e4a353")
