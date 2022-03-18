@@ -15,6 +15,7 @@ module.exports = {
             if (!redURL || !chpNumber) {
                 return message.channel.send(`Please enter a valid number for the chapter number and a valid Reddit URL.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
             }
+            redURL = redURL.replace(/\s/g, '')
             try {
                 let urlcheck = new URL(redURL)
                 num1 = redURL.indexOf(`https://www.reddit.com/r/`)

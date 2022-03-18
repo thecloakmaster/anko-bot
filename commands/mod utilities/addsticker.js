@@ -13,9 +13,10 @@ module.exports = {
             return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOTES_AND_STICKERS\``)
         }
         if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
-        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
+        if (!args[0] || !args[1]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         let url = args[0]
         let stickerName = args.slice(1).join(" ")
+        url = url.replace(/\s/g, '')
         try {
             if (message.attachments.size > 1) {
                 return message.reply(`Please enter only one image at a time.`)
