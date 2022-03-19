@@ -9,7 +9,7 @@ module.exports = {
     async execute(message, args, client) {
         if (!message.member.permissions.has("ADMINISTRATOR")) return;
         try {
-            const redURL = args[1];
+            let redURL = args[1];
             const chpNumber = args[0];
             const num = parseInt(chpNumber);
             if (!redURL || !chpNumber) {
