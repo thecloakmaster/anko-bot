@@ -26,7 +26,7 @@ module.exports = {
                 return message.channel.send(`You cannot kick someone higher than you in the role hierarchy.`)
             }
             if (memberKick.permissions.has("KICK_MEMBERS")) {
-                return message.channel.send(`You cannot kick this member`)
+                return message.channel.send(`You cannot kick this member as they also have the \`KICK_MEMBERS\` permission. You may try to do it manually.`)
             }
         };
         try {

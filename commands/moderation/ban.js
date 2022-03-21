@@ -28,7 +28,7 @@ module.exports = {
                 return message.channel.send(`You cannot ban someone higher than you in the role hierarchy.`)
             }
             if (memberBan.permissions.has("BAN_MEMBERS")) {
-                return message.channel.send(`You cannot ban this member`)
+                return message.channel.send(`You cannot ban this member as they also have the \`BAN_MEMBERS\` permission. You may try to do it manually.`)
             } else if (!memberBan.bannable) {
                 return message.channel.send(`I cannot ban this member.`)
             };
