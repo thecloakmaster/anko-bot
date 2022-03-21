@@ -13,7 +13,7 @@ module.exports = {
             return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOJIS_AND_STICKERS\``)
         }
         if (message.guild.premiumTier === `NONE`) {return message.channel.send(`This server has no boosts and hence no stickers can be added.`)}
-        if (!args[0] || !args[1]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image or gif with the message\``)
+        if (!args[0]) return message.reply(`Please enter a valid input. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image or gif with the message\``)
         let url = args[0]
         let stickerName = args.slice(1).join(" ")
         try {
@@ -31,7 +31,7 @@ module.exports = {
             return message.reply(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
         }
         if (stickerName.length > 30) {
-            return message.channel.send(`The sticker name is longer than 20 characters. Please try to shorten the sticker name to less than 20 characters`)
+            return message.channel.send(`The sticker name is longer than 30 characters. Please try to shorten the sticker name to less than 30 characters`)
         } else if (stickerName.length < 2) {
             return message.channel.send(`The sticker name must be at least 2 characters long.`)
         }

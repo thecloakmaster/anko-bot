@@ -12,7 +12,7 @@ module.exports = {
         } else if (!bot.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
             return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOJIS_AND_STICKERS\``)
         }
-        if (!args[0] || !args[1]) {
+        if (!args[0]) {
             return message.reply(`Please enter a valid input. \nSyntax: \`;addemote <image URL> <Emote name>\` or \`;addemote <Emote name> and attach an image or gif\``)
         } else if (args[0].length < 2) {
             return message.channel.send(`The emote name must be at least 2 characters long.`)
