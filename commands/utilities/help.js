@@ -81,14 +81,19 @@ module.exports = {
             const button1 = new MessageButton()
                 .setCustomId('previousbtn')
                 .setLabel('Previous')
-                .setStyle('DANGER');
+                .setStyle('SECONDARY');
 
             const button2 = new MessageButton()
                 .setCustomId('nextbtn')
                 .setLabel('Next')
-                .setStyle('SUCCESS');
+                .setStyle('SECONDARY');
 
-            const buttonList = [button1, button2]
+            const button3 = new MessageButton()
+                .setCustomId('close')
+                .setLabel('Close')
+                .setStyle('DANGER')
+
+            const buttonList = [button1, button2, button3]
 
             const embeds = [page1, page2, page3]
             let embed = 0
@@ -100,7 +105,8 @@ module.exports = {
 
             const filter = (i) =>
                 i.customId === buttonList[0].customId ||
-                i.customId === buttonList[1].customId;
+                i.customId === buttonList[1].customId || 
+                i.customId === buttonList[2].customId;;
 
             timeout = 120000
             const collector = await curPage.createMessageComponentCollector({
@@ -126,6 +132,9 @@ module.exports = {
                     default:
                         break;
                 }
+                if (i.customId === buttonList[2].customId) {
+                    collector.stop();
+                }
                 await i.deferUpdate();
                 await i.editReply({
                     embeds: [embeds[embed]],
@@ -135,9 +144,10 @@ module.exports = {
             });
             collector.on("end", () => {
                 try {
-                    const disabledRow = new MessageActionRow().addComponents(
+                    let disabledRow = new MessageActionRow().addComponents(
                         buttonList[0].setDisabled(true),
-                        buttonList[1].setDisabled(true)
+                        buttonList[1].setDisabled(true),
+                        buttonList[2].setDisabled(true).setLabel('Closed')
                     );
                     curPage.edit({
                         embeds: [embeds[embed]],
