@@ -5,7 +5,7 @@ module.exports = {
         let guildID = newMember.guild.id
         let memberID = newMember.user.id
         let boosterRole = newMember.guild.roles.premiumSubscriberRole
-        if (!newMember.premiumSinceTimestamp && !newMember.roles.cache.some(role => role.id === boosterRole.id)) {
+        if (!newMember.premiumSinceTimestamp) {
             let data = await BoosterMember.findOne({
                 MemberID: `${memberID}`,
                 GuildID: `${guildID}`,
