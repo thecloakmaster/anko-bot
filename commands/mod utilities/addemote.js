@@ -19,7 +19,7 @@ module.exports = {
         }
         
         let url = args[0]
-        const emoteName = args[1]
+        let emoteName = args[1]
         url = url.replace(/\s/g, '')
         try {
             if (message.attachments.size > 1) {
