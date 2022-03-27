@@ -9,7 +9,7 @@ module.exports = {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("MODERATE_MEMBERS")) {
             try {
-                message.member.timeout(60000, "No perms :)")
+                message.member.timeout(60000, "No perms :)").catch(() => {return;})
             } catch (err) {}
             const permerror = new MessageEmbed()
                 .setColor("#e4a353")
