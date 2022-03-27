@@ -46,7 +46,7 @@ module.exports = {
             return message.channel.send({embeds: [spankEmbed]})
         }
         try {
-            memberSpank.timeout(60000, `${reason}`)
+            await memberSpank.timeout(60000, `${reason}`).catch(err => console.log(err.code))
             return message.channel.send({embeds: [spankEmbed]})
         } catch (err) {
             console.log(err);
