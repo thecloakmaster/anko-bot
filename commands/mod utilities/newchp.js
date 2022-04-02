@@ -18,12 +18,6 @@ module.exports = {
             redURL = redURL.replace(/\s/g, '')
             try {
                 let urlcheck = new URL(redURL)
-                num1 = redURL.indexOf(`https://www.reddit.com/r/`)
-                num2 = redURL.indexOf(`https://old.reddit.com/r/`)
-
-                if (num1 === -1 && num2 === -1) {
-                    return message.channel.send(`Please enter a valid Reddit URL after the chapter number. \nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
-                }
             } catch (err) {
                 console.log(err)
                 return message.channel.send(`Please enter a valid Reddit URL after the chapter number.\nSyntax: \`;newchp <Chapter Number> <Reddit link>\`.`)
