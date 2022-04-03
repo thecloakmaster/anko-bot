@@ -6,7 +6,7 @@ const ms = require("ms");
 module.exports = {
     name: `mute`,
     description: 'Mutes the specified member.',
-    usage: ";mute @Mention <Time> <Reason>\`or \`;mute <member ID> <Time> <Reason> (The reason and time can be left blank)",
+    usage: ";mute @Mention <Time> <Reason>\`or \`;mute <member ID> <Time> <Reason> (the reason and time can be left blank)",
     async execute(message, args, client) {
         //Permission checks
         const bot = await message.guild.members.fetch(`${client.user.id}`)

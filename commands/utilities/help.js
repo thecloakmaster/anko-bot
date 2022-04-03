@@ -10,6 +10,7 @@ module.exports = {
     name:'help',
     description: 'Lists all the commands and provides information if the command is specified.',
     usage: ";help <command name> or ;help",
+    aliases: ['h'],
     async execute (message, args, client, Discord, bot) {
 
         client.commands = new Discord.Collection();
@@ -161,7 +162,7 @@ module.exports = {
             });
             
         } else {
-            const commHelp = message.content.slice(5).trim().split(/ +/);
+            const commHelp = args[0].split(/ +/);
             const commandName = commHelp.shift().toLowerCase();
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
@@ -172,7 +173,6 @@ module.exports = {
                 if (!command || commandName === comm) return message.reply("This command does not exist.");
             }
 	        
-
             try{
                 const helpSpecific = new MessageEmbed()
                     .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})

@@ -6,7 +6,7 @@ module.exports = {
         if (!message.member.permissions.has("ADMINISTRATOR")) return;
 
         const channelID = message.mentions.channels.first();
-        if (!channelID) return message.channel.send("Please specify a valid channel or ID.");
+        if (!channelID) return message.channel.send("Please specify a valid channel.");
 
         let textMessage = args.slice(1).join(" ");
 

@@ -10,6 +10,7 @@ module.exports = {
         if (message.channel.type === 'DM') {
             if (message.author.id === client.user.id) return;
             const embed = new Discord.MessageEmbed()
+                .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
                 .setColor("#e4a353")
                 .setTitle(`ID: [${message.author.id}]`)
                 .setDescription(message.content)

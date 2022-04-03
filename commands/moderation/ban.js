@@ -1,10 +1,9 @@
-const {
-    MessageEmbed
-} = require("discord.js");
+const {MessageEmbed} = require("discord.js");
+
 module.exports = {
     name: 'ban',
     description: 'Bans the specified user.',
-    usage: ";ban @mention <Reason>\` or \`;ban <user ID> <Reason> (the reason can be blank).",
+    usage: ";ban @mention <Reason>\` or \`;ban <user ID> <Reason> (the reason can be blank)",
     async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("BAN_MEMBERS")) {

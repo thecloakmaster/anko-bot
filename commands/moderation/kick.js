@@ -3,7 +3,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = {
     name:'kick',
     description: 'Kicks the specified member',
-    usage: ";kick @mention <Reason>\` or \`;kick <user ID> <Reason> (the reason can be blank).",
+    usage: ";kick @mention <Reason>\` or \`;kick <user ID> <Reason> (the reason can be blank)",
     async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("KICK_MEMBERS")) {
