@@ -28,27 +28,10 @@ module.exports = {
         const owner = await message.client.users.fetch("423792631458562058").catch(() => {});
 
         if (!args[0]){
-            const page2 = new MessageEmbed()
-            .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 2 of 3**`)
-            .addField(`Fun`, `\`;hug\`: Hugs the specified user and makes them feel a little bit better.
-            \`;kiss\`: Kisses the specified user and makes them feel a little bit better.
-            \`;pat\`: Pats the specified user and makes them feel a little bit better.
-            \`;slap\`: Slaps the specified user for whatever the reason may be.
-            \`;spank\`: Spanks the specified member and mutes them for 1 minute.
-            \`;uwuify\`: Makes your message more UwU.`)
-            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
-            \`;kick\`: Kicks the specified member.
-            \`;lock\`: Locks the channel.
-            \`;mute\`: Mutes the specified member.`)
-            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
-            
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 1 of 3**`)
+            .setDescription(`**Bot Manual - Page 1 of 4**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
             \`;giverole\`: Gives a custom role to the boosters of their choice.
@@ -62,17 +45,45 @@ module.exports = {
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
+            const page2 = new MessageEmbed()
+            .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
+            .setColor("#e4a353")
+            .setDescription(`**Bot Manual - Page 2 of 4**`)
+            .addField(`Fun`, `\`;hug\`: Hugs the specified member and makes them feel a little bit better.
+            \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
+            \`;pat\`: Pats the specified member and makes them feel a little bit better.
+            \`;slap\`: Slaps the specified member for whatever the reason may be.
+            \`;spank\`: Spanks the specified member and mutes them for 1 minute.
+            \`;uwuify\`: Makes your message more UwU.`)
+            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
+            \`;clearwarns\`: Clears all the warns of the specified user.
+            \`;fetchwarns\`: Fetches the warns of the specified user.
+            \`;kick\`: Kicks the specified member.`)
+            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+            
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 3 of 3**`)
-            .addField(`Moderation`, `\`;purge\`: Deletes the amount of messages specified.
+            .setDescription(`**Bot Manual - Page 3 of 4**`)
+            .addField(`Moderation`, `\`;lock\`: Locks the channel.
+            \`;mute\`: Mutes the specified member.
+            \`;purge\`: Deletes the amount of messages specified.
+            \`;removewarn\`: Removes the specified warn of the specified member.
             \`;unban\`: Unbans the specified user.
             \`;unlock\`: Unlocks the channel.
-            \`;unmute\`: Unmutes the specified user.`)
+            \`;unmute\`: Unmutes the specified member.
+            \`;warn\`: Warns the specified member.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
-            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
-            \`;archivepins\`: Takes pins from a channel and archives them into embeds.
+            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.`)
+            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+
+            const page4 = new MessageEmbed()
+            .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
+            .setColor("#e4a353")
+            .setDescription(`**Bot Manual - Page 3 of 4**`)
+            .addField(`Mod Utilities`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
@@ -96,7 +107,7 @@ module.exports = {
 
             const buttonList = [button1, button2, button3]
 
-            const embeds = [page1, page2, page3]
+            const embeds = [page1, page2, page3, page4]
             let embed = 0
             const row = new MessageActionRow().addComponents(buttonList);
             const curPage = await message.channel.send({

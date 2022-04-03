@@ -5,7 +5,7 @@ const {
 
 module.exports = {
     name: 'warn',
-    description: 'Warns a member.',
+    description: 'Warns the specified member.',
     usage: ';warn @mention <Reason>\` or \`;warn <member ID> <Reason> (the reason can be blank)',
     async execute(message, args, client) {
         const bot = await message.guild.members.fetch(`${client.user.id}`)

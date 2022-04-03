@@ -5,7 +5,7 @@ const {
 
 module.exports = {
     name: 'removewarn',
-    description: 'Removes the specified warn of a specified user.',
+    description: 'Removes the specified warn of the specified member.',
     usage: ';removewarns @mention <Warn code>\` or \`;removewarns <user ID> <Warn code>',
     aliases: [`remwarn`, 'rw'],
     async execute(message, args, client) {

@@ -2,7 +2,7 @@ const WarnedMember = require('../../database/WarnedMember.js')
 
 module.exports = {
     name: 'clearwarns',
-    description: 'Clears all the warns of a specified user.',
+    description: 'Clears all the warns of the specified user.',
     usage: ';clearwarns @mention\` or \`;clearwarns <user ID>',
     async execute(message, args, client) {
         if (!message.member.permissions.has("BAN_MEMBERS")) {

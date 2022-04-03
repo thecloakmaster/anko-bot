@@ -5,7 +5,7 @@ const {
 
 module.exports = {
     name: 'fetchwarns',
-    description: `Fetches the warns of a person.`,
+    description: `Fetches the warns of the specified member.`,
     usage: `;fetchwarns @mention\` or \`;fetchwarns <member ID>`,
     aliases: [`fw`, `warnlist`, `warns`],
     async execute(message, args, client) {
