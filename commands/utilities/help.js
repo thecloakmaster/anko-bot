@@ -40,8 +40,8 @@ module.exports = {
             \`;serverbanner\`: Sends the server's banner.
             \`;servericon\`: Sends the server's icon.
             \`serversplash\`: Sends the server's splash background image.
-            \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.
-            \`;whois\`: Gives information about the member specified or yourself.`)
+            \`;spoiler\`: Sends the specified image/video with a spoiler tag. (You should probably also learn to use the feature in-built in Discord to spoiler tag files)
+            \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
@@ -49,6 +49,7 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 2 of 4**`)
+            .addField(`Utility`, `\`;whois\`: Gives information about the member specified or yourself.`)
             .addField(`Fun`, `\`;hug\`: Hugs the specified member and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
             \`;pat\`: Pats the specified member and makes them feel a little bit better.
@@ -57,8 +58,7 @@ module.exports = {
             \`;uwuify\`: Makes your message more UwU.`)
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;clearwarns\`: Clears all the warns of the specified user.
-            \`;fetchwarns\`: Fetches the warns of the specified user.
-            \`;kick\`: Kicks the specified member.`)
+            \`;fetchwarns\`: Fetches the warns of the specified user.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
@@ -66,7 +66,8 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 3 of 4**`)
-            .addField(`Moderation`, `\`;lock\`: Locks the channel.
+            .addField(`Moderation`, `\`;kick\`: Kicks the specified member.
+            \`;lock\`: Locks the channel.
             \`;mute\`: Mutes the specified member.
             \`;purge\`: Deletes the amount of messages specified.
             \`;removewarn\`: Removes the specified warn of the specified member.
@@ -74,8 +75,7 @@ module.exports = {
             \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified member.
             \`;warn\`: Warns the specified member.`)
-            .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
-            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.`)
+            .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.`)
             .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
@@ -83,7 +83,8 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Manual - Page 3 of 4**`)
-            .addField(`Mod Utilities`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds.
+            .addField(`Mod Utilities`, `\`;addsticker\`: Adds a sticker in the guild with the image and name provided.
+            \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
