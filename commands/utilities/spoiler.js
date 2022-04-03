@@ -21,7 +21,7 @@ module.exports = {
                     .setSpoiler(true)
                 const embed = new MessageEmbed()
                     .setAuthor({
-                        name: `${message.author.tag}`,
+                        name: `${message.author.username}`,
                         iconURL: `${message.author.displayAvatarURL({dynamic:true, size:256})}`
                     })
                     .setTitle(`${desc}`)
@@ -45,7 +45,7 @@ module.exports = {
                 if (i === message.attachments.size) {
                     const embed = new MessageEmbed()
                         .setAuthor({
-                            name: `${message.author.tag}`,
+                            name: `${message.author.username}`,
                             iconURL: `${message.author.displayAvatarURL({dynamic:true, size:256})}`
                         })
                         .setTitle(`Spoiler images/videos sent by ${message.author.tag}`)
