@@ -82,7 +82,7 @@ module.exports = {
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 3 of 4**`)
+            .setDescription(`**Bot Manual - Page 4 of 4**`)
             .addField(`Mod Utilities`, `\`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
