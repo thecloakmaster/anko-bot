@@ -35,13 +35,12 @@ module.exports = {
                 const chpEmbed = new MessageEmbed()
                     .setThumbnail('attachment://vol.jpg')
                     .setAuthor({
-                        name: `Yofukashi no Uta - Chapter ${chpNumber}`,
+                        name: `[Yofukashi no Uta - Chapter ${chpNumber}](${redURL})`,
                         iconURL: client.user.displayAvatarURL()
                     })
-                    .setDescription(`**A new manga chapter has just been released!**\nThe chapter is available on MangaDex and the link can be found on the Reddit post linked below and in the title. Use <#${mangaID.id}> to discuss the chapter.`)
+                    .setDescription(`**A new manga chapter has just been released!**\nThe chapter is available on MangaDex and the link can be found on the Reddit post linked below. Use <#${mangaID.id}> to discuss the chapter.`)
                     .addField('Reddit Link', `[Click here!](${redURL})`)
                     .setColor("#e4a353")
-                    .setURL(`${redURL}`)
                 channelID.setName(`ch-${chpNumber}-info`)
 
                 return channelID.send({
