@@ -13,7 +13,7 @@ module.exports = {
             messageW = await message.channel.messages.fetch(`${messageID}`)
             const messageInput = messageW.content.match(hasEmoteRegex)
             if (!messageInput) return;
-            let messageToAuthor = (`Here are the emote(s) stolen from the message you had mentioned.`)
+            let messageToAuthor = (`These are the emotes stolen from the message you had mentioned.`)
             for (let i = 0; i < messageInput.length; i++) {
                 let messageInp = messageInput[i]
                 let emoji = null
