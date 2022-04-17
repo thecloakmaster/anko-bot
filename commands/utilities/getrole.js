@@ -20,7 +20,7 @@ module.exports = {
             let imgReg = /\.(jpeg|jpg|png)$/
             let colRegMatch = roleColour.match(hexReg)
             if (!colRegMatch) {
-                return message.channel.send(`Please enter a valid hex colour code.\nYou can pick a hex colour using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;getrole \`__\`<Hex colour>\`__\`<Role name> <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a valid hex colour code.\nYou can pick a hex colour using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\``)
             }
             roleColour = colRegMatch[0]
             let roleName = args.slice(1, args.length - 1).join(" ")
@@ -38,14 +38,14 @@ module.exports = {
                 }
                 roleIconURL = roleIconURL.replace(/\s/g, '')
             } catch (err) {
-                //return message.channel.send(`Please enter a valid URL.\nSyntax: \`;getrole <Hex colour> <Role name> \`__\`<Icon URL for the role (not necessary)>\`__`)
+                //return message.channel.send(`Please enter a valid URL.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\`__`)
                 roleName = args.slice(1).join(" ")
                 roleIconURL = null
             }
             if (!roleName) {
-                return message.channel.send(`Please enter a valid role name.\nSyntax: \`;getrole <Hex colour> \`__\`<Role name>\`__\` <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a valid role name.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\``)
             } else if (roleName.length > 100) {
-                return message.channel.send(`Please enter a shorter role name, preferably less than 100 characters.\nSyntax: \`;getrole <Hex colour> \`__\`<Role name>\`__\` <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a shorter role name, preferably less than 100 characters.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\``)
             }
 
             let PremiumTiers = ['NONE', 'TIER_1', 'TIER_2', 'TIER_3']

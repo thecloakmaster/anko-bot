@@ -42,7 +42,7 @@ module.exports = {
             \`serversplash\`: Sends the server's splash background image.
             \`;spoiler\`: Sends the specified image/video with a spoiler tag. (You should probably also learn to use the feature in-built in Discord to spoiler tag files)
             \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.`)
-            .setFooter({text:`Made by ${owner.tag}| Some designs for the bot embeds are taken from Scarlett by Amash#0001`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
@@ -58,7 +58,7 @@ module.exports = {
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;clearwarns\`: Clears all the warns of the specified user.
             \`;fetchwarns\`: Fetches the warns of the specified user.`)
-            .setFooter({text:`Made by ${owner.tag}| Some designs for the bot embeds are taken from Scarlett by Amash#0001`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
@@ -74,7 +74,7 @@ module.exports = {
             \`;unmute\`: Unmutes the specified member.
             \`;warn\`: Warns the specified member.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.`)
-            .setFooter({text:`Made by ${owner.tag}| Some designs for the bot embeds are taken from Scarlett by Amash#0001`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
@@ -85,7 +85,7 @@ module.exports = {
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
-            .setFooter({text:`Made by ${owner.tag}| Some designs for the bot embeds are taken from Scarlett by Amash#0001`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const button1 = new MessageButton()
                 .setCustomId('previousbtn')
@@ -189,7 +189,7 @@ module.exports = {
                     .addField(`Description:`, `${command.description}`)
                     .addField(`Aliases`, `\`${command.aliases || "No other aliases"}\``)
                     .addField(`Usage`, `\`${command.usage}\``)
-                    .setFooter({text:`Made by ${owner.tag}| Some designs for the bot embeds are taken from Scarlett by Amash#0001`, iconURL: `${owner.displayAvatarURL()}`});
+                    .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
                 return message.channel.send({
                     embeds: [helpSpecific]
                 })
