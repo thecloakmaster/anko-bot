@@ -61,10 +61,8 @@ module.exports = {
         .setDescription(`**User ID: ${memberImp.user.id}**`)
         .setColor(`${col}`)
         .addField(`Server Nickname`, `<@${memberImp.user.id}>`)
-        .addField(`Created at`, `<t:${cTs}>
-        <t:${cTs}:R>`)
-        .addField(`Joined at`, `<t:${jTs}>
-        <t:${jTs}:R>`, true)
+        .addField(`Created at`, `<t:${cTs}> <t:${cTs}:R>`)
+        .addField(`Joined at`, `<t:${jTs}> <t:${jTs}:R>`, true)
         .addField(`Join position`, `${joinPos}`, true)
         .addField(`Roles`, `${memberRoles}`)
         .addField(`Server Boost Status`, `${booStatus}`)
