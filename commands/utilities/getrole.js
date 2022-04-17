@@ -3,24 +3,24 @@ const BoosterMember = require(`../../database/BoosterMember.js`)
 const roleCreate = require(`../../functions/boostRole.js`)
 const roleCreateIcon = require(`../../functions/boostRoleIcon.js`)
 module.exports = {
-    name: `giverole`,
+    name: `getrole`,
     aliases: [`boosterrole`],
     description: `Gives a custom role to the boosters of their choice.`,
-    usage: `;giverole <Hex colour for the role> <Role name> <Role icon URL (not necessary)>`,
+    usage: `;getrole <Hex colour for the role> <Role name> <Role icon URL (not necessary)>`,
     async execute(message, args, client) {
         let serverBoostRole = message.guild.roles.premiumSubscriberRole
         if (!message.member.premiumSinceTimestamp && !message.member.roles.cache.some(role => role.id === serverBoostRole.id)) {
             return message.channel.send(`You **are not** eligible for a custom role but you can be if you become a server booster.`)
         } else if (message.member.premiumSinceTimestamp && message.member.roles.cache.some(role => role.id === serverBoostRole.id)) {
             if (!args[0]) {
-                return message.channel.send(`You **are** eligible for a custom role.\n Use \`;help giverole\` to get help on creating a custom role for yourself.`)
+                return message.channel.send(`You **are** eligible for a custom role.\n Use \`;help getrole\` to get help on creating a custom role for yourself.`)
             }
             let roleColour = args[0]
             let hexReg = /^#[0-9A-F]{6}$|^[0-9A-F]{6}/i
             let imgReg = /\.(jpeg|jpg|png)$/
             let colRegMatch = roleColour.match(hexReg)
             if (!colRegMatch) {
-                return message.channel.send(`Please enter a valid hex colour code.\nYou can pick a hex colour using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;giverole \`__\`<Hex colour>\`__\`<Role name> <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a valid hex colour code.\nYou can pick a hex colour using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;getrole \`__\`<Hex colour>\`__\`<Role name> <Icon URL for the role (not necessary)>\``)
             }
             roleColour = colRegMatch[0]
             let roleName = args.slice(1, args.length - 1).join(" ")
@@ -38,14 +38,14 @@ module.exports = {
                 }
                 roleIconURL = roleIconURL.replace(/\s/g, '')
             } catch (err) {
-                //return message.channel.send(`Please enter a valid URL.\nSyntax: \`;giverole <Hex colour> <Role name> \`__\`<Icon URL for the role (not necessary)>\`__`)
+                //return message.channel.send(`Please enter a valid URL.\nSyntax: \`;getrole <Hex colour> <Role name> \`__\`<Icon URL for the role (not necessary)>\`__`)
                 roleName = args.slice(1).join(" ")
                 roleIconURL = null
             }
             if (!roleName) {
-                return message.channel.send(`Please enter a valid role name.\nSyntax: \`;giverole <Hex colour> \`__\`<Role name>\`__\` <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a valid role name.\nSyntax: \`;getrole <Hex colour> \`__\`<Role name>\`__\` <Icon URL for the role (not necessary)>\``)
             } else if (roleName.length > 100) {
-                return message.channel.send(`Please enter a shorter role name, preferably less than 100 characters.\nSyntax: \`;giverole <Hex colour> \`__\`<Role name>\`__\` <Icon URL for the role (not necessary)>\``)
+                return message.channel.send(`Please enter a shorter role name, preferably less than 100 characters.\nSyntax: \`;getrole <Hex colour> \`__\`<Role name>\`__\` <Icon URL for the role (not necessary)>\``)
             }
 
             let PremiumTiers = ['NONE', 'TIER_1', 'TIER_2', 'TIER_3']

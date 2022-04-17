@@ -31,10 +31,10 @@ module.exports = {
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 1 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 1 of 4**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
-            \`;giverole\`: Gives a custom role to the boosters of their choice.
+            \`;getrole\`: Gives a custom role to the boosters of their choice.
             \`;help\`: Lists all the commands and provides information if the command is specified.
             \`;quote\`: Fetches previously sent message and sends it in an embed.
             \`;serverbanner\`: Sends the server's banner.
@@ -42,13 +42,12 @@ module.exports = {
             \`serversplash\`: Sends the server's splash background image.
             \`;spoiler\`: Sends the specified image/video with a spoiler tag. (You should probably also learn to use the feature in-built in Discord to spoiler tag files)
             \`;steal\`: Steals all the emotes from a single message and sends them to you via DMs.`)
-            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()} | Some design is taken from Scarlett by Amash#0001`});
 
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 2 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 2 of 4**`)
             .addField(`Utility`, `\`;whois\`: Gives information about the member specified or yourself.`)
             .addField(`Fun`, `\`;hug\`: Hugs the specified member and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
@@ -59,13 +58,12 @@ module.exports = {
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;clearwarns\`: Clears all the warns of the specified user.
             \`;fetchwarns\`: Fetches the warns of the specified user.`)
-            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()} | Some design is taken from Scarlett by Amash#0001`});
             
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 3 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 3 of 4**`)
             .addField(`Moderation`, `\`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
             \`;mute\`: Mutes the specified member.
@@ -76,20 +74,18 @@ module.exports = {
             \`;unmute\`: Unmutes the specified member.
             \`;warn\`: Warns the specified member.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.`)
-            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()} | Some design is taken from Scarlett by Amash#0001`});
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Manual - Page 4 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 4 of 4**`)
             .addField(`Mod Utilities`, `\`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
-            .addField(`Command Usage`, `Use \`;help <command name>\` for information about the command or use \`;help\` for the list of commands.`)
-            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()} | Some designs for the bot embeds are taken from Scarlett by Amash#0001`});
 
             const button1 = new MessageButton()
                 .setCustomId('previousbtn')
@@ -192,7 +188,8 @@ module.exports = {
                     .setTitle(`Command: \`;${command.name}\``)
                     .addField(`Description:`, `${command.description}`)
                     .addField(`Aliases`, `\`${command.aliases || "No other aliases"}\``)
-                    .addField(`Usage`, `\`${command.usage}\``);
+                    .addField(`Usage`, `\`${command.usage}\``)
+                    .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()} | Some designs for the bot embeds are taken from Scarlett by Amash#0001`});
                 return message.channel.send({
                     embeds: [helpSpecific]
                 })

@@ -52,7 +52,7 @@ module.exports = {
                 } else {
                     const embed = new MessageEmbed()
                         .setColor(`#e4a353`)
-                        .setDescription(`An sticker with the name \`${stickerName}\` has been added to the server.`)
+                        .setDescription(`A sticker with the name \`${stickerName}\` has been added to the server.`)
                     return message.channel.send({
                         embeds: [embed]
                     })
