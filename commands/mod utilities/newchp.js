@@ -35,7 +35,7 @@ module.exports = {
                 const chpEmbed = new MessageEmbed()
                     .setThumbnail('attachment://vol.jpg')
                     .setAuthor({
-                        name: `[Yofukashi no Uta - Chapter ${chpNumber}](${redURL})`,
+                        name: `Yofukashi no Uta - Chapter ${chpNumber}`,
                         iconURL: client.user.displayAvatarURL()
                     })
                     .setDescription(`**A new manga chapter has just been released!**\nThe chapter is available on MangaDex and the link can be found on the Reddit post linked below. Use <#${mangaID.id}> to discuss the chapter.`)
