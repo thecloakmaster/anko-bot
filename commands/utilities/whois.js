@@ -58,11 +58,11 @@ module.exports = {
         const whoEmbed = new MessageEmbed()
         .setAuthor({name: `${memberImp.user.tag}`, iconURL: `${memberImp.user.displayAvatarURL({dynamic:true})}`})
         .setThumbnail(`${memberImp.user.displayAvatarURL({dynamic:true})}`)
-        .setTitle(`ID: [${memberImp.user.id}]`)
+        .setDescription(`**ID: [${memberImp.user.id}]**`)
         .setColor(`${col}`)
         .addField(`Server Nickname`, `<@${memberImp.user.id}>`)
         .addField(`Created at`, `<t:${cTs}>
-        <t:${cTs}:R>`, true)
+        <t:${cTs}:R>`)
         .addField(`Joined at`, `<t:${jTs}>
         <t:${jTs}:R>`, true)
         .addField(`Join position`, `${joinPos}`, true)
