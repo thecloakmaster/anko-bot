@@ -58,7 +58,7 @@ module.exports = {
         const whoEmbed = new MessageEmbed()
         .setAuthor({name: `${memberImp.user.tag}`, iconURL: `${memberImp.user.displayAvatarURL({dynamic:true})}`})
         .setThumbnail(`${memberImp.user.displayAvatarURL({dynamic:true})}`)
-        .setDescription(`**ID: [${memberImp.user.id}]**`)
+        .setDescription(`**User ID: ${memberImp.user.id}**`)
         .setColor(`${col}`)
         .addField(`Server Nickname`, `<@${memberImp.user.id}>`)
         .addField(`Created at`, `<t:${cTs}>
