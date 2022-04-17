@@ -10,10 +10,10 @@ module.exports = {
     async execute(message, args, client) {
         let serverBoostRole = message.guild.roles.premiumSubscriberRole
         if (!message.member.premiumSinceTimestamp && !message.member.roles.cache.some(role => role.id === serverBoostRole.id)) {
-            return message.channel.send(`You **are not** eligible for a custom role but you can be if you become a server booster.`)
+            return message.channel.send(`You are not eligible for a custom role but you can be if you become a server booster.`)
         } else if (message.member.premiumSinceTimestamp && message.member.roles.cache.some(role => role.id === serverBoostRole.id)) {
             if (!args[0]) {
-                return message.channel.send(`You **are** eligible for a custom role.\n Use \`;help getrole\` to get help on creating a custom role for yourself.`)
+                return message.channel.send(`You are eligible for a custom role.\n Use \`;help getrole\` to get help on creating a custom role for yourself.`)
             }
             let roleColour = args[0]
             let hexReg = /^#[0-9A-F]{6}$|^[0-9A-F]{6}/i

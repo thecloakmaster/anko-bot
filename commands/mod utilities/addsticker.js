@@ -38,9 +38,9 @@ module.exports = {
         url = url.replace(/\s/g, '')
         try {
             let urlcheck = new URL(url)
-            let imgRegMatch = url.match(/\.(jpeg|jpg|png|webp|gif)$/)
+            let imgRegMatch = url.match(/\.(png)$/)
             if (!imgRegMatch) {
-                return message.channel.send(`Please enter a valid image URL to a .jpg/.png/.webp/.gif file.`)
+                return message.channel.send(`Please enter a valid image URL to a .png file.`)
             }
         } catch (err) {
             return message.channel.send(`Please enter a valid URL.\nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
