@@ -25,7 +25,7 @@ module.exports = {
             .setDescription(`**Guild ID: ${await message.guild.id}**`)
             .addField(`Member Count`, `${message.guild.memberCount}`)
             .addField('Created At', `<t:${cTs}:F>`, true)
-            .addField(`Owner`, `<@!${message.guild.ownerId}>\nID: ${message.guild.ownerId}`, true)
+            .addField(`Owner`, `<@!${message.guild.ownerId}>\nID ${message.guild.ownerId}`, true)
             .addField(`Verification Level`, `${message.guild.verificationLevel}`)
             .addField(`Server's Premium`, `Number of boosts: ${await message.guild.premiumSubscriptionCount}\nBoost Level: ${boostLevel}`,true)
             .addField(`Channels`, `Categories: ${channels.filter((c) => c.type === "GUILD_CATEGORY").size}\nText Channels: ${channels.filter((c) => c.type === "GUILD_TEXT").size}\nVoice Channels: ${channels.filter((c) => c.type === "GUILD_VOICE").size}`, true)
