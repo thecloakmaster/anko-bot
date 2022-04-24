@@ -6,6 +6,7 @@ module.exports = {
     aliases: ["serveravatar", "serveravi", "serverav", "serverpfp"],
     description: `Sends the server's icon.`,
     async execute(message) {
+        if (message.guild.iconURL() === null) return message.reply("This server does not have an icon.");
         const embedAvatar = new MessageEmbed()
             .setColor("#e4a353")
             .setTitle(`Here's the server's profile picture.`)
