@@ -54,32 +54,35 @@ module.exports = {
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
             \`;pat\`: Pats the specified member and makes them feel a little bit better.
             \`;slap\`: Slaps the specified member for whatever the reason may be.
+            \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
             \`;uwuify\`: Makes your message more UwU.`)
-            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
-            \`;clearwarns\`: Clears all the warns of the specified user.`)
+            .addField(`Moderation`, `\`;ban\`: Bans the specified user.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Help Catalogue - Page 3 of 4**`)
-            .addField(`Moderation`, `\`;fetchwarns\`: Fetches the warns of the specified user.
+            .addField(`Moderation`, `\`;clearwarns\`: Clears all the warns of the specified user.
+            \`;fetchwarns\`: Fetches the warns of the specified user.
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
+            \`;massban\`: Bans the group of users specified.
+            \`;massunban\`: Unbans the group of users specified.
             \`;mute\`: Mutes the specified member.
             \`;purge\`: Deletes the amount of messages specified.
             \`;removewarn\`: Removes the specified warn of the specified member.
-            \`;unban\`: Unbans the specified user.
-            \`;unlock\`: Unlocks the channel.
-            \`;unmute\`: Unmutes the specified member.
-            \`;warn\`: Warns the specified member.`)
+            \`;unban\`: Unbans the specified user.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
             .setDescription(`**Bot Help Catalogue - Page 4 of 4**`)
+            .addField(`Moderation`, `\`;unlock\`: Unlocks the channel.
+            \`;unmute\`: Unmutes the specified member.
+            \`;warn\`: Warns the specified member.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
@@ -191,9 +194,16 @@ module.exports = {
                     .addField(`Aliases`, `\`${command.aliases || "No other aliases"}\``)
                     .addField(`Usage`, `\`${command.usage}\``)
                     .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
-                return message.channel.send({
-                    embeds: [helpSpecific]
-                })
+                if (!command.cooldown) {
+                    return message.channel.send({
+                        embeds: [helpSpecific]
+                    })
+                } else if (command.cooldown) {
+                    return message.channel.send({
+                        embeds: [helpSpecific.addField(`Cooldown`, `${command.cooldown/1000} seconds`)]
+                    })
+                }
+                
             } catch (err) {
                 console.log(err)
             }

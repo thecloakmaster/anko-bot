@@ -21,16 +21,8 @@ module.exports = {
         try {
             //If user is already unbanned
             const banList = await message.guild.bans.fetch(userBan);
-            //const bannedUser = banList.find(user => user.id === `${userBan.id}`)
             if (!banList) {
-                const alrBanned = new MessageEmbed()
-                    .setColor("#e4a353")
-                    .setTitle(`Error executing command.`)
-                    .setDescription(`This user is not banned.`)
-                    .setTimestamp();
-                return message.message.channel.send({
-                    embeds: [alrBanned]
-                })
+                return message.message.channel.send(`This user is already unbanned.`)
             }
         } catch (err) {
 

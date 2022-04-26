@@ -19,12 +19,12 @@ module.exports = {
         try {
             for (var i = 0; i < pinnedMessages.length; i++) {
                 let pin = pinnedMessages[i];
-                var color = "#e4a353"
+                let color = "#000000"
                 const inServer = await message.guild.members.fetch(pin.author.id).catch(() => {});
                 if (!inServer) {
-                    var color = "#e4a353"
+                    color = "#000000"
                 } else {
-                    var color = pin.member.displayHexColor;
+                    color = pin.member.displayHexColor;
                 };
 
                 if (pin.attachments.size > 0) {

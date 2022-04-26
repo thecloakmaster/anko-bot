@@ -21,7 +21,7 @@ module.exports = {
             try {
                 const inServer = await message.guild.members.fetch(messageW.author.id).catch(() => {});
                 if (!inServer) {
-                    var color = "#e4a353"
+                    var color = "#000000"
                 } else {
                     var color = messageW.member.displayHexColor;
                 };
@@ -66,7 +66,7 @@ module.exports = {
         
         if (!channelID) return message.channel.send("Please specify a valid channel or ID.\nSyntax: \`;quote #channel <message ID>\` or \`;quote <message ID>\` if the message is in the same channel.");
 
-        const messageID = args.slice(1).join(" ");
+        const messageID = args[1];
 
         try {messageW = await channelID.messages.fetch(`${messageID}`);} catch(err) {return message.channel.send("Please enter a valid message ID. \nSyntax: \`;quote #channel <message ID>\` or \`;quote <message ID>\` if the message is in the same channel.")}
 
@@ -75,7 +75,7 @@ module.exports = {
         try {
             const inServer = await message.guild.members.fetch(messageW.author.id).catch(() => {});
             if (!inServer) {
-                var color = "#4752c4"
+                var color = "#000000"
             } else {
                 var color = messageW.member.displayHexColor;
             };
