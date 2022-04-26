@@ -38,8 +38,8 @@ module.exports = {
         url = url.replace(/\s/g, '')
         try {
             let urlcheck = new URL(url)
-            let imgRegMatch = url.match(/\.(png)$/)
-            if (!imgRegMatch) {
+            let imgMatch = url.split(/[#?]/)[0].split('.').pop().trim();
+            if (imgMatch != 'png') {
                 return message.channel.send(`Please enter a valid image URL to a .png file.`)
             }
         } catch (err) {

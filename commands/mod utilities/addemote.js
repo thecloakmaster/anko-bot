@@ -37,8 +37,8 @@ module.exports = {
         }
         try {
             let urlcheck = new URL(url)
-            let imgRegMatch = url.match(/\.(jpeg|jpg|png|webp|gif)$/)
-            if (!imgRegMatch) {
+            let imgMatch = url.split(/[#?]/)[0].split('.').pop().trim();
+            if (imgMatch != 'jpeg' && imgMatch != `jpg` && imgMatch != 'png' && imgMatch != 'webp' && imgMatch != 'gif') {
                 return message.channel.send(`Please enter a valid image URL to a .jpg/.png/.webp/.gif file.`)
             }
         } catch (err) {
