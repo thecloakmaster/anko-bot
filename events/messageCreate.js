@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const Cooldown = new Discord.Collection();
+const ms = require('ms');
+
 module.exports = {
     name: `messageCreate`,
     async execute(message, client) {
