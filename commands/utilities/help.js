@@ -11,7 +11,7 @@ module.exports = {
     description: 'Lists all the commands and provides information if the command is specified.',
     usage: ";help <command name> or ;help",
     aliases: ['h'],
-    async execute (message, args, client, Discord, bot) {
+    async execute (message, args, client, Discord) {
 
         client.commands = new Discord.Collection();
         
@@ -177,7 +177,6 @@ module.exports = {
             const commHelp = args[0].split(/ +/);
             const commandName = commHelp.shift().toLowerCase();
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
 
             hiddenCommands = ['talk', 'newchp', 'modreply', 'modmail', 'replymodmail', 'replymod', 'reply', `adminhelp`]
             for (let i = 0; i < hiddenCommands.length; i++) {
