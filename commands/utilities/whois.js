@@ -6,7 +6,7 @@ module.exports = {
     name: 'whois',
     description: `Gives information about the member specified or yourself.`,
     usage:';whois <mention a user or a user ID>',
-    cooldown: 4000,
+    cooldown: 10000,
     async execute (message, args) {
 
         let memberImp = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
