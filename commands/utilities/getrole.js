@@ -17,7 +17,6 @@ module.exports = {
             }
             let roleColour = args[0]
             let hexReg = /^#[0-9A-F]{6}$|^[0-9A-F]{6}/i
-            let imgReg = /\.(jpeg|jpg|png)$/
             let colRegMatch = roleColour.match(hexReg)
             if (!colRegMatch) {
                 return message.channel.send(`Please enter a valid hex colour code.\nYou can pick out a hex colour code using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\``)
@@ -32,6 +31,10 @@ module.exports = {
             }
             try {
                 let urlcheck = new URL(roleIconURL)
+                let imgMatch = roleIconURL.split(/[#?]/)[0].split('.').pop().trim();
+                if (imgMatch != 'jpeg' && imgMatch != `jpg` && imgMatch != 'png') {
+                    return message.channel.send(`Please enter a valid image URL to a .jpg or a .png file.`)
+                }
                 let imgRegMatch = roleIconURL.match(imgReg)
                 if (!imgRegMatch) {
                     return message.channel.send(`Please enter a valid image URL to a .jpg or a .png file.`)
