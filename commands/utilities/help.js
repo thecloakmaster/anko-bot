@@ -203,7 +203,6 @@ module.exports = {
                         embeds: [helpSpecific.addField(`Cooldown`, `${command.cooldown/1000 || command.unicooldown/1000} seconds`)]
                     })
                 }
-                
             } catch (err) {
                 console.log(err)
             }

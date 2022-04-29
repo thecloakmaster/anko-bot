@@ -10,13 +10,13 @@ module.exports = {
     name: `manga`,
     description: `Grabs the requested chapter from MangaDex and sends it in the chat.`,
     usage: `;manga <Chapter number> <Page number (optional)>`,
-    unicooldown: 10000,
+    unicooldown: 5000,
     async execute(message, args, client) {
         let chp_no = args[0]
         if (!args[0]) {
             chp_no = 1
         } else if (isNaN(args[0])) {
-            message.channel.send(`Please enter a valid chapter number.`)
+            return message.channel.send(`Please enter a valid chapter number.`)
         }
         MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = await MFA.Manga.getByQuery('Yofukashi no Uta');
