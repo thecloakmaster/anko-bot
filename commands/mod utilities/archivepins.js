@@ -17,7 +17,7 @@ module.exports = {
 
         const pinnedMessages = Array.from(pinFetch.values());
         try {
-            for (var i = 0; i < pinnedMessages.length; i++) {
+            for (let i = 0; i < pinnedMessages.length; i++) {
                 let pin = pinnedMessages[i];
                 let color = "#000000"
                 const inServer = await message.guild.members.fetch(pin.author.id).catch(() => {});

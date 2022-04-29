@@ -20,10 +20,11 @@ module.exports = {
             messageW = await message.channel.messages.fetch(`${potentialID}`)
             try {
                 const inServer = await message.guild.members.fetch(messageW.author.id).catch(() => {});
+                let color = "#000000"
                 if (!inServer) {
-                    var color = "#000000"
+                    color = "#000000"
                 } else {
-                    var color = messageW.member.displayHexColor;
+                    color = messageW.member.displayHexColor;
                 };
 
                 if (messageW.attachments.size > 0) {
@@ -74,10 +75,11 @@ module.exports = {
 
         try {
             const inServer = await message.guild.members.fetch(messageW.author.id).catch(() => {});
+            let color = "#000000"
             if (!inServer) {
-                var color = "#000000"
+                color = "#000000"
             } else {
-                var color = messageW.member.displayHexColor;
+                color = messageW.member.displayHexColor;
             };
             
             if(messageW.attachments.size > 0) {
