@@ -194,7 +194,7 @@ module.exports = {
                     .addField(`Aliases`, `\`${command.aliases || "No other aliases"}\``)
                     .addField(`Usage`, `\`${command.usage}\``)
                     .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
-                if (!command.cooldown) {
+                if (!command.cooldown && !command.unicooldown) {
                     return message.channel.send({
                         embeds: [helpSpecific]
                     })
