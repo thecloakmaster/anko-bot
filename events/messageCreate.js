@@ -33,21 +33,21 @@ module.exports = {
 
         try {
             if (command.cooldown && command.unicooldown) {
-                if (Cooldown.has(`${command.name}${await message.author.id}`)) return message.channel.send(`You are on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
+                if (Cooldown.has(`${command.name}${await message.author.id}`)) return message.channel.send(`You are on a cooldown. Please wait for \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` to execute this command again.`)
                 command.execute(message, args, client, Discord);
                 Cooldown.set(`${command.name}${await message.author.id}`, Date.now() + command.cooldown)
                 setTimeout(() => {
                     Cooldown.delete(`${command.name}${message.author.id}`)
                 }, command.unicooldown)
             } else if (!command.cooldown && command.unicooldown) {
-                if (Cooldown.has(`${command.name}${await message.author.id}`)) return message.channel.send(`You are on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
+                if (Cooldown.has(`${command.name}${await message.author.id}`)) return message.channel.send(`You are on a cooldown. Please wait for \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` to execute this command again.`)
                 command.execute(message, args, client, Discord);
                 Cooldown.set(`${command.name}${await message.author.id}`, Date.now() + command.unicooldown)
                 setTimeout(() => {
                     Cooldown.delete(`${command.name}${message.author.id}`)
                 }, command.unicooldown)
             } else if (command.cooldown && !command.unicooldown) {
-                if (Cooldown.has(`${command.name}${await message.author.id}`)) return message.channel.send(`You are on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
+                if (Cooldown.has(`${command.name}${await message.author.id}`)) return message.channel.send(`You are on a cooldown. Please wait for \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` to execute this command again.`)
                 command.execute(message, args, client, Discord);
                 if (!message.member.permissions.has("MODERATE_MEMBERS") && !message.member.permissions.has("ADMINISTRATOR") && !message.member.permissions.has("MANAGE_MESSAGES")) {
                     Cooldown.set(`${command.name}${await message.author.id}`, Date.now() + command.cooldown)
