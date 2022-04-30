@@ -3,7 +3,7 @@ const {MessageEmbed} = require(`discord.js`)
 
 module.exports = {
     async execute(mangaTitle, interaction, message) {
-        MFA.login(`thecloakmaster`, `${process.env.MDpass}`, `../../bin/.md_cache`).then(async () => {
+        MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = await MFA.Manga.get(`${mangaTitle}`)
             let mangaTitleOut = manga.localizedTitle.en
             let thumbnail = await MFA.Cover.get(manga.mainCover.id)

@@ -13,7 +13,7 @@ module.exports = {
         } else if (isNaN(args[0])) {
             return message.channel.send(`Please enter a valid chapter number.`)
         }
-        MFA.login(`thecloakmaster`, `${process.env.MDpass}`, `../../bin/.md_cache`).then(async () => {
+        MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = await MFA.Manga.getByQuery('Yofukashi no Uta');
             let chapters = await manga.getFeed({
                 translatedLanguage: ['en'],

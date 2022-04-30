@@ -12,7 +12,7 @@ module.exports = {
             return message.channel.send(`Please specify a title of a series.\nSyntax: \`;mdsearch <Title of the series>\``)
         }
         let manga = null
-        MFA.login(`thecloakmaster`, `${process.env.MDpass}`, `../../bin/.md_cache`).then(async () => {
+        MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let options = []
             try {
                 let mangas = await MFA.Manga.search(`${args.slice(0).join(" ")}`)

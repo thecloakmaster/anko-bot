@@ -10,7 +10,7 @@ module.exports = {
         if (!args.slice(0).join(" ")) {
             return message.channel.send(`Please specify the title of a manga.`)
         }
-        MFA.login(`thecloakmaster`, `${process.env.MDpass}`, `../../bin/.md_cache`).then(async () => {
+        MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = null
             let mangaTitleInp = null
             let chapterNum = null
