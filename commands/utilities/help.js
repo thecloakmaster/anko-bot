@@ -31,7 +31,7 @@ module.exports = {
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Help Catalogue - Page 1 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 1 of 5**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
             \`;getrole\`: Gives a custom role to the boosters of their choice.
@@ -47,7 +47,7 @@ module.exports = {
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Help Catalogue - Page 2 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 2 of 5**`)
             .addField(`Utility`, `\`;serverinfo\`: Gives information about the server in which the command is executed.
             \`serversplash\`: Sends the server's splash background image.
             \`;spoiler\`: Sends the specified image/video with a spoiler tag. (You should probably also learn to use the feature in-built in Discord to spoiler tag files)
@@ -63,7 +63,7 @@ module.exports = {
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Help Catalogue - Page 3 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 3 of 5**`)
             .addField(`Fun`, `\`;massspank\`: Spanks the specified members and mutes them for 1 minute.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
             \`;uwuify\`: Makes your message more UwU.`)
@@ -79,7 +79,7 @@ module.exports = {
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Help Catalogue - Page 4 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 4 of 5**`)
             .addField(`Moderation`, `\`;purge\`: Deletes the amount of messages specified.
             \`;removewarn\`: Removes the specified warn of the specified member.
             \`;unban\`: Unbans the specified user.
@@ -96,7 +96,7 @@ module.exports = {
             const page5 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor("#e4a353")
-            .setDescription(`**Bot Help Catalogue - Page 4 of 4**`)
+            .setDescription(`**Bot Help Catalogue - Page 5 of 5**`)
             .addField(`Mod Utilities`, `\`;setmuterole\`: Sets the server's mute role.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
