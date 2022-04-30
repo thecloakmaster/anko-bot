@@ -184,18 +184,7 @@ module.exports = {
                         console.log(err)
                     }
                 });
-            } else if (chapter && chapter.isExternal) {
-                let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                let mangaTitle = manga.localizedTitle[mangaTitleLoc]
-                let thumbnail = await MFA.Cover.get(manga.mainCover.id)
-                let mangaEmbed = new MessageEmbed()
-                    .setColor(`#33FFBD`)
-                    .setImage(`${thumbnail.imageSource}`)
-                    .setTitle(`${mangaTitle}`)
-                    .setDescription(`This chapter (maybe the series as well) is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
-                    .setURL(`https://mangadex.org/title/${manga.id}`)
-                return message.channel.send({embeds: [mangaEmbed]})
-            }else if (!chapter) {
+            } else if (!chapter) {
                 const findExtChapter = async (targetManga, targetChap, offset = 0) => {
                     const chapters = await targetManga.getFeed({
                         translatedLanguage: ['en'],
@@ -212,7 +201,20 @@ module.exports = {
                     return findExtChapter(targetManga, targetChap, offset + 100);
                 }
                 chapter = findExtChapter(manga, chapterNum)
-                if (!chapter) {
+                if (chapter) {
+                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
+                    let mangaTitle = manga.localizedTitle[mangaTitleLoc]
+                    let thumbnail = await MFA.Cover.get(manga.mainCover.id)
+                    let mangaEmbed = new MessageEmbed()
+                        .setColor(`#33FFBD`)
+                        .setImage(`${thumbnail.imageSource}`)
+                        .setTitle(`${mangaTitle}`)
+                        .setDescription(`This chapter (maybe the series as well) is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
+                        .setURL(`https://mangadex.org/title/${manga.id}`)
+                    return message.channel.send({
+                        embeds: [mangaEmbed]
+                    })
+                } else if (!chapter) {
                     let interaction = null
                     return mangaSearch.execute(manga.id, interaction, message)
                 }
