@@ -72,7 +72,7 @@ module.exports = {
                     name: `Chapter ${chapter.chapter}`,
                     iconURL: client.user.displayAvatarURL()
                 })
-                .setTitle(`${chapter.title}`)
+                .setTitle(`${chapter.title || manga.localizedTitle[mangaTitleLoc]}`)
                 .setFooter({
                     text: `Page ${page+1} of ${pages.length}`
                 })
