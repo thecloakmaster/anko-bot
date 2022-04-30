@@ -65,7 +65,7 @@ module.exports = {
                 if (chapters.length === 0) return null;
                 if (chapters.length === 1) return chapters[0]
                 for (const chap of chapters)
-                    if (chap.chapter == targetChap) return chap;
+                    if (chap.chapter == targetChap && chap.isExternal === false) return chap;
                 return findChapter(targetManga, targetChap, offset + 100);
             }
             let chapter = await findChapter(manga, chapterNum)
@@ -196,8 +196,26 @@ module.exports = {
                     .setURL(`https://mangadex.org/title/${manga.id}`)
                 return message.channel.send({embeds: [mangaEmbed]})
             }else if (!chapter) {
-                let interaction = null
-                return mangaSearch.execute(manga.id, interaction, message)
+                const findExtChapter = async (targetManga, targetChap, offset = 0) => {
+                    const chapters = await targetManga.getFeed({
+                        translatedLanguage: ['en'],
+                        order: {
+                            publishAt: 'desc'
+                        },
+                        offset: offset,
+                        limit: 100
+                    });
+                    if (chapters.length === 0) return null;
+                    if (chapters.length === 1) return chapters[0]
+                    for (const chap of chapters)
+                        if (chap.chapter == targetChap) return chap;
+                    return findExtChapter(targetManga, targetChap, offset + 100);
+                }
+                chapter = findExtChapter(manga, chapterNum)
+                if (!chapter) {
+                    let interaction = null
+                    return mangaSearch.execute(manga.id, interaction, message)
+                }
             }
         })
     }
