@@ -32,25 +32,7 @@ module.exports = {
         if (!command) return;
 
         try {
-            if (command.cooldown && command.unicooldown) {
-                if (Cooldown.has(`${command.name}${await message.author.id}`)) {
-                    return message.channel.send(`You are on a cooldown. Please wait for \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` to execute this command again.`)
-                }
-                command.execute(message, args, client, Discord);
-                Cooldown.set(`${command.name}${await message.author.id}`, Date.now() + command.cooldown)
-                setTimeout(() => {
-                    Cooldown.delete(`${command.name}${message.author.id}`)
-                }, command.unicooldown)
-            } else if (!command.cooldown && command.unicooldown) {
-                if (Cooldown.has(`${command.name}${await message.author.id}`)) {
-                    return message.channel.send(`You are on a cooldown. Please wait for \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` to execute this command again.`)
-                }
-                command.execute(message, args, client, Discord);
-                Cooldown.set(`${command.name}${await message.author.id}`, Date.now() + command.unicooldown)
-                setTimeout(() => {
-                    Cooldown.delete(`${command.name}${message.author.id}`)
-                }, command.unicooldown)
-            } else if (command.cooldown && !command.unicooldown) {
+            if (command.cooldown) {
                 if (Cooldown.has(`${command.name}${await message.author.id}`)) {
                     return message.channel.send(`You are on a cooldown. Please wait for \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` to execute this command again.`)
                 }
@@ -61,7 +43,7 @@ module.exports = {
                         Cooldown.delete(`${command.name}${message.author.id}`)
                     }, command.cooldown)
                 }
-            } else if (!command.cooldown && !command.unicooldown) {
+            } else if (!command.cooldown) {
                 command.execute(message, args, client, Discord);
             }
         } catch (error) {

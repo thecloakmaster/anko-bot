@@ -1,16 +1,11 @@
-const {
-    MessageEmbed,
-    MessageButton,
-    MessageActionRow,
-    MessageAttachment
-} = require(`discord.js`)
+const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment } = require(`discord.js`)
 const MFA = require(`mangadex-full-api`)
 
 module.exports = {
     name: `manga`,
-    description: `Grabs the requested chapter from MangaDex and sends it in the chat.`,
+    description: `Grabs the requested chapter of Yofukashi no Uta from MangaDex and sends it in the chat.`,
     usage: `;manga <Chapter number> <Page number (optional)>`,
-    unicooldown: 5000,
+    cooldown: 5000,
     async execute(message, args, client) {
         let chp_no = args[0]
         if (!args[0]) {
@@ -18,7 +13,7 @@ module.exports = {
         } else if (isNaN(args[0])) {
             return message.channel.send(`Please enter a valid chapter number.`)
         }
-        MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
+        MFA.login(`thecloakmaster`, `${process.env.MDpass}`, `../../bin/.md_cache`).then(async () => {
             let manga = await MFA.Manga.getByQuery('Yofukashi no Uta');
             let chapters = await manga.getFeed({
                 translatedLanguage: ['en'],
