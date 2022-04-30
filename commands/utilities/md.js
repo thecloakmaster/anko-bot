@@ -1,5 +1,6 @@
 const MFA = require(`mangadex-full-api`)
 const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment } = require(`discord.js`)
+const mangaSearch = require (`../../functions/mangaSearch`)
 
 module.exports = {
     name: `md`,
@@ -106,7 +107,7 @@ module.exports = {
                 let file = new MessageAttachment(`${image}`).setName(`${mangaTitleReg}_${chapterTitle}_Ch_${chapterNum}_Page_${page+1}.png`)
                 let embed = new MessageEmbed()
                     .setAuthor({
-                        name: `Chapter ${chapterNum}`,
+                        name: `${manga.localizedTitle[mangaTitleLoc]} Chapter ${chapterNum}`,
                         iconURL: client.user.displayAvatarURL()
                     })
                     .setTitle(`${chapter.title}`)
@@ -188,23 +189,15 @@ module.exports = {
                 let mangaTitle = manga.localizedTitle[mangaTitleLoc]
                 let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                 let mangaEmbed = new MessageEmbed()
+                    .setColor(`#33FFBD`)
                     .setImage(`${thumbnail.imageSource}`)
                     .setTitle(`${mangaTitle}`)
                     .setDescription(`This chapter (maybe the series as well) is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
                     .setURL(`https://mangadex.org/title/${manga.id}`)
                 return message.channel.send({embeds: [mangaEmbed]})
             }else if (!chapter) {
-                let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                let mangaTitle = manga.localizedTitle[mangaTitleLoc]
-                let thumbnail = await MFA.Cover.get(manga.mainCover.id)
-                let mangaEmbed = new MessageEmbed()
-                    .setThumbnail(`${thumbnail.image512}`)
-                    .setTitle(`${mangaTitle}`)
-                    .setDescription(`${manga.localizedDescription.en}\n\n**Status:** ${manga.status}`)
-                    .setURL(`https://mangadex.org/title/${manga.id}`)
-                return message.channel.send({
-                    embeds: [mangaEmbed]
-                })
+                let interaction = null
+                return mangaSearch.execute(manga.id, interaction, message)
             }
         })
     }

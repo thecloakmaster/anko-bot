@@ -1,6 +1,6 @@
 const MFA = require(`mangadex-full-api`)
 const {MessageEmbed, MessageActionRow, MessageSelectMenu} = require (`discord.js`)
-const MDsearch = require(`../../functions/mangaSearch`)
+const mangaSearch = require(`../../functions/mangaSearch`)
 
 module.exports = {
     name: `mdsearch`,
@@ -26,7 +26,7 @@ module.exports = {
             if (options.length === 1) {
                 let interaction = null
                 manga = await MFA.Manga.getByQuery(`${args.slice(0).join(" ")}`)
-                return MDsearch.execute(manga.id, interaction, message)
+                return mangaSearch.execute(manga.id, interaction, message)
             } else if (options.length === 0) {
                 return message.channel.send(`No series with that specific title was found on MangaDex. Make sure you have typed the title correctly.\nSyntax: \`;mdsearch <Title of the series>\``)
             } else if (options.length > 1) {
