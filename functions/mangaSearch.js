@@ -5,7 +5,7 @@ module.exports = {
     async execute(mangaTitle, interaction, message) {
         MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = await MFA.Manga.get(`${mangaTitle}`)
-            let mangaTitleOut = manga.localizedTitle.en
+            let mangaTitleOut = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
             let thumbnail = await MFA.Cover.get(manga.mainCover.id)
             let latestChp = await manga.getFeed({
                 translatedLanguage: ['en'],

@@ -107,7 +107,7 @@ module.exports = {
                 let file = new MessageAttachment(`${image}`).setName(`${mangaTitleReg}_${chapterTitle}_Ch_${chapterNum}_Page_${page+1}.png`)
                 let embed = new MessageEmbed()
                     .setAuthor({
-                        name: `${manga.localizedTitle[mangaTitleLoc]} Chapter ${chapterNum}`,
+                        name: `${manga.localizedTitle[mangaTitleLoc]} | Chapter ${chapterNum}`,
                         iconURL: client.user.displayAvatarURL()
                     })
                     .setTitle(`${chapter.title}`)
