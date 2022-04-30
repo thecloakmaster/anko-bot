@@ -69,7 +69,7 @@ module.exports = {
             }
             let chapter = await findChapter(manga, chapterNum)
             if (chapter && !chapter.isExternal) {
-                let pages = await chapter.getReadablePages();
+                let pages = await chapter.getReadablePages({saver: true});
                 if (!isNaN(page)) {
                     if (page < pages.length) {
                         page -= 1
