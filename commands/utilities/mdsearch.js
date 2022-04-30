@@ -1,6 +1,6 @@
 const MFA = require(`mangadex-full-api`)
 const {MessageEmbed, MessageActionRow, MessageSelectMenu} = require (`discord.js`)
-const MDsearch = require(`../../functions/MDsearchResults`)
+const MDsearch = require(`../../functions/mangaSearch`)
 
 module.exports = {
     name: `mdsearch`,

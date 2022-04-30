@@ -1,4 +1,4 @@
-const MDsearch = require(`../functions/MDsearchResults`)
+const MDsearch = require(`../functions/mangaSearch`)
 
 module.exports = {
     name: `interactionCreate`,
