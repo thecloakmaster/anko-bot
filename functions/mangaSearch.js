@@ -1,5 +1,6 @@
 const MFA = require(`mangadex-full-api`)
 const {MessageEmbed} = require(`discord.js`)
+const mangaQuery = require (`../functions/mangaAniListQuery`)
 
 module.exports = {
     async execute(mangaTitle, interaction, message) {
@@ -40,7 +41,19 @@ module.exports = {
                 })
             }
             if (manga.links.al) {
-                mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                let AniListURL = manga.links.al
+                let queryReturned = mangaQuery.execute(AniListURL)
+                if (queryReturned) {
+                    if (queryReturned.averageScore && queryReturned.meanScore) {
+                        mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                        mangaEmbed.addField(`AniList Average Score`, `${queryReturned.averageScore}`)
+                    } else if (!queryReturned.averageScore && queryReturned.meanScore) {
+                        mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                        mangaEmbed.addField(`AniList Mean Score`, `${queryReturned.meanScore}`)
+                    } else if (!queryReturned.averageScore && !queryReturned.meanScore){
+                        mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                    }
+                }
             }
             if (manga.links.mal) {
                 mangaEmbed.addField(`MyAnimeList Page`, `[Click here!](${manga.links.mal})`, true)
