@@ -47,10 +47,10 @@ module.exports = {
                     if (queryReturned) {
                         if (queryReturned.averageScore && queryReturned.meanScore) {
                             mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
-                            mangaEmbed.addField(`AniList Average Score`, `${queryReturned.averageScore}`)
+                            mangaEmbed.addField(`AniList Average Score`, `${queryReturned.averageScore}`, true)
                         } else if (!queryReturned.averageScore && queryReturned.meanScore) {
                             mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
-                            mangaEmbed.addField(`AniList Mean Score`, `${queryReturned.meanScore}`)
+                            mangaEmbed.addField(`AniList Mean Score`, `${queryReturned.meanScore}`, true)
                         } else if (!queryReturned.averageScore && !queryReturned.meanScore){
                             mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
                         }
