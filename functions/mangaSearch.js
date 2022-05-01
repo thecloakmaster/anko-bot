@@ -41,18 +41,22 @@ module.exports = {
                 })
             }
             if (manga.links.al) {
-                let AniListURL = manga.links.al
-                let queryReturned = await mangaQuery.execute(AniListURL)
-                console.log(queryReturned)
-                if (queryReturned) {
-                    if (queryReturned.averageScore && queryReturned.meanScore) {
-                        mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
-                        mangaEmbed.addField(`AniList Average Score`, `${queryReturned.averageScore}`)
-                    } else if (!queryReturned.averageScore && queryReturned.meanScore) {
-                        mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
-                        mangaEmbed.addField(`AniList Mean Score`, `${queryReturned.meanScore}`)
-                    } else if (!queryReturned.averageScore && !queryReturned.meanScore){
-                        mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                let AniListID = parseInt(manga.links.al.replace("https://anilist.co/manga/", ""))
+                if (typeof(AniListID) === "number") {
+                    let queryReturned = await mangaQuery.execute(AniListID)
+                    if (queryReturned) {
+                        if (queryReturned.averageScore && queryReturned.meanScore) {
+                            mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                            mangaEmbed.addField(`AniList Average Score`, `${queryReturned.averageScore}`)
+                        } else if (!queryReturned.averageScore && queryReturned.meanScore) {
+                            mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                            mangaEmbed.addField(`AniList Mean Score`, `${queryReturned.meanScore}`)
+                        } else if (!queryReturned.averageScore && !queryReturned.meanScore){
+                            mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
+                        }
+                        if (queryReturned.coverImage.color) {
+                            mangaEmbed.setColor(`${queryReturned.coverImage.color}`)
+                        }
                     }
                 }
             }

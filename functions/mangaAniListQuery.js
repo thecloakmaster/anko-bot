@@ -1,16 +1,19 @@
 const fetch = require(`node-fetch`)
 
 module.exports = {
-    async execute(AniListURL) {
+    async execute(AniListID) {
         let returnData = null
-        let query = `query ($siteUrl: String) {
-            Media(siteUrl: $siteUrl) {
+        let query = `query ($id: Int) {
+            Media(id: $id type: MANGA) {
                 averageScore
                 meanScore
+                coverImage {
+                    color
+                }
             }
         }`
         let variables = {
-            siteUrl: AniListURL
+            id: AniListID
         };
         let accessToken = `${process.env.AniListToken}`
         let url = 'https://graphql.anilist.co'
