@@ -9,7 +9,7 @@ module.exports = {
     cooldown: 5000,
     async execute(message, args, client) {
         if (!args.slice(0).join(" ")) {
-            return message.channel.send(`Please specify the title of a manga.`)
+            return message.channel.send(`Please specify the title of a manga.\nSyntax: \`;md <Series title or the manga ID from MangaDex> <Chapter number> <Page number (optional)>\``)
         }
         MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = null
@@ -47,10 +47,10 @@ module.exports = {
                 try {
                     manga = await MFA.Manga.getByQuery(`${mangaTitleInp}`);
                 } catch (err) {
-                    return message.channel.send(`No manga with that specific title was to be found on MangaDex. Make sure you have typed the title correctly.`)
+                    return message.channel.send(`No manga with that specific title was to be found on MangaDex. Make sure you have typed the title correctly.\nSyntax: \`;md <Series title or the manga ID from MangaDex> <Chapter number> <Page number (optional)>\``)
                 }
                 if (!manga) {
-                    return message.channel.send(`No manga with that specific title was to be found on MangaDex. Make sure you have typed the title correctly.`)
+                    return message.channel.send(`No manga with that specific title was to be found on MangaDex. Make sure you have typed the title correctly.\nSyntax: \`;md <Series title or the manga ID from MangaDex> <Chapter number> <Page number (optional)>\``)
                 }
             }
             const findChapter = async (targetManga, targetChap, offset = 0) => {
