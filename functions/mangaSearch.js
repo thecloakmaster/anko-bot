@@ -43,6 +43,7 @@ module.exports = {
             if (manga.links.al) {
                 let AniListURL = manga.links.al
                 let queryReturned = mangaQuery.execute(AniListURL)
+                console.log(queryReturned)
                 if (queryReturned) {
                     if (queryReturned.averageScore && queryReturned.meanScore) {
                         mangaEmbed.addField(`AniList Page`, `[Click here!](${manga.links.al})`, true)
