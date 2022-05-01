@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js")
-const animeAniListQuery = require (`../../functions/animeAnilistQuery`)
+const animeAniListQuery = require (`../../functions/animeAniListQuery`)
 
 module.exports = {
     name:'next',
