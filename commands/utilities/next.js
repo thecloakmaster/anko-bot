@@ -5,6 +5,7 @@ module.exports = {
     name:'nextep',
     description: `Tells you the status and airing time of the next episode of the specified anime.`,
     usage: `;nextep <Anime title>`,
+    aliases: [`next`],
     async execute (message, args) {
         if (!args.slice(0).join(" ")) {
             return message.channel.send(`Please enter a title for the command.\nSyntax: \`;next <Anime title>\``)
