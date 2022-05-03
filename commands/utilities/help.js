@@ -39,7 +39,7 @@ module.exports = {
             \`;manga\`: Grabs the requested chapter from MangaDex and sends it in the chat.
             \`;md\`: Grabs the requested chapter of the series mentioned from MangaDex and sends it in the chat.
             \`;mdsearch\`: Fetches a maximum of 10 series from MangaDex and shows the information about them.
-            \`;next\`: Tells you the status and airing time of the next episode of the specified anime.
+            \`;nextep\`: Tells you the status and airing time of the next episode of the specified anime.
             \`;quote\`: Fetches previously sent message and sends it in an embed.
             \`;serverbanner\`: Sends the server's banner.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});

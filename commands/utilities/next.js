@@ -2,9 +2,9 @@ const { MessageEmbed } = require("discord.js")
 const animeAniListQuery = require (`../../functions/animeAniListQuery`)
 
 module.exports = {
-    name:'next',
+    name:'nextep',
     description: `Tells you the status and airing time of the next episode of the specified anime.`,
-    usage: `;next <Anime title>`,
+    usage: `;nextep <Anime title>`,
     async execute (message, args) {
         if (!args.slice(0).join(" ")) {
             return message.channel.send(`Please enter a title for the command.\nSyntax: \`;next <Anime title>\``)
@@ -12,7 +12,7 @@ module.exports = {
         let anilistID = args.slice(0).join(" ")
         let list = await animeAniListQuery.execute(anilistID)
         if (!list) {
-            return message.channel.send(`No anime with the specified name was to be found. Please check if you have entered the title correctly.\nSyntax: \`;next <Anime title>\``)
+            return message.channel.send(`No anime with the specified name was to be found. Please check if you have entered the title correctly.\nSyntax: \`;nextep <Anime title>\``)
         }
         let embed = new MessageEmbed()
             .setTitle(`${list.title.romaji || list.title.english || list.title.native || list.title.userPreferred}`)
