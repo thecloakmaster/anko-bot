@@ -17,7 +17,7 @@ module.exports = {
             try {
                 let mangas = await MFA.Manga.search(`${args.slice(0).join(" ")}`)
                 for (let i of mangas) {
-                    options.push({label: `${i.localizedTitle[i.localizedTitle.availableLocales[0]]}`, value: `${i.id}`})
+                    options.push({label: `${i.localizedTitle[i.localizedTitle.availableLocales[0]].substring(0,100)}`, value: `${i.id}`})
                 }
             } catch (err) {
                 console.log(err)
