@@ -41,7 +41,9 @@ module.exports = {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`${roleColour}`)
                 .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-            dataRole.delete().catch((err) => console.log(err))
+            if (dataRole) {
+                dataRole.delete().catch((err) => console.log(err))
+            }
             return roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
