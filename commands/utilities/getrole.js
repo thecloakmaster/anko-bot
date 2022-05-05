@@ -126,7 +126,7 @@ module.exports = {
                         roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client).catch(() => {})
                     } else if (dataRole) {
                         //If guild has boosts, the DB has the member and the role present in the DB exists
-                        roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client).then(() => {
+                        roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client).then(async () => {
                             await dataRole.delete().catch(() => {})
                         }).catch(() => {})
                     }
@@ -210,7 +210,7 @@ module.exports = {
                         roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client).catch(() => {})
                         //If guild has boosts, the DB has the member and the role present in the DB exists
                     } else if (dataRole) {
-                        roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client).then(() => {
+                        roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client).then(async () => {
                             await dataRole.delete().catch(() => {})
                         }).catch(() => {})
                     }
