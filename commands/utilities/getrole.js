@@ -123,10 +123,12 @@ module.exports = {
                     })
                     if (!dataRole) {
                         //If guild has boosts, the DB has the member and the role present in the DB doesn't exist
-                        roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client)
+                        roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client).catch(() => {})
                     } else if (dataRole) {
                         //If guild has boosts, the DB has the member and the role present in the DB exists
-                        roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client, dataRole)
+                        roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client).then(() => {
+                            await dataRole.delete().catch(() => {})
+                        }).catch(() => {})
                     }
                 }
             } else if (roleIconURL && PremiumTiers.indexOf(message.guild.premiumTier) >= 2) {
@@ -205,10 +207,12 @@ module.exports = {
                     })
                     //If guild has boosts, the DB has the member and the role present in the DB doesn't exist
                     if (!dataRole) {
-                        roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client)
+                        roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client).catch(() => {})
                         //If guild has boosts, the DB has the member and the role present in the DB exists
                     } else if (dataRole) {
-                        roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client, dataRole)
+                        roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client).then(() => {
+                            await dataRole.delete().catch(() => {})
+                        }).catch(() => {})
                     }
                 }
             }

@@ -1,24 +1,22 @@
 const {MessageEmbed} = require("discord.js");
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
-    async execute(roleName, roleID, roleEmbedMessage, roleColour, message, client, dataRole) {
+    async execute(roleName, roleID, roleEmbedMessage, roleColour, message, client) {
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
             position: 42
         }).then((role) => {
-            if (dataRole) {
-                dataRole.delete().catch((err) => console.log(err))
-            }
             roleID = role.id
         }).catch((err) => {
             console.log(err)
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
-            return roleEmbedMessage.edit({
+            roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
+            throw "Error"
         })
         await message.member.roles.add(roleID).then(() => {
             let roleEmbed2 = new MessageEmbed()
@@ -31,9 +29,10 @@ module.exports = {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
-            return roleEmbedMessage.edit({
+            roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
+            throw "Error"
         });
         await BoosterMember.findOneAndRemove({
             MemberID: `${message.author.id}`,
@@ -51,9 +50,10 @@ module.exports = {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
-            return roleEmbedMessage.edit({
+            roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
+            throw "Error"
         });
     }
 }
