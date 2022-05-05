@@ -2,15 +2,14 @@ const {MessageEmbed} = require("discord.js");
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
     async execute(roleName, roleID, roleEmbedMessage, roleColour, message, client, dataRole) {
-        console.log(dataRole)
-        if (dataRole) {
-            dataRole.delete().catch((err) => console.log(err))
-        }
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
             position: 42
         }).then((role) => {
+            if (dataRole) {
+                dataRole.delete().catch((err) => console.log(err))
+            }
             roleID = role.id
         }).catch((err) => {
             console.log(err)
