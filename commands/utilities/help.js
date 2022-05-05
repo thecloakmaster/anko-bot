@@ -137,6 +137,7 @@ module.exports = {
                 time: timeout,
             });
             collector.on("collect", async (i) => {
+                if (i.user.id != message.author.id) return
                 switch (i.customId) {
                     case buttonList[0].customId:
                         embed = embed - 1;

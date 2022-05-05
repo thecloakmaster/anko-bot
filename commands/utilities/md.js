@@ -131,6 +131,7 @@ module.exports = {
                     time: 60000,
                 });
                 collector.on("collect", async (i) => {
+                    if (i.user.id != message.author.id) return
                     switch (i.customId) {
                         case buttonList[0].customId:
                             page -= 1;
