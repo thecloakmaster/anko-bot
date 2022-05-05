@@ -5,7 +5,7 @@ module.exports = {
         let guildID = newMember.guild.id
         let memberID = newMember.user.id
         let boosterRole = newMember.guild.roles.premiumSubscriberRole
-        if (!newMember.premiumSinceTimestamp) {
+        if (!newMember.premiumSinceTimestamp && !newMember.permissions.has(`ADMINISTRATOR`)) {
             let data = await BoosterMember.findOne({
                 MemberID: `${memberID}`,
                 GuildID: `${guildID}`,
