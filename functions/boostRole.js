@@ -8,7 +8,7 @@ module.exports = {
             position: 42
         }).then((role) => {
             roleID = role.id
-        }).catch((err) => {
+        }).catch(() => {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
@@ -44,7 +44,7 @@ module.exports = {
             GuildID: `${message.guild.id}`,
             ClientID: `${client.user.id}`
         })
-        newData.save().catch((err) => {
+        newData.save().catch(() => {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
                 .setDescription(`An error occured while registering this role. Contact the developer to fix this issue.`)
