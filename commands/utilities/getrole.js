@@ -115,8 +115,8 @@ module.exports = {
                         roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client)
                     } else if (dataRole) {
                         //If guild has boosts, the DB has the member and the role present in the DB exists
-                        dataRole.delete().catch((err) => console.log(err))
                         roleCreate.execute(roleName, roleID, roleEmbedMessage, roleColour, message, client)
+                        dataRole.delete().catch((err) => console.log(err))
                     }
                 }
             } else if (roleIconURL && PremiumTiers.indexOf(message.guild.premiumTier) >= 2) {
@@ -187,8 +187,8 @@ module.exports = {
                         roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client)
                         //If guild has boosts, the DB has the member and the role present in the DB exists
                     } else if (dataRole) {
-                        dataRole.delete().catch((err) => console.log(err))
                         roleCreateIcon.execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client)
+                        dataRole.delete().catch((err) => console.log(err))
                     }
                 }
             }
