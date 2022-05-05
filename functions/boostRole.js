@@ -10,7 +10,7 @@ module.exports = {
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
-            position: 39
+            position: 42
         }).then((role) => {
             roleID = role.id
         }).catch((err) => {
