@@ -79,22 +79,6 @@ module.exports = {
                         })
                         return console.log(err)
                     })
-                    let newData = new BoosterMember({
-                        MemberID: `${message.author.id}`,
-                        RoleID: `${roleID}`,
-                        GuildID: `${message.guild.id}`,
-                        ClientID: `${client.user.id}`
-                    })
-                    newData.save().catch((err) => {
-                        console.log(err)
-                        let roleEmbed2 = new MessageEmbed()
-                            .setColor(`#e4a353`)
-                            .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                        roleEmbedMessage.edit({
-                            embeds: [roleEmbed2]
-                        })
-                        return console.log(err)
-                    });
                     await message.member.roles.add(roleID).then(() => {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`${roleColour}`)
@@ -110,6 +94,22 @@ module.exports = {
                         return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
+                    });
+                    let newData = new BoosterMember({
+                        MemberID: `${message.author.id}`,
+                        RoleID: `${roleID}`,
+                        GuildID: `${message.guild.id}`,
+                        ClientID: `${client.user.id}`
+                    })
+                    newData.save().catch((err) => {
+                        console.log(err)
+                        let roleEmbed2 = new MessageEmbed()
+                            .setColor(`#e4a353`)
+                            .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
+                        roleEmbedMessage.edit({
+                            embeds: [roleEmbed2]
+                        })
+                        return console.log(err)
                     });
                     //If guild has boosts and the DB has the member 
                 } else if (data) {
@@ -161,22 +161,6 @@ module.exports = {
                         })
                         return console.log(err)
                     })
-                    let newData = new BoosterMember({
-                        MemberID: `${message.author.id}`,
-                        RoleID: `${roleID}`,
-                        GuildID: `${message.guild.id}`,
-                        ClientID: `${client.user.id}`
-                    })
-                    newData.save().catch((err) => {
-                        console.log(err)
-                        let roleEmbed2 = new MessageEmbed()
-                            .setColor(`#e4a353`)
-                            .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                        roleEmbedMessage.edit({
-                            embeds: [roleEmbed2]
-                        })
-                        return console.log(err)
-                    });
                     await message.member.roles.add(roleID).then(() => {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`${roleColour}`)
@@ -192,6 +176,22 @@ module.exports = {
                         return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
+                    });
+                    let newData = new BoosterMember({
+                        MemberID: `${message.author.id}`,
+                        RoleID: `${roleID}`,
+                        GuildID: `${message.guild.id}`,
+                        ClientID: `${client.user.id}`
+                    })
+                    newData.save().catch((err) => {
+                        console.log(err)
+                        let roleEmbed2 = new MessageEmbed()
+                            .setColor(`#e4a353`)
+                            .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
+                        roleEmbedMessage.edit({
+                            embeds: [roleEmbed2]
+                        })
+                        return console.log(err)
                     });
                     //If guild has boosts and the DB has the member 
                 } else if (data) {
