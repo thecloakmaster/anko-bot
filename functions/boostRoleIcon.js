@@ -4,6 +4,10 @@ const {
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
     async execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client, dataRole) {
+        console.log(dataRole)
+        if (dataRole) {
+            dataRole.delete().catch((err) => console.log(err))
+        }
         try {
             await message.guild.roles.create({
                 name: `${roleName}`,

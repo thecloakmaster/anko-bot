@@ -2,6 +2,10 @@ const {MessageEmbed} = require("discord.js");
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
     async execute(roleName, roleID, roleEmbedMessage, roleColour, message, client, dataRole) {
+        console.log(dataRole)
+        if (dataRole) {
+            dataRole.delete().catch((err) => console.log(err))
+        }
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
@@ -21,9 +25,6 @@ module.exports = {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`${roleColour}`)
                 .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-            if (dataRole) {
-                dataRole.delete().catch((err) => console.log(err))
-            }
             return roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
