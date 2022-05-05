@@ -27,7 +27,7 @@ module.exports = {
             if (message.attachments.size > 0 && message.attachments.size < 2) {
                 let attachments = Array.from(await message.attachments.values());
                 roleIconURL = attachments[0].proxyURL
-                roleName = args.slice(1).join(" ")
+                roleName = args.slice(1, args.length - 1).join(" ")
             }
             try {
                 let urlcheck = new URL(roleIconURL)
