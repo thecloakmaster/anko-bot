@@ -59,7 +59,7 @@ module.exports = {
         newData.save().catch((err) => {
             let roleEmbed2 = new MessageEmbed()
                 .setColor(`#e4a353`)
-                .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+                .setDescription(`An error occured while registering this role. Contact the developer to fix this issue.`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
             })
