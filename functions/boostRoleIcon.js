@@ -3,7 +3,7 @@ const {
 } = require("discord.js");
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
-    async execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client) {
+    async execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client, dataRole) {
         await BoosterMember.findOneAndRemove({
             MemberID: `${message.author.id}`,
             GuildID: `${message.guild.id}`,
