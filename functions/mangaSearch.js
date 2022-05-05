@@ -72,7 +72,8 @@ module.exports = {
                 })
             }
             await interaction.update({
-                embeds: [mangaEmbed]
+                embeds: [mangaEmbed],
+                components: []
             }).catch((err) => {
                 console.log(err)
             })
