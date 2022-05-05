@@ -15,7 +15,7 @@ module.exports = {
             if (!args[0]) {
                 return message.channel.send(`You are eligible for a custom role.\n Use \`;help getrole\` to get help on creating a custom role for yourself.`)
             }
-            let roleColour = args[0]
+            let roleColour = args[0].slice(0, 6)
             let hexReg = /^#[0-9A-F]{6}$|^[0-9A-F]{6}/i
             let colRegMatch = roleColour.match(hexReg)
             if (!colRegMatch) {
