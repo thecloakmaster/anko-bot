@@ -5,7 +5,7 @@ module.exports = {
     description: `Sends an embed with the arguments specified or with the .txt or .json file(s) in the message.`,
     usage: `;embed <Channel mention> <Embed data in a JSON format (a file can be sent instead - .txt or .json)>`,
     async execute(message, args) {
-        if (message.member.permissions.has("ADMINISTRATOR")) {
+        if (!message.member.permissions.has("ADMINISTRATOR")) {
             return
         }
         if (!args) {
