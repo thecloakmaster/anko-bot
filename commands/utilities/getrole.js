@@ -70,6 +70,7 @@ module.exports = {
                     }).then((role) => {
                         roleID = role.id
                     }).catch((err) => {
+                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
@@ -85,6 +86,7 @@ module.exports = {
                         ClientID: `${client.user.id}`
                     })
                     newData.save().catch((err) => {
+                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
@@ -97,11 +99,11 @@ module.exports = {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`${roleColour}`)
                             .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-                        dataRole.delete().catch((err) => console.log(err))
                         return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
                     }).catch(() => {
+                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
@@ -150,6 +152,7 @@ module.exports = {
                     }).then((role) => {
                         roleID = role.id
                     }).catch((err) => {
+                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
@@ -165,6 +168,7 @@ module.exports = {
                         ClientID: `${client.user.id}`
                     })
                     newData.save().catch((err) => {
+                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
@@ -177,11 +181,11 @@ module.exports = {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`${roleColour}`)
                             .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-                        dataRole.delete().catch((err) => console.log(err))
                         return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
                     }).catch(() => {
+                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
