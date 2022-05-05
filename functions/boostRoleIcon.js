@@ -18,6 +18,7 @@ module.exports = {
             }).then((role) => {
                 roleID = role.id
             }).catch((err) => {
+                console.log(err)
                 if (err.code === 50035) {
                     let roleEmbed2 = new MessageEmbed()
                         .setColor(`#e4a353`)
@@ -56,7 +57,8 @@ module.exports = {
                 return roleEmbedMessage.edit({
                     embeds: [roleEmbed2]
                 })
-            }).catch(() => {
+            }).catch((err) => {
+                console.log(err)
                 let roleEmbed2 = new MessageEmbed()
                     .setColor(`#e4a353`)
                     .setDescription(`An error occured while creating this role. Please provide a valid image. (The image should be a .png or a .jpg file and should be smaller than 256 KB.)`)
