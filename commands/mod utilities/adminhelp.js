@@ -23,6 +23,7 @@ module.exports = {
             .setColor("#e4a353")
             .setTitle(`Hidden Mod Commands.`)
             .setDescription(`\`;adminhelp\`: Lists mod related commands and provides information if command is specified.
+            \`;embed\`: Sends an embed with the arguments specified or with the .txt or .json file(s) in the message.
             \`;modreply\`: Replies to a user who sent the modmail.
             \`;newchp\`: Sends an embed to the new chapter channel.
             \`;talk\`: Sends a message to a channel via the bot. Not to be overused as it might be against Discord TOS.`)
@@ -57,9 +58,6 @@ module.exports = {
                     }
                 } 
             }
-
-
-            
         }
     }
 }
