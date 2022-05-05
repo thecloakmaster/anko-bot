@@ -93,13 +93,22 @@ module.exports = {
                         })
                         return console.log(err)
                     });
-                    message.member.roles.add(roleID);
-                    let roleEmbed2 = new MessageEmbed()
-                        .setColor(`${roleColour}`)
-                        .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-                    return roleEmbedMessage.edit({
-                        embeds: [roleEmbed2]
-                    })
+                    await message.member.roles.add(roleID).then(() => {
+                        let roleEmbed2 = new MessageEmbed()
+                            .setColor(`${roleColour}`)
+                            .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
+                        dataRole.delete().catch((err) => console.log(err))
+                        return roleEmbedMessage.edit({
+                            embeds: [roleEmbed2]
+                        })
+                    }).catch(() => {
+                        let roleEmbed2 = new MessageEmbed()
+                            .setColor(`#e4a353`)
+                            .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+                        return roleEmbedMessage.edit({
+                            embeds: [roleEmbed2]
+                        })
+                    });
                     //If guild has boosts and the DB has the member 
                 } else if (data) {
                     let roleID = 0
@@ -164,13 +173,22 @@ module.exports = {
                         })
                         return console.log(err)
                     });
-                    message.member.roles.add(roleID);
-                    let roleEmbed2 = new MessageEmbed()
-                        .setColor(`${roleColour}`)
-                        .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
-                    return roleEmbedMessage.edit({
-                        embeds: [roleEmbed2]
-                    })
+                    await message.member.roles.add(roleID).then(() => {
+                        let roleEmbed2 = new MessageEmbed()
+                            .setColor(`${roleColour}`)
+                            .setDescription(`The role <@&${roleID}> has been created and applied to <@${message.author.id}>`)
+                        dataRole.delete().catch((err) => console.log(err))
+                        return roleEmbedMessage.edit({
+                            embeds: [roleEmbed2]
+                        })
+                    }).catch(() => {
+                        let roleEmbed2 = new MessageEmbed()
+                            .setColor(`#e4a353`)
+                            .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
+                        return roleEmbedMessage.edit({
+                            embeds: [roleEmbed2]
+                        })
+                    });
                     //If guild has boosts and the DB has the member 
                 } else if (data) {
                     let roleID = 0
