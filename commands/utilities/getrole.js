@@ -138,7 +138,7 @@ module.exports = {
                         name: `${roleName}`,
                         color: `${roleColour}`,
                         icon: `${roleIconURL}`,
-                        position: 38
+                        position: 39
                     }).then((role) => {
                         roleID = role.id
                     }).catch((err) => {
