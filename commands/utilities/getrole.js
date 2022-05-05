@@ -69,15 +69,13 @@ module.exports = {
                         position: 38
                     }).then((role) => {
                         roleID = role.id
-                    }).catch((err) => {
-                        console.log(err)
+                    }).catch(() => {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
                         roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
-                        return console.log(err)
                     })
                     await message.member.roles.add(roleID).then(() => {
                         let roleEmbed2 = new MessageEmbed()
@@ -87,7 +85,6 @@ module.exports = {
                             embeds: [roleEmbed2]
                         })
                     }).catch(() => {
-                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
@@ -101,15 +98,13 @@ module.exports = {
                         GuildID: `${message.guild.id}`,
                         ClientID: `${client.user.id}`
                     })
-                    newData.save().catch((err) => {
-                        console.log(err)
+                    newData.save().catch(() => {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                        roleEmbedMessage.edit({
+                        return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
-                        return console.log(err)
                     });
                     //If guild has boosts and the DB has the member 
                 } else if (data) {
@@ -153,15 +148,13 @@ module.exports = {
                         position: 42
                     }).then((role) => {
                         roleID = role.id
-                    }).catch((err) => {
-                        console.log(err)
+                    }).catch(() => {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                        roleEmbedMessage.edit({
+                        return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
-                        return console.log(err)
                     })
                     await message.member.roles.add(roleID).then(() => {
                         let roleEmbed2 = new MessageEmbed()
@@ -171,7 +164,6 @@ module.exports = {
                             embeds: [roleEmbed2]
                         })
                     }).catch(() => {
-                        console.log(err)
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
                             .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
@@ -185,15 +177,13 @@ module.exports = {
                         GuildID: `${message.guild.id}`,
                         ClientID: `${client.user.id}`
                     })
-                    newData.save().catch((err) => {
-                        console.log(err)
+                    newData.save().catch(() => {
                         let roleEmbed2 = new MessageEmbed()
                             .setColor(`#e4a353`)
-                            .setDescription(`An error occured while creating this role. Contact the developers to fix this issue.`)
-                        roleEmbedMessage.edit({
+                            .setDescription(`An error occured while registering this role. Contact the developers to fix this issue.`)
+                        return roleEmbedMessage.edit({
                             embeds: [roleEmbed2]
                         })
-                        return console.log(err)
                     });
                     //If guild has boosts and the DB has the member 
                 } else if (data) {
