@@ -16,11 +16,9 @@ module.exports = {
             message.channel.send('Please specify a channel to send the embed in.\nSyntax: \`;embed <Channel mention> <Embed data in a JSON format (a file can be sent instead - .txt or .json)>\`')
             return
         }
-        let fileName = null
         if (message.attachments.size > 0) {
             message.attachments.forEach(attachment => {
-                fileName = attachment.url
-                let url = `${fileName}`;
+                let url = `${attachment.url}`;
                 let storedText = null
                 fetch(url)
                     .then(function (response) {
