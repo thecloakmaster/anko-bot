@@ -7,6 +7,7 @@ module.exports = {
     aliases: [`boosterrole`],
     description: `Gives a custom role to the boosters of their choice.`,
     usage: `;getrole <Hex colour for the role> <Role name> <Role icon URL (not necessary)>`,
+    cooldown: 10000,
     async execute(message, args, client) {
         let serverBoostRole = message.guild.roles.premiumSubscriberRole
         if (!message.member.premiumSinceTimestamp && !message.member.roles.cache.some(role => role.id === serverBoostRole.id) && !message.member.permissions.has(`ADMINISTRATOR`)) {
