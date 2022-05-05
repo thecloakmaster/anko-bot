@@ -15,10 +15,10 @@ module.exports = {
             if (!args[0]) {
                 return message.channel.send(`You are eligible for a custom role.\n Use \`;help getrole\` to get help on creating a custom role for yourself.`)
             }
-            let roleColour = args[0].slice(0, 6)
+            let roleColour = args[0]
             let hexReg = /^#[0-9A-F]{6}$|^[0-9A-F]{6}/i
             let colRegMatch = roleColour.match(hexReg)
-            if (!colRegMatch) {
+            if (!colRegMatch || roleColour.length > 6) {
                 return message.channel.send(`Please enter a valid hex colour code.\nYou can pick out a hex colour code using this site: <https://htmlcolorcodes.com>.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\``)
             }
             roleColour = colRegMatch[0]
