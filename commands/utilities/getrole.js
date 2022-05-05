@@ -9,9 +9,9 @@ module.exports = {
     usage: `;getrole <Hex colour for the role> <Role name> <Role icon URL (not necessary)>`,
     async execute(message, args, client) {
         let serverBoostRole = message.guild.roles.premiumSubscriberRole
-        if (!message.member.premiumSinceTimestamp && !message.member.roles.cache.some(role => role.id === serverBoostRole.id)) {
+        if (!message.member.premiumSinceTimestamp && !message.member.roles.cache.some(role => role.id === serverBoostRole.id) && !message.member.permissions.has(`ADMINISTRATOR`)) {
             return message.channel.send(`You are not eligible for a custom role but you can be if you become a server booster.`)
-        } else if (message.member.premiumSinceTimestamp && message.member.roles.cache.some(role => role.id === serverBoostRole.id)) {
+        } else if (message.member.premiumSinceTimestamp && message.member.roles.cache.some(role => role.id === serverBoostRole.id) || message.member.permissions.has(`ADMINISTRATOR`)) {
             if (!args[0]) {
                 return message.channel.send(`You are eligible for a custom role.\n Use \`;help getrole\` to get help on creating a custom role for yourself.`)
             }
