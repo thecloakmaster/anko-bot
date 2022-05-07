@@ -16,7 +16,7 @@ module.exports = {
                 
                 let GIF = await neko.sfw.slap();
                 const hug = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`-_-`)
                     .setDescription(`<@${message.author.id}> slapped <@${member.user.id}>`)
                     .setImage(`${GIF.url}`);

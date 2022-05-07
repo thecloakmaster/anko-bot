@@ -45,7 +45,7 @@ module.exports = {
                     if (await message.guild.members.fetch(`${userProp.id}`).catch(() => {}) && await message.guild.members.fetch(`${userProp.id}`).bannable) {
                         try {
                             let banEmbed = new MessageEmbed()
-                                .setColor("${process.env.colour}")
+                                .setColor(`${process.env.colour}`)
                                 .setTitle(`You were banned from ${message.guild.name}.`)
                                 .setDescription(`Reason: No reason provided.`)
                                 .setTimestamp();
@@ -73,7 +73,7 @@ module.exports = {
                 message.channel.send(`No members/users were banned.\nSyntax: \`;massban @Mention(s) \` or \`;massban <User-ID(s)>\`.`)
             } else if (i >= 1) {
                 let banSuccessEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`Massban successful.`)
                     .setDescription(`**${i}** user(s) have been banned from this server.`)
                     .setTimestamp();
@@ -92,7 +92,7 @@ module.exports = {
                 message.channel.send(`No members/users were banned.\nSyntax: \`;massban @Mention(s) \` or \`;massban <User-ID(s)>\`.`)
             } else if (i >= 1) {
                 let banSuccessEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`Massban successful.`)
                     .setDescription(`**${i}** user(s) have been banned from this server.`)
                     .setTimestamp();

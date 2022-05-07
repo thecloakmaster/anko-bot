@@ -30,7 +30,7 @@ module.exports = {
         if (!args[0]){
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("${process.env.colour}")
+            .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 1 of 5**`)
             .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
@@ -46,7 +46,7 @@ module.exports = {
 
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("${process.env.colour}")
+            .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 2 of 5**`)
             .addField(`Utility`, `\`;servericon\`: Sends the server's icon.
             \`;serverinfo\`: Gives information about the server in which the command is executed.
@@ -62,7 +62,7 @@ module.exports = {
             
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("${process.env.colour}")
+            .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 3 of 5**`)
             .addField(`Fun`, `\`;slap\`: Slaps the specified member for whatever the reason may be.
             \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
@@ -78,7 +78,7 @@ module.exports = {
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("${process.env.colour}")
+            .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 4 of 5**`)
             .addField(`Moderation`, `\`;mute\`: Mutes the specified member.
             \`;purge\`: Deletes the amount of messages specified.
@@ -95,7 +95,7 @@ module.exports = {
 
             const page5 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-            .setColor("${process.env.colour}")
+            .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 5 of 5**`)
             .addField(`Mod Utilities`, `\`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;setmuterole\`: Sets the server's mute role.`)
@@ -198,7 +198,7 @@ module.exports = {
             try{
                 const helpSpecific = new MessageEmbed()
                     .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`Command: \`;${command.name}\``)
                     .addField(`Description:`, `${command.description}`)
                     .addField(`Aliases`, `\`${command.aliases || "No other aliases"}\``)

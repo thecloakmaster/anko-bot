@@ -36,7 +36,7 @@ module.exports = {
         }
         if (!memberMute.roles.cache.some(role => role.id === muteRole.MuteRoleID) && !memberMute.isCommunicationDisabled()) {
             const alrMuted = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`Error executing command.`)
                 .setDescription(`This member is already unmuted.`)
                 .setTimestamp();
@@ -52,7 +52,7 @@ module.exports = {
                 ClientID: `${client.user.id}`
             })
             const unMute = new MessageEmbed()
-            .setColor("${process.env.colour}")
+            .setColor(`${process.env.colour}`)
             .setDescription(`<@!${memberMute.user.id}> has been unmuted`)
             .setTimestamp();
             message.channel.send({embeds: [unMute]})
@@ -62,7 +62,7 @@ module.exports = {
                 return console.log(err)
             });
             const unMute = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setDescription(`<@!${memberMute.user.id}> has been unmuted`)
                 .setTimestamp();
             return message.channel.send({

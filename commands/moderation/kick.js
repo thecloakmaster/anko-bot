@@ -32,7 +32,7 @@ module.exports = {
         try {
             await message.guild.members.kick(memberKick, {reason: reason});
             const serverKickEmbed = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`${memberKick.user.tag} has been kicked.`)
                 .setDescription(`Reason: ${reason}`);
             message.channel.send({
@@ -44,7 +44,7 @@ module.exports = {
         }
         try {
             const kickEmbed = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`You were kicked from the ${message.guild.name}.`)
                 .setDescription(`Reason: ${reason}`)
                 .setTimestamp();

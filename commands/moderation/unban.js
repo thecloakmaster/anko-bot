@@ -31,7 +31,7 @@ module.exports = {
         try {
             await message.guild.members.unban(userBan);
             const serverBanEmbed = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`${userBan.tag} has been unbanned.`)
             return message.channel.send({
                 embeds: [serverBanEmbed]

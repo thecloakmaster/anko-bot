@@ -28,7 +28,7 @@ module.exports = {
             return message.channel.send('This user has no warns.')
         } else if (warnList.length > 0) {
             let warnEmbed = new MessageEmbed()
-                .setColor('${process.env.colour}')
+                .setColor(`${process.env.colour}`)
                 .setTitle(`List of warns for ${memberWarn.user.username}`)
             let amnt = 0
             warnList.forEach(warn => {

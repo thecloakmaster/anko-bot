@@ -74,7 +74,7 @@ module.exports = {
         //Checks for member being already muted
         if (memberMute.roles.cache.some(role => role.id === muteRole.MuteRoleID)) {
             const alrMuted = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`Error executing command.`)
                 .setDescription(`This member is already muted.`)
                 .setTimestamp();
@@ -84,7 +84,7 @@ module.exports = {
             });
         } else if (memberMute.isCommunicationDisabled()) {
             const alrMuted = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`Error executing command.`)
                 .setDescription(`This member is already muted.`)
                 .setTimestamp();
@@ -105,7 +105,7 @@ module.exports = {
                     return console.log(err)
                 });;
                 let muteEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`${memberMute.user.tag} has been muted indefinitely.`)
                     .setDescription(`Reason: ${reason}`)
                     .setTimestamp();
@@ -113,7 +113,7 @@ module.exports = {
                 let muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} indefinitely.`)
                     .setDescription(`Reason: ${reason}`)
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTimestamp();
 
                 await memberMute.send({
@@ -135,11 +135,11 @@ module.exports = {
                 let muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} for ${time}`)
                     .setDescription(`Reason: ${reason}`)
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTimestamp();
 
                 let muteEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`${memberMute.user.tag} has been muted for ${time}.`)
                     .setDescription(`Reason: ${reason}`)
                     .setTimestamp();
@@ -172,11 +172,11 @@ module.exports = {
                 let muteDM = new MessageEmbed()
                     .setTitle(`You have been muted in ${message.guild.name} for ${time}`)
                     .setDescription(`Reason: ${reason}`)
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTimestamp();
 
                 let muteEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`${memberMute.user.tag} has been muted for ${time}.`)
                     .setDescription(`Reason: ${reason}`)
                     .setTimestamp();

@@ -41,7 +41,7 @@ module.exports = {
             message.channel.send(`No members/users were banned.\nSyntax: \`;massunban <User-ID(s)>\`.`)
         } else if (i >= 1) {
             let unbanSuccessEmbed = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`Massunban successful.`)
                 .setDescription(`**${i}** user(s) have been unbanned from this server. The list of user(s) unbanned:${stringEmbed}`)
                 .setTimestamp();

@@ -14,7 +14,7 @@ module.exports = {
                 })
             } catch (err) {};
             const permerror = new MessageEmbed()
-                .setColor("${process.env.colour}")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`You got spanked instead.`)
                 .setTimestamp();
             return message.reply({
@@ -56,7 +56,7 @@ module.exports = {
                 return message.channel.send(`No members were spanked.\nSyntax: \`;massspank @Mention(s)\` or \;massspank <User-ID(s)>\``);
             } else if (i >= 1) {
                 let spankSuccessEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")                    
+                    .setColor(`${process.env.colour}`)                    
                     .setDescription(`**${i}** member(s) have been spanked! These are the user(s) who were acting weird:${stringEmbed}`)
                     .setTimestamp();
 
@@ -91,7 +91,7 @@ module.exports = {
                 return message.channel.send(`No members were spanked.\nSyntax: \`;massspank @Mention(s)\` or \;massspank <User-ID(s)>\``);
             } else if (i >= 1) {
                 let spankSuccessEmbed = new MessageEmbed()
-                    .setColor("${process.env.colour}")
+                    .setColor(`${process.env.colour}`)
                     .setDescription(`**${i}** member(s) have been spanked! These are the user(s) who were acting weird:${stringEmbed}`)
                     .setTimestamp();
                 return await message.channel.send({
