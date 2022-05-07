@@ -50,7 +50,7 @@ module.exports = {
                     return message.channel.send(`There was an error trying to add that emote. \nMake sure the image is under 256 KB. \nSyntax: \`;addemote <image URL> <Emote name>\` or \`;addemote <Emote name> and attach an image or gif\``)
                 } else {
                     const embed = new MessageEmbed()
-                        .setColor(`#e4a353`)
+                        .setColor(`${process.env.colour}`)
                         .setDescription(`An emote with the name \`${emoteName}\` has been added to the server.`)
                     return message.channel.send({
                         embeds: [embed]

@@ -8,13 +8,13 @@ module.exports = {
             name: `${roleName}`,
             color: `${roleColour}`,
             icon: `${roleIconURL}`,
-            position: 42
+            position: 40
         }).then((role) => {
             roleID = role.id
         }).catch((err) => {
             if (err.code === 50035) {
                 let roleEmbed2 = new MessageEmbed()
-                    .setColor(`#e4a353`)
+                    .setColor(`${process.env.colour}`)
                     .setDescription(`An error occured while creating this role. Please provide a valid image. (The image should be a .png or a .jpg file and should be smaller than 256 KB.)`)
                 roleEmbedMessage.edit({
                     embeds: [roleEmbed2]
@@ -22,7 +22,7 @@ module.exports = {
                 throw "Error"
             }
             let roleEmbed2 = new MessageEmbed()
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
@@ -38,7 +38,7 @@ module.exports = {
             })
         }).catch((err) => {
             let roleEmbed2 = new MessageEmbed()
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setDescription(`An error occured while creating this role. Please provide a valid image. (The image should be a .png or a .jpg file and should be smaller than 256 KB.)`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
@@ -58,7 +58,7 @@ module.exports = {
         })
         newData.save().catch((err) => {
             let roleEmbed2 = new MessageEmbed()
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setDescription(`An error occured while registering this role. Contact the developer to fix this issue.`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]

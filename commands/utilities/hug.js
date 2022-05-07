@@ -17,7 +17,7 @@ module.exports = {
                 
                 let GIF = await neko.sfw.hug();
                 const hug = new MessageEmbed()
-                    .setColor("#e4a353")
+                    .setColor("${process.env.colour}")
                     .setTitle(`⊂((・▽・))⊃`)
                     .setDescription(`<@${message.author.id}> hugged <@${member.user.id}>`)
                     .setImage(`${GIF.url}`);

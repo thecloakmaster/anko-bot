@@ -38,7 +38,7 @@ module.exports = {
             })
             if (!warnCodeCheck) {
                 let warnEmbed = new MessageEmbed()
-                    .setColor('#e4a353')
+                    .setColor('${process.env.colour}')
                     .setTitle(`List of warns for ${memberWarn.user.username}`)
                 let amnt = 0
                 warnList.forEach(warn => {
@@ -55,7 +55,7 @@ module.exports = {
             } else if (warnCodeCheck) {
                 let timeAt = new Date(warnCodeCheck.registeredAt)
                 let warnEmbed = new MessageEmbed()
-                    .setColor('#e4a353')
+                    .setColor('${process.env.colour}')
                     .setTitle(`Warn removed successfully`)
                     .setDescription(`The following warn has been removed for <@!${memberWarn.user.id}>:\n**Warn Code:** [${warnCodeCheck.MessageID}]\n**Warned at:** ${timeAt.toLocaleString("en-US", {weekday: "long", day:"numeric", month: "long", year:"numeric", hour:"numeric", minute:"numeric", second:"numeric"})}\n**Reason:** ${warnCodeCheck.WarnReason} `)
                 await WarnedMember.findOneAndDelete({

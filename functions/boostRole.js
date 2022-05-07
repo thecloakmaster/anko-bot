@@ -5,12 +5,12 @@ module.exports = {
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
-            position: 42
+            position: 40
         }).then((role) => {
             roleID = role.id
         }).catch(() => {
             let roleEmbed2 = new MessageEmbed()
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
@@ -26,7 +26,7 @@ module.exports = {
             })
         }).catch(() => {
             let roleEmbed2 = new MessageEmbed()
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setDescription(`An error occured while creating this role. Contact the developer to fix this issue.`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]
@@ -46,7 +46,7 @@ module.exports = {
         })
         newData.save().catch(() => {
             let roleEmbed2 = new MessageEmbed()
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setDescription(`An error occured while registering this role. Contact the developer to fix this issue.`)
             roleEmbedMessage.edit({
                 embeds: [roleEmbed2]

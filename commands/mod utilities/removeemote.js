@@ -26,7 +26,7 @@ module.exports = {
                 }
                 emoji.delete().then((em) => {
                     const embed = new MessageEmbed()
-                        .setColor(`#e4a353`)
+                        .setColor(`${process.env.colour}`)
                         .setDescription(`An emote with the name \`${emoteName}\` has been deleted from the server.`)
                     return message.channel.send({
                         embeds: [embed]
@@ -52,7 +52,7 @@ module.exports = {
                     }
                     emoji.delete().then((em) => {
                         const embed = new MessageEmbed()
-                            .setColor(`#e4a353`)
+                            .setColor(`${process.env.colour}`)
                             .setDescription(`An emote with the name \`${emoji.name}\` has been deleted from the server.`)
                         return message.channel.send({
                             embeds: [embed]

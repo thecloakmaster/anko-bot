@@ -29,7 +29,7 @@ module.exports = {
                     try {
                         sticker.delete().then(() => {
                             const embed = new MessageEmbed()
-                                .setColor(`#e4a353`)
+                                .setColor(`${process.env.colour}`)
                                 .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
                             return message.channel.send({
                                 embeds: [embed]

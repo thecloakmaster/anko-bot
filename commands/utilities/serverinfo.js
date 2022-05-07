@@ -19,7 +19,7 @@ module.exports = {
         let cTs = Math.round(await message.guild.createdTimestamp / 1000)
         let channels = await message.guild.channels.fetch()
         const embed = new MessageEmbed()
-            .setColor(`#e4a353`)
+            .setColor(`${process.env.colour}`)
             .setAuthor({name: `${await message.guild.name}`})
             .setTitle(`${await message.guild.name}`)
             .setDescription(`**Guild ID: ${await message.guild.id}**`)

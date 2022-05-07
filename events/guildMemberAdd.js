@@ -4,7 +4,7 @@ module.exports = {
     async execute(member, client) {
         if (member.user.bot === true) return;
         const welcomeEmbed = new Discord.MessageEmbed()
-            .setColor("#e4a353")
+            .setColor("${process.env.colour}")
             .setTitle(`Welcome to Yofukashi no Uta!`)
             .setDescription(`Be sure to check out <#908021113504825358> and <#908021113504825361> before you start chatting. Enjoy your stay here!`)
             .setImage(`https://images-ext-1.discordapp.net/external/c5ZtuDzOH1WQlK-1YTGBEvxffw2PhCuWKb77dYjIcYY/https/media.discordapp.net/attachments/912098426924183602/920996161878392882/N47QgJE.gif`)

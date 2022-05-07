@@ -16,7 +16,7 @@ module.exports = {
 
                 let GIF = await neko.sfw.kiss();
                 const kiss = new MessageEmbed()
-                    .setColor("#e4a353")
+                    .setColor("${process.env.colour}")
                     .setTitle(`-_-`)
                     .setDescription(`<@${message.author.id}> kissed <@${member.user.id}>`)
                     .setImage(`${GIF.url}`);

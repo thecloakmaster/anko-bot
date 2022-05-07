@@ -48,11 +48,11 @@ module.exports = {
 
         }
         let warnEmbed = new MessageEmbed()
-            .setColor('#e4a353')
+            .setColor('${process.env.colour}')
             .setDescription(`${desc}`)
             .setTimestamp();
         let memberMessage = new MessageEmbed()
-            .setColor('#e4a353')
+            .setColor('${process.env.colour}')
             .setDescription(`You were warned in ${message.guild.name}.`)
             .addField(`Reason`, `${reason}`)
             .setTimestamp();

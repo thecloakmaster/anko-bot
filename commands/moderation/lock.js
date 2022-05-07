@@ -16,7 +16,7 @@ module.exports = {
 
             if(message.channel.permissionsFor(message.guild.id).has('SEND_MESSAGES') === false) {
                 const lockError = new MessageEmbed()
-                    .setColor("#e4a353")
+                    .setColor("${process.env.colour}")
                     .setTitle(`Error executing that command`)
                     .setDescription(`This channel is already locked`)
                     .setTimestamp();
@@ -30,7 +30,7 @@ module.exports = {
                     SEND_MESSAGES: false
                 });
                 const lockEmbed = new MessageEmbed()
-                .setColor("#e4a353")
+                .setColor("${process.env.colour}")
                 .setDescription(`<#${message.channel.id}> has been locked`);
                 return message.channel.send({embeds: [lockEmbed]})
             } catch (e) {

@@ -76,7 +76,7 @@ module.exports = {
                 .setFooter({
                     text: `Page ${page+1} of ${pages.length}`
                 })
-                .setColor(`#e4a353`)
+                .setColor(`${process.env.colour}`)
                 .setURL(`https://mangadex.org/chapter/${chapter.id}`);
             let curPage = await message.channel.send({
                 files: [file],

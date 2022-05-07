@@ -14,7 +14,7 @@ module.exports = {
             if (message.author.id === client.user.id) return;
             const embed = new Discord.MessageEmbed()
                 .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
-                .setColor("#e4a353")
+                .setColor("${process.env.colour}")
                 .setTitle(`ID: [${message.author.id}]`)
                 .setDescription(message.content)
                 .setTimestamp();

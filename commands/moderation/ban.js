@@ -42,7 +42,7 @@ module.exports = {
         if (await message.guild.members.fetch(`${userBan.id}`).catch(() => {}) && await message.guild.members.fetch(`${userBan.id}`).bannable) {
             try {
                 const banEmbed = new MessageEmbed()
-                    .setColor("#e4a353")
+                    .setColor("${process.env.colour}")
                     .setTitle(`You were banned from ${message.guild.name}.`)
                     .setDescription(`Reason: ${reason}`)
                     .setTimestamp();
@@ -61,7 +61,7 @@ module.exports = {
                 reason: reason
             });
             const serverBanEmbed = new MessageEmbed()
-                .setColor("#e4a353")
+                .setColor("${process.env.colour}")
                 .setTitle(`${userBan.tag} has been banned.`)
                 .setDescription(`Reason: ${reason}`);
             message.channel.send({

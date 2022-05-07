@@ -51,7 +51,7 @@ module.exports = {
                     return message.channel.send(`There was an error trying to add that sticker. \nMake sure the image is under 512 KB. \nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
                 } else {
                     const embed = new MessageEmbed()
-                        .setColor(`#e4a353`)
+                        .setColor(`${process.env.colour}`)
                         .setDescription(`A sticker with the name \`${stickerName}\` has been added to the server.`)
                     return message.channel.send({
                         embeds: [embed]

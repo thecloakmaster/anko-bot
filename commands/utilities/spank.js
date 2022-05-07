@@ -12,7 +12,7 @@ module.exports = {
                 message.member.timeout(60000, "No perms :)").catch(() => {return;})
             } catch (err) {}
             const permerror = new MessageEmbed()
-                .setColor("#e4a353")
+                .setColor("${process.env.colour}")
                 .setTitle(`You got spanked instead.`)
                 .setTimestamp();
             return message.reply({
@@ -30,12 +30,12 @@ module.exports = {
         let spankEmbed = null
         if (reason) {
             spankEmbed = new MessageEmbed()
-                .setColor("#e4a353")
+                .setColor("${process.env.colour}")
                 .setDescription(`<@!${memberSpank.user.id}> has been spanked for ${reason}.`)
                 .setTimestamp();
         } else {
             spankEmbed = new MessageEmbed()
-                .setColor("#e4a353")
+                .setColor("${process.env.colour}")
                 .setDescription(`<@!${memberSpank.user.id}> has been spanked.`)
                 .setTimestamp();
         }
