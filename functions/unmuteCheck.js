@@ -11,33 +11,25 @@ module.exports = {
                 for (const muteRoleLoop of muteRole) {
                     let guildID = muteRoleLoop.GuildID;
                     let guild = await client.guilds.fetch(`${guildID}`).catch(() => {});
-                    let muteDeletes = await MutedMember.find({
-                        GuildID: guildID
-                    })
                     if (!guild) {
-                        await MuteRole.findOneAndRemove({
+                        await MuteRole.deleteMany({
                             GuildID: guildID
                         })
-                        for (memberMuteDelete in muteDeletes) {
-                            await MutedMember.findOneAndRemove({
-                                GuildID: guildID
-                            })
-                        }
+                        await MutedMember.deleteMany({
+                            GuildID: guildID
+                        })
                         console.log(`Deleted mutes for a non-existent guild.`)
                     }
                     let mutedRole = muteRoleLoop.MuteRoleID;
                     let guildMuteRole = await guild.roles.fetch(`${mutedRole}`).catch(() => {});
                     if (!guildMuteRole) {
-                        await MuteRole.findOneAndRemove({
+                        await MuteRole.deleteMany({
                             GuildID: guildID,
                             MuteRoleID: mutedRole
                         })
-                        for (memberMuteDelete in muteDeletes) {
-                            await MutedMember.findOneAndRemove({
-                                UserID: memberMuteDelete.UserID,
-                                GuildID: guildID
-                            })
-                        }
+                        await MutedMember.deleteMany({
+                            GuildID: guildID
+                        })
                         console.log(`Deleted mutes of a non-existent role.`)
                     }
                     let mutedMember = await MutedMember.find({

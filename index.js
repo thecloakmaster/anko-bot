@@ -10,6 +10,9 @@ twitFunction.execute();
 const unmuteCheck = require(`./functions/unmuteCheck.js`)
 unmuteCheck.execute(client)
 
+const giveawayCheck = require(`./functions/giveawayCheck.js`)
+giveawayCheck.execute(client)
+
 client.commands = new Discord.Collection();
 client.handlers = new Discord.Collection();
 [`command_handler`, `event_handler`].forEach(handler => {

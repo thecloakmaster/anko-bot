@@ -90,14 +90,17 @@ module.exports = {
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
-            \`;removeemote\`: Removes an emote from the server with the name or emotes provided.`)
+            \`;giveaway\`: Creates a giveaway.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page5 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 5 of 5**`)
-            .addField(`Mod Utilities`, `\`;removesticker\`: Removes a sticker from the server with the sticker provided.
+            .addField(`Mod Utilities`, `\`greroll\`: Reroll a giveaway winner.
+            \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
+            \`;removesticker\`: Removes a sticker from the server with the sticker provided.
+            \`;renameemote\`: Renames the emote specified.
             \`;setmuterole\`: Sets the server's mute role.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
