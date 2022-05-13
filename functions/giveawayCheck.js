@@ -1,7 +1,5 @@
 const giveawayInfo = require(`../database/GiveawayInfo`)
-const {
-    MessageEmbed
-} = require(`discord.js`)
+const { MessageEmbed } = require(`discord.js`)
 
 module.exports = {
     async execute(client) {
@@ -121,6 +119,6 @@ module.exports = {
                     }
                 }
             }
-        }, 30000)
+        }, 300000)
     }
 }

@@ -101,7 +101,8 @@ module.exports = {
                                 ChannelID: `${giveaway.ChannelID}`,
                                 EmbedID: `${giveaway.EmbedID}`,
                                 GuildID: `${guildID}`,
-                                ClientID: `${client.user.id}`,                                
+                                ClientID: `${client.user.id}`},
+                            {                           
                                 WinnersList: winnersList,
                                 Ended: true
                             })
