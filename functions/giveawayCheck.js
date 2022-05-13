@@ -97,7 +97,7 @@ module.exports = {
                                         }, {
                                             WinnersList: winnerList,
                                             Ended: true
-                                        })
+                                        }).catch((err) => console.log(err))
                                         let giveawayEmbed = new MessageEmbed()
                                             .setAuthor({
                                                 name: client.user.username,
