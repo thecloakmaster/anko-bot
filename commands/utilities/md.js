@@ -98,15 +98,19 @@ module.exports = {
                     .setStyle('DANGER')
 
                 let chapterTitle = null
-                let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                let mangaTitleReg = manga.localizedTitle[mangaTitleLoc]
-                mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                let mangaTitleReg = null
+                if (manga.localizedTitle.en) {
+                    mangaTitleReg = manga.localizedTitle.en
+                    mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                } else {
+                    mangaTitleReg = ``
+                }
                 if (chapter.title) {
                     chapterTitle = chapter.title.replace(/\s/g, "_")
                     chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                 } else if (!chapter.title) {
-                    if (manga.localizedTitle[mangaTitleLoc]) {
-                        chapterTitle = manga.localizedTitle[mangaTitleLoc].replace(/\s/g, "_")
+                    if (manga.localizedTitle.en) {
+                        chapterTitle = manga.localizedTitle.en.replace(/\s/g, "_")
                         chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                     } else {
                         chapterTitle = ``
