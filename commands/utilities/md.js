@@ -97,6 +97,9 @@ module.exports = {
                     .setStyle('DANGER')
 
                 let chapterTitle = null
+                let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
+                let mangaTitleReg = manga.localizedTitle[mangaTitleLoc]
+                mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                 if (chapter.title) {
                     chapterTitle = chapter.title.replace(/\s/g, "_")
                     chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
@@ -108,9 +111,6 @@ module.exports = {
                         chapterTitle = ``
                     }
                 }
-                let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                let mangaTitleReg = manga.localizedTitle[mangaTitleLoc]
-                mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                 const buttonList = [button1, button2, button3]
                 const row = new MessageActionRow().addComponents(buttonList);
                 let image = pages[page]
