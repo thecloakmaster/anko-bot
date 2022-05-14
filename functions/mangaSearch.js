@@ -75,13 +75,15 @@ module.exports = {
                 return message.channel.send({
                     embeds: [mangaEmbed]
                 })
+            } else if (interaction) {
+                await interaction.deferUpdate()
+                await interaction.editReply({
+                    embeds: [mangaEmbed],
+                    components: []
+                }).catch((err) => {
+                    console.log(err)
+                })
             }
-            await interaction.update({
-                embeds: [mangaEmbed],
-                components: []
-            }).catch((err) => {
-                console.log(err)
-            })
         })
     }
 }
