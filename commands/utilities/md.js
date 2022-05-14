@@ -96,7 +96,7 @@ module.exports = {
                     .setLabel('Close')
                     .setStyle('DANGER')
 
-                let chapterTitle = chapter.title.replace(/\s/g, "_")
+                let chapterTitle = chapter.title.replace(/\s/g, "_") || manga.localizedTitle[mangaTitleLoc].replace(/\s/g, "_") || `Manga`
                 chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                 let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
                 let mangaTitleReg = manga.localizedTitle[mangaTitleLoc]
