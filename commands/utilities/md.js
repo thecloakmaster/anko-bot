@@ -100,7 +100,7 @@ module.exports = {
                 if (chapter.title) {
                     chapterTitle = chapter.title.replace(/\s/g, "_")
                     chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
-                } else if (!chapter, title) {
+                } else if (!chapter.title) {
                     if (manga.localizedTitle[mangaTitleLoc]) {
                         chapterTitle = manga.localizedTitle[mangaTitleLoc].replace(/\s/g, "_")
                         chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
