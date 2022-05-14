@@ -21,6 +21,7 @@ module.exports = {
             } catch (err) {}
             if (manga) {
                 if (!isNaN(args[args.length - 1]) && isNaN(args[args.length - 2])) {
+                    page = 0
                     chapterNum = args[args.length - 1]
                 } else if (!isNaN(args[args.length - 2]) && !isNaN(args[args.length - 1])) {
                     page = args[args.length - 1] - 1
