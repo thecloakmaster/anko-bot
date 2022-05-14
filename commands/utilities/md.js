@@ -20,28 +20,28 @@ module.exports = {
                 manga = await MFA.Manga.get(`${args[0]}`)
             } catch (err) {}
             if (manga) {
-                if (!isNaN(args.slice(-1)) && isNaN(args.slice(-2))) {
-                    chapterNum = args.slice(-1)
-                } else if (!isNaN(args.slice(-2)) && !isNaN(args.slice(-1))) {
-                    page = args.slice(-1) - 1
-                    chapterNum = args.slice(-2)
-                } else if (isNaN(args.slice(-1)) && isNaN(args.slice(-2))) {
+                if (!isNaN(args[args.length - 1]) && isNaN(args[args.length - 2])) {
+                    chapterNum = args[args.length - 1]
+                } else if (!isNaN(args[args.length - 2]) && !isNaN(args[args.length - 1])) {
+                    page = args[args.length - 1] - 1
+                    chapterNum = args[args.length - 2]
+                } else if (isNaN(args[args.length - 1]) && isNaN(args[args.length - 2])) {
                     chapterNum = 1
                     page = 1
                 }
             } else if (!manga) {
                 chapterNum = 1
                 page = 1
-                if (!isNaN(args.slice(-1)) && isNaN(args.slice(-2))) {
-                    chapterNum = args.slice(-1)
+                if (!isNaN(args[args.length - 1]) && isNaN(args[args.length - 2])) {
+                    chapterNum = args[args.length - 1]
                     mangaTitleInp = args.slice(0, args.length - 1).join(" ")
 
-                } else if (!isNaN(args.slice(-2)) && !isNaN(args.slice(-1))) {
-                    page = args.slice(-1) - 1
-                    chapterNum = args.slice(-2)
-                    mangaTitleInp = args.slice(0, args.length - 1).join(" ")
+                } else if (!isNaN(args[args.length - 2]) && !isNaN(args[args.length - 1])) {
+                    page = args[args.length - 1] - 1
+                    chapterNum = args[args.length - 2]
+                    mangaTitleInp = args.slice(0, args.length - 2).join(" ")
 
-                } else if (isNaN(args.slice(-1)) && isNaN(args.slice(-2))) {
+                } else if (isNaN(args[args.length - 1]) && isNaN(args[args.length - 2])) {
                     mangaTitleInp = args.slice(0).join(" ")
                 }
                 try {
@@ -72,8 +72,8 @@ module.exports = {
             if (chapter && !chapter.isExternal) {
                 let pages = await chapter.getReadablePages({saver: true});
                 if (!isNaN(page)) {
-                    if (page < pages.length) {
-                        page -= 1
+                    if (page > pages.length - 1 || page < 0) {
+                        page = 0
                     }
                 }
                 if (chapter.chapter === null) {
