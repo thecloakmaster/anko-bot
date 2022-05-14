@@ -29,6 +29,11 @@ module.exports = {
             if (manga.contentRating) {
                 mangaEmbed.addField(`Content Rating`, `${manga.contentRating.charAt(0).toUpperCase() + manga.contentRating.slice(1)}`, true)
             }
+            if (manga.id) {
+                mangaEmbed.setFooter({
+                    text: `ID: ${manga.id}`
+                })
+            }
             if (latestChp[0]) {
                 if (!latestChp[0].chapter) {
                     mangaEmbed.addField(`Oneshot`, `Pain or no pain?`)
