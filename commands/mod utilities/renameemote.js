@@ -9,7 +9,7 @@ module.exports = {
         const bot = await message.guild.members.fetch(`${client.user.id}`)
         if (!message.member.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
             return message.channel.send(`You do not have the necessary permissions to execute this command.`)
-        } else if (!bot.permissions.has("MANAGE_EMOTES_AND_STICKERS")) {
+        } else if (!bot.permissions.has("MANAGE_EMOJIS_AND_STICKERS")) {
             return message.channel.send(`I do not have the necessary permissions to execute this command.\nPermissions required: \`MANAGE_EMOTES_AND_STICKERS\``)
         }
         if (!args[0]) {
