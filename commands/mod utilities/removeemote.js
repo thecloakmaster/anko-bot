@@ -56,6 +56,7 @@ module.exports = {
                             .setColor(`${process.env.colour}`)
                             .setDescription(`An emote with the name \`${emoji.name}\` has been deleted from the server.`)
                         return message.channel.send({
+                            content: `${em}`,
                             embeds: [embed]
                         })
                     }).catch(() => {})
