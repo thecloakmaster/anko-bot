@@ -1,4 +1,4 @@
-const {MessageEmbed} = require('discord.js');
+const {MessageEmbed, MessageAttachment} = require('discord.js');
 
 module.exports = {
     name: 'removeemote',
@@ -24,13 +24,15 @@ module.exports = {
                 if (!emoji) {
                     return message.channel.send(`Error deleting this emote.\nThis emote could not be found in this server.\nSyntax: \`;removeemote <Emote name>\` or \`;removeemote <Emotes provided>\``)
                 }
+                let emojiURL = "https://cdn.discordapp.com/emojis/" + emoji.id + ".png?v=1"
+                let file = new MessageAttachment(`${emojiURL}`).setName(`emote.png`)
                 emoji.delete().then((em) => {
                     const embed = new MessageEmbed()
                         .setColor(`${process.env.colour}`)
                         .setDescription(`An emote with the name \`${emoteName}\` has been deleted from the server.`)
                     return message.channel.send({
-                        content: `${em}`,
-                        embeds: [embed]
+                        embeds: [embed.setImage(`attachment://emote.png`)],
+                        files: [file]
                     })
                 }).catch((err) => {
                     console.log(err)
@@ -51,13 +53,15 @@ module.exports = {
                     if (!emoji) {
                         return message.channel.send(`Error deleting this emote.\nThis emote could not be found in this server.\nSyntax: \`;removeemote <Emote name>\` or \`;removeemote <Emotes provided>\``)
                     }
+                    let emojiURL = "https://cdn.discordapp.com/emojis/" + emoji.id + ".png?v=1"
+                    let file = new MessageAttachment(`${emojiURL}`).setName(`emote.png`)
                     emoji.delete().then((em) => {
                         const embed = new MessageEmbed()
                             .setColor(`${process.env.colour}`)
                             .setDescription(`An emote with the name \`${emoji.name}\` has been deleted from the server.`)
                         return message.channel.send({
-                            content: `${em}`,
-                            embeds: [embed]
+                            embeds: [embed.setImage(`attachment://emote.png`)],
+                            files: [file]
                         })
                     }).catch(() => {})
                 } catch (err) {
