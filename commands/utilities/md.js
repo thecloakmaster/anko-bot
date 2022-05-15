@@ -66,7 +66,7 @@ module.exports = {
                 if (chapters.length === 0) return null;
                 if (chapters.length === 1) return chapters[0]
                 for (const chap of chapters)
-                    if (chap.chapter == targetChap && chap.isExternal === false) return chap;
+                    if (chap.chapter == targetChap && !chap.isExternal) return chap;
                 return findChapter(targetManga, targetChap, offset + 100);
             }
             let chapter = await findChapter(manga, chapterNum)
@@ -217,13 +217,14 @@ module.exports = {
                 }
                 chapter = findExtChapter(manga, chapterNum)
                 if (chapter) {
-                    let mangaTitle = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
+                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
+                    let mangaTitle = manga.localizedTitle[mangaTitleLoc]
                     let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                     let mangaEmbed = new MessageEmbed()
-                        .setColor(`#33FFBD`)
                         .setImage(`${thumbnail.imageSource}`)
+                        .setColor(`#33FFBD`)
                         .setTitle(`${mangaTitle}`)
-                        .setDescription(`This chapter (maybe the series as well) is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
+                        .setDescription(`This chapter is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
                         .setURL(`https://mangadex.org/title/${manga.id}`)
                     return message.channel.send({
                         embeds: [mangaEmbed]

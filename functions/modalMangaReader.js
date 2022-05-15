@@ -29,11 +29,11 @@ module.exports = {
                     if (chapters.length === 0) return null;
                     if (chapters.length === 1) return chapters[0]
                     for (const chap of chapters)
-                        if (chap.chapter == targetChap) return chap;
+                        if (chap.chapter == targetChap && !chap.isExternal) return chap;
                     return findChapter(targetManga, targetChap, offset + 100);
                 }
                 let chapter = await findChapter(manga, chapterNum)
-                if (chapter && !chapter.isExternal) {
+                if (chapter) {
                     let pages = await chapter.getReadablePages();
                     if (!isNaN(page)) {
                         if (page > pages.length - 1 || page < 0) {
@@ -155,25 +155,45 @@ module.exports = {
                             console.log(err)
                         }
                     });
-                } else if (chapter && chapter.isExternal) {
-                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                    let mangaTitle = manga.localizedTitle[mangaTitleLoc]
-                    let thumbnail = await MFA.Cover.get(manga.mainCover.id)
-                    let mangaEmbed = new MessageEmbed()
-                        .setImage(`${thumbnail.imageSource}`)
-                        .setColor(`#33FFBD`)
-                        .setTitle(`${mangaTitle}`)
-                        .setDescription(`This chapter is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
-                        .setURL(`https://mangadex.org/title/${manga.id}`)
-                    return interaction.editReply({
-                        embeds: [mangaEmbed],
-                        components: []
-                    })
                 } else if (!chapter) {
-                    return interaction.editReply({
-                        content: `The chapter number you entered does not exist or is not available on MangaDex.`,
-                        components: []
-                    })
+                    const findExtChapter = async (targetManga, targetChap, offset = 0) => {
+                        const chapters = await targetManga.getFeed({
+                            translatedLanguage: ['en'],
+                            order: {
+                                publishAt: 'desc'
+                            },
+                            offset: offset,
+                            limit: 100
+                        });
+                        if (chapters.length === 0) return null;
+                        if (chapters.length === 1) return chapters[0]
+                        for (const chap of chapters)
+                            if (chap.chapter == targetChap) return chap;
+                        return findExtChapter(targetManga, targetChap, offset + 100);
+                    }
+                    chapter = findExtChapter(manga, chapterNum)
+                    if (!chapter) {
+                        return interaction.editReply({
+                            content: `The chapter number you entered does not exist or is not available on MangaDex.`,
+                            components: []
+                        })
+                    } else if (chapter) {
+                        let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
+                        let mangaTitle = manga.localizedTitle[mangaTitleLoc]
+                        let thumbnail = await MFA.Cover.get(manga.mainCover.id)
+                        let mangaEmbed = new MessageEmbed()
+                            .setImage(`${thumbnail.imageSource}`)
+                            .setColor(`#33FFBD`)
+                            .setTitle(`${mangaTitle}`)
+                            .setDescription(`This chapter is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
+                            .setURL(`https://mangadex.org/title/${manga.id}`)
+                        return interaction.editReply({
+                            embeds: [mangaEmbed],
+                            components: []
+                        })
+                    }
+                } else if (!chapter) {
+                    
                 }
             }
         })
