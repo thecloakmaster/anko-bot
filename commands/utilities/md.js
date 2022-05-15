@@ -66,7 +66,7 @@ module.exports = {
                 if (chapters.length === 0) return null;
                 if (chapters.length === 1) return chapters[0]
                 for (const chap of chapters)
-                    if (chap.chapter == targetChap && !chap.isExternal) return chap;
+                    if (chap.chapter == targetChap && chap.isExternal === false) return chap;
                 return findChapter(targetManga, targetChap, offset + 100);
             }
             let chapter = await findChapter(manga, chapterNum)
