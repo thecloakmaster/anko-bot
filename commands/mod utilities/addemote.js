@@ -53,6 +53,7 @@ module.exports = {
                         .setColor(`${process.env.colour}`)
                         .setDescription(`An emote with the name \`${emoteName}\` has been added to the server.`)
                     return message.channel.send({
+                        content: `${emoji}`,
                         embeds: [embed]
                     })
                 }

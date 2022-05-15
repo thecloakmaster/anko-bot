@@ -42,6 +42,7 @@ module.exports = {
                             .setColor(`${process.env.colour}`)
                             .setDescription(`An emote with the name \`${emoji.name}\` has been renamed to \`${em.name}\``)
                         return message.channel.send({
+                            content: `${em}`,
                             embeds: [embed]
                         })
                     }).catch((e) => {
