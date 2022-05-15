@@ -138,7 +138,6 @@ module.exports = {
                         buttonList[2].setDisabled(true).setLabel('Closed')
                     );
                     curPage.edit({
-                        embeds: [embed],
                         components: [disabledRow],
                     }).catch((err) => {
                         return
