@@ -4,7 +4,7 @@ module.exports = {
     description: `Replies to the users who have DM'd the bot for modmail.`,
     usage: `;modreply <Mention the user or enter their user ID> <Message content>`,
     async execute(message, args) {
-        if (!message.member.permissions.has("ADMINISTRATOR")) return;
+        if (!message.member.permissions.has("MODERATE_MEMBERS")) return;
         const userID = await message.guild.members.fetch(args[0]).catch(() => {});
         if (!userID) return message.channel.send(`Please specify a valid user ID to send the reply to.`)
         let textMessage = args.slice(1).join(" ");

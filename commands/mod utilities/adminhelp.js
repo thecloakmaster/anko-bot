@@ -5,7 +5,7 @@ module.exports = {
     description: `Lists admin related commands and provides information if command is specified.`, 
     usage: `;adminhelp or ;adminhelp <command>`,
     async execute (message, args, client, Discord) {
-        if (!message.member.permissions.has("ADMINISTRATOR")) return;
+        if (!message.member.permissions.has("MODERATE_MEMBERS")) return;
         client.commands = new Discord.Collection();
 
         const commandFolders = fs.readdirSync(`./commands`);
