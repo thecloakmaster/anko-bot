@@ -99,8 +99,8 @@ module.exports = {
 
                 let chapterTitle = null
                 let mangaTitleReg = null
-                if (manga.localizedTitle.en) {
-                    mangaTitleReg = manga.localizedTitle.en
+                if (manga.localizedTitle[manga.localizedTitle.availableLocales[0]]) {
+                    mangaTitleReg = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
                     mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                 } else {
                     mangaTitleReg = ``
@@ -109,8 +109,8 @@ module.exports = {
                     chapterTitle = chapter.title.replace(/\s/g, "_")
                     chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                 } else if (!chapter.title) {
-                    if (manga.localizedTitle.en) {
-                        chapterTitle = manga.localizedTitle.en.replace(/\s/g, "_")
+                    if (manga.localizedTitle[manga.localizedTitle.availableLocales[0]]) {
+                        chapterTitle = manga.localizedTitle[manga.localizedTitle.availableLocales[0]].replace(/\s/g, "_")
                         chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
                     } else {
                         chapterTitle = ``
@@ -122,10 +122,10 @@ module.exports = {
                 let file = new MessageAttachment(`${image}`).setName(`${mangaTitleReg}_${chapterTitle}_Ch_${chapterNum}_Page_${page+1}.png`)
                 let embed = new MessageEmbed()
                     .setAuthor({
-                        name: `${manga.localizedTitle[mangaTitleLoc]} | Chapter ${chapterNum}`,
+                        name: `${manga.localizedTitle[manga.localizedTitle.availableLocales[0]]} | Chapter ${chapterNum}`,
                         iconURL: client.user.displayAvatarURL()
                     })
-                    .setTitle(`${chapter.title || manga.localizedTitle[mangaTitleLoc]}`)
+                    .setTitle(`${chapter.title || manga.localizedTitle[manga.localizedTitle.availableLocales[0]]}`)
                     .setFooter({
                         text: `Page ${page+1} of ${pages.length}`
                     })
@@ -218,8 +218,7 @@ module.exports = {
                 }
                 chapter = findExtChapter(manga, chapterNum)
                 if (chapter) {
-                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                    let mangaTitle = manga.localizedTitle[mangaTitleLoc]
+                    let mangaTitle = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
                     let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                     let mangaEmbed = new MessageEmbed()
                         .setColor(`#33FFBD`)
