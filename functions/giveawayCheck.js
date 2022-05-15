@@ -77,6 +77,7 @@ module.exports = {
                                         return
                                     } else if (giveawayReactions.length - 1 >= giveaway.Winners) {
                                         let congratsMessage = `The giveaway for **${giveaway.Prize}** has ended.\nCongrats to the winner(s):`
+                                        let winners = ``
                                         for (let winnerCounter = 0; winnerCounter < giveaway.Winners; winnerCounter++) {
                                             let randInt = getRandomInt(0, giveawayReactions.length)
                                             if (winnerList.indexOf(`${giveawayReactions[randInt]}`) != -1 || giveawayReactions[randInt] === client.user.id) {
@@ -84,6 +85,7 @@ module.exports = {
                                                 continue
                                             } else {
                                                 congratsMessage = `${congratsMessage}\n**${winnerCounter + 1}.** <@!${giveawayReactions[randInt]}>`
+                                                winners = `${winners}<@!${giveawayReactions[randInt]}>\n`
                                                 winnerList.push(`${giveawayReactions[randInt]}`)
                                             }
                                         }
@@ -104,6 +106,7 @@ module.exports = {
                                             .setColor(`${process.env.colour}`)
                                             .setTitle(`${giveaway.Prize}`)
                                             .setDescription(`The giveaway has ended with **${giveawayReactions.length - 1} participants.**\nAmount of winners: ${giveaway.Winners}`)
+                                            .addField(`Winners`, `${winners}`)
                                             .setFooter({
                                                 text: `Giveaway ID: ${giveaway.GiveawayID}`
                                             })

@@ -15,7 +15,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
                 .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
                 .setColor(`${process.env.colour}`)
-                .setTitle(`ID: [${message.author.id}]`)
+                .setTitle(`ID: ${message.author.id}`)
                 .setDescription(message.content)
                 .setTimestamp();
             return modHook.send({

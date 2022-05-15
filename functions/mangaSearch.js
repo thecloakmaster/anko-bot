@@ -1,5 +1,5 @@
 const MFA = require(`mangadex-full-api`)
-const {MessageEmbed} = require(`discord.js`)
+const {MessageEmbed, MessageActionRow, Modal, TextInputComponent, MessageButton} = require(`discord.js`)
 const mangaQuery = require (`../functions/mangaAniListQuery`)
 
 module.exports = {
@@ -73,15 +73,82 @@ module.exports = {
                 mangaEmbed.addField(`Official English Translation`, `[Click here!](${manga.links.engtl})`, true)
             }
             if (!interaction) {
-                return message.channel.send({
-                    embeds: [mangaEmbed]
+                let button = new MessageButton()
+                    .setCustomId('reader')
+                    .setLabel('Read?')
+                    .setStyle('SECONDARY');
+                const row = new MessageActionRow().addComponents([button]);
+                let curPage = await message.channel.send({
+                    embeds: [mangaEmbed],
+                    components: [row]
+                }).catch(() => {})
+                const filter = (i) =>
+                    i.customId === button.customId
+
+                const collector = await curPage.createMessageComponentCollector({
+                    filter,
+                    time: 10000,
+                });
+                collector.on("collect", async (i) => {
+                    if (i.user.id != message.member.user.id) return
+                    if (i.customId === button.customId) {
+                        const modal = new Modal()
+                            .setCustomId('chapterNumber')
+                            .setTitle(`Manga`);
+                        const chpNumInput = new TextInputComponent()
+                            .setCustomId('chapterNumber')
+                            .setLabel("Which chapter would you like to read?")
+                            .setStyle(`SHORT`);
+                        const firstRow = new MessageActionRow().addComponents([chpNumInput]);
+                        modal.addComponents([firstRow]);
+                        await i.showModal(modal);
+                        collector.stop()
+                    }
+                })
+                collector.on("end", async () => {
+                    await curPage.edit({
+                        components: []
+                    })
                 })
             } else if (interaction) {
-                await interaction.editReply({
+                let button = new MessageButton()
+                    .setCustomId('reader')
+                    .setLabel('Read?')
+                    .setStyle('SECONDARY');
+                const row = new MessageActionRow().addComponents([button]);
+                let curPage = await interaction.editReply({
                     embeds: [mangaEmbed],
-                    components: []
+                    components: [row]
                 }).catch((err) => {
                     console.log(err)
+                })
+                const filter = (i) =>
+                    i.customId === button.customId
+
+                const collector = await curPage.createMessageComponentCollector({
+                    filter,
+                    time: 60000,
+                });
+                collector.on("collect", async (i) => {
+                    if (i.user.id != interaction.member.user.id) return
+                    if (i.customId === button.customId) {
+                        const modal = new Modal()
+                            .setCustomId('chapterNumber')
+                            .setTitle(`Manga`);
+                        const chpNumInput = new TextInputComponent()
+                            .setCustomId('chapterNumber')
+                            .setLabel("Which chapter would you like to read?")
+                            .setStyle(`SHORT`);
+                        const firstRow = new MessageActionRow().addComponents([chpNumInput]);
+                        modal.addComponents([firstRow]);
+                        await i.showModal(modal);
+                        collector.stop()
+                    }
+                })
+                collector.on("end", async () => {
+                    await curPage.edit({
+                        components: []
+                    })
                 })
             }
         })

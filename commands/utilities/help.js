@@ -56,19 +56,19 @@ module.exports = {
             \`;whois\`: Gives information about the member specified or yourself.`)
             .addField(`Fun`, `\`;hug\`: Hugs the specified member and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
-            \`;pat\`: Pats the specified member and makes them feel a little bit better.`)
-            .addField(`Moderation`, `\`;ban\`: Bans the specified user.`)
+            \`;pat\`: Pats the specified member and makes them feel a little bit better.
+            \`;slap\`: Slaps the specified member for whatever the reason may be.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 3 of 5**`)
-            .addField(`Fun`, `\`;slap\`: Slaps the specified member for whatever the reason may be.
-            \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
+            .addField(`Fun`, `\`;massspank\`: Spanks the specified members and mutes them for 1 minute.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
             \`;uwuify\`: Makes your message more UwU.`)
-            .addField(`Moderation`, `\`;clearwarns\`: Clears all the warns of the specified user.
+            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
+            \`;clearwarns\`: Clears all the warns of the specified user.
             \`;fetchwarns\`: Fetches the warns of the specified user.
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
@@ -89,15 +89,15 @@ module.exports = {
             \`;warn\`: Warns the specified member.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
-            \`;archivepins\`: Takes pins from a channel and archives them into embeds.
-            \`;giveaway\`: Creates a giveaway.`)
+            \`;archivepins\`: Takes pins from a channel and archives them into embeds.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page5 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 5 of 5**`)
-            .addField(`Mod Utilities`, `\`greroll\`: Reroll a giveaway winner.
+            .addField(`Mod Utilities`, `\`;giveaway\`: Creates a giveaway.
+            \`;greroll\`: Reroll a giveaway winner.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;renameemote\`: Renames the emote specified.
