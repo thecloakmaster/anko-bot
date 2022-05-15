@@ -161,6 +161,7 @@ module.exports = {
                     let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                     let mangaEmbed = new MessageEmbed()
                         .setImage(`${thumbnail.imageSource}`)
+                        .setColor(`#33FFBD`)
                         .setTitle(`${mangaTitle}`)
                         .setDescription(`This chapter is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
                         .setURL(`https://mangadex.org/title/${manga.id}`)
