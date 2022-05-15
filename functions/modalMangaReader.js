@@ -4,7 +4,7 @@ const {
 const MFA = require(`mangadex-full-api`)
 
 module.exports = {
-    async execute(interaction) {
+    async execute(interaction, client) {
         let chapterNum = await interaction.fields.getTextInputValue(`chapterNumber`)
         let mangaID = interaction.message.embeds[0].footer.text.replace('ID: ', '')
         interaction.deferUpdate()

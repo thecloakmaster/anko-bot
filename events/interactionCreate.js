@@ -10,7 +10,7 @@ module.exports = {
             } 
         } else if (interaction.isModalSubmit()) {
             if (interaction.customId === `chapterNumber`) {
-                modalMangaReader.execute(interaction)
+                modalMangaReader.execute(interaction, client)
             }
         }
     }

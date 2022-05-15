@@ -87,7 +87,7 @@ module.exports = {
 
                 const collector = await curPage.createMessageComponentCollector({
                     filter,
-                    time: 10000,
+                    time: 60000,
                 });
                 collector.on("collect", async (i) => {
                     if (i.user.id != message.member.user.id) return
