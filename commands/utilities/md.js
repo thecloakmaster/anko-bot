@@ -217,8 +217,7 @@ module.exports = {
                 }
                 chapter = findExtChapter(manga, chapterNum)
                 if (chapter) {
-                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                    let mangaTitle = manga.localizedTitle[mangaTitleLoc]
+                    let mangaTitle = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
                     let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                     let mangaEmbed = new MessageEmbed()
                         .setImage(`${thumbnail.imageSource}`)
