@@ -8,7 +8,7 @@ module.exports = {
         let chapterNum = await interaction.fields.getTextInputValue(`chapterNumber`)
         let mangaID = interaction.message.embeds[0].footer.text.replace('ID: ', '')
         interaction.deferUpdate()
-        MFA.login(`thecloakmaster`, `ZBUVfeyP5dDr4s3`).then(async () => {
+        MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = null
             let page = 0
             try {
