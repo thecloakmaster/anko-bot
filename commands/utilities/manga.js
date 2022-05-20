@@ -61,7 +61,7 @@ module.exports = {
                 .setStyle('DANGER')
 
             let chapterTitle = chapter.title.replace(/\s/g, "_")
-            chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+            chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
             const buttonList = [button1, button2, button3]
             const row = new MessageActionRow().addComponents(buttonList);
             let image = pages[page]

@@ -101,17 +101,17 @@ module.exports = {
                 let mangaTitleReg = null
                 if (manga.localizedTitle[manga.localizedTitle.availableLocales[0]]) {
                     mangaTitleReg = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
-                    mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                    mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                 } else {
                     mangaTitleReg = ``
                 }
                 if (chapter.title) {
                     chapterTitle = chapter.title.replace(/\s/g, "_")
-                    chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                    chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                 } else if (!chapter.title) {
                     if (manga.localizedTitle[manga.localizedTitle.availableLocales[0]]) {
                         chapterTitle = manga.localizedTitle[manga.localizedTitle.availableLocales[0]].replace(/\s/g, "_")
-                        chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                        chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                     } else {
                         chapterTitle = ``
                     }
