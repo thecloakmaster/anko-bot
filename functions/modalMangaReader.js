@@ -15,7 +15,7 @@ module.exports = {
                 manga = await MFA.Manga.get(`${mangaID}`)
             } catch (err) {}
             if (!manga) {
-                console.log()
+                return
             } else if (manga) {
                 const findChapter = async (targetManga, targetChap, offset = 0) => {
                     const chapters = await targetManga.getFeed({
@@ -75,7 +75,6 @@ module.exports = {
                     const buttonList = [button1, button2, button3]
                     const row = new MessageActionRow().addComponents(buttonList);
                     let image = pages[page]
-                    console.log(page)
                     let file = new MessageAttachment(`${image}`).setName(`${mangaTitleReg}_${chapterTitle}_Ch_${chapterNum}_Page_${page+1}.png`)
                     let embed = new MessageEmbed()
                         .setAuthor({
