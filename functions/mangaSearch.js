@@ -94,7 +94,7 @@ module.exports = {
                     if (i.customId === button.customId) {
                         const modal = new Modal()
                             .setCustomId('chapterNumber')
-                            .setTitle(`Manga`);
+                            .setTitle(`Chapter Number`);
                         const chpNumInput = new TextInputComponent()
                             .setCustomId('chapterNumber')
                             .setLabel("Which chapter would you like to read?")
@@ -134,7 +134,7 @@ module.exports = {
                     if (i.customId === button.customId) {
                         const modal = new Modal()
                             .setCustomId('chapterNumber')
-                            .setTitle(`Manga`);
+                            .setTitle(`Chapter Number`);
                         const chpNumInput = new TextInputComponent()
                             .setCustomId('chapterNumber')
                             .setLabel("Which chapter would you like to read?")

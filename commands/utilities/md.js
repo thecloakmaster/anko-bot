@@ -1,6 +1,7 @@
 const MFA = require(`mangadex-full-api`)
 const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment } = require(`discord.js`)
 const mangaSearch = require (`../../functions/mangaSearch`)
+const mangaQuery = require(`../functions/mangaAniListQuery`)
 
 module.exports = {
     name: `md`,
@@ -70,6 +71,18 @@ module.exports = {
                 return findChapter(targetManga, targetChap, offset + 100);
             }
             let chapter = await findChapter(manga, chapterNum)
+            let colour = `#33FFBD`
+            if (manga.links.al) {
+                let AniListID = parseInt(manga.links.al.replace("https://anilist.co/manga/", ""))
+                if (typeof (AniListID) === "number") {
+                    let queryReturned = await mangaQuery.execute(AniListID)
+                    if (queryReturned) {
+                        if (queryReturned.coverImage.color) {
+                            colour = queryReturned.coverImage.color
+                        }
+                    }
+                }
+            }
             if (chapter && !chapter.isExternal) {
                 let pages = await chapter.getReadablePages({saver: true});
                 if (!isNaN(page)) {
@@ -129,7 +142,7 @@ module.exports = {
                     .setFooter({
                         text: `Page ${page+1} of ${pages.length}`
                     })
-                    .setColor(`#33FFBD`)
+                    .setColor(`${colour}`)
                     .setURL(`https://mangadex.org/chapter/${chapter.id}`)
                 let curPage = await message.channel.send({
                     files: [file],
@@ -221,7 +234,7 @@ module.exports = {
                     let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                     let mangaEmbed = new MessageEmbed()
                         .setImage(`${thumbnail.imageSource}`)
-                        .setColor(`#33FFBD`)
+                        .setColor(`${colour}`)
                         .setTitle(`${mangaTitle}`)
                         .setDescription(`This chapter is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
                         .setURL(`https://mangadex.org/title/${manga.id}`)

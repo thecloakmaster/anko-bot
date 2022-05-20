@@ -7,6 +7,7 @@ module.exports = {
     async execute(interaction, client) {
         let chapterNum = await interaction.fields.getTextInputValue(`chapterNumber`)
         let mangaID = interaction.message.embeds[0].footer.text.replace('ID: ', '')
+        let color = interaction.message.embeds[0].hexColor
         interaction.deferUpdate()
         MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = null
@@ -85,7 +86,7 @@ module.exports = {
                         .setFooter({
                             text: `Page ${page+1} of ${pages.length}`
                         })
-                        .setColor(`#33FFBD`)
+                        .setColor(`${color}`)
                         .setURL(`https://mangadex.org/chapter/${chapter.id}`)
                     let curPage = await interaction.editReply({
                         files: [file],
@@ -190,9 +191,7 @@ module.exports = {
                             embeds: [mangaEmbed],
                             components: []
                         })
-                    }
-                } else if (!chapter) {
-                    
+                    }                
                 }
             }
         })
