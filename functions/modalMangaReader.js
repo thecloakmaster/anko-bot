@@ -79,10 +79,10 @@ module.exports = {
                     let file = new MessageAttachment(`${image}`).setName(`${mangaTitleReg}_${chapterTitle}_Ch_${chapterNum}_Page_${page+1}.png`)
                     let embed = new MessageEmbed()
                         .setAuthor({
-                            name: `Chapter ${chapterNum}`,
+                            name: `${manga.localizedTitle[mangaTitleLoc]} | Chapter ${chapterNum}`,
                             iconURL: client.user.displayAvatarURL()
                         })
-                        .setTitle(`${chapter.title}`)
+                        .setTitle(`${chapter.title || manga.localizedTitle[mangaTitleLoc]}`)
                         .setFooter({
                             text: `Page ${page+1} of ${pages.length}`
                         })
