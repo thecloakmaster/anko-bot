@@ -1,6 +1,4 @@
-const {
-    MessageEmbed, MessageActionRow, MessageButton, MessageAttachment
-} = require(`discord.js`)
+const { MessageEmbed, MessageActionRow, MessageButton, MessageAttachment } = require(`discord.js`)
 const MFA = require(`mangadex-full-api`)
 
 module.exports = {
@@ -59,20 +57,20 @@ module.exports = {
                         .setLabel('Close')
                         .setStyle('DANGER')
                     let chapterTitle = null
+                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
+                    let mangaTitleReg = manga.localizedTitle[mangaTitleLoc]
+                    mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                     if (chapter.title) {
                         chapterTitle = chapter.title.replace(/\s/g, "_")
-                        chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                        chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                     } else if (!chapter.title) {
                         if (manga.localizedTitle[mangaTitleLoc]) {
                             chapterTitle = manga.localizedTitle[mangaTitleLoc].replace(/\s/g, "_")
-                            chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}‘]/g, "")
+                            chapterTitle = chapterTitle.replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                         } else {
                             chapterTitle = ``
                         }
                     }
-                    let mangaTitleLoc = manga.localizedTitle.availableLocales[0]
-                    let mangaTitleReg = manga.localizedTitle[mangaTitleLoc]
-                    mangaTitleReg = mangaTitleReg.replace(/\s/g, "_").replace(/[’|!@`~&\/\\#,+()$~%'":*?<>{}\[\]‘]/g, "")
                     const buttonList = [button1, button2, button3]
                     const row = new MessageActionRow().addComponents(buttonList);
                     let image = pages[page]
@@ -183,7 +181,7 @@ module.exports = {
                         let thumbnail = await MFA.Cover.get(manga.mainCover.id)
                         let mangaEmbed = new MessageEmbed()
                             .setImage(`${thumbnail.imageSource}`)
-                            .setColor(`#33FFBD`)
+                            .setColor(`${color}`)
                             .setTitle(`${mangaTitle}`)
                             .setDescription(`This chapter is not available on MangaDex. To read this chapter, follow this link: ${chapter.externalUrl}`)
                             .setURL(`https://mangadex.org/title/${manga.id}`)
@@ -191,7 +189,7 @@ module.exports = {
                             embeds: [mangaEmbed],
                             components: []
                         })
-                    }                
+                    }
                 }
             }
         })
