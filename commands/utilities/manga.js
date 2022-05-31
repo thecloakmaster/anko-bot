@@ -24,7 +24,7 @@ module.exports = {
             }, true);
             let chapter = null
             for (let i of chapters) {
-                if (i.groups[0].id) {
+                if (i.groups[0]) {
                     if (i.chapter === `${chp_no}` && i.groups[0].id == '063cf1b0-9e25-495b-b234-296579a34496') {
                         chapter = i
                     }
