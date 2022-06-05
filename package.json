@@ -9,7 +9,7 @@
   "author": "cloak",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.7.0",
+    "discord.js": "^13.8.0",
     "mangadex-full-api": "^5.11.1",
     "mongoose": "^6.2.6",
     "ms": "^2.1.3",
