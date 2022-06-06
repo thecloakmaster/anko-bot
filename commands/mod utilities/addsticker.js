@@ -39,8 +39,8 @@ module.exports = {
         try {
             let urlcheck = new URL(url)
             let imgMatch = url.split(/[#?]/)[0].split('.').pop().trim();
-            if (imgMatch != 'png' && imgMatch != 'apng') {
-                return message.channel.send(`Please enter a valid image URL to a .png/.apng file.`)
+            if (imgMatch != 'png') {
+                return message.channel.send(`Please enter a valid image URL to a .png file.`)
             }
         } catch (err) {
             return message.channel.send(`Please enter a valid URL.\nSyntax: \`;addsticker <Image URL> <Sticker name>\` or \`;addsticker <Sticker name> if u attach an image with the message\``)
