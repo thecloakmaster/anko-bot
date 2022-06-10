@@ -10,5 +10,10 @@ module.exports = {
         client.user.setActivity("DMs for modmail.", {
             type: `LISTENING`
         })
+        setInterval(async function () {
+            client.user.setActivity("DMs for modmail.", {
+                type: `LISTENING`
+            })
+        }, 600000)
     }
 }
