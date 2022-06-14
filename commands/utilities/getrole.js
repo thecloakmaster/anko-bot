@@ -47,7 +47,7 @@ module.exports = {
             } else if (roleName.length > 100) {
                 return message.channel.send(`Please enter a shorter role name, preferably less than 100 characters.\nSyntax: \`;getrole <Hex colour> <Role name> <Icon URL for the role (not necessary)>\``)
             }
-
+            let boostRolePosition = serverBoostRole.position + 1
             let PremiumTiers = ['NONE', 'TIER_1', 'TIER_2', 'TIER_3']
             if (!roleIconURL || PremiumTiers.indexOf(message.guild.premiumTier) <= 1) {
                 let data = await BoosterMember.findOne({
@@ -67,7 +67,7 @@ module.exports = {
                     await message.guild.roles.create({
                         name: `${roleName}`,
                         color: `${roleColour}`,
-                        position: 40
+                        position: boostRolePosition
                     }).then((role) => {
                         roleID = role.id
                     }).catch(() => {
@@ -146,7 +146,7 @@ module.exports = {
                         name: `${roleName}`,
                         color: `${roleColour}`,
                         icon: `${roleIconURL}`,
-                        position: 40
+                        position: boostRolePosition
                     }).then((role) => {
                         roleID = role.id
                     }).catch(() => {

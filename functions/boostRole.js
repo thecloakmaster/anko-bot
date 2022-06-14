@@ -2,10 +2,12 @@ const {MessageEmbed} = require("discord.js");
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
     async execute(roleName, roleID, roleEmbedMessage, roleColour, message, client) {
+        let serverBoostRole = message.guild.roles.premiumSubscriberRole
+        let boostRolePosition = serverBoostRole.position + 1
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
-            position: 40
+            position: boostRolePosition
         }).then((role) => {
             roleID = role.id
         }).catch(() => {

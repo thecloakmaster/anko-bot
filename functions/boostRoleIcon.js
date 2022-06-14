@@ -4,11 +4,13 @@ const {
 const BoosterMember = require(`../database/BoosterMember.js`)
 module.exports = {
     async execute(roleName, roleID, roleIconURL, roleEmbedMessage, roleColour, message, client) {
+        let serverBoostRole = message.guild.roles.premiumSubscriberRole
+        let boostRolePosition = serverBoostRole.position + 1
         await message.guild.roles.create({
             name: `${roleName}`,
             color: `${roleColour}`,
             icon: `${roleIconURL}`,
-            position: 40
+            position: boostRolePosition
         }).then((role) => {
             roleID = role.id
         }).catch((err) => {
