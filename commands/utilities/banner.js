@@ -19,7 +19,7 @@ module.exports = {
             }
             let col = message.member.displayHexColor || "#000000"
             const nomentionEmbed = new MessageEmbed()
-                .setTitle(`Here's your avatar ${message.author.username}`)
+                .setTitle(`Here's your banner ${message.author.username}`)
                 .setDescription(`Download | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size:2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)
                 .setColor(`${col}`)
                 .setImage(`${userMention.bannerURL({dynamic:true, size:2048})}`)
@@ -48,7 +48,7 @@ module.exports = {
                 col = member.displayHexColor || "#000000"
             }
             const mentionedEmbed = new MessageEmbed()
-                .setTitle(`Here's the avatar for ${userMention.tag}`)
+                .setTitle(`Here's the banner for ${userMention.tag}`)
                 .setDescription(`Download | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)
                 .setColor(`${col}`)
                 .setImage(`${userMention.bannerURL({dynamic:true, size:2048})}`)
