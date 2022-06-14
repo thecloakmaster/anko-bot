@@ -33,7 +33,7 @@ module.exports = {
                             storedText = await JSON.parse(text);
                             try {
                                 await targetMessage.edit(storedText).then(async (message) => {
-                                    await message.channel.send(`The URL to the edited message: [Click here to warp space time and jump to the message!](${message.url})`)
+                                    await message.channel.send(`The URL to the edited message: ${message.url}`)
                                 }).catch(() => {
                                     return message.channel.send(`There was an error editing this embed.`)
                                 })
