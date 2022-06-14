@@ -25,7 +25,11 @@ module.exports = {
                         response.text().then(async function (text) {
                             storedText = await JSON.parse(text);
                             try {
-                                return await targetChannel.send(storedText)
+                                await targetChannel.send(storedText).then(async (message) => {
+                                    await message.channel.send(`The URL to the message: [Click here to warp space time and jump to the message!](${message.url})`)
+                                }).catch(() => {
+                                    return message.channel.send(`There was an error sending this message.`)
+                                })
                             } catch (error) {
                                 return message.channel.send(`Invalid JSON: ${error.message}\nSyntax: \`;embed <Channel mention> <Embed data in a JSON format (a file can be sent instead - .txt or .json)>\`\nFor designing your embed, you can use the website <https://discohook.org/> and copy the JSON data from their JSON data editor.`)
                             }

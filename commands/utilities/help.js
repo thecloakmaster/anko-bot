@@ -193,7 +193,7 @@ module.exports = {
             const commandName = commHelp.shift().toLowerCase();
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-            hiddenCommands = ['talk', 'newchp', 'modreply', 'modmail', 'replymodmail', 'replymod', 'reply', `adminhelp`, `embed`]
+            hiddenCommands = ['talk', 'newchp', 'modreply', 'modmail', 'replymodmail', 'replymod', 'reply', `adminhelp`, `embed`, `editembed`, `eembed`, `edit`]
             for (let i = 0; i < hiddenCommands.length; i++) {
                 let comm = hiddenCommands[i]
                 if (!command || commandName === comm) return message.reply("This command does not exist.");
