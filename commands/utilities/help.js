@@ -32,7 +32,8 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 1 of 5**`)
-            .addField(`Utility`, `\`;avatar\`: Sends the avatar URL of the tagged user, or your own avatar.
+            .addField(`Utility`, `\`;avatar\`: Get the image URL of the tagged user\'s avatar, or the image URL of your own avatar.
+            \`;banner\`: Get the image URL of the tagged user\'s banner, or the image URL of your own banner.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
             \`;getrole\`: Gives a custom role to the boosters of their choice.
             \`;help\`: Lists all the commands and provides information if the command is specified.
@@ -40,8 +41,7 @@ module.exports = {
             \`;md\`: Grabs the requested chapter of the series mentioned from MangaDex and sends it in the chat.
             \`;mdsearch\`: Fetches a maximum of 10 series from MangaDex and shows the information about them.
             \`;nextep\`: Tells you the status and airing time of the next episode of the specified anime.
-            \`;quote\`: Fetches previously sent message and sends it in an embed.
-            \`;serverbanner\`: Sends the server's banner.`)
+            \`;quote\`: Fetches previously sent message and sends it in an embed.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page2 = new MessageEmbed()
@@ -49,6 +49,7 @@ module.exports = {
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 2 of 5**`)
             .addField(`Utility`, `\`;servericon\`: Sends the server's icon.
+            \`;serverbanner\`: Sends the server's banner.
             \`;serverinfo\`: Gives information about the server in which the command is executed.
             \`serversplash\`: Sends the server's splash background image.
             \`;spoiler\`: Sends the specified image/video with a spoiler tag. (You should probably also learn to use the feature in-built in Discord to spoiler tag files)
@@ -56,15 +57,15 @@ module.exports = {
             \`;whois\`: Gives information about the member specified or yourself.`)
             .addField(`Fun`, `\`;hug\`: Hugs the specified member and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
-            \`;pat\`: Pats the specified member and makes them feel a little bit better.
-            \`;slap\`: Slaps the specified member for whatever the reason may be.`)
+            \`;pat\`: Pats the specified member and makes them feel a little bit better.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
             
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 3 of 5**`)
-            .addField(`Fun`, `\`;massspank\`: Spanks the specified members and mutes them for 1 minute.
+            .addField(`Fun`, `\`;slap\`: Slaps the specified member for whatever the reason may be.
+            \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
             \`;uwuify\`: Makes your message more UwU.`)
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
@@ -72,15 +73,15 @@ module.exports = {
             \`;fetchwarns\`: Fetches the warns of the specified user.
             \`;kick\`: Kicks the specified member.
             \`;lock\`: Locks the channel.
-            \`;massban\`: Bans the group of users specified.
-            \`;massunban\`: Unbans the group of users specified.`)
+            \`;massban\`: Bans the group of users specified.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 4 of 5**`)
-            .addField(`Moderation`, `\`;mute\`: Mutes the specified member.
+            .addField(`Moderation`, `\`;massunban\`: Unbans the group of users specified.
+            \`;mute\`: Mutes the specified member.
             \`;purge\`: Deletes the amount of messages specified.
             \`;removewarn\`: Removes the specified warn of the specified member.
             \`;unban\`: Unbans the specified user.
@@ -88,15 +89,15 @@ module.exports = {
             \`;unmute\`: Unmutes the specified member.
             \`;warn\`: Warns the specified member.`)
             .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.
-            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
-            \`;archivepins\`: Takes pins from a channel and archives them into embeds.`)
+            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page5 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 5 of 5**`)
-            .addField(`Mod Utilities`, `\`;giveaway\`: Creates a giveaway.
+            .addField(`Mod Utilities`, `\`;archivepins\`: Takes pins from a channel and archives them into embeds.
+            \`;giveaway\`: Creates a giveaway.
             \`;greroll\`: Reroll a giveaway winner.
             \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.

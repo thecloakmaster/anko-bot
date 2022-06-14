@@ -4,7 +4,7 @@ const {
 module.exports = {
     name: 'avatar',
     aliases: ["pfp", "icon", "av", "ava"],
-    description: 'Get the avatar URL of the tagged user, or your own avatar.',
+    description: 'Get the image URL of the tagged user\'s avatar, or the image URL of your own avatar.',
     usage: ";avatar @mention or ;avatar <user ID> or ;avatar for your own avatar",
     async execute(message, args) {
 
