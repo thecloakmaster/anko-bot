@@ -11,6 +11,9 @@ module.exports = {
     async execute(message, args, client) {
         let commandUser = await message.author.id
         let matchedUser = await message.mentions.users.first()
+        if (!matchedUser) {
+            return message.channel.send(`Please specify the user you want to match yourself with.\nSyntax: \`;match <@Mention User>\``)
+        }
         matchedUser = matchedUser.id
         if (matchedUser === commandUser) {
             return message.channel.send(`You cannot find the compatibility rating of you to yourself.`)
