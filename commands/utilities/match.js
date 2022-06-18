@@ -10,7 +10,7 @@ module.exports = {
     cooldown: 3000,
     async execute(message, args, client) {
         let commandUser = await message.author.id
-        let matchedUser = await message.mentions.users.first() || await message.guild.members.fetch(args[0]).catch(() => {});
+        let matchedUser = await message.mentions.users.first() || await message.guild.members.fetch(args[0]).catch(() => {}).user;
         if (!matchedUser) {
             return message.channel.send(`Please specify the user you want to match yourself with.\nSyntax: \`;match <@Mention User or User ID>\``)
         }
