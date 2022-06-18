@@ -6,13 +6,13 @@ const Match = require(`../../database/Match.js`)
 module.exports = {
     name: `match`,
     description: `Matches two users and finds their compatibility rating.`,
-    usage: `;match <@Mention User>`,
+    usage: `;match <@Mention User or User ID>`,
     cooldown: 3000,
     async execute(message, args, client) {
         let commandUser = await message.author.id
         let matchedUser = await message.mentions.users.first() || await message.guild.members.fetch(args[0]).catch(() => {});
         if (!matchedUser) {
-            return message.channel.send(`Please specify the user you want to match yourself with.\nSyntax: \`;match <@Mention User>\``)
+            return message.channel.send(`Please specify the user you want to match yourself with.\nSyntax: \`;match <@Mention User or User ID>\``)
         }
         matchedUser = matchedUser.id
         if (matchedUser === commandUser) {
