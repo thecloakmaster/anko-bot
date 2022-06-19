@@ -81,7 +81,7 @@ module.exports = {
                 embeds: [embed]
             })
             matchedUser = await message.guild.members.fetch(`${matchedUser}`).catch(() => {})            
-            return message.channel.send(`${matchedUser.username}: Lets get married tonight!`)
+            return message.channel.send(`${matchedUser.user.username}: Lets get married tonight!`)
         }
     }
 }
