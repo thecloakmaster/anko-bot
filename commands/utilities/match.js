@@ -80,7 +80,8 @@ module.exports = {
                 content: `<:NazunaKiss:933269636206690364> <:NazunaKiss:933269636206690364> <:NazunaKiss:933269636206690364> <:NazunaKiss:933269636206690364> <:NazunaKiss:933269636206690364>`,
                 embeds: [embed]
             })
-            return message.channel.send(`Lets get married tonight!`)
+            matchedUser = await message.guild.members.fetch(`${matchedUser}`).catch(() => {})            
+            return message.channel.send(`${matchedUser.username}: Lets get married tonight!`)
         }
     }
 }
