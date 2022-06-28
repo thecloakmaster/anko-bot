@@ -72,7 +72,7 @@ module.exports = {
                     message.channel.send(`Please enter a longer club name.`)
                     collector.stop();
                 } else {
-                    confirmationEmbed.setTitle(`Club Name : ${clubName.toLowerCase()}`)
+                    confirmationEmbed.setTitle(`Club Name: ${clubName.toLowerCase()}`)
                     message.channel.send(`The club's name has been set to \`${clubName.toLowerCase()}\`\nEnter this club's description. (Description should be between 2 and 250 characters.)`)
                 }                
             } else if (counter === 1) {
@@ -91,7 +91,7 @@ module.exports = {
                     message.channel.send(`Please enter a longer club description.`)
                     collector.stop();
                 }
-                confirmationEmbed.setDescription(`Club Description`, `${clubDescription}`)
+                confirmationEmbed.setDescription(`Club Description: ${clubDescription}`)
                 message.channel.send(`The club's description has been set.`)
                 if (guildClubList) {                    
                     if (guildClubList.ClubCategoryID == 'null' || !guildClubList.ClubCategoryID) {
