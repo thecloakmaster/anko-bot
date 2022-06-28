@@ -39,16 +39,16 @@ module.exports = {
                     if (!clubInformation) {
                         return message.channel.send(`No club with the name \`${args.join(" ").toLowerCase()}\` was found in this server.`)
                     } else if (clubInformation) {
-                        if (clubInformation.ClubOwnerID = 'none' && !message.member.permissions.has('ADMINISTRATOR')) {
+                        if (clubInformation.ClubOwnerID == 'none' && !message.member.permissions.has('ADMINISTRATOR')) {
                             return message.channel.send('You cannot delete a public club.\nPermissions required: \`ADMINISTRATOR\`')
-                        }                        
+                        }
                         const filter = m => m.author.id === message.author.id
                         const collector = message.channel.createMessageCollector({
                             filter,
                             max: 2,
                             time: 30000
                         });
-                        let counter = 0, 
+                        let counter = 0,
                             deleteNum = 0;
                         message.channel.send(`Send \`${clubInformation.ClubName}\` in the chat to confirm deletion.`)
                         collector.on('collect', async (m) => {
@@ -68,13 +68,13 @@ module.exports = {
                                         })
                                         if (clubOwnerArr.length === 1) {
                                             await prevOwner.roles.remove(clubOwnerRole.id).then(deleteNum++)
-                                        }                 
+                                        }
                                     }
                                     await ClubInfo.findOneAndDelete({
                                         ClubName: `${args.join(" ").toLowerCase()}`,
                                         GuildID: `${message.guild.id}`,
                                         ClientID: `${client.user.id}`
-                                    }).then(deleteNum ++)
+                                    }).then(deleteNum++)
                                     clubsArr = await clubsArr.filter(function (element) {
                                         return element !== args.join(" ").toLowerCase()
                                     })
@@ -85,18 +85,19 @@ module.exports = {
                                         ClubList: clubsArr
                                     }).then(deleteNum++)
                                     collector.stop()
+
                                 }
                             }
                             counter++
                             collector.resetTimer();
                         })
-                        collector.on('end', async() => {
+                        collector.on('end', async () => {
                             if (deleteNum >= 2) {
                                 return message.channel.send(`The club has been delete successfully.`)
                             } else if (deleteNum < 2) {
                                 return message.channel.send(`There was an error while deleting this club.`)
                             }
-                        })                        
+                        })
                     }
                 }
             }

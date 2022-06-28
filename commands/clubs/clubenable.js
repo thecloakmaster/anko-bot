@@ -3,9 +3,9 @@ const {
 } = require('discord.js');
 const ClubList = require(`../../database/ClubLists.js`)
 
-module.exports ={
+module.exports = {
     name: `clubenable`,
-    description: `Enables the club system in the server.`,
+    description: `Enables the clubs system in the server.`,
     usage: `;clubenable`,
     aliases: [`cenable`],
     async execute(message, args, client) {
@@ -23,18 +23,18 @@ module.exports ={
             let filter = m => m.author.id === message.author.id
             let collector = message.channel.createMessageCollector({
                 filter,
-                max: 2,
+                max: 3,
                 time: 60000
             });
             let counter = 0
             collector.on('collect', async (m) => {
                 if (counter == 0) {
                     let categoryChannel = await message.guild.channels.fetch(`${m.content}`).catch(() => {});
-                    if (categoryChannel){
-                        if (categoryChannel.type == 'GUILD_CATEGORY'){
+                    if (categoryChannel) {
+                        if (categoryChannel.type == 'GUILD_CATEGORY') {
                             clubCategoryID = categoryChannel.id
                             message.channel.send(`The club category has been set as <#${clubCategoryID}>.`)
-                        } else if (categoryChannel.type != 'GUILD_CATEGORY'){
+                        } else if (categoryChannel.type != 'GUILD_CATEGORY') {
                             message.channel.send(`The ID you entered was not for a category channel. The field will be left blank.`)
                         }
                     } else if (!categoryChannel) {
@@ -43,11 +43,13 @@ module.exports ={
                     message.channel.send(`Would you like to add a role for the club owners? Mention the role if yes.`)
                 } else if (counter == 1) {
                     let clubOwnerRole = await m.mentions.roles.first()
-                    if (clubOwnerRole) {                        
+                    if (clubOwnerRole) {
                         clubOwnerRoleID = clubOwnerRole.id
                         message.channel.send(`The club owner role has been set to <@&${clubOwnerRoleID}>.`)
+                        collector.stop();
                     } else if (!clubOwnerRole) {
                         message.channel.send(`No club owner role has been set.`)
+                        collector.stop();
                     }
                 }
                 counter++
@@ -78,7 +80,7 @@ module.exports ={
                     max: 3,
                     time: 60000
                 });
-                let counter = 0;                
+                let counter = 0;
                 collector.on('collect', async (m) => {
                     if (counter == 0) {
                         let categoryChannel = await message.guild.channels.fetch(`${m.content}`).catch(() => {});
@@ -104,7 +106,7 @@ module.exports ={
                             collector.stop();
                         }
                     }
-                    counter ++
+                    counter++
                     collector.resetTimer();
                 })
                 collector.on(`end`, async () => {
