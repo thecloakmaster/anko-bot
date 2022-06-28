@@ -31,7 +31,7 @@ module.exports = {
             const page1 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
-            .setDescription(`**Bot Help Catalogue - Page 1 of 5**`)
+            .setDescription(`**Bot Help Catalogue - Page 1 of 6**`)
             .addField(`Utility`, `\`;avatar\`: Get the image URL of the tagged user\'s avatar, or the image URL of your own avatar.
             \`;banner\`: Get the image URL of the tagged user\'s banner, or the image URL of your own banner.
             \`;customserverpfp\`: Sends the server specific profile picture of the member.
@@ -47,7 +47,7 @@ module.exports = {
             const page2 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
-            .setDescription(`**Bot Help Catalogue - Page 2 of 5**`)
+            .setDescription(`**Bot Help Catalogue - Page 2 of 6**`)
             .addField(`Utility`, `\`;quote\`: Fetches previously sent message and sends it in an embed.
             \`;servericon\`: Sends the server's icon.
             \`;serverbanner\`: Sends the server's banner.
@@ -63,24 +63,41 @@ module.exports = {
             const page3 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
-            .setDescription(`**Bot Help Catalogue - Page 3 of 5**`)
+            .setDescription(`**Bot Help Catalogue - Page 3 of 6**`)
             .addField(`Fun`, `\`;pat\`: Pats the specified member and makes them feel a little bit better.
             \`;slap\`: Slaps the specified member for whatever the reason may be.
             \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
             \`;uwuify\`: Makes your message more UwU.`)
-            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
-            \`;clearwarns\`: Clears all the warns of the specified user.
-            \`;fetchwarns\`: Fetches the warns of the specified user.
-            \`;kick\`: Kicks the specified member.
-            \`;lock\`: Locks the channel.`)
+            .addField(`Clubs`, `\`;clubcreate\`: Creates a club in the server.
+            \`;clubdelete\`: Deletes the specified club from the server.
+            \`;clubdisable\`: Disables the club system in the server.
+            \`;clubedit\`: Edits a club's information.
+            \`;clubenable\`: Enables the club system in the server.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
-            .setDescription(`**Bot Help Catalogue - Page 4 of 5**`)
-            .addField(`Moderation`, `\`;massban\`: Bans the group of users specified.
+            .setDescription(`**Bot Help Catalogue - Page 4 of 6**`)
+            .addField(`Clubs`, `\`;clubinfo\`: Gives the information of a club in the server.
+            \`;clubjoin\`: Adds you as a club member in the specified club.
+            \`;clubleave\`: Removes you from the specified club.
+            \`;clublist\`: Lists all the clubs in the server.
+            \`;clubping\`: Pings all the members of the specified club.
+            \`;clubrequest\`: Request a club to be created in the server.`)
+            .addField(`Moderation`, `\`;ban\`: Bans the specified user.
+            \`;clearwarns\`: Clears all the warns of the specified user.
+            \`;fetchwarns\`: Fetches the warns of the specified user.
+            \`;kick\`: Kicks the specified member.`)
+            .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
+
+            const page5 = new MessageEmbed()
+            .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
+            .setColor(`${process.env.colour}`)
+            .setDescription(`**Bot Help Catalogue - Page 5 of 6**`)
+            .addField(`Moderation`, `\`;lock\`: Locks the channel.
+            \`;massban\`: Bans the group of users specified.
             \`;massunban\`: Unbans the group of users specified.
             \`;mute\`: Mutes the specified member.
             \`;purge\`: Deletes the amount of messages specified.
@@ -89,14 +106,14 @@ module.exports = {
             \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified member.
             \`;warn\`: Warns the specified member.`)
-            .addField(`Mod Utilities`, `\`;addemote\`: Adds an emote to the server with the name and image provided.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
-            const page5 = new MessageEmbed()
+            const page6 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
-            .setDescription(`**Bot Help Catalogue - Page 5 of 5**`)
-            .addField(`Mod Utilities`, `\`;addsticker\`: Adds a sticker in the guild with the image and name provided.
+            .setDescription(`**Bot Help Catalogue - Page 6 of 6**`)
+            .addField(`Mod Utilities`, `;addemote\`: Adds an emote to the server with the name and image provided.
+            \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;giveaway\`: Creates a giveaway.
             \`;greroll\`: Reroll a giveaway winner.
@@ -123,7 +140,7 @@ module.exports = {
 
             const buttonList = [button1, button2, button3]
 
-            const embeds = [page1, page2, page3, page4, page5]
+            const embeds = [page1, page2, page3, page4, page5, page6]
             let embed = 0
             const row = new MessageActionRow().addComponents(buttonList);
             const curPage = await message.channel.send({

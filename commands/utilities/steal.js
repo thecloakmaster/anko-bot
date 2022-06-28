@@ -27,7 +27,7 @@ module.exports = {
                     messageToAuthor = messageToAuthor + "\n" + `${i+1}. There was an error retrieving this emote.`
                 };
             }
-            return message.author.send(messageToAuthor);
+            return message.author.send(messageToAuthor).catch(() => {});
         } catch (err) {
             return message.author.send(`Please enter a valid message ID of a message in the channel from which you want to steal the emotes and execute the command in the same channel.`)
         }
