@@ -35,7 +35,7 @@ module.exports = {
                         if (clubMemberArr.indexOf(`${message.author.id}`) == -1) {
                             return message.channel.send(`You are not in this club.`)
                         }
-                        if (message.author.id !== clubInformation.ClubOwnerID) {
+                        if (message.author.id !== clubInformation.ClubOwnerID || !message.member.permissions.has(`MENTION_EVERYONE`)) {
                             if (clubInformation.ClubPingBool == false) {
                                 return message.channel.send(`This club does not allow club pings.`)
                             }
