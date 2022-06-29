@@ -8,6 +8,7 @@ module.exports = {
     name: `clubjoin`,
     description: `Adds you as a club member in the specified club.`,
     usage: `;clubjoin <Club Name>`,
+    aliases: [`cjoin`],
     async execute(message, args, client) {
         let guildClubList = await ClubList.findOne({
             GuildID: `${message.guild.id}`,
