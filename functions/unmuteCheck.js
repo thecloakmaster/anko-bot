@@ -54,9 +54,9 @@ module.exports = {
                                     GuildID: mutedMemberLoop.GuildID,
                                     LastsTill: mutedMemberLoop.LastsTill
                                 })
+                                await member.roles.remove(mutedRole).catch((err) => console.log(err))
+                                console.log(`Removed a mute in the DB for ${member.user.id}.`)
                             }
-                            await member.roles.remove(mutedRole).catch((err) => console.log(err))
-                            console.log(`Removed a mute in the DB for ${member.user.id}.`)
                         }
                     }
                     console.log(`Finished checking for unmutes.`)
