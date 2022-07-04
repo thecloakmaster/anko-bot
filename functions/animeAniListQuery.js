@@ -8,7 +8,7 @@ module.exports = {
         for (let f of formats) {
             for (let s of statuses) {
                 let query = `query ($search: String, $status: MediaStatus, $format: MediaFormat) { 
-                    Media(search: $search type: ANIME status: $status) {
+                    Media(search: $search type: ANIME status: $status, format: $format) {
                         title {
                             romaji
                             english
