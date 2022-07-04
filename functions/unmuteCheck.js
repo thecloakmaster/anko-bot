@@ -44,8 +44,8 @@ module.exports = {
                                     GuildID: mutedMemberLoop.GuildID,
                                     LastsTill: mutedMemberLoop.LastsTill
                                 })
-                            }
-                            console.log(`Removed a mute in the DB.`)
+                                console.log(`Removed a mute in the DB.`)
+                            }                            
                             continue;
                         } else if (member) {
                             if (Date.now() >= mutedMemberLoop.LastsTill) {
