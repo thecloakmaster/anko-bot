@@ -79,7 +79,7 @@ module.exports = {
             return message.channel.send(`No manga with that specific title were to be found on AniList. Make sure you have typed the title correctly.`)
         } else if (options.length > 1) {
             const embed = new MessageEmbed()
-                .setColor("#33FFBD")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`Anime Search Results`)
                 .setDescription(`These are ${options.length} results shown below for the AniList search for the title \`${args.slice(0).join(" ")}\`.\n Select any one of the options from the dropdown menu below to display the information.`)
             const row = new MessageActionRow()
