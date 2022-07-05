@@ -17,7 +17,7 @@ module.exports = {
                 limit: 1
             })
             let mangaEmbed = new MessageEmbed()
-                .setColor("#33FFBD")
+                .setColor(`${process.env.colour}`)
                 .setThumbnail(`${thumbnail.image512}`)
                 .setTitle(`${mangaTitleOut}`)
                 .setDescription(`${manga.localizedDescription.en}\n\n**Status:** ${manga.status.charAt(0).toUpperCase() + manga.status.slice(1)}`)

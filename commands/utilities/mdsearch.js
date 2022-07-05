@@ -31,7 +31,7 @@ module.exports = {
                 return message.channel.send(`No series with that specific title was found on MangaDex. Make sure you have typed the title correctly.\nSyntax: \`;mdsearch <Title of the series>\``)
             } else if (options.length > 1) {
                 const embed = new MessageEmbed()
-                    .setColor("#33FFBD")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`Manga Search Results`)
                     .setDescription(`These are ${options.length} results shown below for the MangaDex search for the title \`${args.slice(0).join(" ")}\`.\n Select any one of the options from the dropdown menu below to display the information.`)
                 const row = new MessageActionRow()

@@ -71,7 +71,7 @@ module.exports = {
                 return findChapter(targetManga, targetChap, offset + 100);
             }
             let chapter = await findChapter(manga, chapterNum)
-            let colour = `#33FFBD`
+            let colour = `${process.env.colour}`
             if (manga.links.al) {
                 let AniListID = parseInt(manga.links.al.replace("https://anilist.co/manga/", ""))
                 if (typeof (AniListID) === "number") {

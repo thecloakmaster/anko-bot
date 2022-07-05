@@ -20,7 +20,7 @@ module.exports = {
             .setURL(`${list.siteUrl}`)
             .setFooter({text: `Status: ${list.status.charAt(0) + list.status.slice(1).toLowerCase().replace(/_/g, " ")}`})
             .setThumbnail(`${list.coverImage.extraLarge}`)
-            .setColor(`${list.coverImage.color || "#33FFBD"}`)
+            .setColor(`${list.coverImage.color || process.env.colour}`)
         if (list.nextAiringEpisode) {
             if (list.nextAiringEpisode.timeUntilAiring && list.nextAiringEpisode.episode) {
                 embed.addField(`Episode ${list.nextAiringEpisode.episode} airs:`,`<t:${Math.round(Date.now()/1000 + list.nextAiringEpisode.timeUntilAiring)}:R>`)
