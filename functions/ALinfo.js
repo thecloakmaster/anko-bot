@@ -1,7 +1,6 @@
 const fetch = require(`node-fetch`)
 const {
-    MessageEmbed,
-    Message
+    MessageEmbed
 } = require(`discord.js`)
 
 module.exports = {
