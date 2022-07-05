@@ -79,7 +79,7 @@ module.exports = {
             })
             movieSearch = movieSearch.results
             if (movieSearch.length === 0) {
-                return message.channel.send(`No title with the name \`${args.slice(1).join(" ")}\` was found.`)
+                return message.channel.send(`No title with the name \`${args.join(" ")}\` was found.`)
             }
             movieSearch.sort((a, b) => parseFloat(b.vote_average - a.vote_average))
             let movie = movieSearch[0]
