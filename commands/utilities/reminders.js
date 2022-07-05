@@ -17,7 +17,7 @@ module.exports = {
             return message.channel.send(`You have set no reminders for yourself.`)
         } else if (reminders.length >= 1) {
             let embed = new MessageEmbed()
-                .setColor("#e4a353")
+                .setColor(`${process.env.colour}`)
                 .setTitle(`Your Reminders`)
             let embedArr = []
 

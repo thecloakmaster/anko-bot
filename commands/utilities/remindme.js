@@ -53,7 +53,7 @@ module.exports = {
             })
             await newData.save().then(() => {
                 let embed = new MessageEmbed()
-                    .setColor("#e4a353")
+                    .setColor(`${process.env.colour}`)
                     .setTitle(`A reminder has been set for ${timeString}.`)
                     .setDescription(`Task: ${task}`)
                     .setTimestamp();
