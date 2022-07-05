@@ -38,7 +38,7 @@ module.exports = {
             return message.channel.send(`You cannot mute someone higher than you in the role hierarchy.`)
         }
         //Time and reason validation and allocation 
-        let timeList = ["seconds", "sec", "s", "m", "min", "minutes", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
+        let timeList = ["second", "seconds", "sec", "s", "m", "min", "minutes", "minute", "h", "hrs", "hr", "hour", "hours", "d", "day", "days", "months", "month", "y", "year", "years"];
         let time = args[1];
         let reason = `No reason given.`;
         if (!time) {
