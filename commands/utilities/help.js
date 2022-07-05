@@ -121,10 +121,7 @@ module.exports = {
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;giveaway\`: Creates a giveaway.
             \`;greroll\`: Reroll a giveaway winner.
-            \`;removeemote\`: Removes an emote from the server with the name or emotes provided.
-            \`;removesticker\`: Removes a sticker from the server with the sticker provided.
-            \`;renameemote\`: Renames the emote specified.
-            \`;setmuterole\`: Sets the server's mute role.`)
+            \`;removeemote\`: Removes an emote from the server with the name or emotes provided.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page7 = new MessageEmbed()
