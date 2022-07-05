@@ -30,7 +30,7 @@ module.exports = {
                 .setDescription(movie.overview)
                 .setURL(`https://www.themoviedb.org/movie/${movie.id}`)
                 .setThumbnail(`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`)
-                .setColor(`AQUA`)
+                .setColor(`${process.env.colour}`)
             if (movie.vote_average) {
                 embed.addField(`Rating`, `${movie.vote_average}`, true)
             }
@@ -59,7 +59,7 @@ module.exports = {
                 .setDescription(movie.overview)
                 .setURL(`https://www.themoviedb.org/tv/${movie.id}`)
                 .setThumbnail(`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`)
-                .setColor(`AQUA`)
+                .setColor(`${process.env.colour}`)
             if (movie.vote_average) {
                 embed.addField(`Rating`, `${movie.vote_average}`, true)
             }
