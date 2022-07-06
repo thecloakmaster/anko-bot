@@ -71,7 +71,7 @@ module.exports = {
         } else if (returnData) {
             let embed = new MessageEmbed()
                 .setTitle(`${returnData.title.romaji || returnData.title.english || returnData.title.native || returnData.title.userPreferred}`)
-                .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*") || "No description found."}`)
+                .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**") || "No description found."}`)
                 .setURL(`${returnData.siteUrl}`)
                 .setFooter({
                     text: `Status: ${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase().replace(/_/g, " ")}`
