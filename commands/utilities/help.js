@@ -68,19 +68,20 @@ module.exports = {
             \`;whois\`: Gives information about the member specified or yourself.
             \`;hug\`: Hugs the specified member and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
-            \`;pat\`: Pats the specified member and makes them feel a little bit better.
-            \`;slap\`: Slaps the specified member for whatever the reason may be.
             \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
+            \`;pat\`: Pats the specified member and makes them feel a little bit better.
+            \`;slap\`: Slaps the specified member for whatever the reason may be.            
             \`;spank\`: Spanks the specified member and mutes them for 1 minute.
-            \`;uwuify\`: Makes your message more UwU.`)
-            .addField(`Clubs`, `\`;clubcreate\`: Creates a club in the server.`)
+            \`;tictactoe\`: Play TicTacToe in Discord with your friend with Discord buttons.
+            \`;uwuify\`: Makes your message more UwU.`)            
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page4 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 4 of 7**`)
-            .addField(`Clubs`, `\`;clubdelete\`: Deletes the specified club from the server.
+            .addField(`Clubs`, `\`;clubcreate\`: Creates a club in the server.
+            \`;clubdelete\`: Deletes the specified club from the server.
             \`;clubdisable\`: Disables the club system in the server.
             \`;clubedit\`: Edits a club's information.
             \`;clubenable\`: Enables the club system in the server.
@@ -88,14 +89,14 @@ module.exports = {
             \`;clubjoin\`: Adds you as a club member in the specified club.
             \`;clubleave\`: Removes you from the specified club.
             \`;clublist\`: Lists all the clubs in the server.
-            \`;clubping\`: Pings all the members of the specified club.
-            \`;clubrequest\`: Request a club to be created in the server.`)            
+            \`;clubping\`: Pings all the members of the specified club.`)            
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page5 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 5 of 7**`)
+            .addField(`Clubs`, `\`;clubrequest\`: Request a club to be created in the server.`)
             .addField(`Moderation`, `\`;ban\`: Bans the specified user.
             \`;clearwarns\`: Clears all the warns of the specified user.
             \`;fetchwarns\`: Fetches the warns of the specified user.
@@ -104,15 +105,15 @@ module.exports = {
             \`;massban\`: Bans the group of users specified.
             \`;massunban\`: Unbans the group of users specified.
             \`;mute\`: Mutes the specified member.
-            \`;purge\`: Deletes the amount of messages specified.
-            \`;removewarn\`: Removes the specified warn of the specified member.`)
+            \`;purge\`: Deletes the amount of messages specified.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page6 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 6 of 7**`)
-            .addField(`Moderation`, `\`;unban\`: Unbans the specified user.
+            .addField(`Moderation`, `\`;removewarn\`: Removes the specified warn of the specified member.
+            \`;unban\`: Unbans the specified user.
             \`;unlock\`: Unlocks the channel.
             \`;unmute\`: Unmutes the specified member.
             \`;warn\`: Warns the specified member.`)
@@ -120,15 +121,15 @@ module.exports = {
             \`;addsticker\`: Adds a sticker in the guild with the image and name provided.
             \`;archivepins\`: Takes pins from a channel and archives them into embeds.
             \`;giveaway\`: Creates a giveaway.
-            \`;greroll\`: Reroll a giveaway winner.
-            \`;removeemote\`: Removes an emote from the server with the name or emotes provided.`)
+            \`;greroll\`: Reroll a giveaway winner.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page7 = new MessageEmbed()
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 7 of 7**`)            
-            .addField(`Mod Utilities`, `\`;removesticker\`: Removes a sticker from the server with the sticker provided.
+            .addField(`Mod Utilities`, `\`;removeemote\`: Removes an emote from the server with the name or emotes provided.
+            \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;renameemote\`: Renames the emote specified.
             \`;setmuterole\`: Sets the server's mute role.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
