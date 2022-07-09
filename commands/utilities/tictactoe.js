@@ -98,7 +98,7 @@ module.exports = {
     description: `Play TicTacToe in Discord with Discord buttons.`,
     usage: `;tictactoe <Member>`,
     aliases: [`ttt`],
-    cooldown: 120000,
+    cooldown: 60000,
     async execute(message, args, client) {
         let memberTarget = message.mentions.members.first() || await message.guild.members.fetch(`${args[0]}`).catch(() => {});
         if (!memberTarget) return message.channel.send(`Please specify a valid member.\nSyntax: \`;tictactoe <Member>\``)
