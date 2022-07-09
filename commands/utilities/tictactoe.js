@@ -91,7 +91,6 @@ async function counterC(counter, collector, array, curPage, i, row1, row2, row3)
             });            
         }
     } 
-    if (counter === 9) collector.stop();
 }
 
 module.exports = {
@@ -359,13 +358,12 @@ module.exports = {
                     break;                
             }
             let returnData = await winnerCheck(array);
-            if (counter === 9 && returnData === 'true') {
-                
-            } else if (returnData === 'false' && counter === 9) {
+            if (returnData === 'false' && counter === 9) {
                 await i.editReply({
                     components: [row1, row2, row3],
-                });
-                collector.stop();
+                }).then(() => {
+                    collector.stop();
+                });                
             } else {
                 await i.editReply({
                     components: [row1, row2, row3],
