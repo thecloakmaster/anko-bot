@@ -40,8 +40,8 @@ module.exports = {
             \`;help\`: Lists all the commands and provides information if the command is specified.
             \`;manga\`: Grabs the requested chapter from MangaDex and sends it in the chat.
             \`;match\`: Matches two users and finds their compatibility rating.: 
-            \`;md\`: Grabs the requested chapter of the series mentioned from MangaDex and sends it in the chat.
-            \`;mdsearch\`: Fetches a maximum of 10 series from MangaDex and shows the information about them.`)
+            \`;md\`: Fetches a maximum of 10 series from MangaDex and shows the information about them.
+            \`;mdread\`: Grabs the requested chapter of the series mentioned from MangaDex and sends it in the chat.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const page2 = new MessageEmbed()
