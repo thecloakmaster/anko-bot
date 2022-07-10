@@ -14,10 +14,7 @@ module.exports = {
             } else if (stickerM.stickers.size >= 1) {
                 let stickers = Array.from(await stickerM.stickers.values());
                 for (let i = 0; i < stickers.length; i++) {
-                    let sticker = stickers[i]
-                    if (sticker.type === 'STANDARD') {
-                        return message.author.send(`The sticker with the name ${sticker.name} does not belong to any guild and hence cannot be stolen.`)
-                    }
+                    let sticker = stickers[i]                    
                     if (sticker.format === 'LOTTIE') {
                         return message.author.send(`Here is the URL for the sticker in the message mentioned: ${sticker.url}\nThis sticker's source is in the form of a Lottie JSON file. To convert it to a .gif file, use this website <https://lottiefiles.com/lottie-to-gif>`)
                     } else if (sticker.format === 'APNG') {
