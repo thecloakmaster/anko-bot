@@ -7,6 +7,9 @@ module.exports = {
     async execute(message, args) {
         message.delete()
         let content = args.slice(0).join(" ")
+        if (!content || content.length === 0) {
+            return;
+        }
         const repFirst = content.replace(/r|l/gi, "w")
         const repSecond = repFirst.replace(/R|L/gi, "W")
         let col = message.member.displayHexColor || "#000000"
