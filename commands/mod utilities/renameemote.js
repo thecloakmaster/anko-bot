@@ -29,7 +29,7 @@ module.exports = {
                 let emoteMatchLoop = emoteMatch[i]
                 if (emojiLoop = emoteRegex.exec(emoteMatchLoop)) {
                     emoteName = emojiLoop[1]
-                } else if (emoji = animatedEmoteRegex.exec(emoteMatchLoop)) {
+                } else if (emojiLoop = animatedEmoteRegex.exec(emoteMatchLoop)) {
                     emoteName = emojiLoop[1]
                 }
                 try {

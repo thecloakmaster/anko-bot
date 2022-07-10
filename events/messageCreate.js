@@ -24,7 +24,7 @@ module.exports = {
         }
         if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-        args = message.content.slice(prefix.length).trim().split(/ +/);
+        let args = message.content.slice(prefix.length).trim().split(/ +/);
         const commandName = args.shift().toLowerCase();
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
