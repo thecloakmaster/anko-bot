@@ -5,6 +5,7 @@ const mangaSearch = require(`../../functions/mangaSearch`)
 module.exports = {
     name: `mdsearch`,
     description:`Fetches a maximum of 10 series from MangaDex by their title and shows the information about them.`,
+    aliases: [`md`],
     usage: `;mdsearch <Title of the series>`,
     cooldown: 5000,
     async execute(message, args) {
