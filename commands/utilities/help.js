@@ -64,9 +64,9 @@ module.exports = {
             .setAuthor({name:client.user.username, iconURL: client.user.displayAvatarURL()})
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 3 of 7**`)
-            .addField(`Fun`, `\`;tmdb\`: Searches the TMDB database for a movie or a TV show and gives you the top rated result.
-            \`;whois\`: Gives information about the member specified or yourself.
-            \`;hug\`: Hugs the specified member and makes them feel a little bit better.
+            .addField(`Utility`, `\`;tmdb\`: Searches the TMDB database for a movie or a TV show and gives you the top rated result.
+            \`;whois\`: Gives information about the member specified or yourself.`)
+            .addField(`Fun`, `\`;hug\`: Hugs the specified member and makes them feel a little bit better.
             \`;kiss\`: Kisses the specified member and makes them feel a little bit better.
             \`;massspank\`: Spanks the specified members and mutes them for 1 minute.
             \`;pat\`: Pats the specified member and makes them feel a little bit better.
