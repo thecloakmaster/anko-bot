@@ -18,9 +18,9 @@ module.exports = {
                     if (sticker.format === 'LOTTIE') {
                         return message.author.send(`Here is the URL for the sticker in the message mentioned: ${sticker.url}\nThis sticker's source is in the form of a Lottie JSON file. To convert it to a .gif file, use this website <https://lottiefiles.com/lottie-to-gif>`)
                     } else if (sticker.format === 'APNG') {
-                        return message.author.send(`Here is the URL for the sticker in the message mentioned: ${sticker.url}\nThis sticker is in the form of an APNG file. To convert it to a .gif file, use this website <https://ezgif.com/apng-to-gif>`)
+                        return message.author.send(`Here is the URL for the image of the sticker in the message mentioned: ${sticker.url}\nThis sticker is in the form of an APNG file. To convert it to a .gif file, use this website <https://ezgif.com/apng-to-gif>`)
                     } else if (sticker.format === 'PNG') {
-                        return message.author.send(`Here is the URL for the sticker in the message mentioned: ${sticker.url}`)
+                        return message.author.send(`Here is the URL for the image of the sticker in the message mentioned: ${sticker.url}`)
                     }
                 }
             }
