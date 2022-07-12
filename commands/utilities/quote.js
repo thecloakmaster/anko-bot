@@ -63,7 +63,10 @@ module.exports = {
                         return message.channel.send('The URL specified is not of a message from this server.')
                     }
                 }
-            } catch {return message.channel.send('Please specify a valid URL for the message.')}
+            } catch (err){
+                console.log(err)
+                return message.channel.send('Please specify a valid URL for the message.')
+            }
         }
 
         try {
