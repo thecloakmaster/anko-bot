@@ -18,7 +18,7 @@ module.exports = {
 
         if (args[0].includes('discord.com/channels/')) {
             try {
-                let url = new URL(args[0]).catch();
+                let url = new URL(args[0])
                 let urlArr = args[0].split(/\//g);
                 if (urlArr.length > 4) {
                     if (!isNaN(urlArr[urlArr.length - 3]) && urlArr[urlArr.length - 3] === message.guild.id) {
