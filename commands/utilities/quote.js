@@ -19,11 +19,11 @@ module.exports = {
         if (args[0].includes('discord.com/channels/')) {
             try {
                 let url = new URL(args[0])
-                let urlArr = args[0].split(/\//g);
-                if (isNaN(urlArr[urlArr.length - 3]) || isNaN(urlArr[urlArr.length - 2]) || isNaN(urlArr[urlArr.length - 1])) {
-                    return message.channel.send('The URL specified is not of a message ID.\nSyntax: \`;quote <Message URL>\` or \`;quote <Channel> <Message ID>\` or \`;quote <Message ID>\` if the message is in the same channel.')
-                }
+                let urlArr = args[0].split(/\//g);                
                 if (urlArr.length > 4) {
+                    if (isNaN(urlArr[urlArr.length - 3]) || isNaN(urlArr[urlArr.length - 2]) || isNaN(urlArr[urlArr.length - 1])) {
+                        return message.channel.send('The URL specified is not of a message ID.\nSyntax: \`;quote <Message URL>\` or \`;quote <Channel> <Message ID>\` or \`;quote <Message ID>\` if the message is in the same channel.')
+                    }
                     if (!isNaN(urlArr[urlArr.length - 3]) && urlArr[urlArr.length - 3] === message.guild.id) {
                         let channel = await message.guild.channels.fetch(urlArr[urlArr.length - 2]).catch(() => {})
                         if (!channel) {
