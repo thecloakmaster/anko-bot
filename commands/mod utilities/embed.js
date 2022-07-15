@@ -22,9 +22,9 @@ module.exports = {
                 let storedText = null
                 fetch(url)
                     .then(function (response) {
-                        response.text().then(async function (text) {
-                            storedText = await JSON.parse(text);
+                        response.text().then(async function (text) {                            
                             try {
+                                storedText = await JSON.parse(text);
                                 await targetChannel.send(storedText).then(async (m) => {
                                     await message.channel.send(`The URL to the message: ${m.url}`)
                                 }).catch(() => {
