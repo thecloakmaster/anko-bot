@@ -10,7 +10,7 @@ module.exports = {
         let memberMention = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(() => {});
 
         if (args[0] === 'e') {
-            memberMention = message.mentions.members.first() || await message.client.members.fetch(args[1]).catch(() => {});
+            memberMention = message.mentions.members.first() || await message.guild.members.fetch(args[1]).catch(() => {});
             if (!args[1] || !memberMention) {
                 let col = message.member.displayHexColor || "#000000"
                 let fileNameArr = message.member.displayAvatarURL({
