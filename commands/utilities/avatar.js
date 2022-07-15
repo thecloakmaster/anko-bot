@@ -5,7 +5,7 @@ module.exports = {
     name: 'avatar',
     aliases: ["pfp", "icon", "av", "ava"],
     description: 'Get the image URL of the tagged user\'s avatar, or the image URL of your own avatar.',
-    usage: ";avatar <e (e for eternal, when you don't want the image to die when the user changes their avatar, optional)> <Mention> or ;avatar <User ID> or ;avatar for your own avatar",
+    usage: ";avatar <e (e for eternal, when you don't want the image to die when the user changes their avatar, optional)> <Mention or User ID (leave blank to get your own avatar)>",
     async execute(message, args) {
 
         let userMention = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
