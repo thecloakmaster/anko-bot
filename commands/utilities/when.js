@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: 'when',
     description: 'The answer to next chapter/episode when?',
-    usage: ';when',
+    usage: ';when <eng || en (For English chapters) || jp (For Japanese raws published in the magazine) || a || anime || episode || ep (For anime episodes)>',
     async execute(message, args, client) {
         let embed = new MessageEmbed()
             .setAuthor({name: `${client.user.username}`, iconURL: `${client.user.displayAvatarURL({dynamic: true, size: 1024})}`})
