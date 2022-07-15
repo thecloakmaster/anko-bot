@@ -35,7 +35,7 @@ module.exports = {
                     embeds: [nomentionEmbed]
                 });
             } else {                
-                let col = message.member.displayHexColor || "#000000"
+                let col = memberMention.displayHexColor || "#000000"
                 let fileNameArr = memberMention.displayAvatarURL({
                     dynamic: true,
                     size: 2048
