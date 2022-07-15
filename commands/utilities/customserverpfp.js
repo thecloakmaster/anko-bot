@@ -1,5 +1,5 @@
 const {
-    MessageEmbed
+    MessageEmbed, MessageAttachment
 } = require("discord.js");
 
 module.exports = {
