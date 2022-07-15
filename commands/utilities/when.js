@@ -10,8 +10,8 @@ module.exports = {
             .setColor(`${process.env.colour}`)            
 
         if (!args[0]) {
-            embed.addField('English Translated', 'The next chapter will be released when the TL team is done with it. There is no specific schedule which is followed for the release of translated English chapters. The TL team appreciates your patience.')
-            embed.addField('Japanese Raws', 'The Japanese raws release every Wednesday at 00:00 JST in the Shuukan Shounen Sunday.')
+            embed.addField('Chapters Translated To English', 'The next chapter will be released when the TL team is done with it. There is no specific schedule which is followed for the release of translated English chapters. The TL team appreciates your patience.')
+            embed.addField('Japanese Raw Chapters', 'The Japanese raws release every Wednesday at 00:00 JST in the Shuukan Shounen Sunday.')
             embed.addField('Anime', 'The Japanese raws (episode without subtitles) release every Friday at 01:05 JST. The English subtitles usually release an hour later.')
         } else if (args[0] === 'eng' || args[0] === 'en') {
             embed.setTitle('No specific schedule is followed.')
