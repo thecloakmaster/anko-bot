@@ -1,5 +1,5 @@
 const {
-    MessageEmbed
+    MessageEmbed, MessageAttachment
 } = require('discord.js');
 module.exports = {
     name: 'banner',
@@ -10,7 +10,63 @@ module.exports = {
 
         let userMention = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch(() => {});
 
-        if (!args[0]) {
+        if (args[0] === 'e') {
+            userMention = message.mentions.users.first() || await message.client.users.fetch(args[1]).catch(() => {});
+            if (!args[1] || !userMention) {
+                userMention = await client.users.fetch(message.author.id, {
+                    force: true
+                }).catch(() => {})
+                if (!userMention.bannerURL()) {
+                    return message.channel.send(`You do not have a banner image.`)
+                }
+                let col = message.member.displayHexColor || "#000000";
+                let fileNameArr = userMention.bannerURL({dynamic: true, size: 4096}).split(/\//g);
+                let fileName = fileNameArr[fileNameArr.length - 1].split(/\?/g);
+                fileName = fileName[0]
+                let file = new MessageAttachment(`${userMention.bannerURL({dynamic: true, size: 4096})}`).setName(`${fileName}`)
+                let embed = new MessageEmbed()
+                    .setTitle(`Here's your banner ${message.author.username}`)
+                    .setDescription(`[Download](${file.url}) | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size:2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)
+                    .setColor(`${col}`)
+                    .setImage(`attachment://${fileName}`)
+                    .setFooter({
+                        text: `${message.author.tag}`
+                    })
+                    .setTimestamp();
+                return message.channel.send({
+                    files: [file],
+                    embeds: [embed]
+                });
+            } else if (userMention) {
+                userMention = await client.users.fetch(userMention.id, {
+                    force: true
+                }).catch(() => {})
+                if (!userMention.bannerURL()) {
+                    return message.channel.send(`This user does not have a banner image.`)
+                }
+                const member = await message.guild.members.fetch(`${userMention.id}`).catch(() => {})
+                let col = member.displayHexColor || "#000000"
+                let fileNameArr = userMention.bannerURL({dynamic: true, size: 4096}).split(/\//g);
+                let fileName = fileNameArr[fileNameArr.length - 1].split(/\?/g);
+                fileName = fileName[0]
+                let embed = new MessageEmbed()
+                    .setTitle(`Here's the banner for ${userMention.tag}`)
+                    .setDescription(`[Download](${file.url}) | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)
+                    .setColor(`${col}`)
+                    .setImage(`attachment://${fileName}`)
+                    .setFooter({
+                        text: `${message.author.tag}`
+                    })
+                    .setTimestamp();
+
+                return message.channel.send({
+                    files: [file],
+                    embeds: [embed]
+                });
+            }
+        }
+
+        if (!args[0] || !userMention) {
             userMention = await client.users.fetch(message.author.id, {
                 force: true
             }).catch(() => {})
@@ -31,8 +87,6 @@ module.exports = {
             return message.channel.send({
                 embeds: [nomentionEmbed]
             });
-        } else if (!userMention) {
-            return message.channel.send("Please send a valid user-ID or user")
         } else {
             userMention = await client.users.fetch(userMention.id, {
                 force: true
@@ -41,12 +95,7 @@ module.exports = {
                 return message.channel.send(`This user does not have a banner image.`)
             }
             const member = await message.guild.members.fetch(`${userMention.id}`).catch(() => {})
-            let col = null
-            if (!member) {
-                col = "#000000"
-            } else if (member) {
-                col = member.displayHexColor || "#000000"
-            }
+            let col = member.displayHexColor || "#000000"
             const mentionedEmbed = new MessageEmbed()
                 .setTitle(`Here's the banner for ${userMention.tag}`)
                 .setDescription(`Download | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)

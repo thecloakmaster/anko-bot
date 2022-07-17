@@ -22,7 +22,7 @@ module.exports = {
                 let file = new MessageAttachment(`${message.member.displayAvatarURL({dynamic:true, size:2048})}`).setName(`${fileName}`)
                 const nomentionEmbed = new MessageEmbed()
                     .setTitle(`Here's your server avatar ${message.author.username}`)
-                    .setDescription(`Download | [png](${message.member.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.member.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.member.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.member.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
+                    .setDescription(`[Download](${file.url}) | [png](${message.member.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${message.member.displayAvatarURL({dynamic:true, format:'gif', size:2048})}) | [webp](${message.member.displayAvatarURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.member.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
                     .setColor(`${col}`)
                     .setImage(`attachment://${fileName}`)
                     .setFooter({
@@ -45,7 +45,7 @@ module.exports = {
                 let file = new MessageAttachment(`${memberMention.displayAvatarURL({dynamic:true, size:2048})}`).setName(`${fileName}`)
                 const mentionedEmbed = new MessageEmbed()
                     .setTitle(`Here's the server specific avatar for ${memberMention.user.tag}`)
-                    .setDescription(`Download | [png](${memberMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${memberMention.displayAvatarURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${memberMention.displayAvatarURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${memberMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
+                    .setDescription(`[Download](${file.url}) | [png](${memberMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${memberMention.displayAvatarURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${memberMention.displayAvatarURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${memberMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
                     .setColor(`${col}`)
                     .setImage(`attachment://${fileName}`)
                     .setFooter({
@@ -60,7 +60,7 @@ module.exports = {
             }
         }
 
-        if (!args[0]) {
+        if (!args[0] || !memberMention) {
             try {
                 const col = message.member.displayHexColor || "#000000"
                 const embed = new MessageEmbed()
@@ -72,9 +72,6 @@ module.exports = {
                     embeds: [embed]
                 })
             } catch (err) {}
-        }
-        if (!memberMention) {
-            return message.channel.send("Please send a valid member's user-ID or member.")
         } else if (message.guild.members.cache.get(memberMention.id)) {
             try {
                 const col = memberMention.displayHexColor || "#000000"
