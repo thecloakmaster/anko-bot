@@ -13,31 +13,42 @@ module.exports = {
         })
         if (message.channel.type === 'DM') {
             if (message.author.id === client.user.id) return;
+            let embedArr = []
             const embed = new Discord.MessageEmbed()
                 .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
                 .setColor(`${process.env.colour}`)
                 .setTitle(`ID: ${message.author.id}`)
                 .setDescription(message.content)
                 .setTimestamp();
-            modHook.send({
-                embeds: [embed]
-            }).catch(() => {});            
-            if (message.attachments.size > 0) {
-                let embedArr = []                
-                message.attachments.forEach(attachment => {
+            let embedCop = _.cloneDeep(embed)
+            let counter = 0                 
+            if (message.attachments.size > 0) {                
+                message.attachments.forEach(attachment => {                    
                     if (!attachment.proxyURL.includes('https://cdn.discordapp.com/') && !attachment.proxyURL.includes('https://media.discordapp.net/')) return
                     let imageURL = attachment.proxyURL;
-                    let imageEmbed = new Discord.MessageEmbed()
-                        .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
-                        .setColor(`${process.env.colour}`)
-                        .setTitle(`ID: ${message.author.id}`)
-                        .setImage(imageURL)
-                        .setTimestamp();
-                    let arrCopy = _.cloneDeep(imageEmbed)
-                    embedArr.push(arrCopy);                    
-                })
-                await modHook.send({embeds: embedArr})
+                    if (counter === 0) {
+                        embed.setImage(imageURL);
+                        embedCop = _.cloneDeep(embed);
+                        embedArr.push(embedCop);
+                    } else {
+                        let imageEmbed = new Discord.MessageEmbed()
+                            .setAuthor({
+                                name: `${message.author.tag}`,
+                                iconURL: message.author.displayAvatarURL()
+                            })
+                            .setColor(`${process.env.colour}`)
+                            .setTitle(`ID: ${message.author.id}`)
+                            .setImage(imageURL)
+                            .setTimestamp();
+                        let arrCopy = _.cloneDeep(imageEmbed)
+                        embedArr.push(arrCopy);
+                    }
+                    counter++                                               
+                })            
+            } else {
+                embedArr.push(embedCop)
             }
+            await modHook.send({embeds: embedArr})
         }
         if (!message.content.startsWith(prefix) || message.author.bot) return;
 
