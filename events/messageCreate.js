@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const Cooldown = new Discord.Collection();
 const ms = require('ms');
+const _ = require('lodash');
 
 module.exports = {
     name: `messageCreate`,
@@ -18,9 +19,24 @@ module.exports = {
                 .setTitle(`ID: ${message.author.id}`)
                 .setDescription(message.content)
                 .setTimestamp();
-            return modHook.send({
+            modHook.send({
                 embeds: [embed]
             }).catch(() => {});
+            if (message.attachments.size >=1) {
+                let embedArr = []                
+                message.attachments.forEach(attachment => {
+                    let imageURL = attachment.proxyURL;
+                    let imageEmbed = new Discord.MessageEmbed()
+                        .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
+                        .setColor(`${process.env.colour}`)
+                        .setTitle(`ID: ${message.author.id}`)
+                        .setImage(imageURL)
+                        .setTimestamp();
+                    let arrCopy = _.cloneDeep(imageEmbed)
+                    embedArr.push(arrCopy);
+                })
+                modHook.send({embeds: embedArr})
+            }
         }
         if (!message.content.startsWith(prefix) || message.author.bot) return;
 
