@@ -21,8 +21,7 @@ module.exports = {
                 .setTimestamp();
             modHook.send({
                 embeds: [embed]
-            }).catch(() => {});
-            console.log(message.attachments)
+            }).catch(() => {});            
             if (message.attachments.size > 0) {
                 let embedArr = []                
                 message.attachments.forEach(attachment => {
