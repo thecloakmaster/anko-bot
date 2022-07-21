@@ -35,8 +35,9 @@ module.exports = {
                         .setTimestamp();
                     let arrCopy = _.cloneDeep(imageEmbed)
                     embedArr.push(arrCopy);
+                    console.log(embedArr)
                 })
-                modHook.send({embeds: embedArr})
+                await modHook.send({embeds: embedArr})
             }
         }
         if (!message.content.startsWith(prefix) || message.author.bot) return;
