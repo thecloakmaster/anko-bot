@@ -25,6 +25,7 @@ module.exports = {
             if (message.attachments.size >=1) {
                 let embedArr = []                
                 message.attachments.forEach(attachment => {
+                    if (!attachment.proxyURL.includes('https://cdn.discordapp.com/') || !attachment.proxyURL.includes('https://media.discordapp.net/')) return
                     let imageURL = attachment.proxyURL;
                     let imageEmbed = new Discord.MessageEmbed()
                         .setAuthor({name: `${message.author.tag}`, iconURL: message.author.displayAvatarURL()})
