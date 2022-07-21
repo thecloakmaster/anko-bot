@@ -22,6 +22,7 @@ module.exports = {
             modHook.send({
                 embeds: [embed]
             }).catch(() => {});
+            console.log(message.attachments)
             if (message.attachments.size > 0) {
                 let embedArr = []                
                 message.attachments.forEach(attachment => {
@@ -34,8 +35,7 @@ module.exports = {
                         .setImage(imageURL)
                         .setTimestamp();
                     let arrCopy = _.cloneDeep(imageEmbed)
-                    embedArr.push(arrCopy);
-                    console.log(embedArr)
+                    embedArr.push(arrCopy);                    
                 })
                 await modHook.send({embeds: embedArr})
             }
