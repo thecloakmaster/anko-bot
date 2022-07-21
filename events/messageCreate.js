@@ -22,7 +22,7 @@ module.exports = {
             modHook.send({
                 embeds: [embed]
             }).catch(() => {});
-            if (message.attachments.size >=1) {
+            if (message.attachments.size > 0) {
                 let embedArr = []                
                 message.attachments.forEach(attachment => {
                     if (!attachment.proxyURL.includes('https://cdn.discordapp.com/') || !attachment.proxyURL.includes('https://media.discordapp.net/')) return
