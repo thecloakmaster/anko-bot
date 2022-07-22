@@ -99,7 +99,7 @@ module.exports = {
                         collector.stop();
                     } else {
                         confirmationEmbed.setTitle(`Club Name: ${clubName.toLowerCase()}`)
-                        message.channel.send(`The club's name has been set to \`${clubName.toLowerCase()}\`\nEnter this club's description. (Description should be between 2 and 250 characters.)`)
+                        message.channel.send(`The club's name has been set to \`${clubName.toLowerCase()}\`\nEnter this club's description. (Description should be between 2 and 500 characters.)`)
                     }
                 } catch {}
             } else if (counter === 2) {
@@ -109,9 +109,9 @@ module.exports = {
                     message.channel.send(`No club description was given. Hence the club creation has been stopped.`)
                     collector.stop();
                 }
-                if (clubDescription.length > 250) {
+                if (clubDescription.length > 500) {
                     clubDescription = null
-                    message.channel.send(`Please enter a club description shorter than 250 characters.`)
+                    message.channel.send(`Please enter a club description shorter than 500 characters.`)
                     collector.stop();
                 } else if (clubDescription.length < 2) {
                     clubDescription = null
@@ -218,7 +218,9 @@ module.exports = {
                     let clubRole = await message.guild.roles.create({
                         name: `${clubName.toLowerCase()}`
                     }).then((role) => clubRoleID = role.id)
-                    let clubChannelObj = await message.guild.channels.create(`${clubName}`, {
+                    let clubChannelObj = await message.guild.channels.create({
+                        name: `${clubName}`,
+                        topic: `${clubDescription.slice(0, 500)}`,
                         parent: clubCategory
                     }).then(async (channel) => {
                         clubChannel = channel.id

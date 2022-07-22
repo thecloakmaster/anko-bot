@@ -73,7 +73,7 @@ module.exports = {
                     collector.stop();
                 } else {
                     confirmationEmbed.setTitle(`Club Name: ${clubName.toLowerCase()}`)
-                    message.channel.send(`The club's name has been set to \`${clubName.toLowerCase()}\`\nEnter this club's description. (Description should be between 2 and 250 characters.)`)
+                    message.channel.send(`The club's name has been set to \`${clubName.toLowerCase()}\`\nEnter this club's description. (Description should be between 2 and 500 characters.)`)
                 }                
             } else if (counter === 1) {
                 clubDescription = m.content
@@ -82,9 +82,9 @@ module.exports = {
                     message.channel.send(`No club description was given. Hence the club request procedure has been stopped.`)
                     collector.stop();
                 }
-                if (clubDescription.length > 250) {
+                if (clubDescription.length > 500) {
                     clubDescription = null
-                    message.channel.send(`Please enter a club description shorter than 250 characters.`)
+                    message.channel.send(`Please enter a club description shorter than 500 characters.`)
                     collector.stop();
                 } else if (clubDescription.length < 2) {
                     clubDescription = null
