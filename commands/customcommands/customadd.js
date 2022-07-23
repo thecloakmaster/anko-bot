@@ -78,7 +78,7 @@ module.exports = {
                 GuildID: `${message.guild.id}`
             })
             await newData.save();
-            return message.channel.send(`Custom command has been created. Use \`.${commandName}\` to use it.`)
+            return message.channel.send(`Custom command has been created. Use \`;${commandName}\` to use it.`)
         })
     }
 }

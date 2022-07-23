@@ -30,7 +30,7 @@ module.exports = {
                     commandsEmbed.fields = []
                     embedCounter++
                 }
-                commandsEmbed.addField(`${command.CustomCommand}`, `${command.Description}`)
+                commandsEmbed.addField(`;${command.CustomCommand}`, `Description: ${command.Description}`)
                 embedArr[embedCounter] = _.cloneDeep(commandsEmbed)
                 counter++
             })
