@@ -23,6 +23,8 @@ module.exports = {
         } else if (args[0] === 'a' || args[0] === 'anime' || args[0] === 'episode' || args[0] === 'ep') {
             embed.setTitle('Raws release on Friday at 01:05 JST')
             embed.setDescription('The Japanese raws (episode without subtitles) release every Friday at 01:05 JST. The English subtitles usually release an hour later.')
+        } else {
+            return message.channel.send('No results for the specified arguments.')
         }
         return message.channel.send({embeds: [embed]})
     }

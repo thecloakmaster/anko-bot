@@ -11,19 +11,7 @@ module.exports = {
     description: 'Lists all the commands and provides information if the command is specified.',
     usage: ";help <command name> or ;help",
     aliases: ['h'],
-    async execute (message, args, client, Discord) {
-
-        client.commands = new Discord.Collection();
-        
-        const commandFolders = fs.readdirSync(`./commands`);
-        
-        for (const folder of commandFolders) {
-            const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
-            for (const file of commandFiles) {
-                const command = require(`../../commands/${folder}/${file}`);
-                client.commands.set(command.name, command);
-            }
-        }
+    async execute (message, args, client) {        
         
         const owner = await message.client.users.fetch("423792631458562058").catch(() => {});
 
@@ -133,6 +121,9 @@ module.exports = {
             \`;removesticker\`: Removes a sticker from the server with the sticker provided.
             \`;renameemote\`: Renames the emote specified.
             \`;setmuterole\`: Sets the server's mute role.`)
+            .addField(`Custom Commands`, `\`;customadd\`: Add a custom command.
+            \`;customdelete\`: Deletes a custom command.
+            \`;customlist\`: Lists all the custom commands of the server.`)
             .setFooter({text:`Made by ${owner.tag}`, iconURL: `${owner.displayAvatarURL()}`});
 
             const button1 = new MessageButton()
@@ -223,7 +214,7 @@ module.exports = {
             const commandName = commHelp.shift().toLowerCase();
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-            hiddenCommands = ['talk', 'newchp', 'modreply', 'modmail', 'replymodmail', 'replymod', 'reply', `adminhelp`, `embed`, `editembed`, `eembed`, `edit`]
+            let hiddenCommands = ['talk', 'newchp', 'modreply', 'modmail', 'replymodmail', 'replymod', 'reply', `modhelp`, `embed`, `editembed`, `eembed`, `edit`]
             for (let i = 0; i < hiddenCommands.length; i++) {
                 let comm = hiddenCommands[i]
                 if (!command || commandName === comm) return message.reply("This command does not exist.");

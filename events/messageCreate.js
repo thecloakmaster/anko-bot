@@ -57,8 +57,34 @@ module.exports = {
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 
-        if (!command) return;
-
+        if (!command) {
+            const CustomCommands = require('../database/CustomCommands.js');            
+            let customCommand = await CustomCommands.findOne({
+                CustomCommand: `${commandName}`,
+                ClientID: `${client.user.id}`,
+                GuildID: `${message.guild.id}`
+            })            
+            if (customCommand) {                
+                if (customCommand.MessageContent?.length > 0) {
+                    if (customCommand.MessageAttachments?.length > 0) {
+                        message.channel.send({content: customCommand.MessageContent, embeds: customCommand.MessageEmbeds})
+                        return message.channel.send({content: `${customCommand.MessageAttachments.join("\n")}`})
+                    } else {
+                        return message.channel.send({content: customCommand.MessageContent, embeds: customCommand.MessageEmbeds})
+                    }
+                } else if (customCommand.MessageContent?.length === 0 && (customCommand.MessageEmbeds?.length > 0 || customCommand.MessageAttachments?.length > 0)){
+                    if (customCommand.MessageEmbeds?.length > 0 && customCommand.MessageAttachments?.length > 0) {
+                        return message.channel.send({embeds: customCommand.MessageEmbeds, content: `${customCommand.MessageAttachments.join("\n")}`})                        
+                    } else if (customCommand.MessageEmbeds?.length > 0 && customCommand.MessageAttachments?.length === 0) {
+                        return message.channel.send({embeds: customCommand.MessageEmbeds})
+                    } else if (customCommand.MessageEmbeds?.length === 0 && customCommand.MessageAttachments?.length > 0) {
+                        return message.channel.send({content: `${customCommand.MessageAttachments.join("\n")}`})
+                    }
+                }
+            } else {
+                return
+            }
+        };
         try {
             if (command.cooldown) {
                 if (Cooldown.has(`${command.name}${await message.author.id}`)) {
