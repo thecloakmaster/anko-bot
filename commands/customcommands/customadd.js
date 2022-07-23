@@ -59,14 +59,15 @@ module.exports = {
                             resolve(mFiles)
                         }
                     })
+                } else {
+                    resolve([])
                 }
             })
         }
         if (mContent.length === 0 && mEmbeds.length === 0 && messageTarget.attachments.size === 0) {
             return message.channel.send('Nothing was found in the message fetched from the specified arguments.')
         }
-        await fileUpload(messageTarget).then(async (fileList) => {
-            if (!fileList) return
+        await fileUpload(messageTarget).then(async (fileList) => {            
             let newData = new CustomCommands({
                 CustomCommand: commandName,
                 Description: description,
