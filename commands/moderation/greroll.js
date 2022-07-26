@@ -74,12 +74,12 @@ module.exports = {
                                 ClientID: `${client.user.id}`
                             })
                             return
-                        } else if (giveawayReactions.length - 1 >= 1) {
-                            let congratsMessage = `The giveaway for **${giveaway.Prize}** has ended.\nCongrats to the winner(s):`
+                        } else if (giveawayReactions.length - 1 >= 1) {                            
+                            let congratsMessage = `The giveaway for **${giveaway.Prize}** has been rerolled.\nCongrats to the new winner:`
                             let winnerListLoop = []
                             for (let winnerCounter = 0; winnerCounter < 1; winnerCounter++) {
                                 let randInt = getRandomInt(0, giveawayReactions.length)
-                                if (winnerListLoop.indexOf(`${giveawayReactions[randInt]}`) != -1 || giveawayReactions[randInt] === client.user.id) {                                    
+                                if (winnerListLoop.indexOf(`${giveawayReactions[randInt]}`) != -1 || giveawayReactions[randInt] === client.user.id || winnersList.indexOf(`${giveawayReactions[randInt]}`) != -1) {                                    
                                     winnerCounter-=1
                                     continue
                                 } else {                                    
@@ -96,7 +96,7 @@ module.exports = {
                                 }
                                 counter++
                             }
-                            if (winnerListLoop.length === 0) {return message.channel.send(`There are no new winners for this reroll probably due to lack of participants.`)}
+                            if (winnerListLoop.length === 0) {return message.channel.send(`There are no new winners for this reroll probably due to a lack of participants.`)}
                             await giveawayInfo.findOneAndUpdate({
                                 ChannelID: `${giveaway.ChannelID}`,
                                 EmbedID: `${giveaway.EmbedID}`,
@@ -126,6 +126,8 @@ module.exports = {
                     }).catch((err) => {                        
                         return message.channel.send(`There was an error fetching this giveaway's message. `)
                     });
+                } else if (Date.now() < giveaway.LastsTill) {
+                    return message.channel.send('This giveaway has not ended yet.')
                 }
             }
         }
