@@ -40,7 +40,7 @@ module.exports = {
                 })
             } else if (message) {
                 if (Date.now() >= giveaway.LastsTill) {
-                    messageEmbed = await channel.messages.fetch(`${giveaway.EmbedID}`).then(async (msg) => {
+                    let messageEmbed = await channel.messages.fetch(`${giveaway.EmbedID}`).then(async (msg) => {
                         giveawayReactions = await msg.reactions.resolve(`🎉`).users.fetch().then(userList => {
                             return userList.map((user) => user.id)
                         }).catch(() => {});                        
