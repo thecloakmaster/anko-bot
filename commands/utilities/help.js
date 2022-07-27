@@ -37,7 +37,7 @@ module.exports = {
             .setColor(`${process.env.colour}`)
             .setDescription(`**Bot Help Catalogue - Page 2 of 7**`)
             .addField(`Utility`, `\`;nextep\`: Tells you the status and airing time of the next episode of the specified anime.
-            \`;quote\`: Fetches previously sent message and sends it in an embed.
+            \`;quote\`: Fetches a previously sent message and sends it in the form of an embed.
             \`;reminders\`: Shows you all your reminders.
             \`;remindme\`: Sets a reminder for the specified time to remind you of the specified task.
             \`;servericon\`: Sends the server's icon.
