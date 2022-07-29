@@ -26,7 +26,10 @@ module.exports = {
             }
 
             try {
-                message.channel.permissionOverwrites.edit(message.guild.id, {
+                await message.channel.permissionOverwrites.edit(client.user, {
+                    SEND_MESSAGES: true
+                });
+                await message.channel.permissionOverwrites.edit(message.guild.id, {
                     SEND_MESSAGES: false
                 });
                 const lockEmbed = new MessageEmbed()
