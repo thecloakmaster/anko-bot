@@ -1,7 +1,7 @@
 const mangaSearch = require(`../functions/mangaSearch.js`);
 const modalMangaReader = require(`../functions/modalMangaReader.js`);
 const ALinfo = require("../functions/ALinfo.js");
-const mangaALinfo = require('../../functions/mangaALinfo.js');
+const mangaALinfo = require('../functions/mangaALinfo.js');
 
 module.exports = {
     name: `interactionCreate`,
