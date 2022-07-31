@@ -73,7 +73,7 @@ module.exports = {
             else if (!interaction) return message.channel.send(`No results for the following selection.`)
         } else if (returnData) {
             let embed = new MessageEmbed()
-                .setColor(`${returnData.color || process.env.colour}`)
+                .setColor(`${returnData.coverImage.color || process.env.colour}`)
                 .setTitle(`${returnData.title.romaji || returnData.title.english || returnData.title.native || returnData.title.userPreferred}`)
                 .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**") || "No description found."}`)
                 .setURL(`${returnData.siteUrl}`)
