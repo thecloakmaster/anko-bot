@@ -7,31 +7,39 @@ module.exports = {
         let returnData = null
         let query = `query ($id: Int) {
             Media(id: $id type: MANGA) {
-              title {
-                romaji
-                english
-                native
-                userPreferred
-              }
-              coverImage {
-                extraLarge
-                color
-              }
-              isLicensed
-              startDate
-              endDate
-              description
-              chapters
-              volumes
-              status
-              siteUrl              
-              format
-              averageScore
-              meanScore
+                title {
+                  romaji
+                  english
+                  native
+                  userPreferred
+                }
+                coverImage {
+                  extraLarge
+                  color
+                }
+                isLicensed
+                startDate {
+                  year
+                  month
+                  day
+                }
+                endDate {
+                  year
+                  month
+                  day
+                }
+                description
+                chapters
+                volumes
+                status
+                siteUrl                     
+                format
+                averageScore
+                meanScore                                
             }
         }`;
         let variables = {
-            id: parseInt(id)
+            id: parseInt(id[0])
         };
         let accessToken = `${process.env.AniListToken}`
         let url = 'https://graphql.anilist.co'
@@ -82,16 +90,19 @@ module.exports = {
             if (returnData.status) {
                 embed.addField(`Status`, `${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase()}`, true)
             }
-            if (returnData.isLicensed) {
-                embed.addField('Is it licensed?', `${returnData.isLicensed.charAt(0).toUpperCase() + returnData.isLicensed.slice(1).toLowerCase()}`)
-            }
+
+            let is;
+            if (returnData.isLicensed) is = 'Yes'
+            if (!returnData.isLicensed) is = 'No'
+            embed.addField('Is it licensed?', `${is}`)
+
             if (returnData.status === `FINISHED` || returnData.status === `CANCELLED`) {
                 if (returnData.volumes) embed.addField(`Volumes`, `${returnData.volumes}`, true)
                 if (returnData.chapters) embed.addField(`Chapters`, `${returnData.chapters}`, true)
-                if (returnData.startDate) embed.addField('Start Date', `${returnData.startDate}`, true)
-                if (returnData.endDate) embed.addField('End Date', `${returnData.endDate}`, true)
+                if (returnData.startDate) embed.addField('Start Date (DD-MM-YYYY)', `${returnData.startDate.day.toString() || ""}-${returnData.startDate.month.toString() || ""}-${returnData.startDate.year.toString() || ""}`, true)
+                if (returnData.endDate) embed.addField('End Date (DD-MM-YYYY)', `${returnData.endDate.day.toString() || ""}-${returnData.endDate.month.toString() || ""}-${returnData.endDate.year.toString() || ""}`, true)
             } else {
-                if (returnData.startDate) embed.addField('Start Date', `${returnData.startDate}`, true)
+                if (returnData.startDate) embed.addField('Start Date (DD-MM-YYYY)', `${returnData.startDate.day.toString() || ""}-${returnData.startDate.month.toString() || ""}-${returnData.startDate.year.toString() || ""}`, true)
             }
             if (interaction) return interaction.editReply({
                 embeds: [embed],
