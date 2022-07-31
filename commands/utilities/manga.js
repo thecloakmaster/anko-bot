@@ -1,5 +1,53 @@
 const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment } = require(`discord.js`)
 const MFA = require(`mangadex-full-api`)
+const mangaALinfo = require('../../functions/mangaALinfo.js')
+
+async function mangaSearch(mangaTitle) {
+    let returnData = null
+    let query = `query ($search: String) {
+    	Page(page: 1, perPage: 10) {
+            media(search: $search type: MANGA) {
+              title {
+                romaji
+                english
+                native
+                userPreferred
+              }
+              id
+            }
+    	}
+    }`;
+    let variables = {
+        search: mangaTitle
+    };
+    let accessToken = `${process.env.AniListToken}`
+    let url = 'https://graphql.anilist.co'
+    let options = {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+            query: query,
+            variables: variables
+        })
+    };
+    await fetch(url, options).then(handleResponse).then((data) => {
+        returnData = data.data.Page.media
+    }).catch(() => {});
+
+    function handleResponse(response) {
+        return response.json().then(function (json) {
+            return response.ok ? json : Promise.reject(json);
+        });
+    }
+    if (!returnData) {
+        return null
+    }
+    return returnData
+}
 
 module.exports = {
     name: `manga`,
@@ -11,7 +59,40 @@ module.exports = {
         if (!args[0]) {
             chp_no = 1
         } else if (isNaN(args[0])) {
-            return message.channel.send(`Please enter a valid chapter number.`)
+            let mangaTitle = args.join(" ");
+            let retrun = await mangaSearch(mangaTitle);
+            if (!retrun) {
+                return message.channel.send(`No manga with the title ${mangaTitle} was found on AniList.`);
+            }
+            let options = []
+            for (let i of retrun) {
+                options.push({
+                    label: `${i.title.romaji.substring(0,100) || i.title.english.substring(0,100)}`,
+                    value: `${i.id}`
+                })
+            }
+            if (options.length === 1) {
+                return await mangaALinfo.execute(retrun[0].id, null, message)
+            } else if (options.length === 0) {
+                return message.channel.send(`No manga with the title ${mangaTitle} was found on AniList.`);
+            } else if (options.length > 1) {
+                const embed = new MessageEmbed()
+                    .setColor(`${process.env.colour}`)
+                    .setTitle(`Manga Search Results`)
+                    .setDescription(`These are ${options.length} results shown below for the AniList search for the title \`${mangaTitle}\`.\n Select any one of the options from the dropdown menu below to display the information.`)
+                const row = new MessageActionRow()
+                    .addComponents(
+                        new MessageSelectMenu()
+                        .setCustomId('select-manga-al')
+                        .setPlaceholder('Select a manga from the following options.')
+                        .setMaxValues(1)
+                        .addOptions(options)
+                    );
+                return message.channel.send({
+                    embeds: [embed],
+                    components: [row]
+                })
+            }
         }
         MFA.login(`thecloakmaster`, `${process.env.MDpass}`).then(async () => {
             let manga = await MFA.Manga.getByQuery('Yofukashi no Uta');

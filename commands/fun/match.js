@@ -37,8 +37,10 @@ module.exports = {
             })
             if (!matchFind2) {
                 matchInt = Math.floor(Math.random() * 101);
-                if (commandUser == `423792631458562058` && matchedUser == `${client.user.id}`) {
+                if (commandUser === `423792631458562058` && matchedUser === `${client.user.id}`) {
                     matchInt = 100
+                } else if (commandUser !== `423792631458562058` && matchedUser === `${client.user.id}` && matchInt === 100) {
+                    matchInt = 50
                 }
                 let newData = new Match({
                     Members: [`${commandUser}`, `${matchedUser}`],

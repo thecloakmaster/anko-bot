@@ -6,28 +6,25 @@ module.exports = {
         if (interaction) await interaction.deferUpdate()
         let returnData = null
         let query = `query ($id: Int) {
-            Media(id: $id type: ANIME) {
+            Media(id: $id type: MANGA) {
               title {
                 romaji
                 english
                 native
                 userPreferred
               }
-              description
-              season
-              seasonYear
-              status
-              episodes
-              siteUrl
-              nextAiringEpisode {
-                  airingAt
-                  timeUntilAiring
-                  episode
-              }
               coverImage {
-                  extraLarge
-                  color
+                extraLarge
+                color
               }
+              isLicensed
+              startDate
+              endDate
+              description
+              chapters
+              volumes
+              status
+              siteUrl              
               format
               averageScore
               meanScore
@@ -68,44 +65,33 @@ module.exports = {
             else if (!interaction) return message.channel.send(`No results for the following selection.`)
         } else if (returnData) {
             let embed = new MessageEmbed()
+                .setColor(`${returnData.color || process.env.colour}`)
                 .setTitle(`${returnData.title.romaji || returnData.title.english || returnData.title.native || returnData.title.userPreferred}`)
                 .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**") || "No description found."}`)
                 .setURL(`${returnData.siteUrl}`)
-                .setFooter({
-                    text: `Status: ${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase().replace(/_/g, " ")}`
-                })
-                .setThumbnail(`${returnData.coverImage.extraLarge}`)
-                .setColor(`${returnData.coverImage.color || process.env.colour}`)
+                .setFooter({text: `Data taken from AniList`})
+                .setThumbnail(`${returnData.coverImage.extraLarge}`);
             if (returnData.averageScore && returnData.meanScore) {
-                embed.addField(`AniList Average Score`, `${returnData.averageScore}`)
+                embed.addField(`Average Score`, `${returnData.averageScore}`)
             } else if (!returnData.averageScore && returnData.meanScore) {
-                embed.addField(`AniList Mean Score`, `${returnData.meanScore}`)
+                embed.addField(`Mean Score`, `${returnData.meanScore}`)
+            }
+            if (returnData.format) {
+                embed.addField(`Format`, `${returnData.format.charAt(0) + returnData.format.slice(1).toLowerCase()}`, true)
             }
             if (returnData.status) {
                 embed.addField(`Status`, `${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase()}`, true)
             }
-            if ((returnData.status === `FINISHED` || returnData.status === `CANCELLED`) && returnData.episodes) {
-                embed.addField(`Total episodes`, `${returnData.episodes}`, true)
+            if (returnData.isLicensed) {
+                embed.addField('Is it licensed?', `${returnData.isLicensed.charAt(0).toUpperCase() + returnData.isLicensed.slice(1).toLowerCase()}`)
             }
-            if (returnData.format) {
-                if (returnData.format === `MOVIE`) {
-                    embed.addField(`Format`, `${returnData.format.charAt(0) + returnData.format.slice(1).toLowerCase()}`, true)
-                } else {
-                    embed.addField(`Format`, `${returnData.format}`, true)
-                }
-            }
-            if (returnData.nextAiringEpisode) {
-                if (returnData.nextAiringEpisode.timeUntilAiring && returnData.nextAiringEpisode.episode) {
-                    embed.addField(`Episode ${returnData.nextAiringEpisode.episode} airs:`, `<t:${Math.round(Date.now()/1000 + returnData.nextAiringEpisode.timeUntilAiring)}:R>`, true)
-                } else if (returnData.nextAiringEpisode.timeUntilAiring && !returnData.nextAiringEpisode.episode) {
-                    embed.addField(`The next episode airs in:`, `<t:${Math.round(Date.now()/1000 + returnData.nextAiringEpisode.timeUntilAiring)}:R>`, true)
-                }
-                if (returnData.nextAiringEpisode.airingAt) {
-                    embed.addField(`Next episode airs at`, `<t:${returnData.nextAiringEpisode.airingAt}:F>`, true)
-                }
-            }
-            if (returnData.season && returnData.seasonYear) {
-                embed.addField(`Season`, `${returnData.season.charAt(0) + returnData.season.slice(1).toLowerCase()} ${returnData.seasonYear}`, true)
+            if (returnData.status === `FINISHED` || returnData.status === `CANCELLED`) {
+                if (returnData.volumes) embed.addField(`Volumes`, `${returnData.volumes}`, true)
+                if (returnData.chapters) embed.addField(`Chapters`, `${returnData.chapters}`, true)
+                if (returnData.startDate) embed.addField('Start Date', `${returnData.startDate}`, true)
+                if (returnData.endDate) embed.addField('End Date', `${returnData.endDate}`, true)
+            } else {
+                if (returnData.startDate) embed.addField('Start Date', `${returnData.startDate}`, true)
             }
             if (interaction) return interaction.editReply({
                 embeds: [embed],
