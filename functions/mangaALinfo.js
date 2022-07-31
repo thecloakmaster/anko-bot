@@ -17,7 +17,6 @@ module.exports = {
                   extraLarge
                   color
                 }
-                isLicensed
                 startDate {
                   year
                   month
@@ -75,26 +74,22 @@ module.exports = {
             let embed = new MessageEmbed()
                 .setColor(`${returnData.coverImage.color || process.env.colour}`)
                 .setTitle(`${returnData.title.romaji || returnData.title.english || returnData.title.native || returnData.title.userPreferred}`)
-                .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**") || "No description found."}`)
+                .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**").replace(/<i\/>/g, "*") || "No description found."}`)
                 .setURL(`${returnData.siteUrl}`)
                 .setFooter({text: `Data taken from AniList`})
                 .setThumbnail(`${returnData.coverImage.extraLarge}`);
             if (returnData.averageScore && returnData.meanScore) {
-                embed.addField(`Average Score`, `${returnData.averageScore}`)
+                embed.addField(`Average Score`, `${returnData.averageScore}`, true)
             } else if (!returnData.averageScore && returnData.meanScore) {
-                embed.addField(`Mean Score`, `${returnData.meanScore}`)
+                embed.addField(`Mean Score`, `${returnData.meanScore}`, true)
             }
+
             if (returnData.format) {
                 embed.addField(`Format`, `${returnData.format.charAt(0) + returnData.format.slice(1).toLowerCase()}`, true)
             }
             if (returnData.status) {
                 embed.addField(`Status`, `${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase()}`, true)
-            }
-
-            let is;
-            if (returnData.isLicensed) is = 'Yes'
-            if (!returnData.isLicensed) is = 'No'
-            embed.addField('Is it licensed?', `${is}`)
+            }            
 
             if (returnData.status === `FINISHED` || returnData.status === `CANCELLED`) {
                 if (returnData.volumes) embed.addField(`Volumes`, `${returnData.volumes}`, true)
