@@ -1,6 +1,7 @@
 const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment } = require(`discord.js`)
 const MFA = require(`mangadex-full-api`)
 const mangaALinfo = require('../../functions/mangaALinfo.js')
+const fetch = require(`node-fetch`);
 
 async function mangaSearch(mangaTitle) {
     let returnData = null
