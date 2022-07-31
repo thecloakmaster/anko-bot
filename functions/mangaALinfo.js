@@ -89,7 +89,7 @@ module.exports = {
             }
             if (returnData.status) {
                 embed.addField(`Status`, `${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase()}`, true)
-            }            
+            }
 
             if (returnData.status === `FINISHED` || returnData.status === `CANCELLED`) {
                 if (returnData.volumes) embed.addField(`Volumes`, `${returnData.volumes}`, true)
