@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment, MessageSelectMenu } = require(`discord.js`)
+const { MessageEmbed, MessageButton, MessageActionRow, MessageAttachment, MessageSelectMenu } = require(`discord.js`);
 const MFA = require(`mangadex-full-api`)
 const mangaALinfo = require('../../functions/mangaALinfo.js')
 const fetch = require(`node-fetch`);

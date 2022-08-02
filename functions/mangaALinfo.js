@@ -74,10 +74,12 @@ module.exports = {
             let embed = new MessageEmbed()
                 .setColor(`${returnData.coverImage.color || process.env.colour}`)
                 .setTitle(`${returnData.title.romaji || returnData.title.english || returnData.title.native || returnData.title.userPreferred}`)
-                .setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**").replace(/<i\/>/g, "*") || "No description found."}`)
-                .setURL(`${returnData.siteUrl}`)
+                .setURL(`${returnData.siteUrl || 'https://anilist.co/'}`)
                 .setFooter({text: `Data taken from AniList`})
-                .setThumbnail(`${returnData.coverImage.extraLarge}`);
+                .setThumbnail(`${returnData.coverImage.extraLarge || 'https://anilist.co/img/icons/icon.svg'}`);
+            if (returnData.description) {
+                embed.setDescription(`${returnData.description.replace(/<br>/g, "").replace(/<i>/g, "*").replace(/<\/i>/g, "*").replace(/<b>/g, "**").replace(/<\/b>/g, "**").replace(/<i\/>/g, "*") || "No description found."}`)
+            }
             if (returnData.averageScore && returnData.meanScore) {
                 embed.addField(`Average Score`, `${returnData.averageScore}`, true)
             } else if (!returnData.averageScore && returnData.meanScore) {
@@ -90,14 +92,38 @@ module.exports = {
             if (returnData.status) {
                 embed.addField(`Status`, `${returnData.status.charAt(0) + returnData.status.slice(1).toLowerCase()}`, true)
             }
-
+            let endDateArr = [], endDateStr = '', startDateArr = [], startDateStr = ''
+            if (returnData.startDate) {
+                if (returnData.startDate.day) {
+                    startDateArr.push(`${returnData.startDate.day.toString() || ""}`)
+                }
+                if (returnData.startDate.month) {
+                    startDateArr.push(`${returnData.startDate.month.toString() || ""}`)
+                }
+                if (returnData.startDate.year) {
+                    startDateArr.push(`${returnData.startDate.year.toString() || ""}`)
+                }
+                startDateStr = startDateArr.join(".")
+            }
+            if (endDateArr) {
+                if (returnData.endDate.day) {
+                    endDateArr.push(`${returnData.endDate.day.toString() || ""}`)
+                }
+                if (returnData.endDate.month) {
+                    endDateArr.push(`${returnData.endDate.month.toString() || ""}`)
+                }
+                if (returnData.endDate.year) {
+                    endDateArr.push(`${returnData.endDate.year.toString() || ""}`)
+                }
+                endDateStr = endDateArr.join(".")
+            }
             if (returnData.status === `FINISHED` || returnData.status === `CANCELLED`) {
                 if (returnData.volumes) embed.addField(`Volumes`, `${returnData.volumes}`, true)
                 if (returnData.chapters) embed.addField(`Chapters`, `${returnData.chapters}`, true)
-                if (returnData.startDate) embed.addField('Start Date (DD-MM-YYYY)', `${returnData.startDate.day.toString() || ""}-${returnData.startDate.month.toString() || ""}-${returnData.startDate.year.toString() || ""}`, true)
-                if (returnData.endDate) embed.addField('End Date (DD-MM-YYYY)', `${returnData.endDate.day.toString() || ""}-${returnData.endDate.month.toString() || ""}-${returnData.endDate.year.toString() || ""}`, true)
+                if (returnData.startDate) embed.addField('Start Date (DD-MM-YYYY)', `${startDateStr}`, true)
+                if (returnData.endDate) embed.addField('End Date (DD-MM-YYYY)', `${endDateStr}`, true)
             } else {
-                if (returnData.startDate) embed.addField('Start Date (DD-MM-YYYY)', `${returnData.startDate.day.toString() || ""}-${returnData.startDate.month.toString() || ""}-${returnData.startDate.year.toString() || ""}`, true)
+                if (returnData.startDate) embed.addField('Start Date (DD-MM-YYYY)', `${startDateStr}`, true)
             }
             if (interaction) return interaction.editReply({
                 embeds: [embed],
