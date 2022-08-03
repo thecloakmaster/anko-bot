@@ -93,12 +93,16 @@ module.exports = {
             });
         }
         //Muting (giving the role or timing them out) and adding to the database(if time is greater than 28 days)
-        let msTime = 0
+        let msTime;
         if (time) {
-            msTime = ms(time)
-            console.log(msTime)
+            if (time.includes('month')) {
+                let timeNum = time.match(/\d+/g);
+                msTime = parseInt(timeNum[0])*30.4375*24*60*60*1000;
+            } else {
+                msTime = ms(time)
+            }            
         }
-        if (!time || msTime === 0){
+        if (!time || msTime === 0 || !msTime){
             try {
                 await memberMute.roles.add(muteRole.MuteRoleID).catch((err) => {
                     message.channel.send(`Error muting this member`)
