@@ -49,7 +49,6 @@ module.exports = {
         } else if (!isNaN(args[1].charAt(0))) {
             if (timeList.indexOf(args[2]) >= 0) {
                 time = args[1] + args[2];
-                console.log(time);
                 reason = args.slice(3).join(" ");
                 if (!reason) {
                     reason = 'No reason given.';
@@ -98,7 +97,7 @@ module.exports = {
         if (time) {
             msTime = ms(time)
         }
-        if (!time){
+        if (!time || msTime === 0){
             try {
                 await memberMute.roles.add(muteRole.MuteRoleID).catch((err) => {
                     message.channel.send(`Error muting this member`)
@@ -154,7 +153,7 @@ module.exports = {
                 console.log(err)
                 message.channel.send(`Error muting this member`)
             }
-        } else if (msTime > 28*24*60*60*1000) {
+        } else if (msTime >= 28*24*60*60*1000) {
             try {
                 await memberMute.roles.add(guildMuteRole.id).catch((err) => {
                     message.channel.send(`Error muting this member`)
