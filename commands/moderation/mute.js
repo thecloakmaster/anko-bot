@@ -96,6 +96,7 @@ module.exports = {
         let msTime = 0
         if (time) {
             msTime = ms(time)
+            console.log(msTime)
         }
         if (!time || msTime === 0){
             try {
