@@ -19,7 +19,7 @@ module.exports = {
                 if (!userMention.bannerURL()) {
                     return message.channel.send(`You do not have a banner image.`)
                 }
-                let col = message.member.displayHexColor || "#000000";
+                let col = message.member?.displayHexColor || "#000000";
                 let fileNameArr = userMention.bannerURL({dynamic: true, size: 4096}).split(/\//g);
                 let fileName = fileNameArr[fileNameArr.length - 1].split(/\?/g);
                 fileName = fileName[0]
@@ -45,7 +45,7 @@ module.exports = {
                     return message.channel.send(`This user does not have a banner image.`)
                 }
                 const member = await message.guild.members.fetch(`${userMention.id}`).catch(() => {})
-                let col = member.displayHexColor || "#000000"
+                let col = member?.displayHexColor || "#000000"
                 let fileNameArr = userMention.bannerURL({dynamic: true, size: 4096}).split(/\//g);
                 let fileName = fileNameArr[fileNameArr.length - 1].split(/\?/g);
                 fileName = fileName[0]
@@ -74,7 +74,7 @@ module.exports = {
             if (!userMention.bannerURL()) {
                 return message.channel.send(`You do not have a banner image.`)
             }
-            let col = message.member.displayHexColor || "#000000"
+            let col = message.member?.displayHexColor || "#000000"
             const nomentionEmbed = new MessageEmbed()
                 .setTitle(`Here's your banner ${message.author.username}`)
                 .setDescription(`Download | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size:2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)
@@ -96,7 +96,7 @@ module.exports = {
                 return message.channel.send(`This user does not have a banner image.`)
             }
             const member = await message.guild.members.fetch(`${userMention.id}`).catch(() => {})
-            let col = member.displayHexColor || "#000000"
+            let col = member?.displayHexColor || "#000000"
             const mentionedEmbed = new MessageEmbed()
                 .setTitle(`Here's the banner for ${userMention.tag}`)
                 .setDescription(`Download | [png](${userMention.bannerURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.bannerURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.bannerURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.bannerURL({dynamic:false, format:'jpeg', size: 2048})})`)
