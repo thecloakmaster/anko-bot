@@ -26,12 +26,12 @@ module.exports = {
         const emoteRegex = /<:.+:(\d+)>/
         const animatedEmoteRegex = /<a:.+:(\d+)>/
         const messageID = args[0]
-        let messageW = null            
+        let messageW = null
+        let messageToAuthor = ''
         try {
             messageW = await message.channel.messages.fetch(`${messageID}`)
             const messageInput = messageW.content.match(hasEmoteRegex)
-            if (messageInput) {
-                let messageToAuthor = ''
+            if (messageInput) {                
                 for (let i = 0; i < messageInput.length; i++) {
                     let messageInp = messageInput[i]
                     let emoji = null
