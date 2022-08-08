@@ -31,7 +31,7 @@ module.exports = {
         try {
             messageW = await message.channel.messages.fetch(`${messageID}`)
             const messageInput = messageW.content.match(hasEmoteRegex)
-            if (messageInput) {                
+            if (messageInput) {
                 for (let i = 0; i < messageInput.length; i++) {
                     let messageInp = messageInput[i]
                     let emoji = null
@@ -48,13 +48,13 @@ module.exports = {
                 if (messageToAuthor.length > 0) {
                     messageToAuthor = `These are the emotes stolen from the message you had mentioned.\n${messageToAuthor}`
                 }
-            }            
+            }
         } catch (err) {
             return message.author.send(`Please enter a valid message ID of a message in the channel from which you want to steal the emotes and execute the command in the same channel.`)
         }
         if (endMessage.length === 0 && messageToAuthor.length === 0) {
             return message.author.send('There were no stickers/emotes in the message mentioned.')
         }
-        return message.author.send(`${endMessage}\n${messageToAuthor}`)          
+        return message.author.send(`${endMessage}\n${messageToAuthor}`)
     }
 }
