@@ -3,10 +3,13 @@ module.exports = {
     description: 'Steals all the emotes/stickers from a single message and sends them to you via DMs. The command is to be executed in the exact same channel from which you want to steal messages.',
     usage: ';steal <message ID>',
     async execute(message, args) {
+        if (!args[0]) {
+            return message.author.send('No message ID was specified.\nSyntax: \`;steal <message ID>\`.')
+        }
         let endMessage = '';
         let stickerM = await message.channel.messages.fetch(`${args[0]}`).catch(() => {})
         if (!stickerM) {
-            return message.author.send(`No message with the specified message ID was found. Make sure you are executing the command in the same channel as the message.`)
+            return message.author.send(`No message with the specified message ID was found. Make sure you are executing the command in the same channel as the message.`).catch(() => {})
         }            
         if (stickerM.stickers.size >= 1) {
             let stickers = Array.from(await stickerM.stickers.values());
@@ -24,12 +27,11 @@ module.exports = {
     
         const hasEmoteRegex = /<a:.+?:\d+>|<:.+?:\d+>/g
         const emoteRegex = /<:.+:(\d+)>/
-        const animatedEmoteRegex = /<a:.+:(\d+)>/
-        const messageID = args[0]
+        const animatedEmoteRegex = /<a:.+:(\d+)>/        
         let messageW = null
         let messageToAuthor = ''
         try {
-            messageW = await message.channel.messages.fetch(`${messageID}`)
+            messageW = await message.channel.messages.fetch(`${args[0]}`)
             const messageInput = messageW.content.match(hasEmoteRegex)
             if (messageInput) {
                 for (let i = 0; i < messageInput.length; i++) {
@@ -50,11 +52,13 @@ module.exports = {
                 }
             }
         } catch (err) {
-            return message.author.send(`Please enter a valid message ID of a message in the channel from which you want to steal the emotes and execute the command in the same channel.`)
+            if (endMessage.length === 0 && messageToAuthor.length === 0) {
+                return message.author.send(`Please enter a valid message ID of a message in the channel from which you want to steal the emotes and execute the command in the same channel.`).catch(() => {});
+            }
         }
         if (endMessage.length === 0 && messageToAuthor.length === 0) {
-            return message.author.send('There were no stickers/emotes in the message mentioned.')
+            return message.author.send('There were no stickers/emotes in the message mentioned.').catch(() => {})
         }
-        return message.author.send(`${endMessage}\n${messageToAuthor}`)
+        return message.author.send(`${endMessage}\n${messageToAuthor}`).catch(() => {});
     }
 }
