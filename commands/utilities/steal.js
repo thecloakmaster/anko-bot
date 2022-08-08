@@ -3,6 +3,7 @@ module.exports = {
     description: 'Steals all the emotes/stickers from a single message and sends them to you via DMs. The command is to be executed in the exact same channel from which you want to steal messages.',
     usage: ';steal <message ID>',
     async execute(message, args) {
+        message.delete();
         if (!args[0]) {
             return message.author.send('No message ID was specified.\nSyntax: \`;steal <message ID>\`.')
         }
