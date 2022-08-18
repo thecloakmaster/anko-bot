@@ -38,7 +38,7 @@ module.exports = {
             }
         }`;
         let variables = {
-            id: parseInt(id[0])
+            id: parseInt(id[0] || id)
         };
         let accessToken = `${process.env.AniListToken}`
         let url = 'https://graphql.anilist.co'
