@@ -1,4 +1,4 @@
-const {MessageEmbed} = require('discord.js');
+const {MessageEmbed, MessageAttachment} = require('discord.js');
 
 module.exports = {
     name: `removesticker`,
@@ -27,17 +27,34 @@ module.exports = {
                     return message.channel.send(`The sticker with the name ${sticker.name} does not belong to this guild and hence cannot be deleted.`)
                 } else if (sticker) {
                     try {
-                        sticker.delete().then(() => {
-                            const embed = new MessageEmbed()
-                                .setColor(`${process.env.colour}`)
-                                .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
-                            return message.channel.send({
-                                embeds: [embed]
+                        if (sticker.format === 'APNG' || sticker.format === 'PNG') {
+                            let fileURL = sticker.url
+                            let file = new MessageAttachment(`${fileURL}`).setName('sticker.png')
+                            sticker.delete().then(() => {
+                                const embed = new MessageEmbed()
+                                    .setColor(`${process.env.colour}`)
+                                    .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
+                                return message.channel.send({
+                                    embeds: [embed.setImage('attachment://sticker.png')],
+                                    files: [file]
+                                })
+                            }).catch((err) => {
+                                console.log(err)
+                                return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
                             })
-                        }).catch((err) => {
-                            console.log(err)
-                            return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
-                        })
+                        } else {                            
+                            sticker.delete().then(() => {
+                                const embed = new MessageEmbed()
+                                    .setColor(`${process.env.colour}`)
+                                    .setDescription(`A sticker with the name \`${sticker.name}\` has been deleted from the server.`)
+                                return message.channel.send({
+                                    embeds: [embed]
+                                })
+                            }).catch((err) => {
+                                console.log(err)
+                                return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
+                            })
+                        }                  
                     } catch (err) {
                         console.log(err)
                         return message.channel.send(`Error deleting the sticker with the name ${sticker.name}. Syntax: \`;removesticker <Sticker>\``)
