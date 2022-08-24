@@ -95,8 +95,8 @@ module.exports = {
             embed.setTitle('Wednesday at 00:00 JST')
             embed.setDescription(`${rawChp}`)
         } else if (args[0] === 'a' || args[0] === 'anime' || args[0] === 'episode' || args[0] === 'ep') {
-            embed.setTitle('Raws release on Friday at 01:05 JST')
-            embed.setDescription('The Japanese raws (episode without subtitles) release every Friday at 01:05 JST. The English subtitles usually release an hour later.')
+            embed.setTitle('Raws release every Friday at 00:55 / 1:05 JST')
+            embed.setDescription(`${animeTime}`)
             if (animeFetch?.coverImage?.extraLarge) {
                 embed.setImage(`${animeFetch.coverImage.extraLarge}`)
             }
