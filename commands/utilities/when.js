@@ -57,7 +57,6 @@ module.exports = {
         let animeTime = 'The Japanese raws (episode without subtitles) release every Friday at 01:05 JST. The English subtitles usually release an hour later.'
         let animeFetch = await timeTillAiring()
         if (animeFetch) {
-            console.log(animeFetch)
             if (animeFetch?.status === 'FINISHED') {
                 animeTime = 'The anime has ended, all we can do now is hope for season 2 and support the series in any and every way we can so that season 2 arrives faster.'
             } else if (animeFetch?.status === 'RELEASING') {
