@@ -61,6 +61,7 @@ module.exports = {
         let animeTime = 'The Japanese raws (episode without subtitles) release every Friday at 01:05 JST. The English subtitles usually release an hour later.'
         let animeFetch = await timeTillAiring()
         if (animeFetch) {
+            console.log(animeFetch)
             if (animeFetch?.status === 'FINISHED') {
                 animeTime = 'The anime has ended, all we can do now is hope for season 2 and support the series in any and every way we can so that season 2 arrives faster.'
             } else if (animeFetch?.status === 'RELEASING') {
@@ -80,7 +81,7 @@ module.exports = {
             }                       
         }        
         if (mangaTime) {
-            rawChp = `${rawChp}\n**Timestamps for the release of the raws:** <t:${MangaChapter.WednesdayTimestamp}:F>\n<t:${MangaChapter.WednesdayTimestamp}:R>`
+            rawChp = `${rawChp}\n**Timestamps for the release of the raws:** <t:${mangaTime.WednesdayTimestamp}:F>\n<t:${mangaTime.WednesdayTimestamp}:R>`
         }
         let embed = new MessageEmbed()
             .setAuthor({name: `${client.user.username}`, iconURL: `${client.user.displayAvatarURL({dynamic: true, size: 1024})}`})
