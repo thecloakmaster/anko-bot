@@ -8,7 +8,7 @@ module.exports = {
     aliases: [`next`],
     async execute (message, args) {
         if (!args.slice(0).join(" ")) {
-            return message.channel.send(`Please enter a title for the command.\nSyntax: \`;next <Anime title>\``)
+            return message.channel.send(`Please enter a title for the command.\nSyntax: \`;nextep <Anime title>\``)
         }
         let anilistID = args.slice(0).join(" ")
         let list = await animeAniListQuery.execute(anilistID)
@@ -38,6 +38,5 @@ module.exports = {
             embed.addField(`Season`, `${list.season.charAt(0) + list.season.slice(1).toLowerCase()} ${list.seasonYear}`, true)
         }
         return message.channel.send({embeds: [embed]})
-        
     }
 }

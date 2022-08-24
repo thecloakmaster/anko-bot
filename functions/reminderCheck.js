@@ -1,4 +1,5 @@
 const Reminder = require(`../database/Reminder.js`)
+const MangaChapter = require(`../database/MangaChapter.js`)
 
 module.exports = {
     async execute(client) {
@@ -29,6 +30,21 @@ module.exports = {
                     }
                 }
             }
-        }, 10000);
-    }
+            let manga = await MangaChapter.findOne({
+                GuildID: `908021112837922847`,
+                ClientID: `${client.user.id}`
+            })
+            if (manga) {
+                let ts = manga.WednesdayTimestamp
+                if (Math.round(Date.now() / 1000) >= manga.WednesdayTimestamp) {
+                    await manga.findOneAndUpdate({
+                        GuildID: `908021112837922847`,
+                        ClientID: `${client.user.id}`
+                    }, {
+                        WednesdayTimestamp: ts + 604800
+                    })
+                }
+            }
+        }, 10000);        
+    }    
 }
