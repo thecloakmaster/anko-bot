@@ -5,7 +5,7 @@ const MangaChapter = require(`../../database/MangaChapter.js`)
 async function timeTillAiring() {
     let returnData = null    
     let query = `query ($id) { 
-        Media(id: $id, type: MANGA) {
+        Media(id: $id, type: ANIME) {
             status   
             nextAiringEpisode {
                 airingAt
@@ -40,7 +40,7 @@ async function timeTillAiring() {
         returnData = data.data.Media
     }).catch(() => {});
 
-    function handleResponse(response) {
+    function handleResponse(response) {        
         return response.json().then(function (json) {
             return response.ok ? json : Promise.reject(json);
         });
