@@ -5,7 +5,7 @@ const MangaChapter = require(`../../database/MangaChapter.js`)
 async function timeTillAiring() {
     let returnData = null    
     let query = `query ($id) { 
-        Media(id: $id) {
+        Media(id: $id, type: MANGA) {
             status   
             nextAiringEpisode {
                 airingAt
@@ -79,7 +79,7 @@ module.exports = {
                     }
                 }
             }                       
-        }        
+        }
         if (mangaTime) {
             rawChp = `${rawChp}\n**Timestamps for the release of the raws:** <t:${mangaTime.WednesdayTimestamp}:F>\n<t:${mangaTime.WednesdayTimestamp}:R>`
         }
