@@ -4,8 +4,8 @@ const MangaChapter = require(`../../database/MangaChapter.js`)
 
 async function timeTillAiring() {
     let returnData = null    
-    let query = `query ($id) { 
-        Media(id: $id, type: ANIME) {
+    let query = `query { 
+        Media(id: 141391, type: ANIME) {
             status   
             nextAiringEpisode {
                 airingAt
@@ -17,10 +17,7 @@ async function timeTillAiring() {
                 color  
             }
         }
-    }`;
-    let variables = {
-        id: 141391
-    };
+    }`;    
     let accessToken = `${process.env.AniListToken}`
     let url = 'https://graphql.anilist.co'
     let options = {
@@ -31,8 +28,7 @@ async function timeTillAiring() {
             'Accept': 'application/json',
         },
         body: JSON.stringify({
-            query: query,
-            variables: variables
+            query: query            
         })
     };
 
