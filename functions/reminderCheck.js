@@ -34,14 +34,17 @@ module.exports = {
                 GuildID: `908021112837922847`,
                 ClientID: `${client.user.id}`
             })
+            console.log(manga)
             if (manga) {
-                let ts = manga.WednesdayTimestamp
+                console.log(manga.WednesdayTimestamp)
+                let ts = manga.WednesdayTimestamp + 604800
+                console.log(ts)
                 if (Math.round(Date.now() / 1000) >= manga.WednesdayTimestamp) {
                     await manga.findOneAndUpdate({
                         GuildID: `908021112837922847`,
                         ClientID: `${client.user.id}`
                     }, {
-                        WednesdayTimestamp: ts + 604800
+                        WednesdayTimestamp: ts
                     })
                 }
             }
