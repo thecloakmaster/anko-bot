@@ -12,7 +12,7 @@ module.exports = {
             .setTitle(`Here's the server's splash background image.`)
             .setDescription(`Download | [png](${message.guild.splashURL({dynamic:false, format:'png', size: 2048})}) | [webp](${message.guild.splashURL({dynamic:false, format:'webp', size:2048})}) | [jpeg](${message.guild.splashURL({dynamic:false, format:'jpeg', size: 2048})})`)
             .setFooter({
-                text: `${message.author.tag}`
+                text: `Requested by ${message.author.tag}`
             })
             .setImage(`${message.guild.splashURL({size:2048})}`);
         return message.channel.send({

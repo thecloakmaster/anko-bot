@@ -30,7 +30,7 @@ module.exports = {
                     .setColor(`${col}`)
                     .setImage(`attachment://${fileName}`)
                     .setFooter({
-                        text: `${message.author.tag}`
+                        text: `Requested by ${message.author.tag}`
                     })
                     .setTimestamp();
                 return message.channel.send({
@@ -56,7 +56,7 @@ module.exports = {
                     .setColor(`${col}`)
                     .setImage(`attachment://${fileName}`)
                     .setFooter({
-                        text: `${message.author.tag}`
+                        text: `Requested by ${message.author.tag}`
                     })
                     .setTimestamp();
 
@@ -81,7 +81,7 @@ module.exports = {
                 .setColor(`${col}`)
                 .setImage(`${userMention.bannerURL({dynamic:true, size:2048})}`)
                 .setFooter({
-                    text: `${message.author.tag}`
+                    text: `Requested by ${message.author.tag}`
                 })
                 .setTimestamp();
 
@@ -103,7 +103,7 @@ module.exports = {
                 .setColor(`${col}`)
                 .setImage(`${userMention.bannerURL({dynamic:true, size:2048})}`)
                 .setFooter({
-                    text: `${message.author.tag}`
+                    text: `Requested by ${message.author.tag}`
                 })
                 .setTimestamp();
 

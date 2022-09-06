@@ -27,7 +27,7 @@ module.exports = {
                     .setColor(`${col}`)
                     .setImage(`attachment://${fileName}`)
                     .setFooter({
-                        text: `${message.author.tag}`
+                        text: `Requested by ${message.author.tag}`
                     })
                     .setTimestamp();
 
@@ -56,7 +56,7 @@ module.exports = {
                     .setColor(`${col}`)
                     .setImage(`attachment://${fileName}`)
                     .setFooter({
-                        text: `${message.author.tag}`
+                        text: `Requested by ${message.author.tag}`
                     })
                     .setTimestamp();
 
@@ -75,7 +75,7 @@ module.exports = {
                 .setColor(`${col}`)
                 .setImage(`${message.author.displayAvatarURL({dynamic:true, size:2048})}`)
                 .setFooter({
-                    text: `${message.author.tag}`
+                    text: `Requested by ${message.author.tag}`
                 })
                 .setTimestamp();
 
@@ -95,7 +95,7 @@ module.exports = {
                 .setDescription(`Download | [png](${userMention.displayAvatarURL({dynamic:false, format:'png', size: 2048})}) | [gif](${userMention.displayAvatarURL({dynamic:true, format:'gif', size: 2048})}) | [webp](${userMention.displayAvatarURL({dynamic:false, format:'webp', size: 2048})}) | [jpeg](${userMention.displayAvatarURL({dynamic:false, format:'jpeg', size: 2048})})`)
                 .setColor(`${col}`)
                 .setImage(`${userMention.displayAvatarURL({dynamic:true, size:2048})}`)
-                .setFooter({text: `${message.author.tag}`})
+                .setFooter({text: `Requested by ${message.author.tag}`})
                 .setTimestamp();
 
             return message.channel.send({
