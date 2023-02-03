@@ -57,7 +57,6 @@ module.exports = {
 
         try {
             await message.guild.members.ban(userBan, {
-                days: 2,
                 reason: reason
             });
             const serverBanEmbed = new MessageEmbed()
