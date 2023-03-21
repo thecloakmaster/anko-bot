@@ -41,7 +41,7 @@ module.exports = {
                     .setDescription(`**A new manga chapter has just been released!**\nThe chapter is available on MangaDex and the link can be found on the Reddit post linked below. Use <#${mangaID.id}> to discuss the chapter.`)
                     .addField('Reddit Link', `[Click here!](${redURL})`)
                     .setColor(`${process.env.colour}`)
-                channelID.setName(`ch-${chpNumber}-info`)
+                await channelID.setName(`ch-${chpNumber}-info`)
 
                 return channelID.send({
                     content: `<@&${pingRole.id}>`,

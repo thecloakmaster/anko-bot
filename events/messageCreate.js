@@ -21,9 +21,9 @@ module.exports = {
                 .setDescription(message.content)
                 .setTimestamp();
             let embedCop = _.cloneDeep(embed)
-            let counter = 0                 
-            if (message.attachments.size > 0) {                
-                message.attachments.forEach(attachment => {                    
+            let counter = 0
+            if (message.attachments.size > 0) {
+                message.attachments.forEach(attachment => {
                     if (!attachment.proxyURL.includes('https://cdn.discordapp.com/') && !attachment.proxyURL.includes('https://media.discordapp.net/')) return
                     let imageURL = attachment.proxyURL;
                     if (counter === 0) {
@@ -43,13 +43,26 @@ module.exports = {
                         let arrCopy = _.cloneDeep(imageEmbed)
                         embedArr.push(arrCopy);
                     }
-                    counter++                                               
-                })            
+                    counter++
+                })
             } else {
                 embedArr.push(embedCop)
             }
             await modHook.send({embeds: embedArr})
         }
+
+        if (message.content.includes("<@&908021112984727592>") && (message.guild.id === "908021112837922847" && message.channel.id === "908021114138132510" && message.author.id === "241602273187201026")) {
+            let channelNewName = ""
+            if (message.content.includes("korean" || "Korean" || "kr")) {
+                let channelCurrentName = message.channel.name.split("-")
+                channelNewName = `ch-${parseInt(channelCurrentName[1]) + 1}-kr`
+            } else {
+                channelNewName = `ch-${parseInt(channelCurrentName[1]) + 1}-raws`
+            }
+            const channel = await message.guild.channels.cache.find(chn => chn.id === '908021114138132510');
+            await channel.setName(`${channelNewName}`)
+        }
+
         if (!message.content.startsWith(prefix) || message.author.bot) return;
 
         let args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -58,13 +71,13 @@ module.exports = {
 
 
         if (!command) {
-            const CustomCommands = require('../database/CustomCommands.js');            
+            const CustomCommands = require('../database/CustomCommands.js');
             let customCommand = await CustomCommands.findOne({
                 CustomCommand: `${commandName}`,
                 ClientID: `${client.user.id}`,
                 GuildID: `${message.guild.id}`
-            })            
-            if (customCommand) {                
+            })
+            if (customCommand) {
                 if (customCommand.MessageContent?.length > 0) {
                     if (customCommand.MessageAttachments?.length > 0) {
                         message.channel.send({content: customCommand.MessageContent, embeds: customCommand.MessageEmbeds})
@@ -74,7 +87,7 @@ module.exports = {
                     }
                 } else if (customCommand.MessageContent?.length === 0 && (customCommand.MessageEmbeds?.length > 0 || customCommand.MessageAttachments?.length > 0)){
                     if (customCommand.MessageEmbeds?.length > 0 && customCommand.MessageAttachments?.length > 0) {
-                        return message.channel.send({embeds: customCommand.MessageEmbeds, content: `${customCommand.MessageAttachments.join("\n")}`})                        
+                        return message.channel.send({embeds: customCommand.MessageEmbeds, content: `${customCommand.MessageAttachments.join("\n")}`})
                     } else if (customCommand.MessageEmbeds?.length > 0 && customCommand.MessageAttachments?.length === 0) {
                         return message.channel.send({embeds: customCommand.MessageEmbeds})
                     } else if (customCommand.MessageEmbeds?.length === 0 && customCommand.MessageAttachments?.length > 0) {
