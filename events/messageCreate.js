@@ -53,8 +53,8 @@ module.exports = {
 
         if (message.content.includes("<@&908021112984727592>") && (message.guild.id === "908021112837922847" && message.channel.id === "908021114138132510" && message.author.id === "241602273187201026")) {
             const channel = await message.guild.channels.cache.find(chn => chn.id === '908021114138132510');
+            let channelCurrentName = message.channel.name.split("-");
             if (message.content.includes("korean" || "Korean" || "kr")) {
-                let channelCurrentName = message.channel.name.split("-");
                 await channel.setName(`ch-${parseInt(channelCurrentName[1]) + 1}-kr`);
             } else {
                 await channel.setName(`ch-${parseInt(channelCurrentName[1]) + 1}-raws`);
