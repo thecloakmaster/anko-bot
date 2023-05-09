@@ -226,9 +226,9 @@ module.exports = {
                     if (chapters.length === 1) return chapters[0]
                     for (const chap of chapters)
                         if (chap.chapter == targetChap) return chap;
-                    return findExtChapter(targetManga, targetChap, offset + 100);
+                    return await findExtChapter(targetManga, targetChap, offset + 100);
                 }
-                chapter = findExtChapter(manga, chapterNum)
+                chapter = await findExtChapter(manga, chapterNum)
                 if (chapter) {
                     let mangaTitle = manga.localizedTitle[manga.localizedTitle.availableLocales[0]]
                     let thumbnail = await MFA.Cover.get(manga.mainCover.id)

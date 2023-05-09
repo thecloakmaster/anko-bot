@@ -5,6 +5,10 @@ const client = new Discord.Client({
 	intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_PRESENCES", "DIRECT_MESSAGES", "GUILD_MESSAGE_REACTIONS"], partials: ["CHANNEL", "GUILD_MEMBER", "REACTION"]
 });
 
+const twitFunction = require(`./functions/revivedTwitter.js`);
+twitFunction.execute("cot_510");
+twitFunction.execute("yofukashi_pr");
+
 const twitFunction = require(`./functions/twit.js`)
 twitFunction.execute();
 
