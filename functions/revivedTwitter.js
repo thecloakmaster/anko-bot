@@ -27,6 +27,7 @@ module.exports = {
             userObject = await NewestTweet.findOne({
                 Username: username,
             });
+            let preSetLinks = [userObject.TweetLink, userObject.SecondLink, userObject?.ThirdLink];
             const fetchProm = new Promise(async (resolve, reject) => {
                 https.get(`https://nitter.net/${username}`, function (res) {
                     let siteData = '';
@@ -65,46 +66,37 @@ module.exports = {
                     }
                 }
                 for (let i = 2; i >= 0; i--) {
-                    if (
-                        newLinks[i] !== userObject.TweetLink &&
-                        newLinks[i] !== userObject.SecondLink &&
-                        newLinks[i] !== userObject.ThirdLink
-                    ) {
+                    if (!preSetLinks.includes(newLinks[i])) {
                         await feedHook.send(newMessages[i]);
                         if (i === 1) {
-                            await NewestTweet.findOneAndUpdate(
-                                {
-                                    Username: username,
-                                },
-                                {
-                                    SecondLink: newLinks[i],
-                                }
-                            );
+                            if (newLinks[2] && newLinks[2] === preSetLinks[0]) {
+                                await NewestTweet.findOneAndUpdate({Username: username},{ThirdLink: newLinks[2]});
+                            }
+                            await NewestTweet.findOneAndUpdate({Username: username}, {SecondLink: newLinks[i]});
                         } else if (i === 2) {
-                            await NewestTweet.findOneAndUpdate(
-                                {
-                                    Username: username,
-                                },
-                                {
-                                    ThirdLink: newLinks[i],
-                                }
-                            );
+                            await NewestTweet.findOneAndUpdate({Username: username},{ThirdLink: newLinks[i]});
                         } else {
-                            await NewestTweet.findOneAndUpdate(
-                                {
-                                    Username: username,
-                                },
-                                {
-                                    TweetLink: newLinks[i],
+                            if (newLinks[1] === preSetLinks[0]) {
+                                await NewestTweet.findOneAndUpdate({Username: username},{SecondLink: newLinks[1]});
+                                if (newLinks[2] && newLinks[2] === preSetLinks[1]) {
+                                    await NewestTweet.findOneAndUpdate({Username: username},{ThirdLink: newLinks[2]});
                                 }
-                            );
+                            } else if (newLinks[2] && newLinks[2] === preSetLinks[0]) {
+                                await NewestTweet.findOneAndUpdate({Username: username},{ThirdLink: newLinks[2]});
+                            }
+                            await NewestTweet.findOneAndUpdate({Username: username},{TweetLink: newLinks[i]});
                         }
                     }
                 }
                 finished = true;
             });
         }
-        await twitterFunction();
+        try {
+            await twitterFunction();
+        } catch (err) {
+            console.log(err);
+            finished = true;
+        };
         setInterval(async () => {
             if (finished) {await twitterFunction();};
         }, 8000);
